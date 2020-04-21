@@ -26,15 +26,15 @@ class MainActivity : AppCompatActivity() {
         processSearch(intent)
     }
 
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        processSearch(intent)
+    }
+
     private fun processSearch(intent: Intent) {
         if (Intent.ACTION_SEARCH == intent.action) {
             val query = intent.getStringExtra(SearchManager.QUERY)
             mainViewModel.search(query)
         }
-    }
-
-    override fun onNewIntent(intent: Intent) {
-        super.onNewIntent(intent)
-        processSearch(intent)
     }
 }
