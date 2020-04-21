@@ -45,16 +45,15 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
 
-    implementation "org.koin:koin-android:$koin_version"
-    implementation "org.koin:koin-androidx-scope:$koin_version"
-    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
-    implementation "org.koin:koin-androidx-fragment:$koin_version"
+    implementation Dependencies.koinAndroid
+    implementation Dependencies.koinScope
+    implementation Dependencies.koinViewModel
+    implementation Dependencies.koinFragment
 
     implementation 'com.squareup.retrofit2:retrofit:2.8.1'
     implementation 'com.squareup.retrofit2:converter-moshi:2.8.1'
-    implementation 'com.squareup.retrofit2:converter-moshi:2.8.1'
-    implementation 'com.squareup.moshi:moshi:1.9.2'
-    kapt 'com.squareup.moshi:moshi-kotlin-codegen:1.9.2'
+    implementation Dependencies.moshi
+    kapt Dependencies.moshiCodegen
 
     implementation 'com.google.android.material:material:1.1.0'
 
