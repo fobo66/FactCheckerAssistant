@@ -6,8 +6,9 @@ import retrofit2.http.Query
 
 interface FactCheckerApi {
 
-    @GET("/claims:search")
+    @GET("/v1alpha1/claims:search")
     suspend fun search(
-        @Query("query") query: String
+        @Query("query") query: String,
+        @Query("key") key: String
     ): FactCheckResponse
 }
