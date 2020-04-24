@@ -45,6 +45,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+    implementation Dependencies.paging
 
     implementation Dependencies.koinAndroid
     implementation Dependencies.koinScope
@@ -62,6 +63,7 @@ dependencies {
     testImplementation Dependencies.mockk
     testImplementation Dependencies.mockWebServer
     testImplementation Dependencies.kotlinCoroutinesTest
+    testImplementation Dependencies.pagingCommon
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 

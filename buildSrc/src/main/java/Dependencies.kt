@@ -22,6 +22,7 @@ object Versions {
     const val retrofit = "2.8.1"
     const val mockk = "1.9.3"
     const val okhttp = "4.5.0"
+    const val paging = "2.1.2"
 }
 
 object Dependencies {
@@ -29,7 +30,7 @@ object Dependencies {
     val kotlinCoroutines =
         "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.kotlinCoroutines}"
     val kotlinCoroutinesTest =
-        "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.kotlinCoroutines}"
+            "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.kotlinCoroutines}"
     val moshi = "com.squareup.moshi:moshi:${Versions.moshi}"
     val moshiCodegen = "com.squareup.moshi:moshi-kotlin-codegen:${Versions.moshi}"
     val koinAndroid = "org.koin:koin-android:${Versions.koin}"
@@ -38,4 +39,6 @@ object Dependencies {
     val koinFragment = "org.koin:koin-androidx-fragment:${Versions.koin}"
     val mockk = "io.mockk:mockk:${Versions.mockk}"
     val mockWebServer = "com.squareup.okhttp3:mockwebserver:${Versions.okhttp}"
+    val paging = "androidx.paging:paging-runtime-ktx:${Versions.paging}"
+    val pagingCommon = "androidx.paging:paging-common-ktx:${Versions.paging}"
 }
