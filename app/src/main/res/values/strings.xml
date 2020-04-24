@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Fact Checker Assistant</string>
     <string name="search_hint">Search claims</string>
+    <string name="fact_check_result_learn_more">Learn more</string>
 </resources>
