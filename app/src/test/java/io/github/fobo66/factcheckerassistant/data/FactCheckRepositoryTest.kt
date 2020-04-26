@@ -36,7 +36,7 @@ class FactCheckRepositoryTest {
             {
                 "claims": []
             }
-        """.trimIndent()
+            """.trimIndent()
             )
         )
 
