@@ -26,19 +26,22 @@ object Versions {
 }
 
 object Dependencies {
-    val kotlinStandardLibrary = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}"
-    val kotlinCoroutines =
+    const val kotlinStandardLibrary = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}"
+    const val kotlinCoroutines =
         "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.kotlinCoroutines}"
-    val kotlinCoroutinesTest =
-            "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.kotlinCoroutines}"
-    val moshi = "com.squareup.moshi:moshi:${Versions.moshi}"
-    val moshiCodegen = "com.squareup.moshi:moshi-kotlin-codegen:${Versions.moshi}"
-    val koinAndroid = "org.koin:koin-android:${Versions.koin}"
-    val koinScope = "org.koin:koin-androidx-scope:${Versions.koin}"
-    val koinViewModel = "org.koin:koin-androidx-viewmodel:${Versions.koin}"
-    val koinFragment = "org.koin:koin-androidx-fragment:${Versions.koin}"
-    val mockk = "io.mockk:mockk:${Versions.mockk}"
-    val mockWebServer = "com.squareup.okhttp3:mockwebserver:${Versions.okhttp}"
-    val paging = "androidx.paging:paging-runtime-ktx:${Versions.paging}"
-    val pagingCommon = "androidx.paging:paging-common-ktx:${Versions.paging}"
+    const val kotlinCoroutinesTest =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.kotlinCoroutines}"
+    const val moshi = "com.squareup.moshi:moshi:${Versions.moshi}"
+    const val moshiCodegen = "com.squareup.moshi:moshi-kotlin-codegen:${Versions.moshi}"
+    const val koinAndroid = "org.koin:koin-android:${Versions.koin}"
+    const val koinScope = "org.koin:koin-androidx-scope:${Versions.koin}"
+    const val koinViewModel = "org.koin:koin-androidx-viewmodel:${Versions.koin}"
+    const val koinFragment = "org.koin:koin-androidx-fragment:${Versions.koin}"
+    const val mockk = "io.mockk:mockk:${Versions.mockk}"
+    const val mockWebServer = "com.squareup.okhttp3:mockwebserver:${Versions.okhttp}"
+    const val paging = "androidx.paging:paging-runtime-ktx:${Versions.paging}"
+    const val pagingCommon = "androidx.paging:paging-common-ktx:${Versions.paging}"
+    const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+    const val retrofitMoshiConverter = "com.squareup.retrofit2:converter-moshi:${Versions.retrofit}"
+    const val retrofitMock = "com.squareup.retrofit2:retrofit-mock:${Versions.retrofit}"
 }

@@ -52,8 +52,8 @@ dependencies {
     implementation Dependencies.koinViewModel
     implementation Dependencies.koinFragment
 
-    implementation 'com.squareup.retrofit2:retrofit:2.8.1'
-    implementation 'com.squareup.retrofit2:converter-moshi:2.8.1'
+    implementation Dependencies.retrofit
+    implementation Dependencies.retrofitMoshiConverter
     implementation Dependencies.moshi
     kapt Dependencies.moshiCodegen
 
@@ -64,6 +64,7 @@ dependencies {
     testImplementation Dependencies.mockWebServer
     testImplementation Dependencies.kotlinCoroutinesTest
     testImplementation Dependencies.pagingCommon
+    testImplementation Dependencies.retrofitMock
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
