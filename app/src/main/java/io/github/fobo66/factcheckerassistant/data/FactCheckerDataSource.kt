@@ -20,7 +20,11 @@ class FactCheckerDataSource(
         callback: LoadInitialCallback<String, Claim>
     ) {
         scope.launch {
-            val result = factCheckerApi.search(query, BuildConfig.API_KEY)
+            val result = factCheckerApi.search(
+                query,
+                pageSize = params.requestedLoadSize,
+                key = BuildConfig.API_KEY
+            )
             nextPageToken = result.nextPageToken
             callback.onResult(result.claims, null, nextPageToken)
         }
@@ -28,7 +32,12 @@ class FactCheckerDataSource(
 
     override fun loadAfter(params: LoadParams<String>, callback: LoadCallback<String, Claim>) {
         scope.launch {
-            val result = factCheckerApi.search(query, BuildConfig.API_KEY)
+            val result = factCheckerApi.search(
+                query,
+                pageSize = params.requestedLoadSize,
+                pageToken = nextPageToken,
+                key = BuildConfig.API_KEY
+            )
             nextPageToken = result.nextPageToken
             callback.onResult(result.claims, nextPageToken)
         }

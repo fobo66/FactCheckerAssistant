@@ -8,6 +8,6 @@ class FactCheckRepository(
     private val factCheckerApi: FactCheckerApi
 ) {
     suspend fun search(query: String): List<Claim> {
-        return factCheckerApi.search(query, BuildConfig.API_KEY).claims
+        return factCheckerApi.search(query, key = BuildConfig.API_KEY).claims
     }
 }
