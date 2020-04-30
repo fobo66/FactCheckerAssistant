@@ -2,8 +2,11 @@ package io.github.fobo66.factcheckerassistant.data
 
 import io.github.fobo66.factcheckerassistant.api.FactCheckerApi
 import io.github.fobo66.factcheckerassistant.api.models.FactCheckResponse
+import io.github.fobo66.factcheckerassistant.extractValue
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 import retrofit2.Retrofit
@@ -33,10 +36,11 @@ class FactCheckRepositoryTest {
     }
 
     @Test
-    fun `Search for claim and get no results`() {
+    fun no_results() {
 
-        runBlocking {
-            factCheckRepository.search("test", this)
+        runBlocking(Dispatchers.Main) {
+            val result = factCheckRepository.search("test", this).extractValue()
+            assertTrue(result.isNullOrEmpty())
         }
     }
 }
