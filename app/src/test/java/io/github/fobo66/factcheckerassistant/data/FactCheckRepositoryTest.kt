@@ -41,7 +41,7 @@ class FactCheckRepositoryTest {
         )
 
         runBlocking {
-            factCheckRepository.search("test")
+            factCheckRepository.search("test", this)
         }
     }
 }

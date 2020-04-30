@@ -1,13 +1,17 @@
 package io.github.fobo66.factcheckerassistant.data
 
-import io.github.fobo66.factcheckerassistant.BuildConfig
+import androidx.lifecycle.LiveData
+import androidx.paging.PagedList
+import androidx.paging.toLiveData
 import io.github.fobo66.factcheckerassistant.api.FactCheckerApi
 import io.github.fobo66.factcheckerassistant.api.models.Claim
+import kotlinx.coroutines.CoroutineScope
 
 class FactCheckRepository(
     private val factCheckerApi: FactCheckerApi
 ) {
-    suspend fun search(query: String): List<Claim> {
-        return factCheckerApi.search(query, key = BuildConfig.API_KEY).claims
+    fun search(query: String, scope: CoroutineScope): LiveData<PagedList<Claim>> {
+        val dataSourceFactory = FactCheckerDataSourceFactory(query, factCheckerApi, scope)
+        return dataSourceFactory.toLiveData(pageSize = 10)
     }
 }
