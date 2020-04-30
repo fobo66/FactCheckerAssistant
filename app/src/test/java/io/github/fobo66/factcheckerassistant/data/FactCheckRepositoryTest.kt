@@ -3,7 +3,7 @@ package io.github.fobo66.factcheckerassistant.data
 import io.github.fobo66.factcheckerassistant.api.FactCheckerApi
 import io.github.fobo66.factcheckerassistant.api.models.FactCheckResponse
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Before
 import org.junit.Test
 import retrofit2.Retrofit
@@ -33,10 +33,7 @@ class FactCheckRepositoryTest {
     }
 
     @Test
-    fun `Search for claim and get no results`() {
-
-        runBlocking {
-            factCheckRepository.search("test", this)
-        }
+    fun `Search for claim and get no results`() = runBlockingTest {
+        factCheckRepository.search("test", this)
     }
 }
