@@ -23,6 +23,8 @@ object Versions {
     const val mockk = "1.9.3"
     const val okhttp = "4.5.0"
     const val paging = "2.1.2"
+    const val junit = "4.13"
+    const val androidxArch = "2.1.0"
 }
 
 object Dependencies {
@@ -44,4 +46,6 @@ object Dependencies {
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val retrofitMoshiConverter = "com.squareup.retrofit2:converter-moshi:${Versions.retrofit}"
     const val retrofitMock = "com.squareup.retrofit2:retrofit-mock:${Versions.retrofit}"
+    const val junit = "junit:junit:${Versions.junit}"
+    const val androidxCoreArchTesting = "androidx.arch.core:core-testing:${Versions.androidxArch}"
 }

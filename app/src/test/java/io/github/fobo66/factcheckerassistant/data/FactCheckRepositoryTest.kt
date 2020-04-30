@@ -1,13 +1,14 @@
 package io.github.fobo66.factcheckerassistant.data
 
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import io.github.fobo66.factcheckerassistant.api.FactCheckerApi
 import io.github.fobo66.factcheckerassistant.api.models.FactCheckResponse
 import io.github.fobo66.factcheckerassistant.extractValue
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertTrue
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import retrofit2.Retrofit
 import retrofit2.mock.MockRetrofit
@@ -15,6 +16,9 @@ import retrofit2.mock.MockRetrofit
 @ExperimentalCoroutinesApi
 class FactCheckRepositoryTest {
     private lateinit var factCheckRepository: FactCheckRepository
+
+    @get:Rule
+    val instantTaskExecutorRule = InstantTaskExecutorRule()
 
     @Before
     fun setUp() {
@@ -36,9 +40,8 @@ class FactCheckRepositoryTest {
     }
 
     @Test
-    fun no_results() {
-
-        runBlocking(Dispatchers.Main) {
+    fun `Search for query with empty results`() {
+        runBlocking {
             val result = factCheckRepository.search("test", this).extractValue()
             assertTrue(result.isNullOrEmpty())
         }
