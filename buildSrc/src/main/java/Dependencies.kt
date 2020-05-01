@@ -25,6 +25,7 @@ object Versions {
     const val paging = "2.1.2"
     const val junit = "4.13"
     const val androidxArch = "2.1.0"
+    const val timber = "4.7.1"
 }
 
 object Dependencies {
@@ -39,13 +40,14 @@ object Dependencies {
     const val koinScope = "org.koin:koin-androidx-scope:${Versions.koin}"
     const val koinViewModel = "org.koin:koin-androidx-viewmodel:${Versions.koin}"
     const val koinFragment = "org.koin:koin-androidx-fragment:${Versions.koin}"
-    const val mockk = "io.mockk:mockk:${Versions.mockk}"
-    const val mockWebServer = "com.squareup.okhttp3:mockwebserver:${Versions.okhttp}"
     const val paging = "androidx.paging:paging-runtime-ktx:${Versions.paging}"
     const val pagingCommon = "androidx.paging:paging-common-ktx:${Versions.paging}"
+    const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val retrofitMoshiConverter = "com.squareup.retrofit2:converter-moshi:${Versions.retrofit}"
     const val retrofitMock = "com.squareup.retrofit2:retrofit-mock:${Versions.retrofit}"
     const val junit = "junit:junit:${Versions.junit}"
+    const val mockk = "io.mockk:mockk:${Versions.mockk}"
+    const val mockWebServer = "com.squareup.okhttp3:mockwebserver:${Versions.okhttp}"
     const val androidxCoreArchTesting = "androidx.arch.core:core-testing:${Versions.androidxArch}"
 }
