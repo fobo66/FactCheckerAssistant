@@ -1,6 +1,7 @@
 package io.github.fobo66.factcheckerassistant
 
 import android.app.Application
+import androidx.lifecycle.SavedStateHandle
 import io.github.fobo66.factcheckerassistant.api.FactCheckerApi
 import io.github.fobo66.factcheckerassistant.data.FactCheckRepository
 import io.github.fobo66.factcheckerassistant.ui.main.MainFragment
@@ -21,7 +22,7 @@ class App : Application() {
     }
 
     private val viewModelsModule = module {
-        viewModel { MainViewModel() }
+        viewModel { (handle: SavedStateHandle) -> MainViewModel(get(), handle) }
     }
 
     private val apiModule = module {

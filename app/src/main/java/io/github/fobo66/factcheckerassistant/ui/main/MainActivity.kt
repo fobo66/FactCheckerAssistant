@@ -1,21 +1,21 @@
-package io.github.fobo66.factcheckerassistant
+package io.github.fobo66.factcheckerassistant.ui.main
 
 import android.app.SearchManager
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import io.github.fobo66.factcheckerassistant.ui.main.MainFragment
-import io.github.fobo66.factcheckerassistant.ui.main.MainViewModel
+import io.github.fobo66.factcheckerassistant.R
 import org.koin.androidx.fragment.android.setupKoinFragmentFactory
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.getStateViewModel
 
 class MainActivity : AppCompatActivity() {
 
-    private val mainViewModel: MainViewModel by viewModel()
+    private lateinit var mainViewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setupKoinFragmentFactory()
         super.onCreate(savedInstanceState)
+        mainViewModel = getStateViewModel()
         setContentView(R.layout.main_activity)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
