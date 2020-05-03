@@ -26,6 +26,7 @@ object Versions {
     const val junit = "4.13"
     const val androidxArch = "2.1.0"
     const val timber = "4.7.1"
+    const val lifecycle = "2.3.0-alpha02"
 }
 
 object Dependencies {
@@ -42,6 +43,9 @@ object Dependencies {
     const val koinFragment = "org.koin:koin-androidx-fragment:${Versions.koin}"
     const val paging = "androidx.paging:paging-runtime-ktx:${Versions.paging}"
     const val pagingCommon = "androidx.paging:paging-common-ktx:${Versions.paging}"
+    const val liveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}"
+    const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
+    const val lifecycleRuntime = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
     const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val retrofitMoshiConverter = "com.squareup.retrofit2:converter-moshi:${Versions.retrofit}"
