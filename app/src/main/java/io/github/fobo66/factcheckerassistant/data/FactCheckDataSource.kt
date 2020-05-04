@@ -3,16 +3,16 @@ package io.github.fobo66.factcheckerassistant.data
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
 import io.github.fobo66.factcheckerassistant.BuildConfig
-import io.github.fobo66.factcheckerassistant.api.FactCheckerApi
+import io.github.fobo66.factcheckerassistant.api.FactCheckApi
 import io.github.fobo66.factcheckerassistant.api.models.Claim
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
-class FactCheckerDataSource(
+class FactCheckDataSource(
     private val query: String,
-    private val factCheckerApi: FactCheckerApi,
+    private val factCheckApi: FactCheckApi,
     private val scope: CoroutineScope
 ) : PageKeyedDataSource<String, Claim>() {
 
@@ -31,7 +31,7 @@ class FactCheckerDataSource(
     ) {
         scope.launch(errorHandler) {
             Timber.d("Loading claims started")
-            val result = factCheckerApi.search(
+            val result = factCheckApi.search(
                 query,
                 pageSize = params.requestedLoadSize,
                 key = BuildConfig.API_KEY
@@ -45,7 +45,7 @@ class FactCheckerDataSource(
     override fun loadAfter(params: LoadParams<String>, callback: LoadCallback<String, Claim>) {
         scope.launch(errorHandler) {
             Timber.d("Loading more claims started")
-            val result = factCheckerApi.search(
+            val result = factCheckApi.search(
                 query,
                 pageSize = params.requestedLoadSize,
                 pageToken = nextPageToken,

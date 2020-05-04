@@ -2,7 +2,7 @@ package io.github.fobo66.factcheckerassistant
 
 import android.app.Application
 import androidx.lifecycle.SavedStateHandle
-import io.github.fobo66.factcheckerassistant.api.FactCheckerApi
+import io.github.fobo66.factcheckerassistant.api.FactCheckApi
 import io.github.fobo66.factcheckerassistant.data.FactCheckRepository
 import io.github.fobo66.factcheckerassistant.ui.main.MainFragment
 import io.github.fobo66.factcheckerassistant.ui.main.MainViewModel
@@ -14,6 +14,7 @@ import org.koin.core.context.startKoin
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.create
 import timber.log.Timber
 
 class App : Application() {
@@ -32,7 +33,7 @@ class App : Application() {
                 .baseUrl("https://factchecktools.googleapis.com")
                 .addConverterFactory(MoshiConverterFactory.create())
                 .build()
-                .create(FactCheckerApi::class.java)
+                .create<FactCheckApi>()
         }
     }
 

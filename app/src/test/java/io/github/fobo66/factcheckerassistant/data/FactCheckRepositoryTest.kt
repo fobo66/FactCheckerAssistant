@@ -2,7 +2,7 @@ package io.github.fobo66.factcheckerassistant.data
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.paging.PagedList
-import io.github.fobo66.factcheckerassistant.api.FactCheckerApi
+import io.github.fobo66.factcheckerassistant.api.FactCheckApi
 import io.github.fobo66.factcheckerassistant.api.models.Claim
 import io.github.fobo66.factcheckerassistant.api.models.FactCheckResponse
 import io.github.fobo66.factcheckerassistant.util.LoggingObserver
@@ -27,7 +27,7 @@ import java.util.concurrent.TimeUnit
 @ExperimentalCoroutinesApi
 class FactCheckRepositoryTest {
     private lateinit var factCheckRepository: FactCheckRepository
-    private lateinit var mockApi: BehaviorDelegate<FactCheckerApi>
+    private lateinit var mockApi: BehaviorDelegate<FactCheckApi>
 
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
@@ -46,7 +46,7 @@ class FactCheckRepositoryTest {
 
         mockApi = MockRetrofit.Builder(retrofit)
             .networkBehavior(networkBehavior)
-            .build().create(FactCheckerApi::class.java)
+            .build().create(FactCheckApi::class.java)
     }
 
 
