@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Fact Checker Assistant</string>
     <string name="search_hint">Search claims</string>
-    <string name="claim_rating">Fact check rating: $1%s</string>
-    <string name="claim_claimant">by $1%s</string>
+    <string name="claim_rating">Fact check rating: %1$s</string>
+    <string name="claim_claimant">by %1$s</string>
     <string name="claim_learn_more">Learn more</string>
 </resources>
