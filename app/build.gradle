@@ -24,6 +24,10 @@ android {
         targetCompatibility 1.8
     }
 
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
     buildFeatures {
         viewBinding = true
     }
@@ -43,9 +47,10 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.2.0'
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+    implementation Dependencies.viewModel
+    implementation Dependencies.liveData
     implementation Dependencies.paging
+    implementation 'com.google.android.material:material:1.1.0'
 
     implementation Dependencies.koinAndroid
     implementation Dependencies.koinScope
@@ -57,13 +62,14 @@ dependencies {
     implementation Dependencies.moshi
     kapt Dependencies.moshiCodegen
 
-    implementation 'com.google.android.material:material:1.1.0'
+    implementation Dependencies.timber
 
-    testImplementation 'junit:junit:4.13'
+    testImplementation Dependencies.junit
     testImplementation Dependencies.mockk
     testImplementation Dependencies.mockWebServer
     testImplementation Dependencies.kotlinCoroutinesTest
     testImplementation Dependencies.pagingCommon
+    testImplementation Dependencies.androidxCoreArchTesting
     testImplementation Dependencies.retrofitMock
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'

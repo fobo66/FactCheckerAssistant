@@ -1,6 +1,7 @@
 package io.github.fobo66.factcheckerassistant
 
 import android.app.Application
+import androidx.lifecycle.SavedStateHandle
 import io.github.fobo66.factcheckerassistant.api.FactCheckerApi
 import io.github.fobo66.factcheckerassistant.data.FactCheckRepository
 import io.github.fobo66.factcheckerassistant.ui.main.MainFragment
@@ -12,6 +13,7 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
 import retrofit2.Retrofit
+import timber.log.Timber
 
 class App : Application() {
 
@@ -20,7 +22,7 @@ class App : Application() {
     }
 
     private val viewModelsModule = module {
-        viewModel { MainViewModel() }
+        viewModel { (handle: SavedStateHandle) -> MainViewModel(get(), handle) }
     }
 
     private val apiModule = module {
@@ -40,6 +42,10 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
+
+        if (BuildConfig.DEBUG) {
+            Timber.plant(Timber.DebugTree())
+        }
 
         startKoin {
             androidContext(this@App)
