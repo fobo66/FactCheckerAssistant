@@ -13,6 +13,7 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
 import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
 import timber.log.Timber
 
 class App : Application() {
@@ -29,6 +30,7 @@ class App : Application() {
         single {
             Retrofit.Builder()
                 .baseUrl("https://factchecktools.googleapis.com")
+                .addConverterFactory(MoshiConverterFactory.create())
                 .build()
                 .create(FactCheckerApi::class.java)
         }

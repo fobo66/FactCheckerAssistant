@@ -6,8 +6,10 @@ import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.observe
 import io.github.fobo66.factcheckerassistant.R
 import io.github.fobo66.factcheckerassistant.databinding.MainFragmentBinding
+import io.github.fobo66.factcheckerassistant.ui.list.FactCheckResultsAdapter
 import io.github.fobo66.factcheckerassistant.util.viewBinding
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
@@ -17,8 +19,17 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
     private val binding: MainFragmentBinding by viewBinding()
 
+    private lateinit var adapter: FactCheckResultsAdapter
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        adapter = FactCheckResultsAdapter()
+        binding.factCheckResults.adapter = adapter
+
+        mainViewModel.claims.observe(viewLifecycleOwner) { claims ->
+            adapter.submitList(claims)
+        }
 
         val searchManager = getSystemService(requireContext(), SearchManager::class.java)
         (binding.toolbar.menu.findItem(R.id.app_bar_search).actionView as SearchView).apply {
