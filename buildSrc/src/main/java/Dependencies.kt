@@ -27,6 +27,7 @@ object Versions {
     const val androidxArch = "2.1.0"
     const val timber = "4.7.1"
     const val lifecycle = "2.3.0-alpha02"
+    const val detekt = "1.8.0"
 }
 
 object Dependencies {
