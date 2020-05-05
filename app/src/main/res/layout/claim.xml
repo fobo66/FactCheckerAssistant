@@ -5,9 +5,10 @@
     android:id="@+id/card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="8dp"
     android:minHeight="140dp"
     app:cardCornerRadius="16dp"
-    app:cardElevation="4dp">
+    app:cardElevation="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -41,10 +42,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
             android:layout_marginBottom="32dp"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/learnMoreButton"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             tools:text="Fact check rating: False" />
 
