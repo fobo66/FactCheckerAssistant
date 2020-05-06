@@ -9,11 +9,12 @@ import kotlinx.coroutines.CoroutineScope
 class FactCheckDataSourceFactory(
     private val query: String,
     private val factCheckApi: FactCheckApi,
+    private val languageTag: String,
     private val scope: CoroutineScope
 ) : DataSource.Factory<String, Claim>() {
     val sourceLiveData = MutableLiveData<FactCheckDataSource>()
     override fun create(): DataSource<String, Claim> {
-        val latestSource = FactCheckDataSource(query, factCheckApi, scope)
+        val latestSource = FactCheckDataSource(query, factCheckApi, languageTag, scope)
         sourceLiveData.postValue(latestSource)
         return latestSource
     }

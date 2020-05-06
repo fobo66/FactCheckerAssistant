@@ -5,7 +5,9 @@ import androidx.paging.PagedList
 import io.github.fobo66.factcheckerassistant.api.FactCheckApi
 import io.github.fobo66.factcheckerassistant.api.models.Claim
 import io.github.fobo66.factcheckerassistant.api.models.FactCheckResponse
+import io.github.fobo66.factcheckerassistant.util.LocaleProvider
 import io.github.fobo66.factcheckerassistant.util.LoggingObserver
+import io.github.fobo66.factcheckerassistant.util.TestLocaleProvider
 import io.github.fobo66.factcheckerassistant.util.TestTree
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -28,6 +30,8 @@ import java.util.concurrent.TimeUnit
 class FactCheckRepositoryTest {
     private lateinit var factCheckRepository: FactCheckRepository
     private lateinit var mockApi: BehaviorDelegate<FactCheckApi>
+
+    private val localeProvider: LocaleProvider = TestLocaleProvider()
 
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
@@ -62,7 +66,7 @@ class FactCheckRepositoryTest {
                 FactCheckResponse(
                     listOf(), null
                 )
-            )
+            ), localeProvider
         )
 
         runBlocking {
@@ -83,7 +87,8 @@ class FactCheckRepositoryTest {
                 FactCheckResponse(
                     listOf(claim), null
                 )
-            )
+            ),
+            localeProvider
         )
 
         runBlocking {
