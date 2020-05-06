@@ -13,6 +13,7 @@ import timber.log.Timber
 class FactCheckDataSource(
     private val query: String,
     private val factCheckApi: FactCheckApi,
+    private val languageTag: String,
     private val scope: CoroutineScope
 ) : PageKeyedDataSource<String, Claim>() {
 
@@ -33,6 +34,7 @@ class FactCheckDataSource(
             Timber.d("Loading claims started")
             val result = factCheckApi.search(
                 query,
+                languageCode = languageTag,
                 pageSize = params.requestedLoadSize,
                 key = BuildConfig.API_KEY
             )
@@ -47,6 +49,7 @@ class FactCheckDataSource(
             Timber.d("Loading more claims started")
             val result = factCheckApi.search(
                 query,
+                languageCode = languageTag,
                 pageSize = params.requestedLoadSize,
                 pageToken = nextPageToken,
                 key = BuildConfig.API_KEY

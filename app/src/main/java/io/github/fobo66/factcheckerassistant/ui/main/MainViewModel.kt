@@ -12,7 +12,7 @@ class MainViewModel(
 ) : ViewModel() {
 
     val claims = handle.getLiveData<String>(KEY_QUERY).switchMap { query ->
-        factCheckRepository.search(query, viewModelScope)
+        factCheckRepository.search(query, DEFAULT_PAGE_SIZE, viewModelScope)
     }
 
     fun search(query: String?) {
@@ -21,5 +21,6 @@ class MainViewModel(
 
     companion object {
         private const val KEY_QUERY = "query"
+        private const val DEFAULT_PAGE_SIZE = 10
     }
 }

@@ -6,11 +6,14 @@ import io.github.fobo66.factcheckerassistant.api.FactCheckApi
 import io.github.fobo66.factcheckerassistant.data.FactCheckRepository
 import io.github.fobo66.factcheckerassistant.ui.main.MainFragment
 import io.github.fobo66.factcheckerassistant.ui.main.MainViewModel
+import io.github.fobo66.factcheckerassistant.util.LocaleProvider
+import io.github.fobo66.factcheckerassistant.util.LocaleProviderImpl
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.fragment.dsl.fragment
 import org.koin.androidx.fragment.koin.fragmentFactory
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin
+import org.koin.dsl.bind
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -38,9 +41,8 @@ class App : Application() {
     }
 
     private val dataModule = module {
-        single {
-            FactCheckRepository(get())
-        }
+        single { FactCheckRepository(get(), get()) }
+        single { LocaleProviderImpl(get()) } bind LocaleProvider::class
     }
 
     override fun onCreate() {
