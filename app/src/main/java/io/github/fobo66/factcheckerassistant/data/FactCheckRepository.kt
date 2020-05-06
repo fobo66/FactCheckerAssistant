@@ -12,13 +12,13 @@ class FactCheckRepository(
     private val factCheckApi: FactCheckApi,
     private val localeProvider: LocaleProvider
 ) {
-    fun search(query: String, scope: CoroutineScope): LiveData<PagedList<Claim>> {
+    fun search(query: String, pageSize: Int, scope: CoroutineScope): LiveData<PagedList<Claim>> {
         val dataSourceFactory = FactCheckDataSourceFactory(
             query,
             factCheckApi,
             localeProvider.currentLocale.toLanguageTag(),
             scope
         )
-        return dataSourceFactory.toLiveData(pageSize = 10)
+        return dataSourceFactory.toLiveData(pageSize = pageSize)
     }
 }

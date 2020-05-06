@@ -70,7 +70,7 @@ class FactCheckRepositoryTest {
         )
 
         runBlocking {
-            val result = factCheckRepository.search("test", this)
+            val result = factCheckRepository.search("test", 10, this)
             val observer = LoggingObserver<PagedList<Claim>>()
             result.observeForever(observer)
             delay(DEFAULT_API_DELAY)
@@ -92,7 +92,7 @@ class FactCheckRepositoryTest {
         )
 
         runBlocking {
-            val result = factCheckRepository.search("test", this)
+            val result = factCheckRepository.search("test", 10, this)
             val observer = LoggingObserver<PagedList<Claim>>()
             result.observeForever(observer)
             delay(DEFAULT_API_DELAY)
