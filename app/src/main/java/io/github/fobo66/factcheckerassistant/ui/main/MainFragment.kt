@@ -38,4 +38,9 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             isIconified = true
         }
     }
+
+    override fun onDestroyView() {
+        binding.factCheckResults.adapter = null
+        super.onDestroyView()
+    }
 }
