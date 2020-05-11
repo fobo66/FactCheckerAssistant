@@ -15,6 +15,8 @@
  */
 
 object Versions {
+    const val androidxCore = "1.2.0"
+    const val androidxAppcompat = "1.1.0"
     const val kotlin = "1.3.72"
     const val kotlinCoroutines = "1.3.5"
     const val koin = "2.1.5"
@@ -22,15 +24,22 @@ object Versions {
     const val retrofit = "2.8.1"
     const val mockk = "1.9.3"
     const val okhttp = "4.5.0"
+    const val material = "1.1.0"
+    const val constraintLayout = "1.1.3"
     const val paging = "2.1.2"
     const val junit = "4.13"
+    const val androidxJunit = "1.1.1"
     const val androidxArch = "2.1.0"
     const val timber = "4.7.1"
     const val lifecycle = "2.3.0-alpha02"
     const val detekt = "1.8.0"
+    const val espresso = "3.2.0"
 }
 
 object Dependencies {
+    const val androidxCore = "androidx.core:core:${Versions.androidxCore}"
+    const val androidxCoreKtx = "androidx.core:core-ktx:${Versions.androidxCore}"
+    const val androidxAppcompat = "androidx.appcompat:appcompat:${Versions.androidxAppcompat}"
     const val kotlinStandardLibrary = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}"
     const val kotlinCoroutines =
         "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.kotlinCoroutines}"
@@ -42,6 +51,8 @@ object Dependencies {
     const val koinScope = "org.koin:koin-androidx-scope:${Versions.koin}"
     const val koinViewModel = "org.koin:koin-androidx-viewmodel:${Versions.koin}"
     const val koinFragment = "org.koin:koin-androidx-fragment:${Versions.koin}"
+    const val material = "com.google.android.material:material:${Versions.material}"
+    const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.material}"
     const val paging = "androidx.paging:paging-runtime-ktx:${Versions.paging}"
     const val pagingCommon = "androidx.paging:paging-common-ktx:${Versions.paging}"
     const val liveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}"
@@ -54,5 +65,7 @@ object Dependencies {
     const val junit = "junit:junit:${Versions.junit}"
     const val mockk = "io.mockk:mockk:${Versions.mockk}"
     const val mockWebServer = "com.squareup.okhttp3:mockwebserver:${Versions.okhttp}"
+    const val androidxJunit = "androidx.test.ext:junit:${Versions.androidxJunit}"
     const val androidxCoreArchTesting = "androidx.arch.core:core-testing:${Versions.androidxArch}"
+    const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
 }
