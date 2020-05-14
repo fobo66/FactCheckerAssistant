@@ -52,7 +52,7 @@ object Dependencies {
     const val koinViewModel = "org.koin:koin-androidx-viewmodel:${Versions.koin}"
     const val koinFragment = "org.koin:koin-androidx-fragment:${Versions.koin}"
     const val material = "com.google.android.material:material:${Versions.material}"
-    const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.material}"
+    const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val paging = "androidx.paging:paging-runtime-ktx:${Versions.paging}"
     const val pagingCommon = "androidx.paging:paging-common-ktx:${Versions.paging}"
     const val liveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}"
