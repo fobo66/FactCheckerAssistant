@@ -102,6 +102,6 @@ class FactCheckRepositoryTest {
 
     companion object {
         // delay is needed to filter out initial empty list that is emitted by Paging
-        private const val DEFAULT_API_DELAY = 100L
+        private const val DEFAULT_API_DELAY = 300L
     }
 }
