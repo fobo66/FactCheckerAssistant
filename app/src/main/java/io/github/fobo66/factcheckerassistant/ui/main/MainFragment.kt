@@ -6,13 +6,17 @@ import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.observe
+import androidx.lifecycle.lifecycleScope
 import io.github.fobo66.factcheckerassistant.R
 import io.github.fobo66.factcheckerassistant.databinding.MainFragmentBinding
 import io.github.fobo66.factcheckerassistant.ui.list.ClaimsAdapter
 import io.github.fobo66.factcheckerassistant.util.viewBinding
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
+@ExperimentalCoroutinesApi
 class MainFragment : Fragment(R.layout.main_fragment) {
 
     private val mainViewModel: MainViewModel by sharedViewModel()
@@ -27,8 +31,10 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         adapter = ClaimsAdapter()
         binding.factCheckResults.adapter = adapter
 
-        mainViewModel.claims.observe(viewLifecycleOwner) { claims ->
-            adapter.submitList(claims)
+        lifecycleScope.launch {
+            mainViewModel.claims.collectLatest { claims ->
+                adapter.submitData(claims)
+            }
         }
 
         val searchManager = getSystemService(requireContext(), SearchManager::class.java)
