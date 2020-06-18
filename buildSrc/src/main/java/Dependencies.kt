@@ -26,7 +26,7 @@ object Versions {
     const val okhttp = "4.5.0"
     const val material = "1.1.0"
     const val constraintLayout = "1.1.3"
-    const val paging = "2.1.2"
+    const val paging = "3.0.0-alpha01"
     const val junit = "4.13"
     const val androidxJunit = "1.1.1"
     const val androidxArch = "2.1.0"
