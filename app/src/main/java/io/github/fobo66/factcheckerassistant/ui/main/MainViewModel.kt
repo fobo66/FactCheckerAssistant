@@ -4,6 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asFlow
 import androidx.lifecycle.viewModelScope
+import androidx.paging.cachedIn
 import io.github.fobo66.factcheckerassistant.data.FactCheckRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flatMapLatest
@@ -15,9 +16,10 @@ class MainViewModel(
 ) : ViewModel() {
 
     val claims = handle.getLiveData<String>(KEY_QUERY).asFlow()
-        .flatMapLatest { query ->
-            factCheckRepository.search(query, DEFAULT_PAGE_SIZE, viewModelScope)
-        }
+            .flatMapLatest { query ->
+                factCheckRepository.search(query, DEFAULT_PAGE_SIZE)
+            }
+            .cachedIn(viewModelScope)
 
     fun search(query: String?) {
         handle.set(KEY_QUERY, query)

@@ -6,23 +6,22 @@ import androidx.paging.PagingData
 import io.github.fobo66.factcheckerassistant.api.FactCheckApi
 import io.github.fobo66.factcheckerassistant.api.models.Claim
 import io.github.fobo66.factcheckerassistant.util.LocaleProvider
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 
 class FactCheckRepository(
     private val factCheckApi: FactCheckApi,
     private val localeProvider: LocaleProvider
 ) {
-    fun search(query: String, pageSize: Int, scope: CoroutineScope): Flow<PagingData<Claim>> {
+    fun search(query: String, pageSize: Int): Flow<PagingData<Claim>> {
         return Pager(
-            config = PagingConfig(pageSize),
-            pagingSourceFactory = {
-                FactCheckDataSource(
-                    query,
-                    factCheckApi,
-                    localeProvider.currentLocale.toLanguageTag()
-                )
-            }
+                config = PagingConfig(pageSize),
+                pagingSourceFactory = {
+                    FactCheckDataSource(
+                            query,
+                            factCheckApi,
+                            localeProvider.currentLocale.toLanguageTag()
+                    )
+                }
         ).flow
     }
 }

@@ -1,21 +1,19 @@
 package io.github.fobo66.factcheckerassistant.data
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.paging.PagedList
 import io.github.fobo66.factcheckerassistant.api.FactCheckApi
 import io.github.fobo66.factcheckerassistant.api.models.Claim
 import io.github.fobo66.factcheckerassistant.api.models.FactCheckResponse
 import io.github.fobo66.factcheckerassistant.util.LocaleProvider
-import io.github.fobo66.factcheckerassistant.util.LoggingObserver
 import io.github.fobo66.factcheckerassistant.util.TestLocaleProvider
 import io.github.fobo66.factcheckerassistant.util.TestTree
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.runBlocking
 import org.junit.After
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertTrue
+import org.junit.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -70,11 +68,9 @@ class FactCheckRepositoryTest {
         )
 
         runBlocking {
-            val result = factCheckRepository.search("test", 10, this)
-            val observer = LoggingObserver<PagedList<Claim>>()
-            result.observeForever(observer)
+            val result = factCheckRepository.search("test", 10).firstOrNull()
             delay(DEFAULT_API_DELAY)
-            assertTrue(observer.value.isNullOrEmpty())
+            assertNotNull(result)
         }
     }
 
@@ -92,11 +88,9 @@ class FactCheckRepositoryTest {
         )
 
         runBlocking {
-            val result = factCheckRepository.search("test", 10, this)
-            val observer = LoggingObserver<PagedList<Claim>>()
-            result.observeForever(observer)
+            val result = factCheckRepository.search("test", 10).firstOrNull()
             delay(DEFAULT_API_DELAY)
-            assertEquals(1, observer.value?.size)
+            assertNotNull(result)
         }
     }
 
