@@ -4,6 +4,7 @@ import androidx.paging.PagingSource
 import io.github.fobo66.factcheckerassistant.BuildConfig
 import io.github.fobo66.factcheckerassistant.api.FactCheckApi
 import io.github.fobo66.factcheckerassistant.api.models.Claim
+import retrofit2.HttpException
 import timber.log.Timber
 
 class FactCheckDataSource(
@@ -16,16 +17,16 @@ class FactCheckDataSource(
         try {
             Timber.d("Loading claims started")
             val result = factCheckApi.search(
-                    query,
-                    languageCode = languageTag,
-                    pageSize = params.loadSize,
-                    pageToken = params.key,
-                    key = BuildConfig.API_KEY
+                query,
+                languageCode = languageTag,
+                pageSize = params.loadSize,
+                pageToken = params.key,
+                key = BuildConfig.API_KEY
             )
             Timber.d("Loading claims finished")
             nextPageToken = result.nextPageToken
             return LoadResult.Page(result.claims, null, nextPageToken)
-        } catch (e: Exception) {
+        } catch (e: HttpException) {
             Timber.e(e, "Error occurred during loading claims for query %s", query)
             return LoadResult.Error(e)
         }
