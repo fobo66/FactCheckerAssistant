@@ -2,6 +2,7 @@ package io.github.fobo66.factcheckerassistant.ui.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -29,6 +30,13 @@ class ClaimsProgressAdapter : LoadStateAdapter<ClaimsProgressViewHolder>() {
 class ClaimsProgressViewHolder(private val binding: ClaimsLoadingProgressHeaderBinding) :
     RecyclerView.ViewHolder(binding.root) {
     fun bind(loadState: LoadState) {
-        binding.claimsLoadingProgressBar.visibility
+        binding.claimsLoadingProgressBar.isVisible = loadState is LoadState.Loading
+
+        if (loadState is LoadState.Error) {
+            binding.claimsLoadingError.apply {
+                isVisible = true
+                text = loadState.error.localizedMessage
+            }
+        }
     }
 }
