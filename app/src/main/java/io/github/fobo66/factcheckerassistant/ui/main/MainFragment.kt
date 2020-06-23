@@ -17,7 +17,6 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
-@ExperimentalCoroutinesApi
 class MainFragment : Fragment(R.layout.main_fragment) {
 
     private val mainViewModel: MainViewModel by sharedViewModel()
@@ -26,6 +25,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
     private lateinit var adapter: ClaimsAdapter
 
+    @ExperimentalCoroutinesApi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

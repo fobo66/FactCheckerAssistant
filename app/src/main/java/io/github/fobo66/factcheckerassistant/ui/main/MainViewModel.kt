@@ -9,17 +9,17 @@ import io.github.fobo66.factcheckerassistant.data.FactCheckRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flatMapLatest
 
-@ExperimentalCoroutinesApi
 class MainViewModel(
     private val factCheckRepository: FactCheckRepository,
     private val handle: SavedStateHandle
 ) : ViewModel() {
 
+    @ExperimentalCoroutinesApi
     val claims = handle.getLiveData<String>(KEY_QUERY).asFlow()
-            .flatMapLatest { query ->
-                factCheckRepository.search(query, DEFAULT_PAGE_SIZE)
-            }
-            .cachedIn(viewModelScope)
+        .flatMapLatest { query ->
+            factCheckRepository.search(query, DEFAULT_PAGE_SIZE)
+        }
+        .cachedIn(viewModelScope)
 
     fun search(query: String?) {
         handle.set(KEY_QUERY, query)
