@@ -4,4 +4,5 @@
     <string name="claim_rating">Fact check rating: %1$s</string>
     <string name="claim_claimant">by %1$s</string>
     <string name="claim_learn_more">Learn more</string>
+    <string name="claims_indicator">Search for claims to see results</string>
 </resources>

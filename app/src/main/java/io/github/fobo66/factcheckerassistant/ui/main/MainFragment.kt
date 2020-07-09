@@ -5,14 +5,17 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.ExperimentalPagingApi
 import io.github.fobo66.factcheckerassistant.R
 import io.github.fobo66.factcheckerassistant.databinding.MainFragmentBinding
 import io.github.fobo66.factcheckerassistant.ui.list.ClaimsAdapter
 import io.github.fobo66.factcheckerassistant.ui.list.ClaimsProgressAdapter
 import io.github.fobo66.factcheckerassistant.util.viewBinding
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -25,6 +28,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
     private lateinit var adapter: ClaimsAdapter
 
+    @ExperimentalPagingApi
     @ExperimentalCoroutinesApi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -39,6 +43,11 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         lifecycleScope.launch {
             mainViewModel.claims.collectLatest { claims ->
                 adapter.submitData(claims)
+            }
+
+            adapter.dataRefreshFlow.collect { isEmpty ->
+                binding.factCheckResults.isVisible = !isEmpty
+                binding.claimsIndicator.isVisible = isEmpty
             }
         }
 
