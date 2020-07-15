@@ -10,7 +10,7 @@ import io.github.fobo66.factcheckerassistant.ui.main.ClaimsViewHolder
 
 class ClaimsAdapter : PagingDataAdapter<Claim, ClaimsViewHolder>(diffUtilCallback) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ClaimsViewHolder {
-        val binding = ClaimBinding.inflate(LayoutInflater.from(parent.context))
+        val binding = ClaimBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ClaimsViewHolder(binding)
     }
 
