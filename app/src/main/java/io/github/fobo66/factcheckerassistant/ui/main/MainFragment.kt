@@ -42,6 +42,8 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
         lifecycleScope.launch {
             mainViewModel.claims.collectLatest { claims ->
+                binding.factCheckResults.isVisible = true
+                binding.claimsIndicator.isVisible = false
                 adapter.submitData(claims)
             }
 
