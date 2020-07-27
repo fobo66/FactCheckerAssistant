@@ -24,6 +24,7 @@ class App : Application() {
 
     private val fragmentModule = module {
         fragment { MainFragment() }
+        fragment { FactCheckGuideFragment() }
     }
 
     private val viewModelsModule = module {
