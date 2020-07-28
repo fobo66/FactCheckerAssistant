@@ -53,6 +53,8 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0-alpha06")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.0-alpha06")
     implementation("androidx.paging:paging-runtime-ktx:3.0.0-alpha03")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.3.0")
+    implementation("androidx.navigation:navigation-ui-ktx:2.3.0")
 
     val koinVersion = "2.1.6"
     implementation("org.koin:koin-android:${koinVersion}")
@@ -75,6 +77,7 @@ dependencies {
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.5")
     testImplementation("androidx.paging:paging-common-ktx:3.0.0-alpha03")
     testImplementation("androidx.arch.core:core-testing:2.1.0")
+    testImplementation("androidx.navigation:navigation-testing:2.3.0")
     testImplementation("com.squareup.retrofit2:retrofit-mock:$retrofitVersion")
     androidTestImplementation("androidx.test.ext:junit:1.1.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.2.0")
