@@ -3,8 +3,13 @@ package io.github.fobo66.factcheckerassistant.ui.main
 import android.app.SearchManager
 import android.content.Intent
 import android.os.Bundle
+import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import io.github.fobo66.factcheckerassistant.R
+import io.github.fobo66.factcheckerassistant.databinding.MainActivityBinding
 import org.koin.androidx.fragment.android.setupKoinFragmentFactory
 import org.koin.androidx.viewmodel.ext.android.getStateViewModel
 
@@ -12,16 +17,26 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var mainViewModel: MainViewModel
 
+    private lateinit var binding: MainActivityBinding
+
+    private val navController: NavController by lazy {
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.container) as NavHostFragment
+        navHostFragment.navController
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         setupKoinFragmentFactory()
         super.onCreate(savedInstanceState)
         mainViewModel = getStateViewModel()
-        setContentView(R.layout.main_activity)
-        if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.container, MainFragment::class.java, null)
-                .commitNow()
-        }
+        binding = MainActivityBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+    }
+
+    override fun onPostCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
+        super.onPostCreate(savedInstanceState, persistentState)
+
+        binding.bottomNavBar.setupWithNavController(navController)
 
         processSearch(intent)
     }
