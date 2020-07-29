@@ -8,7 +8,8 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="io.github.fobo66.factcheckerassistant.ui.main.MainFragment"
-        android:label="MainFragment">
+        android:label="MainFragment"
+        tools:layout="@layout/main_fragment">
         <action
             android:id="@+id/action_mainFragment_to_factCheckGuideFragment"
             app:destination="@id/factCheckGuideFragment" />

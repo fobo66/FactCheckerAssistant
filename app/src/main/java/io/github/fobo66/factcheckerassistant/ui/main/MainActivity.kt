@@ -3,7 +3,6 @@ package io.github.fobo66.factcheckerassistant.ui.main
 import android.app.SearchManager
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -31,10 +30,6 @@ class MainActivity : AppCompatActivity() {
         mainViewModel = getStateViewModel()
         binding = MainActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
-    }
-
-    override fun onPostCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onPostCreate(savedInstanceState, persistentState)
 
         binding.bottomNavBar.setupWithNavController(navController)
 
