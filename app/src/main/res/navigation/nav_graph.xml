@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="io.github.fobo66.factcheckerassistant.ui.main.MainFragment"
-        android:label="MainFragment"
+        android:label="@string/main_fragment_title"
         tools:layout="@layout/main_fragment">
         <action
             android:id="@+id/action_mainFragment_to_factCheckGuideFragment"
@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/factCheckGuideFragment"
         android:name="io.github.fobo66.factcheckerassistant.FactCheckGuideFragment"
-        android:label="fragment_fact_check_guide"
+        android:label="@string/guide_fragment_title"
         tools:layout="@layout/fragment_fact_check_guide">
         <action
             android:id="@+id/action_factCheckGuideFragment_to_mainFragment"
