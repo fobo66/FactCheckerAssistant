@@ -46,11 +46,6 @@ class MainFragment : Fragment(R.layout.main_fragment) {
                 binding.claimsIndicator.isVisible = false
                 adapter.submitData(claims)
             }
-
-            adapter.dataRefreshFlow.collect { isEmpty ->
-                binding.factCheckResults.isVisible = !isEmpty
-                binding.claimsIndicator.isVisible = isEmpty
-            }
         }
 
         val searchManager = getSystemService(requireContext(), SearchManager::class.java)
