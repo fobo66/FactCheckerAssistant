@@ -15,7 +15,6 @@ import io.github.fobo66.factcheckerassistant.ui.list.ClaimsAdapter
 import io.github.fobo66.factcheckerassistant.ui.list.ClaimsProgressAdapter
 import io.github.fobo66.factcheckerassistant.util.viewBinding
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -35,10 +34,7 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
         adapter = ClaimsAdapter()
         binding.factCheckResults.adapter = adapter
-            .withLoadStateHeaderAndFooter(
-                header = ClaimsProgressAdapter(),
-                footer = ClaimsProgressAdapter()
-            )
+            .withLoadStateFooter(ClaimsProgressAdapter())
 
         lifecycleScope.launch {
             mainViewModel.claims.collectLatest { claims ->
