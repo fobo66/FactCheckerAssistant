@@ -4,13 +4,13 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:4.2.0-alpha07")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.0")
+        classpath("com.android.tools.build:gradle:4.2.0-alpha10")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.10")
     }
 }
 
 plugins {
-    id("io.gitlab.arturbosch.detekt").version("1.10.0")
+    id("io.gitlab.arturbosch.detekt").version("1.13.0")
 }
 
 allprojects {
