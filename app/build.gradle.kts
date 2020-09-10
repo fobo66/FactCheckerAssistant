@@ -44,7 +44,6 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.7")
-    implementation("androidx.core:core:1.5.0-alpha02")
     implementation("androidx.core:core-ktx:1.5.0-alpha02")
     implementation("androidx.appcompat:appcompat:1.3.0-alpha02")
     implementation("androidx.constraintlayout:constraintlayout:2.0.1")
