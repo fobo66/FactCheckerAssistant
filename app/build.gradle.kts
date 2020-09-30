@@ -27,10 +27,17 @@ android {
 
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
+        useIR = true
     }
 
     buildFeatures {
         viewBinding = true
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerVersion = "1.4.0"
+        kotlinCompilerExtensionVersion = "1.0.0-alpha01"
     }
 
     buildTypes {
@@ -53,6 +60,15 @@ dependencies {
     implementation("androidx.paging:paging-runtime-ktx:3.0.0-alpha06")
     implementation("androidx.navigation:navigation-fragment-ktx:2.3.0")
     implementation("androidx.navigation:navigation-ui-ktx:2.3.0")
+
+    val composeVersion = "1.0.0-alpha01"
+    implementation("androidx.compose.ui:ui:$composeVersion")
+    implementation("androidx.ui:ui-tooling:$composeVersion")
+    implementation("androidx.compose.foundation:foundation:$composeVersion")
+    implementation("androidx.compose.material:material:$composeVersion")
+    implementation("androidx.compose.material:material-icons-core:$composeVersion")
+    implementation("androidx.compose.material:material-icons-extended:$composeVersion")
+    implementation("androidx.compose.runtime:runtime-livedata:$composeVersion")
 
     val koinVersion = "2.1.6"
     implementation("org.koin:koin-android:${koinVersion}")
