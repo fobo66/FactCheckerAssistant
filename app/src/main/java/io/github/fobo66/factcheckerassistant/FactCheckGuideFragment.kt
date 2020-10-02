@@ -14,6 +14,7 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.stringResource
 import androidx.fragment.app.Fragment
 import androidx.ui.tooling.preview.Preview
+import io.github.fobo66.factcheckerassistant.ui.theme.LightColors
 
 class FactCheckGuideFragment : Fragment() {
     override fun onCreateView(
@@ -31,7 +32,9 @@ class FactCheckGuideFragment : Fragment() {
 
     @Composable
     @Preview
-    fun FactCheckGuideContent() = MaterialTheme {
+    fun FactCheckGuideContent() = MaterialTheme(
+        colors = LightColors
+    ) {
         val title = stringResource(R.string.fact_check_guide_title)
         Scaffold(
             topBar = {
