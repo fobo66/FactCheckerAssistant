@@ -4,6 +4,7 @@ import android.app.SearchManager
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -30,6 +31,8 @@ class MainActivity : AppCompatActivity() {
         mainViewModel = getStateViewModel()
         binding = MainActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        WindowCompat.setDecorFitsSystemWindows(window, false)
 
         binding.bottomNavBar.setupWithNavController(navController)
 

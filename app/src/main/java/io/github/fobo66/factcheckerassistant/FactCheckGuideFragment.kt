@@ -14,7 +14,9 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.stringResource
 import androidx.fragment.app.Fragment
 import androidx.ui.tooling.preview.Preview
+import io.github.fobo66.factcheckerassistant.ui.theme.DarkColors
 import io.github.fobo66.factcheckerassistant.ui.theme.LightColors
+import io.github.fobo66.factcheckerassistant.util.isNightModeAvailable
 
 class FactCheckGuideFragment : Fragment() {
     override fun onCreateView(
@@ -25,22 +27,20 @@ class FactCheckGuideFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_fact_check_guide, container, false)
             .apply {
                 findViewById<ComposeView>(R.id.factCheckGuideRoot).setContent {
-                    FactCheckGuideContent()
+                    FactCheckGuideContent(requireContext().isNightModeAvailable())
                 }
             }
     }
 
     @Composable
-    @Preview
-    fun FactCheckGuideContent() = MaterialTheme(
-        colors = LightColors
+    fun FactCheckGuideContent(isNightMode: Boolean) = MaterialTheme(
+        colors = if (isNightMode) DarkColors else LightColors
     ) {
-        val title = stringResource(R.string.fact_check_guide_title)
         Scaffold(
             topBar = {
                 TopAppBar(
                     title = {
-                        Text(title)
+                        Text(stringResource(R.string.fact_check_guide_title))
                     }
                 )
             }
@@ -52,5 +52,11 @@ class FactCheckGuideFragment : Fragment() {
                 Text(text = "Check the source")
             }
         }
+    }
+
+    @Preview
+    @Composable
+    fun FactCheckGuideContentPreview() {
+        FactCheckGuideContent(true)
     }
 }
