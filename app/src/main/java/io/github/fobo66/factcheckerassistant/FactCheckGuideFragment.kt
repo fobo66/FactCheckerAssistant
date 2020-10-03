@@ -57,6 +57,6 @@ class FactCheckGuideFragment : Fragment() {
     @Preview
     @Composable
     fun FactCheckGuideContentPreview() {
-        FactCheckGuideContent(true)
+        FactCheckGuideContent(false)
     }
 }

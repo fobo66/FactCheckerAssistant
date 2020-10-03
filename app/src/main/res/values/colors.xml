@@ -4,9 +4,5 @@
     <color name="primaryLightColor">#ff8950</color>
     <color name="primaryDarkColor">#c41b00</color>
     <color name="primaryTextColor">#000000</color>
-    <color name="colorPrimary">#FF5622</color>
-    <color name="orange500">#FF5722</color>
-    <color name="colorPrimaryDark">#F44336</color>
-    <color name="colorOnSurface">#FFEB3B</color>
     <color name="ic_launcher_background">#DC5B14</color>
 </resources>
