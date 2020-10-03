@@ -36,8 +36,8 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerVersion = "1.4.0"
-        kotlinCompilerExtensionVersion = "1.0.0-alpha01"
+        kotlinCompilerVersion = "1.4.10"
+        kotlinCompilerExtensionVersion = "1.0.0-alpha04"
     }
 
     buildTypes {
@@ -69,7 +69,7 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:2.3.0")
     implementation("androidx.navigation:navigation-ui-ktx:2.3.0")
 
-    val composeVersion = "1.0.0-alpha01"
+    val composeVersion = "1.0.0-alpha04"
     implementation("androidx.compose.ui:ui:$composeVersion")
     implementation("androidx.ui:ui-tooling:$composeVersion")
     implementation("androidx.compose.foundation:foundation:$composeVersion")
