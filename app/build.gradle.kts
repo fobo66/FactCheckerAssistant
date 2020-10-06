@@ -78,6 +78,8 @@ dependencies {
     implementation("androidx.compose.material:material-icons-extended:$composeVersion")
     implementation("androidx.compose.runtime:runtime-livedata:$composeVersion")
 
+    implementation("dev.chrisbanes:insetter-ktx:0.3.1")
+
     val koinVersion = "2.1.6"
     implementation("org.koin:koin-android:${koinVersion}")
     implementation("org.koin:koin-androidx-scope:$koinVersion")

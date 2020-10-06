@@ -8,6 +8,7 @@ import androidx.core.view.WindowCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import dev.chrisbanes.insetter.applySystemWindowInsetsToPadding
 import io.github.fobo66.factcheckerassistant.R
 import io.github.fobo66.factcheckerassistant.databinding.MainActivityBinding
 import org.koin.androidx.fragment.android.setupKoinFragmentFactory
@@ -35,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
 
         binding.bottomNavBar.setupWithNavController(navController)
+        binding.bottomNavBar.applySystemWindowInsetsToPadding(bottom = true)
 
         processSearch(intent)
     }

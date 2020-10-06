@@ -9,6 +9,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.ExperimentalPagingApi
+import dev.chrisbanes.insetter.applySystemWindowInsetsToPadding
 import io.github.fobo66.factcheckerassistant.R
 import io.github.fobo66.factcheckerassistant.databinding.MainFragmentBinding
 import io.github.fobo66.factcheckerassistant.ui.list.ClaimsAdapter
@@ -50,6 +51,8 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             isSubmitButtonEnabled = true
             isIconified = true
         }
+
+        binding.appbar.applySystemWindowInsetsToPadding(top = true)
     }
 
     override fun onDestroyView() {
