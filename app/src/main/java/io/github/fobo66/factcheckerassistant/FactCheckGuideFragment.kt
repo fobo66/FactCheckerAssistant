@@ -14,19 +14,18 @@ import androidx.compose.ui.res.stringResource
 import androidx.fragment.app.Fragment
 import androidx.ui.tooling.preview.Preview
 import com.google.android.material.composethemeadapter.MdcTheme
+import io.github.fobo66.factcheckerassistant.databinding.FragmentFactCheckGuideBinding
+import io.github.fobo66.factcheckerassistant.databinding.MainFragmentBinding
+import io.github.fobo66.factcheckerassistant.util.viewBinding
 
-class FactCheckGuideFragment : Fragment() {
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_fact_check_guide, container, false)
-            .apply {
-                findViewById<ComposeView>(R.id.factCheckGuideRoot).setContent {
-                    FactCheckGuideContent()
-                }
-            }
+class FactCheckGuideFragment : Fragment(R.layout.fragment_fact_check_guide) {
+
+    private val binding: FragmentFactCheckGuideBinding by viewBinding()
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding.factCheckGuideRoot.setContent {
+            FactCheckGuideContent()
+        }
     }
 
     @Composable
