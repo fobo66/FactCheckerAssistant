@@ -37,7 +37,7 @@ android {
 
     composeOptions {
         kotlinCompilerVersion = "1.4.10"
-        kotlinCompilerExtensionVersion = "1.0.0-alpha04"
+        kotlinCompilerExtensionVersion = "1.0.0-alpha07"
     }
 
     buildTypes {
@@ -69,7 +69,7 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:2.3.1")
     implementation("androidx.navigation:navigation-ui-ktx:2.3.1")
 
-    val composeVersion = "1.0.0-alpha04"
+    val composeVersion = "1.0.0-alpha07"
     implementation("androidx.compose.ui:ui:$composeVersion")
     implementation("androidx.ui:ui-tooling:$composeVersion")
     implementation("androidx.compose.foundation:foundation:$composeVersion")
@@ -80,6 +80,7 @@ dependencies {
     implementation("com.google.android.material:compose-theme-adapter:$composeVersion")
 
     implementation("dev.chrisbanes:insetter-ktx:0.3.1")
+    implementation("dev.chrisbanes.accompanist:accompanist-insets:0.3.3.1")
 
     val koinVersion = "2.1.6"
     implementation("org.koin:koin-android:${koinVersion}")
@@ -91,7 +92,7 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
     implementation("com.squareup.retrofit2:converter-moshi:${retrofitVersion}")
 
-    val moshiVersion = "1.9.3"
+    val moshiVersion = "1.11.0"
     implementation("com.squareup.moshi:moshi:${moshiVersion}")
     kapt("com.squareup.moshi:moshi-kotlin-codegen:${moshiVersion}")
 
