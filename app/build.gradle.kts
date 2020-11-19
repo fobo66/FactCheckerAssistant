@@ -59,13 +59,13 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
-    implementation("androidx.core:core-ktx:1.5.0-alpha04")
+    implementation("androidx.core:core-ktx:1.5.0-alpha05")
     implementation("androidx.appcompat:appcompat:1.3.0-alpha02")
-    implementation("androidx.constraintlayout:constraintlayout:2.0.2")
+    implementation("androidx.constraintlayout:constraintlayout:2.0.4")
     implementation("com.google.android.material:material:1.3.0-alpha03")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0-beta01")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.0-beta01")
-    implementation("androidx.paging:paging-runtime-ktx:3.0.0-alpha07")
+    implementation("androidx.paging:paging-runtime-ktx:3.0.0-alpha09")
     implementation("androidx.navigation:navigation-fragment-ktx:2.3.1")
     implementation("androidx.navigation:navigation-ui-ktx:2.3.1")
 
@@ -97,10 +97,10 @@ dependencies {
 
     implementation("com.jakewharton.timber:timber:4.7.1")
 
-    testImplementation("junit:junit:4.13")
+    testImplementation("junit:junit:4.13.1")
     testImplementation("io.mockk:mockk:1.10.2")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.9")
-    testImplementation("androidx.paging:paging-common-ktx:3.0.0-alpha07")
+    testImplementation("androidx.paging:paging-common-ktx:3.0.0-alpha09")
     testImplementation("androidx.arch.core:core-testing:2.1.0")
     testImplementation("androidx.navigation:navigation-testing:2.3.1")
     testImplementation("com.squareup.retrofit2:retrofit-mock:$retrofitVersion")
