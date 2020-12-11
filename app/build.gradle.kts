@@ -89,7 +89,7 @@ dependencies {
     implementation("com.google.android.material:compose-theme-adapter:$composeVersion")
 
     implementation("dev.chrisbanes:insetter-ktx:0.3.1")
-    implementation("dev.chrisbanes.accompanist:accompanist-insets:0.3.3.1")
+    implementation("dev.chrisbanes.accompanist:accompanist-insets:0.4.0")
 
     val koinVersion = "2.1.6"
     implementation("org.koin:koin-android:${koinVersion}")
@@ -108,7 +108,7 @@ dependencies {
     implementation("com.jakewharton.timber:timber:4.7.1")
 
     testImplementation("junit:junit:4.13.1")
-    testImplementation("io.mockk:mockk:1.10.2")
+    testImplementation("io.mockk:mockk:1.10.3")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.9")
     testImplementation("androidx.paging:paging-common-ktx:3.0.0-alpha10")
     testImplementation("androidx.arch.core:core-testing:2.1.0")
