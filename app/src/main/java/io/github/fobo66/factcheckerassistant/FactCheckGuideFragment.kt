@@ -10,7 +10,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import com.google.android.material.composethemeadapter.MdcTheme
@@ -65,18 +64,15 @@ class FactCheckGuideFragment : Fragment(R.layout.fragment_fact_check_guide) {
      */
     @Composable
     private fun InsetAwareTopAppBar(
-        title: @Composable () -> Unit,
-        modifier: Modifier = Modifier,
-        navigationIcon: @Composable (() -> Unit)? = null,
-        actions: @Composable RowScope.() -> Unit = {},
+        title: @Composable() () -> Unit,
+        navigationIcon: @Composable() (() -> Unit)? = null,
+        actions: @Composable() (RowScope.() -> Unit) = {},
         backgroundColor: Color = MaterialTheme.colors.primarySurface,
-        contentColor: Color = contentColorFor(backgroundColor),
-        elevation: Dp = 4.dp
+        contentColor: Color = contentColorFor(backgroundColor)
     ) {
         Surface(
             color = backgroundColor,
-            elevation = elevation,
-            modifier = modifier
+            elevation = topbarElevation
         ) {
             TopAppBar(
                 title = title,
@@ -88,5 +84,9 @@ class FactCheckGuideFragment : Fragment(R.layout.fragment_fact_check_guide) {
                 modifier = Modifier.statusBarsPadding()
             )
         }
+    }
+
+    companion object {
+        private val topbarElevation = 4.dp
     }
 }
