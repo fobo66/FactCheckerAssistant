@@ -80,7 +80,7 @@ dependencies {
     implementation("com.google.android.material:material:1.3.0-beta01")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
-    implementation("androidx.paging:paging-runtime-ktx:3.0.0-alpha10")
+    implementation("androidx.paging:paging-runtime-ktx:3.0.0-alpha11")
     implementation("androidx.navigation:navigation-fragment-ktx:2.3.2")
     implementation("androidx.navigation:navigation-ui-ktx:2.3.2")
 
