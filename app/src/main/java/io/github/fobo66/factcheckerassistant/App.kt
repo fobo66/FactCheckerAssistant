@@ -28,7 +28,7 @@ class App : Application() {
     }
 
     private val viewModelsModule = module {
-        viewModel { (handle: SavedStateHandle) -> MainViewModel(get(), handle) }
+        viewModel { MainViewModel(get(), get()) }
     }
 
     private val apiModule = module {
