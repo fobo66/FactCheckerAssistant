@@ -6,6 +6,7 @@ plugins {
 }
 
 val composeVersion = "1.0.0-alpha08"
+val lifecycleVersion = "2.3.0-rc01"
 
 android {
     compileSdk = 30
@@ -76,9 +77,9 @@ dependencies {
     implementation("androidx.core:core-ktx:1.5.0-alpha05")
     implementation("androidx.appcompat:appcompat:1.3.0-alpha02")
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
-    implementation("com.google.android.material:material:1.3.0-alpha04")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0-beta01")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.0-beta01")
+    implementation("com.google.android.material:material:1.3.0-beta01")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
     implementation("androidx.paging:paging-runtime-ktx:3.0.0-alpha10")
     implementation("androidx.navigation:navigation-fragment-ktx:2.3.2")
     implementation("androidx.navigation:navigation-ui-ktx:2.3.2")
@@ -113,7 +114,7 @@ dependencies {
 
     testImplementation("junit:junit:4.13.1")
     testImplementation("io.mockk:mockk:1.10.3")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.9")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.1")
     testImplementation("androidx.paging:paging-common-ktx:3.0.0-alpha10")
     testImplementation("androidx.arch.core:core-testing:2.1.0")
     testImplementation("androidx.navigation:navigation-testing:2.3.2")
