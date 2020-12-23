@@ -115,7 +115,7 @@ dependencies {
     testImplementation("junit:junit:4.13.1")
     testImplementation("io.mockk:mockk:1.10.3")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.1")
-    testImplementation("androidx.paging:paging-common-ktx:3.0.0-alpha10")
+    testImplementation("androidx.paging:paging-common-ktx:3.0.0-alpha11")
     testImplementation("androidx.arch.core:core-testing:2.1.0")
     testImplementation("androidx.navigation:navigation-testing:2.3.2")
     testImplementation("com.squareup.retrofit2:retrofit-mock:$retrofitVersion")
