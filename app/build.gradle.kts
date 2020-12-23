@@ -96,7 +96,7 @@ dependencies {
     implementation("dev.chrisbanes:insetter-ktx:0.3.1")
     implementation("dev.chrisbanes.accompanist:accompanist-insets:0.4.0")
 
-    val koinVersion = "2.2.1"
+    val koinVersion = "2.2.2"
     implementation("org.koin:koin-android:$koinVersion")
     implementation("org.koin:koin-androidx-scope:$koinVersion")
     implementation("org.koin:koin-androidx-viewmodel:$koinVersion")
