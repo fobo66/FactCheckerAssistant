@@ -1,7 +1,6 @@
 package io.github.fobo66.factcheckerassistant
 
 import android.app.Application
-import androidx.lifecycle.SavedStateHandle
 import io.github.fobo66.factcheckerassistant.api.FactCheckApi
 import io.github.fobo66.factcheckerassistant.data.FactCheckRepository
 import io.github.fobo66.factcheckerassistant.ui.main.MainFragment
@@ -9,6 +8,7 @@ import io.github.fobo66.factcheckerassistant.ui.main.MainViewModel
 import io.github.fobo66.factcheckerassistant.util.LocaleProvider
 import io.github.fobo66.factcheckerassistant.util.LocaleProviderImpl
 import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.fragment.dsl.fragment
 import org.koin.androidx.fragment.koin.fragmentFactory
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -54,6 +54,9 @@ class App : Application() {
         }
 
         startKoin {
+            if (BuildConfig.DEBUG) {
+                androidLogger()
+            }
             androidContext(this@App)
             fragmentFactory()
             modules(fragmentModule, viewModelsModule, apiModule, dataModule)
