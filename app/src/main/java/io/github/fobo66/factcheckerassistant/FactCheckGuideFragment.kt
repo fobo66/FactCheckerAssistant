@@ -70,9 +70,9 @@ class FactCheckGuideFragment : Fragment(R.layout.fragment_fact_check_guide) {
      */
     @Composable
     private fun InsetAwareTopAppBar(
-        title: @Composable() () -> Unit,
-        navigationIcon: @Composable() (() -> Unit)? = null,
-        actions: @Composable() (RowScope.() -> Unit) = {},
+        title: @Composable () -> Unit,
+        navigationIcon: @Composable (() -> Unit)? = null,
+        actions: @Composable (RowScope.() -> Unit) = {},
         backgroundColor: Color = MaterialTheme.colors.primarySurface,
         contentColor: Color = contentColorFor(backgroundColor)
     ) {
