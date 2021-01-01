@@ -3,7 +3,7 @@ plugins {
     kotlin("android")
     kotlin("kapt")
     id("io.gitlab.arturbosch.detekt")
-    id("koin")
+    id("dagger.hilt.android.plugin")
 }
 
 val composeVersion = "1.0.0-alpha09"
@@ -70,6 +70,9 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class).configure
     }
 }
 
+kapt {
+    correctErrorTypes = true
+}
 
 dependencies {
     val lifecycleVersion = "2.3.0-rc01"
@@ -101,11 +104,12 @@ dependencies {
     implementation("dev.chrisbanes:insetter-ktx:0.3.1")
     implementation("dev.chrisbanes.accompanist:accompanist-insets:0.4.1")
 
-    val koinVersion = "2.2.2"
-    implementation("org.koin:koin-android:$koinVersion")
-    implementation("org.koin:koin-androidx-scope:$koinVersion")
-    implementation("org.koin:koin-androidx-viewmodel:$koinVersion")
-    implementation("org.koin:koin-androidx-fragment:$koinVersion")
+    val hiltVersion = "2.30.1-alpha"
+    val androidxHiltVersion = "1.0.0-alpha02"
+    implementation("com.google.dagger:hilt-android:$hiltVersion")
+    kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
+    implementation("androidx.hilt:hilt-lifecycle-viewmodel:$androidxHiltVersion")
+    kapt("androidx.hilt:hilt-compiler:$androidxHiltVersion")
 
     val retrofitVersion = "2.9.0"
     implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")

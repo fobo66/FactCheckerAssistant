@@ -6,7 +6,7 @@ buildscript {
     dependencies {
         classpath("com.android.tools.build:gradle:7.0.0-alpha03")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.21")
-        classpath("org.koin:koin-gradle-plugin:2.2.2")
+        classpath("com.google.dagger:hilt-android-gradle-plugin:2.30.1-alpha")
     }
 }
 

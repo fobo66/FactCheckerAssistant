@@ -1,5 +1,7 @@
 package io.github.fobo66.factcheckerassistant.ui.main
 
+import androidx.hilt.Assisted
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asFlow
@@ -9,9 +11,9 @@ import io.github.fobo66.factcheckerassistant.data.FactCheckRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flatMapLatest
 
-class MainViewModel(
+class MainViewModel @ViewModelInject constructor(
     private val factCheckRepository: FactCheckRepository,
-    private val handle: SavedStateHandle
+    @Assisted private val handle: SavedStateHandle
 ) : ViewModel() {
 
     @ExperimentalCoroutinesApi

@@ -7,8 +7,9 @@ import io.github.fobo66.factcheckerassistant.api.FactCheckApi
 import io.github.fobo66.factcheckerassistant.api.models.Claim
 import io.github.fobo66.factcheckerassistant.util.LocaleProvider
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
-class FactCheckRepository(
+class FactCheckRepository @Inject constructor(
     private val factCheckApi: FactCheckApi,
     private val localeProvider: LocaleProvider
 ) {

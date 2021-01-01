@@ -3,21 +3,21 @@ package io.github.fobo66.factcheckerassistant.ui.main
 import android.app.SearchManager
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import dagger.hilt.android.AndroidEntryPoint
 import dev.chrisbanes.insetter.applySystemWindowInsetsToPadding
 import io.github.fobo66.factcheckerassistant.R
 import io.github.fobo66.factcheckerassistant.databinding.MainActivityBinding
-import org.koin.androidx.fragment.android.setupKoinFragmentFactory
-import org.koin.androidx.viewmodel.ext.android.viewModel
-import org.koin.core.KoinExperimentalAPI
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private val mainViewModel: MainViewModel by viewModel()
+    private val mainViewModel: MainViewModel by viewModels()
 
     private lateinit var binding: MainActivityBinding
 
@@ -27,9 +27,7 @@ class MainActivity : AppCompatActivity() {
         navHostFragment.navController
     }
 
-    @KoinExperimentalAPI
     override fun onCreate(savedInstanceState: Bundle?) {
-        setupKoinFragmentFactory()
         super.onCreate(savedInstanceState)
         binding = MainActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
