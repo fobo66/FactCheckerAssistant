@@ -102,7 +102,7 @@ dependencies {
     implementation("com.google.android.material:compose-theme-adapter:$composeVersion")
 
     implementation("dev.chrisbanes:insetter-ktx:0.3.1")
-    implementation("dev.chrisbanes.accompanist:accompanist-insets:0.4.1")
+    implementation("dev.chrisbanes.accompanist:accompanist-insets:0.4.2")
 
     val hiltVersion = "2.30.1-alpha"
     val androidxHiltVersion = "1.0.0-alpha02"
