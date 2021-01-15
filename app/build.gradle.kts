@@ -83,7 +83,7 @@ dependencies {
     implementation(fileTree("dir" to "libs", "include" to listOf("*.jar")))
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
     implementation("androidx.core:core-ktx:1.5.0-beta01")
-    implementation("androidx.appcompat:appcompat:1.3.0-alpha02")
+    implementation("androidx.appcompat:appcompat:1.3.0-beta01")
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
     implementation("com.google.android.material:material:1.3.0-beta01")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
