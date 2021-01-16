@@ -104,12 +104,9 @@ dependencies {
     implementation("dev.chrisbanes:insetter-ktx:0.3.1")
     implementation("dev.chrisbanes.accompanist:accompanist-insets:0.4.2")
 
-    val hiltVersion = "2.30.1-alpha"
-    val androidxHiltVersion = "1.0.0-alpha02"
+    val hiltVersion = "2.31-alpha"
     implementation("com.google.dagger:hilt-android:$hiltVersion")
     kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
-    implementation("androidx.hilt:hilt-lifecycle-viewmodel:$androidxHiltVersion")
-    kapt("androidx.hilt:hilt-compiler:$androidxHiltVersion")
 
     val retrofitVersion = "2.9.0"
     implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
