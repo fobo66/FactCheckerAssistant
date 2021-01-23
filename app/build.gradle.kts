@@ -104,7 +104,7 @@ dependencies {
     implementation("dev.chrisbanes:insetter-ktx:0.3.1")
     implementation("dev.chrisbanes.accompanist:accompanist-insets:0.4.2")
 
-    val hiltVersion = "2.31.1-alpha"
+    val hiltVersion = "2.31.2-alpha"
     implementation("com.google.dagger:hilt-android:$hiltVersion")
     kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
 
