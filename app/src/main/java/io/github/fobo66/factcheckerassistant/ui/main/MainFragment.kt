@@ -4,7 +4,7 @@ import android.app.SearchManager
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.SearchView
-import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.content.getSystemService
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -30,6 +30,9 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
     private lateinit var adapter: ClaimsAdapter
 
+    private val searchView: SearchView
+        get() = binding.toolbar.menu.findItem(R.id.app_bar_search).actionView as SearchView
+
     @ExperimentalPagingApi
     @ExperimentalCoroutinesApi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -47,8 +50,8 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             }
         }
 
-        val searchManager = getSystemService(requireContext(), SearchManager::class.java)
-        (binding.toolbar.menu.findItem(R.id.app_bar_search).actionView as SearchView).apply {
+        val searchManager = requireContext().getSystemService<SearchManager>()
+        searchView.apply {
             setSearchableInfo(searchManager?.getSearchableInfo(requireActivity().componentName))
             isSubmitButtonEnabled = true
             isIconified = true
