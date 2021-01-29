@@ -55,11 +55,6 @@ android {
             multiDexKeepFile = file("multidex-keep.txt")
         }
     }
-
-    lintOptions {
-        disable("InvalidFragmentVersionForActivityResult")
-    }
-
 }
 
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class).configureEach {
