@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/factCheckGuideFragment"
-        android:name="io.github.fobo66.factcheckerassistant.FactCheckGuideFragment"
+        android:name="io.github.fobo66.factcheckerassistant.ui.guide.FactCheckGuideFragment"
         android:label="@string/guide_fragment_title"
         tools:layout="@layout/fragment_fact_check_guide">
         <action

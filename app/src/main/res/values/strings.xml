@@ -8,4 +8,6 @@
     <string name="fact_check_guide_title">How to check claims on the internet?</string>
     <string name="main_fragment_title">Search</string>
     <string name="guide_fragment_title">Guide</string>
+    <string name="fact_check_guide_preamble">The claim is true when it\'s proved to be true. Sometimes claims are forged intentionally to mislead people. Or some claims can originate from poor education of cognitive biases that make people explain something with their assumptions and opinions, not facts. Some claims are specifically designed to trigger people, to catch their attention and urge them to spread it further. So it\'s important to detect such claims and be sceptical to all the info you can find in the internet to reduce potential harm caused by false claims. Here we have some actions that you can use to detect false claims, alongside with our app.</string>
+    <string name="fact_check_guide_section1">What creates solid proof?</string>
 </resources>

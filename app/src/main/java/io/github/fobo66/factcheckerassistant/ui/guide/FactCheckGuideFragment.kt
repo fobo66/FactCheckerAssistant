@@ -1,9 +1,11 @@
-package io.github.fobo66.factcheckerassistant
+package io.github.fobo66.factcheckerassistant.ui.guide
 
 import android.os.Bundle
 import android.view.View
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
@@ -21,6 +23,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.composethemeadapter.MdcTheme
 import dev.chrisbanes.accompanist.insets.ProvideWindowInsets
 import dev.chrisbanes.accompanist.insets.statusBarsPadding
+import io.github.fobo66.factcheckerassistant.R
 import io.github.fobo66.factcheckerassistant.databinding.FragmentFactCheckGuideBinding
 import io.github.fobo66.factcheckerassistant.util.viewBinding
 
@@ -48,9 +51,11 @@ class FactCheckGuideFragment : Fragment(R.layout.fragment_fact_check_guide) {
                     )
                 }
             ) {
-                Column {
-                    Text(text = "Check the source")
-                    Text(text = "Check the source")
+                Column(
+                    modifier = Modifier.verticalScroll(rememberScrollState())
+                ) {
+                    Preamble(R.string.fact_check_guide_preamble)
+                    SectionTitle(R.string.fact_check_guide_section1)
                     Text(text = "Check the source")
                     Text(text = "Check the source")
                 }
