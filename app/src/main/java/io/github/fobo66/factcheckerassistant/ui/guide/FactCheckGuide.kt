@@ -10,6 +10,8 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 
+val guideTextPadding = 16.dp
+
 @Composable
 fun SectionTitle(@StringRes stringRes: Int) {
     Text(
@@ -23,6 +25,6 @@ fun Preamble(@StringRes stringRes: Int) {
     Text(
         text = stringResource(id = stringRes),
         fontStyle = FontStyle.Italic,
-        modifier = Modifier.padding(16.dp)
+        modifier = Modifier.padding(guideTextPadding)
     )
 }
