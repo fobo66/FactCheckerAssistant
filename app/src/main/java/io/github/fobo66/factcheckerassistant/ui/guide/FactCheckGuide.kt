@@ -9,16 +9,32 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
-val guideTextPadding = 16.dp
+const val GUIDE_TEXT_PADDING = 16
+const val GUIDE_TITLE_SIZE = 18
+
+private val guideTextPadding = GUIDE_TEXT_PADDING.dp
+private val guideTitleSize = GUIDE_TITLE_SIZE.sp
 
 @Composable
 fun SectionTitle(@StringRes stringRes: Int) {
     Text(
         text = stringResource(id = stringRes),
-        fontWeight = FontWeight.Bold
+        fontWeight = FontWeight.Bold,
+        fontSize = guideTitleSize,
+        modifier = Modifier.padding(guideTextPadding)
     )
 }
+
+@Composable
+fun GuideParagraph(@StringRes stringRes: Int) {
+    Text(
+        text = stringResource(id = stringRes),
+        modifier = Modifier.padding(guideTextPadding)
+    )
+}
+
 
 @Composable
 fun Preamble(@StringRes stringRes: Int) {

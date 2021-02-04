@@ -56,7 +56,7 @@ class FactCheckGuideFragment : Fragment(R.layout.fragment_fact_check_guide) {
                 ) {
                     Preamble(R.string.fact_check_guide_preamble)
                     SectionTitle(R.string.fact_check_guide_section1)
-                    Text(text = "Check the source")
+                    GuideParagraph(R.string.fact_check_guide_section1_text)
                     Text(text = "Check the source")
                 }
             }
