@@ -59,6 +59,8 @@ class FactCheckGuideFragment : Fragment(R.layout.fragment_fact_check_guide) {
                     GuideParagraph(R.string.fact_check_guide_section1_text)
                     SectionTitle(R.string.fact_check_guide_section2)
                     GuideParagraph(R.string.fact_check_guide_section2_text)
+                    SectionTitle(R.string.fact_check_guide_section3)
+                    GuideParagraph(R.string.fact_check_guide_section3_text)
                 }
             }
         }
