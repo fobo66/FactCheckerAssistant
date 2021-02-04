@@ -2,6 +2,7 @@ package io.github.fobo66.factcheckerassistant.ui.guide
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -12,17 +13,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 const val GUIDE_TEXT_PADDING = 16
-const val GUIDE_TITLE_SIZE = 18
 
 private val guideTextPadding = GUIDE_TEXT_PADDING.dp
-private val guideTitleSize = GUIDE_TITLE_SIZE.sp
 
 @Composable
 fun SectionTitle(@StringRes stringRes: Int) {
     Text(
         text = stringResource(id = stringRes),
         fontWeight = FontWeight.Bold,
-        fontSize = guideTitleSize,
+        style = MaterialTheme.typography.h5,
         modifier = Modifier.padding(guideTextPadding)
     )
 }
@@ -31,6 +30,7 @@ fun SectionTitle(@StringRes stringRes: Int) {
 fun GuideParagraph(@StringRes stringRes: Int) {
     Text(
         text = stringResource(id = stringRes),
+        style = MaterialTheme.typography.body1,
         modifier = Modifier.padding(guideTextPadding)
     )
 }
