@@ -1,5 +1,6 @@
 package dev.fobo66.composemd
 
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -12,7 +13,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.gesture.tapGestureFilter
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.AmbientUriHandler
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.Placeholder
@@ -38,6 +41,7 @@ import org.commonmark.node.Heading
 import org.commonmark.node.Image
 import org.commonmark.node.IndentedCodeBlock
 import org.commonmark.node.Link
+import org.commonmark.node.ListBlock
 import org.commonmark.node.Node
 import org.commonmark.node.OrderedList
 import org.commonmark.node.Paragraph
@@ -45,8 +49,8 @@ import org.commonmark.node.StrongEmphasis
 import org.commonmark.node.Text
 import org.commonmark.node.ThematicBreak
 
-const val TAG_URL = "TAG_URL"
-const val TAG_IMAGE_URL = "TAG_IMAGE_URL"
+private const val TAG_URL = "TAG_URL"
+private const val TAG_IMAGE_URL = "TAG_IMAGE_URL"
 
 /**
  * Render Markdown document with Jetpack Compose.
@@ -54,7 +58,7 @@ const val TAG_IMAGE_URL = "TAG_IMAGE_URL"
  */
 
 @Composable
-fun MarkdownDocument(document: Document) {
+internal fun MarkdownDocument(document: Document) {
     MarkdownBlockChildren(document)
 }
 
@@ -64,7 +68,7 @@ fun MarkdownBlockChildren(parent: Node) {
     while (child != null) {
         when (child) {
             is BlockQuote -> MarkdownBlockQuote(child)
-            is ThematicBreak -> MarkdownThematicBreak(child)
+            is ThematicBreak -> MarkdownThematicBreak()
             is Heading -> MarkdownHeading(child)
             is Paragraph -> MarkdownParagraph(child)
             is FencedCodeBlock -> MarkdownFencedCodeBlock(child)
@@ -78,14 +82,58 @@ fun MarkdownBlockChildren(parent: Node) {
 }
 
 @Composable
-fun MarkdownOrderedList(child: OrderedList) {
-    TODO("Not yet implemented")
+fun MarkdownOrderedList(orderedList: OrderedList) {
+    var number = orderedList.startNumber
+    val delimiter = orderedList.delimiter
+    MarkdownListItems(orderedList) {
+        val text = buildAnnotatedString {
+            pushStyle(MaterialTheme.typography.body1.toSpanStyle())
+            append("${number++}$delimiter ")
+            appendMarkdownChildren(it, MaterialTheme.colors)
+            pop()
+        }
+        MarkdownText(text, MaterialTheme.typography.body1)
+    }
 }
 
 @Composable
-fun MarkdownBulletList(child: BulletList) {
-    TODO("Not yet implemented")
+fun MarkdownBulletList(bulletList: BulletList) {
+    val marker = bulletList.bulletMarker
+    MarkdownListItems(bulletList) {
+        val text = buildAnnotatedString {
+            pushStyle(MaterialTheme.typography.body1.toSpanStyle())
+            append("$marker ")
+            appendMarkdownChildren(it, MaterialTheme.colors)
+            pop()
+        }
+        MarkdownText(text, MaterialTheme.typography.body1)
+    }
 }
+
+@Composable
+fun MarkdownListItems(
+    listBlock: ListBlock,
+    item: @Composable (node: Node) -> Unit
+) {
+    val bottom = if (listBlock.parent is Document) 8.dp else 0.dp
+    val start = if (listBlock.parent is Document) 0.dp else 8.dp
+    Box(modifier = Modifier.padding(start = start, bottom = bottom)) {
+        var listItem = listBlock.firstChild
+        while (listItem != null) {
+            var child = listItem.firstChild
+            while (child != null) {
+                when (child) {
+                    is BulletList -> MarkdownBulletList(child)
+                    is OrderedList -> MarkdownOrderedList(child)
+                    else -> item(child)
+                }
+                child = child.next
+            }
+            listItem = listItem.next
+        }
+    }
+}
+
 
 @Composable
 fun MarkdownImage(image: Image) {
@@ -96,12 +144,24 @@ fun MarkdownImage(image: Image) {
 
 @Composable
 fun MarkdownIndentedCodeBlock(indentedCodeBlock: IndentedCodeBlock) {
-    TODO("Not yet implemented")
+    val padding = if (indentedCodeBlock.parent is Document) 8.dp else 0.dp
+    Box(modifier = Modifier.padding(padding)) {
+        androidx.compose.material.Text(
+            text = indentedCodeBlock.literal,
+            style = TextStyle(fontFamily = FontFamily.Monospace)
+        )
+    }
 }
 
 @Composable
-fun MarkdownFencedCodeBlock(child: FencedCodeBlock) {
-    TODO("Not yet implemented")
+fun MarkdownFencedCodeBlock(fencedCodeBlock: FencedCodeBlock) {
+    val padding = if (fencedCodeBlock.parent is Document) 8.dp else 0.dp
+    Box(modifier = Modifier.padding(padding)) {
+        androidx.compose.material.Text(
+            text = fencedCodeBlock.literal,
+            style = TextStyle(fontFamily = FontFamily.Monospace)
+        )
+    }
 }
 
 @Composable
@@ -184,8 +244,16 @@ fun MarkdownText(text: AnnotatedString, style: TextStyle) {
 }
 
 @Composable
-fun MarkdownThematicBreak(child: ThematicBreak) {
-    TODO("Not yet implemented")
+fun MarkdownThematicBreak() {
+    Box(modifier = Modifier.padding(8.dp)) {
+        Canvas(modifier = Modifier) {
+           drawLine(
+                color = Color.Black,
+                start = center - Offset(16),
+                end = center + Offset(16)
+            )
+        }
+    }
 }
 
 @Composable
