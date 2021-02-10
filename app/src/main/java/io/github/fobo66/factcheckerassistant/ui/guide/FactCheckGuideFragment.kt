@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
@@ -23,6 +24,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.composethemeadapter.MdcTheme
 import dev.chrisbanes.accompanist.insets.ProvideWindowInsets
 import dev.chrisbanes.accompanist.insets.statusBarsPadding
+import dev.fobo66.composemd.MarkdownDocument
 import io.github.fobo66.factcheckerassistant.R
 import io.github.fobo66.factcheckerassistant.databinding.FragmentFactCheckGuideBinding
 import io.github.fobo66.factcheckerassistant.util.viewBinding
@@ -52,17 +54,11 @@ class FactCheckGuideFragment : Fragment(R.layout.fragment_fact_check_guide) {
                 }
             ) {
                 Column(
-                    modifier = Modifier.verticalScroll(rememberScrollState())
+                    modifier = Modifier
+                        .padding(8.dp)
+                        .verticalScroll(rememberScrollState())
                 ) {
-                    Preamble(R.string.fact_check_guide_preamble)
-                    SectionTitle(R.string.fact_check_guide_section1)
-                    GuideParagraph(R.string.fact_check_guide_section1_text)
-                    SectionTitle(R.string.fact_check_guide_section2)
-                    GuideParagraph(R.string.fact_check_guide_section2_text)
-                    SectionTitle(R.string.fact_check_guide_section3)
-                    GuideParagraph(R.string.fact_check_guide_section3_text)
-                    SectionTitle(R.string.fact_check_guide_section4)
-                    GuideParagraph(R.string.fact_check_guide_section4_text)
+                    MarkdownDocument(inputStream = requireContext().assets.open("guide.md"))
                 }
             }
         }
