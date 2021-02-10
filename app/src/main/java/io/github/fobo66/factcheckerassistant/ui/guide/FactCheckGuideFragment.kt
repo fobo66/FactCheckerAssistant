@@ -56,7 +56,7 @@ class FactCheckGuideFragment : Fragment(R.layout.fragment_fact_check_guide) {
             ) {
                 Column(
                     modifier = Modifier
-                        .padding(8.dp)
+                        .padding(guideTextPadding)
                         .verticalScroll(rememberScrollState())
                 ) {
                     MarkdownDocument(inputStream = AmbientContext.current.assets.open("guide.md"))
@@ -101,5 +101,6 @@ class FactCheckGuideFragment : Fragment(R.layout.fragment_fact_check_guide) {
 
     companion object {
         private val topbarElevation = 4.dp
+        private val guideTextPadding = 16.dp
     }
 }
