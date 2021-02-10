@@ -17,6 +17,7 @@ import androidx.compose.material.primarySurface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.AmbientContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -58,7 +59,7 @@ class FactCheckGuideFragment : Fragment(R.layout.fragment_fact_check_guide) {
                         .padding(8.dp)
                         .verticalScroll(rememberScrollState())
                 ) {
-                    MarkdownDocument(inputStream = requireContext().assets.open("guide.md"))
+                    MarkdownDocument(inputStream = AmbientContext.current.assets.open("guide.md"))
                 }
             }
         }
