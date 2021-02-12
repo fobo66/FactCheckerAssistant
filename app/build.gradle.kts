@@ -60,7 +60,7 @@ android {
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class).configureEach {
     kotlinOptions {
         jvmTarget = "1.8"
-        freeCompilerArgs = freeCompilerArgs + listOf("-Xallow-jvm-ir-dependencies", "-Xskip-prerelease-check")
+        freeCompilerArgs = freeCompilerArgs + listOf("-Xskip-prerelease-check")
     }
 }
 
@@ -97,7 +97,7 @@ dependencies {
     implementation(project(":composemd"))
 
     implementation("dev.chrisbanes:insetter-ktx:0.3.1")
-    implementation("dev.chrisbanes.accompanist:accompanist-insets:0.5.0")
+    implementation("dev.chrisbanes.accompanist:accompanist-insets:0.5.1")
 
     val hiltVersion = "2.32-alpha"
     implementation("com.google.dagger:hilt-android:$hiltVersion")

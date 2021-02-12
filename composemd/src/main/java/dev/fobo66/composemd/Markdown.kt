@@ -1,6 +1,7 @@
 package dev.fobo66.composemd
 
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -14,9 +15,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.gesture.tapGestureFilter
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.AmbientUriHandler
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.Placeholder
 import androidx.compose.ui.text.PlaceholderVerticalAlign
@@ -209,24 +210,26 @@ fun MarkdownHeading(heading: Heading) {
 
 @Composable
 fun MarkdownText(text: AnnotatedString, style: TextStyle) {
-    val uriHandler = AmbientUriHandler.current
+    val uriHandler = LocalUriHandler.current
     val layoutResult = remember {
         mutableStateOf<TextLayoutResult?>(null)
     }
 
     androidx.compose.material.Text(
         text = text,
-        modifier = Modifier.tapGestureFilter { pos ->
-            layoutResult.value?.let {
-                val position = it.getOffsetForPosition(pos)
-                text.getStringAnnotations(position, position)
-                    .firstOrNull()
-                    ?.let { sa ->
-                        if (sa.tag == TAG_URL) {
-                            uriHandler.openUri(sa.item)
+        modifier = Modifier.pointerInput(Unit) {
+            detectTapGestures(onTap = { pos ->
+                layoutResult.value?.let {
+                    val position = it.getOffsetForPosition(pos)
+                    text.getStringAnnotations(position, position)
+                        .firstOrNull()
+                        ?.let { sa ->
+                            if (sa.tag == TAG_URL) {
+                                uriHandler.openUri(sa.item)
+                            }
                         }
-                    }
-            }
+                }
+            })
         },
         style = style,
         inlineContent = mapOf(
