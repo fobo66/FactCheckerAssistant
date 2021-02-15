@@ -112,7 +112,7 @@ dependencies {
 
     implementation("com.jakewharton.timber:timber:4.7.1")
 
-    testImplementation("junit:junit:4.13.1")
+    testImplementation("junit:junit:4.13.2")
     testImplementation("io.mockk:mockk:1.10.5")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion")
     testImplementation("androidx.paging:paging-common-ktx:$pagingVersion")
