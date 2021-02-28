@@ -3,7 +3,6 @@ package io.github.fobo66.factcheckerassistant.ui.guide
 import android.os.Bundle
 import android.view.View
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -45,13 +44,22 @@ class FactCheckGuideFragment : Fragment(R.layout.fragment_fact_check_guide) {
         ProvideWindowInsets {
             Scaffold(
                 topBar = {
-                    InsetAwareTopAppBar(
-                        title = {
-                            Text(
-                                stringResource(R.string.fact_check_guide_title)
-                            )
-                        }
-                    )
+                    Surface(
+                        color = MaterialTheme.colors.primarySurface,
+                        elevation = topbarElevation
+                    ) {
+                        TopAppBar(
+                            title = {
+                                Text(
+                                    stringResource(R.string.fact_check_guide_title)
+                                )
+                            },
+                            backgroundColor = Color.Transparent,
+                            contentColor = contentColorFor(MaterialTheme.colors.primarySurface),
+                            elevation = 0.dp,
+                            modifier = Modifier.statusBarsPadding()
+                        )
+                    }
                 }
             ) {
                 Column(
@@ -59,7 +67,7 @@ class FactCheckGuideFragment : Fragment(R.layout.fragment_fact_check_guide) {
                         .padding(guideTextPadding)
                         .verticalScroll(rememberScrollState())
                 ) {
-                    MarkdownDocument(inputStream = LocalContext.current.assets.open("guide.md"))
+                    MarkdownDocument(LocalContext.current.assets.open("guide.md"))
                 }
             }
         }
@@ -69,34 +77,6 @@ class FactCheckGuideFragment : Fragment(R.layout.fragment_fact_check_guide) {
     @Composable
     fun FactCheckGuideContentPreview() {
         FactCheckGuideContent()
-    }
-
-    /**
-     * A wrapper around [TopAppBar] which uses [Modifier.statusBarsPadding] to shift the app bar's
-     * contents down, but still draws the background behind the status bar too.
-     */
-    @Composable
-    private fun InsetAwareTopAppBar(
-        title: @Composable () -> Unit,
-        navigationIcon: @Composable (() -> Unit)? = null,
-        actions: @Composable (RowScope.() -> Unit) = {},
-        backgroundColor: Color = MaterialTheme.colors.primarySurface,
-        contentColor: Color = contentColorFor(backgroundColor)
-    ) {
-        Surface(
-            color = backgroundColor,
-            elevation = topbarElevation
-        ) {
-            TopAppBar(
-                title = title,
-                navigationIcon = navigationIcon,
-                actions = actions,
-                backgroundColor = Color.Transparent,
-                contentColor = contentColor,
-                elevation = 0.dp,
-                modifier = Modifier.statusBarsPadding()
-            )
-        }
     }
 
     companion object {
