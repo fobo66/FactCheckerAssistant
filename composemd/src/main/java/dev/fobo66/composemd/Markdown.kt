@@ -251,10 +251,10 @@ fun MarkdownThematicBreak() {
     Box(modifier = Modifier.padding(8.dp)) {
         Canvas(modifier = Modifier) {
            drawLine(
-                color = Color.Black,
-                start = center - Offset(16),
-                end = center + Offset(16)
-            )
+               color = Color.Black,
+               start = center - Offset(16.0f, 0.0f),
+               end = center + Offset(16.0f, 0.0f)
+           )
         }
     }
 }
