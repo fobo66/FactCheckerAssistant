@@ -69,15 +69,15 @@ kapt {
 }
 
 dependencies {
-    val lifecycleVersion = "2.3.0"
-    val pagingVersion = "3.0.0-beta01"
-    val navigationVersion = "2.3.3"
+    val lifecycleVersion = "2.3.1"
+    val pagingVersion = "3.0.0-beta03"
+    val navigationVersion = "2.3.5"
     val coroutinesVersion = "1.4.1"
 
     implementation(fileTree("dir" to "libs", "include" to listOf("*.jar")))
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
-    implementation("androidx.core:core-ktx:1.5.0-beta02")
-    implementation("androidx.appcompat:appcompat:1.3.0-beta01")
+    implementation("androidx.core:core-ktx:1.6.0-alpha01")
+    implementation("androidx.appcompat:appcompat:1.3.0-rc01")
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
     implementation("com.google.android.material:material:1.3.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
@@ -99,7 +99,7 @@ dependencies {
     implementation("dev.chrisbanes:insetter-ktx:0.3.1")
     implementation("dev.chrisbanes.accompanist:accompanist-insets:0.6.1")
 
-    val hiltVersion = "2.33-beta"
+    val hiltVersion = "2.34-beta"
     implementation("com.google.dagger:hilt-android:$hiltVersion")
     kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
 
@@ -107,14 +107,14 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
     implementation("com.squareup.retrofit2:converter-moshi:${retrofitVersion}")
 
-    val moshiVersion = "1.11.0"
+    val moshiVersion = "1.12.0"
     implementation("com.squareup.moshi:moshi:${moshiVersion}")
     kapt("com.squareup.moshi:moshi-kotlin-codegen:${moshiVersion}")
 
     implementation("com.jakewharton.timber:timber:4.7.1")
 
     testImplementation("junit:junit:4.13.2")
-    testImplementation("io.mockk:mockk:1.10.6")
+    testImplementation("io.mockk:mockk:1.11.0")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion")
     testImplementation("androidx.paging:paging-common-ktx:$pagingVersion")
     testImplementation("androidx.arch.core:core-testing:2.1.0")
