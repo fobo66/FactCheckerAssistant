@@ -70,13 +70,13 @@ kapt {
 
 dependencies {
     val lifecycleVersion = "2.3.1"
-    val pagingVersion = "3.0.0-beta03"
+    val pagingVersion = "3.0.0-rc01"
     val navigationVersion = "2.3.5"
     val coroutinesVersion = "1.4.1"
 
     implementation(fileTree("dir" to "libs", "include" to listOf("*.jar")))
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
-    implementation("androidx.core:core-ktx:1.6.0-alpha01")
+    implementation("androidx.core:core-ktx:1.6.0-alpha02")
     implementation("androidx.appcompat:appcompat:1.3.0-rc01")
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
     implementation("com.google.android.material:material:1.3.0")
@@ -99,7 +99,7 @@ dependencies {
     implementation("dev.chrisbanes:insetter-ktx:0.3.1")
     implementation("dev.chrisbanes.accompanist:accompanist-insets:0.6.2")
 
-    val hiltVersion = "2.34-beta"
+    val hiltVersion = "2.35.1"
     implementation("com.google.dagger:hilt-android:$hiltVersion")
     kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
 
