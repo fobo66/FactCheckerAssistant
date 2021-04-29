@@ -1,6 +1,7 @@
 package dev.fobo66.composemd
 
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -30,7 +31,7 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
-import dev.chrisbanes.accompanist.coil.CoilImage
+import com.google.accompanist.coil.rememberCoilPainter
 import org.commonmark.node.BlockQuote
 import org.commonmark.node.BulletList
 import org.commonmark.node.Code
@@ -139,7 +140,14 @@ fun MarkdownListItems(
 @Composable
 fun MarkdownImage(image: Image) {
     Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
-        CoilImage(data = image.destination, contentDescription = image.title)
+        {}
+        Image(
+            painter = rememberCoilPainter(
+                request = image.destination,
+                shouldRefetchOnSizeChange = { _, _ -> false },
+            ),
+            contentDescription = image.title,
+        )
     }
 }
 
@@ -239,7 +247,13 @@ fun MarkdownText(text: AnnotatedString, style: TextStyle) {
                     PlaceholderVerticalAlign.Bottom
                 )
             ) {
-                CoilImage(data = it, contentDescription = null)
+                Image(
+                    painter = rememberCoilPainter(
+                        request = it,
+                        shouldRefetchOnSizeChange = { _, _ -> false },
+                    ),
+                    contentDescription = null,
+                )
             }
         ),
         onTextLayout = { layoutResult.value = it }

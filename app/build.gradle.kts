@@ -55,6 +55,13 @@ android {
             multiDexKeepFile = file("multidex-keep.txt")
         }
     }
+
+    packagingOptions {
+        resources {
+            excludes += "META-INF/AL2.0"
+            excludes += "META-INF/LGPL2.1"
+        }
+    }
 }
 
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class).configureEach {
