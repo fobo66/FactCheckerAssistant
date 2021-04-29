@@ -6,7 +6,7 @@ plugins {
     id("dagger.hilt.android.plugin")
 }
 
-val composeVersion = "1.0.0-beta04"
+val composeVersion = "1.0.0-beta05"
 
 android {
     compileSdk = 30
@@ -96,8 +96,8 @@ dependencies {
     implementation("com.google.android.material:compose-theme-adapter:$composeVersion")
     implementation(project(":composemd"))
 
-    implementation("dev.chrisbanes:insetter-ktx:0.3.1")
-    implementation("dev.chrisbanes.accompanist:accompanist-insets:0.6.2")
+    implementation("dev.chrisbanes.insetter:insetter:0.5.0")
+    implementation("com.google.accompanist:accompanist-insets:0.8.1")
 
     val hiltVersion = "2.35.1"
     implementation("com.google.dagger:hilt-android:$hiltVersion")

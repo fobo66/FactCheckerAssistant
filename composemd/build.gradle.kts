@@ -3,7 +3,7 @@ plugins {
     kotlin("android")
 }
 
-val composeVersion = "1.0.0-beta01"
+val composeVersion = "1.0.0-beta05"
 
 android {
     compileSdk = 30
@@ -58,8 +58,8 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling:$composeVersion")
     implementation("androidx.compose.foundation:foundation:$composeVersion")
     implementation("androidx.compose.material:material:$composeVersion")
-    implementation("dev.chrisbanes.accompanist:accompanist-coil:0.6.1")
-    testImplementation("junit:junit:4.13.1")
+    implementation("com.google.accompanist:accompanist-coil:0.8.1")
+    testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.2")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:$composeVersion")
