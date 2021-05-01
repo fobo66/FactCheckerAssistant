@@ -140,7 +140,6 @@ fun MarkdownListItems(
 @Composable
 fun MarkdownImage(image: Image) {
     Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
-        {}
         Image(
             painter = rememberCoilPainter(
                 request = image.destination,
