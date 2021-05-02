@@ -52,7 +52,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            multiDexKeepFile = file("multidex-keep.txt")
+            multiDexKeepProguard = file("multidex-keep.pro")
         }
     }
 
