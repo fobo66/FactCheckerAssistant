@@ -70,13 +70,13 @@ kapt {
 
 dependencies {
     val lifecycleVersion = "2.3.1"
-    val pagingVersion = "3.0.0-rc01"
+    val pagingVersion = "3.0.0"
     val navigationVersion = "2.3.5"
     val coroutinesVersion = "1.4.1"
 
     implementation(fileTree("dir" to "libs", "include" to listOf("*.jar")))
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
-    implementation("androidx.core:core-ktx:1.6.0-alpha02")
+    implementation("androidx.core:core-ktx:1.6.0-alpha03")
     implementation("androidx.appcompat:appcompat:1.3.0-rc01")
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
     implementation("com.google.android.material:material:1.3.0")
