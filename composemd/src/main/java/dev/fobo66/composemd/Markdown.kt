@@ -1,6 +1,5 @@
 package dev.fobo66.composemd
 
-import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Box
@@ -9,16 +8,17 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.InlineTextContent
 import androidx.compose.foundation.text.appendInlineContent
 import androidx.compose.material.Colors
+import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.Placeholder
 import androidx.compose.ui.text.PlaceholderVerticalAlign
@@ -261,15 +261,9 @@ fun MarkdownText(text: AnnotatedString, style: TextStyle) {
 
 @Composable
 fun MarkdownThematicBreak() {
-    Box(modifier = Modifier.padding(8.dp)) {
-        Canvas(modifier = Modifier) {
-           drawLine(
-               color = Color.Black,
-               start = center - Offset(16.0f, 0.0f),
-               end = center + Offset(16.0f, 0.0f)
-           )
-        }
-    }
+    Divider(modifier = Modifier.semantics {
+        testTag = "Thematic break"
+    })
 }
 
 @Composable

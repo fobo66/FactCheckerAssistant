@@ -1,6 +1,8 @@
 package dev.fobo66.composemd
 
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.hasTestTag
+import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import org.junit.Rule
@@ -31,6 +33,16 @@ class MarkdownTest {
 
     @Test
     fun markdownBulletList() {
+        composeTestRule.setContent {
+            MarkdownDocument(
+                input = """
+                * First item
+                * Second item
+            """.trimIndent()
+            )
+        }
+
+        composeTestRule.onNode(hasText("First item", substring = true)).assertIsDisplayed()
     }
 
     @Test
@@ -47,6 +59,17 @@ class MarkdownTest {
 
     @Test
     fun markdownParagraph() {
+        composeTestRule.setContent {
+            MarkdownDocument(
+                input = """
+                First block of text
+
+                Second block of text
+            """.trimIndent()
+            )
+        }
+
+        composeTestRule.onNodeWithText("First block of text").assertIsDisplayed()
     }
 
     @Test
@@ -60,10 +83,28 @@ class MarkdownTest {
 
     @Test
     fun markdownText() {
+        composeTestRule.setContent {
+            MarkdownDocument(input = "Hello World!")
+        }
+
+        composeTestRule.onNodeWithText("Hello World!").assertIsDisplayed()
     }
 
     @Test
     fun markdownThematicBreak() {
+        composeTestRule.setContent {
+            MarkdownDocument(
+                input = """
+                First block of text
+                
+                ---
+
+                Second block of text
+            """.trimIndent()
+            )
+        }
+
+        composeTestRule.onNode(hasTestTag("Thematic break")).assertIsDisplayed()
     }
 
     @Test
