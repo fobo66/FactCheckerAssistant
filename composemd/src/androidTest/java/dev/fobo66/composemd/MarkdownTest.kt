@@ -51,6 +51,11 @@ class MarkdownTest {
 
     @Test
     fun markdownHeading() {
+        composeTestRule.setContent {
+            MarkdownDocument(input = "# Hello World!")
+        }
+
+        composeTestRule.onNodeWithText("Hello World!").assertIsDisplayed()
     }
 
     @Test
