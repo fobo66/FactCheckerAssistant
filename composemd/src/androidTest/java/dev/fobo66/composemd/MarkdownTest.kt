@@ -5,6 +5,7 @@ import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
+import org.junit.Assert.fail
 import org.junit.Rule
 import org.junit.Test
 
@@ -53,14 +54,17 @@ class MarkdownTest {
 
     @Test
     fun markdownImage() {
+        fail("Not implemented")
     }
 
     @Test
     fun markdownIndentedCodeBlock() {
+        fail("Not implemented")
     }
 
     @Test
     fun markdownFencedCodeBlock() {
+        fail("Not implemented")
     }
 
     @Test
@@ -115,5 +119,6 @@ class MarkdownTest {
 
     @Test
     fun markdownBlockQuote() {
+        fail("Not implemented")
     }
 }
