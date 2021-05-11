@@ -24,11 +24,17 @@ class MarkdownTest {
     }
 
     @Test
-    fun markdownBlockChildren() {
-    }
-
-    @Test
     fun markdownOrderedList() {
+        composeTestRule.setContent {
+            MarkdownDocument(
+                input = """
+                1. First item
+                2. Second item
+            """.trimIndent()
+            )
+        }
+
+        composeTestRule.onNode(hasText("First item", substring = true)).assertIsDisplayed()
     }
 
     @Test
