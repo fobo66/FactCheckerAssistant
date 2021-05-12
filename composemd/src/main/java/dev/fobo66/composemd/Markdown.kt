@@ -1,10 +1,14 @@
 package dev.fobo66.composemd
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.InlineTextContent
 import androidx.compose.foundation.text.appendInlineContent
 import androidx.compose.material.Colors
@@ -267,8 +271,17 @@ fun MarkdownThematicBreak() {
 }
 
 @Composable
-fun MarkdownBlockQuote(child: BlockQuote) {
-    TODO("Not yet implemented")
+fun MarkdownBlockQuote(blockQuote: BlockQuote) {
+    Row {
+        Box(
+            modifier = Modifier
+                .width(4.dp)
+                .background(color = MaterialTheme.colors.onSurface.copy(alpha = 0.12f))
+        )
+        Column {
+            MarkdownBlockChildren(parent = blockQuote)
+        }
+    }
 }
 
 private fun AnnotatedString.Builder.appendMarkdownChildren(

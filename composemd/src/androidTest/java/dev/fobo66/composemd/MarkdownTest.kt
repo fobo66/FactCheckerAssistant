@@ -1,5 +1,6 @@
 package dev.fobo66.composemd
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.hasText
@@ -27,12 +28,14 @@ class MarkdownTest {
     @Test
     fun markdownOrderedList() {
         composeTestRule.setContent {
-            MarkdownDocument(
-                input = """
+            Column {
+                MarkdownDocument(
+                    input = """
                 1. First item
                 2. Second item
             """.trimIndent()
-            )
+                )
+            }
         }
 
         composeTestRule.onNode(hasText("First item", substring = true)).assertIsDisplayed()
@@ -103,15 +106,17 @@ class MarkdownTest {
     @Test
     fun markdownThematicBreak() {
         composeTestRule.setContent {
-            MarkdownDocument(
-                input = """
+            Column {
+                MarkdownDocument(
+                    input = """
                 First block of text
                 
                 ---
 
                 Second block of text
             """.trimIndent()
-            )
+                )
+            }
         }
 
         composeTestRule.onNode(hasTestTag("Thematic break")).assertIsDisplayed()
@@ -119,6 +124,14 @@ class MarkdownTest {
 
     @Test
     fun markdownBlockQuote() {
-        fail("Not implemented")
+        composeTestRule.setContent {
+            MarkdownDocument(
+                input = """
+                > Quoted text
+            """.trimIndent()
+            )
+        }
+
+        composeTestRule.onNodeWithText("Quoted text").assertIsDisplayed()
     }
 }

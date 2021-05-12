@@ -30,6 +30,14 @@ fun MarkdownSimpleText() {
 
 @Preview
 @Composable
+fun MarkdownBlockquote() {
+    Column {
+        MarkdownDocument(input = "> Hello World! To anyone whom may concern: get over here!")
+    }
+}
+
+@Preview
+@Composable
 fun MarkdownSimpleTextWithHeading() {
     Column {
         MarkdownDocument(input = "# Hello World!\n\nThis is a test")
