@@ -157,7 +157,12 @@ fun MarkdownImage(image: Image) {
 @Composable
 fun MarkdownIndentedCodeBlock(indentedCodeBlock: IndentedCodeBlock) {
     val padding = if (indentedCodeBlock.parent is Document) 8.dp else 0.dp
-    Box(modifier = Modifier.padding(padding)) {
+    Box(modifier = Modifier
+        .padding(padding)
+        .semantics {
+            testTag = "Indented code block"
+        }
+    ) {
         androidx.compose.material.Text(
             text = indentedCodeBlock.literal,
             style = TextStyle(fontFamily = FontFamily.Monospace)
@@ -168,7 +173,12 @@ fun MarkdownIndentedCodeBlock(indentedCodeBlock: IndentedCodeBlock) {
 @Composable
 fun MarkdownFencedCodeBlock(fencedCodeBlock: FencedCodeBlock) {
     val padding = if (fencedCodeBlock.parent is Document) 8.dp else 0.dp
-    Box(modifier = Modifier.padding(padding)) {
+    Box(modifier = Modifier
+        .padding(padding)
+        .semantics {
+            testTag = "Fenced code block"
+        }
+    ) {
         androidx.compose.material.Text(
             text = fencedCodeBlock.literal,
             style = TextStyle(fontFamily = FontFamily.Monospace)

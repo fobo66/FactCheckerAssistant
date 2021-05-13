@@ -73,7 +73,7 @@ Block of text
             )
         }
 
-        composeTestRule.onNode(hasText("Block of code", substring = true)).assertIsDisplayed()
+        composeTestRule.onNode(hasTestTag("Indented code block")).assertIsDisplayed()
     }
 
     @Test
@@ -93,7 +93,7 @@ Block of text
 
         }
 
-        composeTestRule.onNode(hasText("Block of code", substring = true)).assertIsDisplayed()
+        composeTestRule.onNode(hasTestTag("Fenced code block")).assertIsDisplayed()
     }
 
     @Test
