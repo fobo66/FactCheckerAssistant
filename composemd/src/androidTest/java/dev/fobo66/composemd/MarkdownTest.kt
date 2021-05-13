@@ -62,12 +62,38 @@ class MarkdownTest {
 
     @Test
     fun markdownIndentedCodeBlock() {
-        fail("Not implemented")
+        composeTestRule.setContent {
+            MarkdownDocument(
+                input = """
+Block of text
+
+    Block of code
+
+"""
+            )
+        }
+
+        composeTestRule.onNode(hasText("Block of code", substring = true)).assertIsDisplayed()
     }
 
     @Test
     fun markdownFencedCodeBlock() {
-        fail("Not implemented")
+        composeTestRule.setContent {
+            Column {
+                MarkdownDocument(
+                    input = """
+                    Block of text
+                    
+                    ```
+                        Block of code
+                    ```
+                    """.trimIndent()
+                )
+            }
+
+        }
+
+        composeTestRule.onNode(hasText("Block of code", substring = true)).assertIsDisplayed()
     }
 
     @Test
