@@ -83,8 +83,8 @@ dependencies {
 
     implementation(fileTree("dir" to "libs", "include" to listOf("*.jar")))
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
-    implementation("androidx.core:core-ktx:1.6.0-alpha03")
-    implementation("androidx.appcompat:appcompat:1.3.0-rc01")
+    implementation("androidx.core:core-ktx:1.6.0-beta01")
+    implementation("androidx.appcompat:appcompat:1.4.0-alpha01")
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
     implementation("com.google.android.material:material:1.3.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
@@ -106,7 +106,7 @@ dependencies {
     implementation("dev.chrisbanes.insetter:insetter:0.5.0")
     implementation("com.google.accompanist:accompanist-insets:0.9.1")
 
-    val hiltVersion = "2.35.1"
+    val hiltVersion = "2.36"
     implementation("com.google.dagger:hilt-android:$hiltVersion")
     kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
 
