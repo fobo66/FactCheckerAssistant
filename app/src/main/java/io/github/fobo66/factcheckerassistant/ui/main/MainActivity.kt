@@ -10,7 +10,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import dagger.hilt.android.AndroidEntryPoint
-import dev.chrisbanes.insetter.applySystemWindowInsetsToPadding
+import dev.chrisbanes.insetter.applyInsetter
 import io.github.fobo66.factcheckerassistant.R
 import io.github.fobo66.factcheckerassistant.databinding.MainActivityBinding
 
@@ -35,7 +35,11 @@ class MainActivity : AppCompatActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
 
         binding.bottomNavBar.setupWithNavController(navController)
-        binding.bottomNavBar.applySystemWindowInsetsToPadding(bottom = true)
+        binding.bottomNavBar.applyInsetter {
+            type(navigationBars = true) {
+                padding(bottom = true)
+            }
+        }
 
         processSearch(intent)
     }

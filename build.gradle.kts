@@ -1,23 +1,24 @@
 buildscript {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:7.0.0-alpha13")
-        classpath(kotlin("gradle-plugin", version = "1.4.21-2"))
+        classpath("com.android.tools.build:gradle:7.1.0-alpha01")
+        classpath(kotlin("gradle-plugin", version = "1.4.32"))
         classpath("com.google.dagger:hilt-android-gradle-plugin:2.36")
     }
 }
 
 plugins {
-    id("io.gitlab.arturbosch.detekt").version("1.14.1")
+    id("io.gitlab.arturbosch.detekt").version("1.16.0")
 }
 
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
+        maven(url = "https://maven.pkg.jetbrains.space/public/p/kotlinx-html/maven")
     }
 }
 

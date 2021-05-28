@@ -11,7 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.ExperimentalPagingApi
 import dagger.hilt.android.AndroidEntryPoint
-import dev.chrisbanes.insetter.applySystemWindowInsetsToPadding
+import dev.chrisbanes.insetter.applyInsetter
 import io.github.fobo66.factcheckerassistant.R
 import io.github.fobo66.factcheckerassistant.databinding.MainFragmentBinding
 import io.github.fobo66.factcheckerassistant.ui.list.ClaimsAdapter
@@ -57,7 +57,11 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             isIconified = true
         }
 
-        binding.appbar.applySystemWindowInsetsToPadding(top = true)
+        binding.appbar.applyInsetter {
+            type(statusBars = true) {
+                padding(top = true)
+            }
+        }
     }
 
     override fun onDestroyView() {

@@ -6,7 +6,7 @@ plugins {
     id("dagger.hilt.android.plugin")
 }
 
-val composeVersion = "1.0.0-alpha11"
+val composeVersion = "1.0.0-beta07"
 
 android {
     compileSdk = 30
@@ -43,16 +43,23 @@ android {
     }
 
     buildTypes {
-        getByName("debug") {
+        debug {
             multiDexEnabled = false
         }
-        getByName("release") {
+        release {
             isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            multiDexKeepFile = file("multidex-keep.txt")
+            multiDexKeepProguard = file("multidex-keep.pro")
+        }
+    }
+
+    packagingOptions {
+        resources {
+            excludes += "META-INF/AL2.0"
+            excludes += "META-INF/LGPL2.1"
         }
     }
 }
@@ -60,7 +67,7 @@ android {
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class).configureEach {
     kotlinOptions {
         jvmTarget = "1.8"
-        freeCompilerArgs = freeCompilerArgs + listOf("-Xallow-jvm-ir-dependencies", "-Xskip-prerelease-check")
+        freeCompilerArgs = freeCompilerArgs + listOf("-Xskip-prerelease-check")
     }
 }
 
@@ -94,9 +101,10 @@ dependencies {
     implementation("androidx.compose.material:material-icons-extended:$composeVersion")
     implementation("androidx.compose.runtime:runtime-livedata:$composeVersion")
     implementation("com.google.android.material:compose-theme-adapter:$composeVersion")
+    implementation(project(":composemd"))
 
-    implementation("dev.chrisbanes:insetter-ktx:0.3.1")
-    implementation("dev.chrisbanes.accompanist:accompanist-insets:0.5.0")
+    implementation("dev.chrisbanes.insetter:insetter:0.6.0")
+    implementation("com.google.accompanist:accompanist-insets:0.10.0")
 
     val hiltVersion = "2.36"
     implementation("com.google.dagger:hilt-android:$hiltVersion")

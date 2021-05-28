@@ -3,7 +3,7 @@ package io.github.fobo66.factcheckerassistant.ui.guide
 import android.os.Bundle
 import android.view.View
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
@@ -16,13 +16,15 @@ import androidx.compose.material.primarySurface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
+import com.google.accompanist.insets.ProvideWindowInsets
+import com.google.accompanist.insets.statusBarsPadding
 import com.google.android.material.composethemeadapter.MdcTheme
-import dev.chrisbanes.accompanist.insets.ProvideWindowInsets
-import dev.chrisbanes.accompanist.insets.statusBarsPadding
+import dev.fobo66.composemd.MarkdownDocument
 import io.github.fobo66.factcheckerassistant.R
 import io.github.fobo66.factcheckerassistant.databinding.FragmentFactCheckGuideBinding
 import io.github.fobo66.factcheckerassistant.util.viewBinding
@@ -42,27 +44,30 @@ class FactCheckGuideFragment : Fragment(R.layout.fragment_fact_check_guide) {
         ProvideWindowInsets {
             Scaffold(
                 topBar = {
-                    InsetAwareTopAppBar(
-                        title = {
-                            Text(
-                                stringResource(R.string.fact_check_guide_title)
-                            )
-                        }
-                    )
+                    Surface(
+                        color = MaterialTheme.colors.primarySurface,
+                        elevation = topbarElevation
+                    ) {
+                        TopAppBar(
+                            title = {
+                                Text(
+                                    stringResource(R.string.fact_check_guide_title)
+                                )
+                            },
+                            backgroundColor = Color.Transparent,
+                            contentColor = contentColorFor(MaterialTheme.colors.primarySurface),
+                            elevation = 0.dp,
+                            modifier = Modifier.statusBarsPadding()
+                        )
+                    }
                 }
             ) {
                 Column(
-                    modifier = Modifier.verticalScroll(rememberScrollState())
+                    modifier = Modifier
+                        .padding(guideTextPadding)
+                        .verticalScroll(rememberScrollState())
                 ) {
-                    Preamble(R.string.fact_check_guide_preamble)
-                    SectionTitle(R.string.fact_check_guide_section1)
-                    GuideParagraph(R.string.fact_check_guide_section1_text)
-                    SectionTitle(R.string.fact_check_guide_section2)
-                    GuideParagraph(R.string.fact_check_guide_section2_text)
-                    SectionTitle(R.string.fact_check_guide_section3)
-                    GuideParagraph(R.string.fact_check_guide_section3_text)
-                    SectionTitle(R.string.fact_check_guide_section4)
-                    GuideParagraph(R.string.fact_check_guide_section4_text)
+                    MarkdownDocument(LocalContext.current.assets.open("guide.md"))
                 }
             }
         }
@@ -74,35 +79,8 @@ class FactCheckGuideFragment : Fragment(R.layout.fragment_fact_check_guide) {
         FactCheckGuideContent()
     }
 
-    /**
-     * A wrapper around [TopAppBar] which uses [Modifier.statusBarsPadding] to shift the app bar's
-     * contents down, but still draws the background behind the status bar too.
-     */
-    @Composable
-    private fun InsetAwareTopAppBar(
-        title: @Composable () -> Unit,
-        navigationIcon: @Composable (() -> Unit)? = null,
-        actions: @Composable (RowScope.() -> Unit) = {},
-        backgroundColor: Color = MaterialTheme.colors.primarySurface,
-        contentColor: Color = contentColorFor(backgroundColor)
-    ) {
-        Surface(
-            color = backgroundColor,
-            elevation = topbarElevation
-        ) {
-            TopAppBar(
-                title = title,
-                navigationIcon = navigationIcon,
-                actions = actions,
-                backgroundColor = Color.Transparent,
-                contentColor = contentColor,
-                elevation = 0.dp,
-                modifier = Modifier.statusBarsPadding()
-            )
-        }
-    }
-
     companion object {
         private val topbarElevation = 4.dp
+        private val guideTextPadding = 16.dp
     }
 }

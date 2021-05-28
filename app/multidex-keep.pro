@@ -1,0 +1,2 @@
+-keep androidx.compose.ui.layout.Placeable
+-keep androidx.compose.ui.layout.Placeable$*
