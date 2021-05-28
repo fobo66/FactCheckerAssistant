@@ -58,8 +58,8 @@ class MainFragment : Fragment(R.layout.main_fragment) {
         }
 
         binding.appbar.applyInsetter {
-            type(navigationBars = true) {
-                padding()
+            type(statusBars = true) {
+                padding(top = true)
             }
         }
     }
