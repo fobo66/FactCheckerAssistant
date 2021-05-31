@@ -2,11 +2,11 @@ package dev.fobo66.composemd
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.hasContentDescription
 import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
-import org.junit.Assert.fail
 import org.junit.Rule
 import org.junit.Test
 
@@ -57,7 +57,13 @@ class MarkdownTest {
 
     @Test
     fun markdownImage() {
-        fail("Not implemented")
+        composeTestRule.setContent {
+            MarkdownDocument(
+                input = "![Test image](https://source.unsplash.com/random/800x600 \"Test image\")"
+            )
+        }
+
+        composeTestRule.onNode(hasContentDescription("Test image", substring = true)).assertIsDisplayed()
     }
 
     @Test

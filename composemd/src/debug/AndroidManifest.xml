@@ -1,6 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="dev.fobo66.composemd">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application>
         <activity android:name="androidx.activity.ComponentActivity" />
     </application>
