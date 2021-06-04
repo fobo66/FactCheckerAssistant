@@ -78,7 +78,7 @@ dependencies {
     val lifecycleVersion = "2.3.1"
     val pagingVersion = "3.0.0"
     val navigationVersion = "2.3.5"
-    val coroutinesVersion = "1.4.1"
+    val coroutinesVersion = "1.5.0"
 
     implementation(fileTree("dir" to "libs", "include" to listOf("*.jar")))
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
