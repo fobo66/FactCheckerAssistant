@@ -3,7 +3,7 @@ plugins {
     kotlin("android")
 }
 
-val composeVersion = "1.0.0-beta07"
+val composeVersion = "1.0.0-beta08"
 
 android {
     compileSdk = 30
@@ -40,7 +40,6 @@ android {
 
     kotlinOptions {
         jvmTarget = "1.8"
-        useIR = true
     }
 
     tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class).configureEach {
@@ -64,7 +63,7 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling:$composeVersion")
     implementation("androidx.compose.foundation:foundation:$composeVersion")
     implementation("androidx.compose.material:material:$composeVersion")
-    implementation("com.google.accompanist:accompanist-coil:0.10.0")
+    implementation("com.google.accompanist:accompanist-coil:0.11.1")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.2")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")

@@ -6,7 +6,7 @@ plugins {
     id("dagger.hilt.android.plugin")
 }
 
-val composeVersion = "1.0.0-beta07"
+val composeVersion = "1.0.0-beta08"
 
 android {
     compileSdk = 30
@@ -30,7 +30,6 @@ android {
 
     kotlinOptions {
         jvmTarget = "1.8"
-        useIR = true
     }
 
     buildFeatures {
@@ -84,7 +83,7 @@ dependencies {
     implementation(fileTree("dir" to "libs", "include" to listOf("*.jar")))
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
     implementation("androidx.core:core-ktx:1.6.0-beta01")
-    implementation("androidx.appcompat:appcompat:1.4.0-alpha01")
+    implementation("androidx.appcompat:appcompat:1.4.0-alpha02")
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
     implementation("com.google.android.material:material:1.3.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
@@ -101,11 +100,11 @@ dependencies {
     implementation("androidx.compose.material:material-icons-extended:$composeVersion")
     implementation("androidx.compose.runtime:runtime-livedata:$composeVersion")
     implementation("com.google.android.material:compose-theme-adapter:$composeVersion")
-    implementation("androidx.paging:paging-compose:1.0.0-alpha09")
+    implementation("androidx.paging:paging-compose:1.0.0-alpha10")
     implementation(project(":composemd"))
 
     implementation("dev.chrisbanes.insetter:insetter:0.6.0")
-    implementation("com.google.accompanist:accompanist-insets:0.10.0")
+    implementation("com.google.accompanist:accompanist-insets:0.11.1")
 
     val hiltVersion = "2.36"
     implementation("com.google.dagger:hilt-android:$hiltVersion")

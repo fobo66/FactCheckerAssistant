@@ -5,13 +5,13 @@ buildscript {
     }
     dependencies {
         classpath("com.android.tools.build:gradle:7.1.0-alpha01")
-        classpath(kotlin("gradle-plugin", version = "1.4.32"))
+        classpath(kotlin("gradle-plugin", version = "1.5.10"))
         classpath("com.google.dagger:hilt-android-gradle-plugin:2.36")
     }
 }
 
 plugins {
-    id("io.gitlab.arturbosch.detekt").version("1.16.0")
+    id("io.gitlab.arturbosch.detekt").version("1.17.1")
 }
 
 allprojects {
