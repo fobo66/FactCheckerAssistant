@@ -9,7 +9,6 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.paging.ExperimentalPagingApi
 import dagger.hilt.android.AndroidEntryPoint
 import dev.chrisbanes.insetter.applyInsetter
 import io.github.fobo66.factcheckerassistant.R
@@ -33,7 +32,6 @@ class MainFragment : Fragment(R.layout.main_fragment) {
     private val searchView: SearchView
         get() = binding.toolbar.menu.findItem(R.id.app_bar_search).actionView as SearchView
 
-    @ExperimentalPagingApi
     @ExperimentalCoroutinesApi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
