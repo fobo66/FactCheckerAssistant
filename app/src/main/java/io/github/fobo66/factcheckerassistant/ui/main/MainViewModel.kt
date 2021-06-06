@@ -20,7 +20,7 @@ class MainViewModel @Inject constructor(
     @ExperimentalCoroutinesApi
     val claims = handle.getLiveData<String>(KEY_QUERY).asFlow()
         .flatMapLatest { query ->
-            factCheckRepository.search(query, DEFAULT_PAGE_SIZE)
+            factCheckRepository.search(query, DEFAULT_PAGE_SIZE).flow
         }
         .cachedIn(viewModelScope)
 

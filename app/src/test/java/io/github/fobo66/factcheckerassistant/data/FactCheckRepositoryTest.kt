@@ -68,7 +68,7 @@ class FactCheckRepositoryTest {
         )
 
         runBlocking {
-            val result = factCheckRepository.search("test", 10).firstOrNull()
+            val result = factCheckRepository.search("test", 10).flow.firstOrNull()
             delay(DEFAULT_API_DELAY)
             assertNotNull(result)
         }
@@ -88,7 +88,7 @@ class FactCheckRepositoryTest {
         )
 
         runBlocking {
-            val result = factCheckRepository.search("test", 10).firstOrNull()
+            val result = factCheckRepository.search("test", 10).flow.firstOrNull()
             delay(DEFAULT_API_DELAY)
             assertNotNull(result)
         }

@@ -15,7 +15,7 @@ class FactCheckRepository @Inject constructor(
     private val factCheckApi: FactCheckApi,
     private val localeProvider: LocaleProvider
 ) {
-    fun search(query: String, pageSize: Int): Flow<PagingData<Claim>> {
+    fun search(query: String, pageSize: Int): Pager<String, Claim> {
         return Pager(
             config = PagingConfig(pageSize),
             pagingSourceFactory = {
@@ -25,6 +25,6 @@ class FactCheckRepository @Inject constructor(
                     localeProvider.currentLocale.toLanguageTag()
                 )
             }
-        ).flow
+        )
     }
 }
