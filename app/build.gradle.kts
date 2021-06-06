@@ -63,13 +63,6 @@ android {
     }
 }
 
-tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class).configureEach {
-    kotlinOptions {
-        jvmTarget = "11"
-        freeCompilerArgs = freeCompilerArgs + listOf("-Xskip-prerelease-check")
-    }
-}
-
 kapt {
     correctErrorTypes = true
 }

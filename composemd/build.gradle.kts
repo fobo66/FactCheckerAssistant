@@ -42,13 +42,6 @@ android {
         jvmTarget = "11"
     }
 
-    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class).configureEach {
-        kotlinOptions {
-            jvmTarget = "11"
-            freeCompilerArgs = freeCompilerArgs + listOf("-Xskip-prerelease-check")
-        }
-    }
-
     packagingOptions {
         resources {
             excludes += "META-INF/AL2.0"
