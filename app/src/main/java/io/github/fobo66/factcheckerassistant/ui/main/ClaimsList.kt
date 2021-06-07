@@ -89,3 +89,4 @@ fun ClaimItemPreview() {
         modifier = Modifier.width(300.dp)
     )
 }
+
