@@ -84,7 +84,16 @@ fun ClaimItemPreview() {
             "Imran Khan read COVID curve upside down to claim that the curve is flattening in Pakistan",
             "by Joe Smith",
             Date().toString(),
-            listOf(ClaimReview(Publisher("", ""), "", "", "", "True", Locale.US.toLanguageTag()))
+            listOf(
+                ClaimReview(
+                    Publisher("", ""),
+                    "",
+                    "",
+                    Date().toString(),
+                    "True",
+                    Locale.US.toLanguageTag()
+                )
+            )
         ),
         modifier = Modifier.width(300.dp)
     )
