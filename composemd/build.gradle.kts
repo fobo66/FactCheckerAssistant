@@ -58,7 +58,7 @@ dependencies {
     implementation("androidx.compose.material:material:$composeVersion")
     implementation("com.google.accompanist:accompanist-coil:0.12.0")
     testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.2")
+    androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:$composeVersion")
 }
