@@ -120,6 +120,6 @@ dependencies {
     testImplementation("androidx.arch.core:core-testing:2.1.0")
     testImplementation("androidx.navigation:navigation-testing:$navigationVersion")
     testImplementation("com.squareup.retrofit2:retrofit-mock:$retrofitVersion")
-    androidTestImplementation("androidx.test.ext:junit:1.1.2")
+    androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
 }
