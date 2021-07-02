@@ -67,7 +67,12 @@ fun ClaimItem(claim: Claim?, modifier: Modifier = Modifier) {
                 style = MaterialTheme.typography.h5,
             )
             Text(text = claim?.claimant.orEmpty(), modifier = Modifier.align(Alignment.End))
-            Text(text = claim?.claimReview?.get(0)?.textualRating.orEmpty())
+            Text(
+                text = stringResource(
+                    id = R.string.claim_rating,
+                    claim?.claimReview?.get(0)?.textualRating.orEmpty()
+                )
+            )
             Button(onClick = { /*TODO*/ }, modifier = Modifier.align(Alignment.End)) {
                 Text(text = stringResource(id = R.string.claim_learn_more))
             }
