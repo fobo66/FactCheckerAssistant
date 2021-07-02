@@ -3,7 +3,6 @@ package io.github.fobo66.factcheckerassistant.ui.main
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CornerSize
@@ -76,7 +75,7 @@ fun ClaimItem(claim: Claim?, modifier: Modifier = Modifier) {
     }
 }
 
-@Preview
+@Preview(widthDp = 300)
 @Composable
 fun ClaimItemPreview() {
     ClaimItem(
@@ -94,8 +93,7 @@ fun ClaimItemPreview() {
                     Locale.US.toLanguageTag()
                 )
             )
-        ),
-        modifier = Modifier.width(300.dp)
+        )
     )
 }
 
