@@ -78,7 +78,7 @@ dependencies {
     implementation("androidx.core:core-ktx:1.7.0-alpha01")
     implementation("androidx.appcompat:appcompat:1.4.0-alpha02")
     implementation("androidx.constraintlayout:constraintlayout:2.0.4")
-    implementation("com.google.android.material:material:1.3.0")
+    implementation("com.google.android.material:material:1.4.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
     implementation("androidx.paging:paging-runtime-ktx:$pagingVersion")
