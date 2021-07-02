@@ -97,7 +97,7 @@ dependencies {
     implementation(project(":composemd"))
 
     implementation("dev.chrisbanes.insetter:insetter:0.6.0")
-    implementation("com.google.accompanist:accompanist-insets:0.12.0")
+    implementation("com.google.accompanist:accompanist-insets:0.13.0")
 
     val hiltVersion = "2.37"
     implementation("com.google.dagger:hilt-android:$hiltVersion")
