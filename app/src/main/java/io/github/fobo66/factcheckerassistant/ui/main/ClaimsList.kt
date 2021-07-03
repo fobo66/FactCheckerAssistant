@@ -46,7 +46,6 @@ fun ClaimsList(mainViewModel: MainViewModel) {
                 )
             }
         }
-
     }
 }
 
@@ -101,4 +100,3 @@ fun ClaimItemPreview() {
         )
     )
 }
-
