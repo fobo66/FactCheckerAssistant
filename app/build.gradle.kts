@@ -93,7 +93,7 @@ dependencies {
     implementation("androidx.compose.material:material-icons-extended:$composeVersion")
     implementation("androidx.compose.runtime:runtime-livedata:$composeVersion")
     implementation("com.google.android.material:compose-theme-adapter:$composeVersion")
-    implementation("androidx.paging:paging-compose:1.0.0-alpha11")
+    implementation("androidx.paging:paging-compose:1.0.0-alpha12")
     implementation(project(":composemd"))
 
     implementation("dev.chrisbanes.insetter:insetter:0.6.0")
