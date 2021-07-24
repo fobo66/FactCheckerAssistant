@@ -1,14 +1,21 @@
 package io.github.fobo66.factcheckerassistant.ui.main
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.core.MutableTransitionState
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.material.Button
 import androidx.compose.material.Card
 import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.ListItem
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -27,6 +34,8 @@ import io.github.fobo66.factcheckerassistant.api.models.Publisher
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import java.util.*
 
+@ExperimentalAnimationApi
+@ExperimentalMaterialApi
 @ExperimentalCoroutinesApi
 @Composable
 fun ClaimsList(mainViewModel: MainViewModel) {
@@ -49,12 +58,16 @@ fun ClaimsList(mainViewModel: MainViewModel) {
     }
 }
 
+@ExperimentalMaterialApi
+@ExperimentalAnimationApi
 @Composable
 fun ClaimItem(claim: Claim?, modifier: Modifier = Modifier) {
     Card(
         modifier = modifier.padding(8.dp),
         shape = MaterialTheme.shapes.medium.copy(CornerSize(16.dp))
     ) {
+        val claimReviewVisibility = MutableTransitionState(true)
+
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -66,19 +79,38 @@ fun ClaimItem(claim: Claim?, modifier: Modifier = Modifier) {
                 style = MaterialTheme.typography.h5,
             )
             Text(text = claim?.claimant.orEmpty(), modifier = Modifier.align(Alignment.End))
+            AnimatedVisibility(claimReviewVisibility) {
+                LazyColumn(content = {
+                    items(claim?.claimReview ?: listOf()) {
+                        ClaimReviewItem(claimReview = it)
+                    }
+                })
+            }
+        }
+    }
+}
+
+@ExperimentalMaterialApi
+@Composable
+fun ClaimReviewItem(claimReview: ClaimReview, modifier: Modifier = Modifier) {
+    ListItem(modifier) {
+        Row {
+            Text(text = claimReview.title.orEmpty())
             Text(
                 text = stringResource(
                     id = R.string.claim_rating,
-                    claim?.claimReview?.get(0)?.textualRating.orEmpty()
+                    claimReview.textualRating
                 )
             )
-            Button(onClick = { /*TODO*/ }, modifier = Modifier.align(Alignment.End)) {
+            Button(onClick = { /*TODO*/ }) {
                 Text(text = stringResource(id = R.string.claim_learn_more))
             }
         }
     }
 }
 
+@ExperimentalAnimationApi
+@ExperimentalMaterialApi
 @Preview(widthDp = 300)
 @Composable
 fun ClaimItemPreview() {
