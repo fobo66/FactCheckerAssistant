@@ -1,3 +1,5 @@
+import com.android.sdklib.AndroidVersion.VersionCodes
+
 plugins {
     id("com.android.library")
     kotlin("android")
@@ -6,12 +8,11 @@ plugins {
 val composeVersion = "1.0.0-rc02"
 
 android {
-    compileSdk = 30
-    buildToolsVersion = "30.0.3"
+    compileSdk = VersionCodes.S
 
     defaultConfig {
-        minSdk = 21
-        targetSdk = 30
+        minSdk = VersionCodes.LOLLIPOP
+        targetSdk = VersionCodes.S
         version = 1
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"

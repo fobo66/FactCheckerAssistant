@@ -1,3 +1,5 @@
+import com.android.sdklib.AndroidVersion.VersionCodes
+
 plugins {
     id("com.android.application")
     kotlin("android")
@@ -9,12 +11,12 @@ plugins {
 val composeVersion = "1.0.0-rc02"
 
 android {
-    compileSdk = 30
+    compileSdk = VersionCodes.S
 
     defaultConfig {
         applicationId = "io.github.fobo66.factcheckerassistant"
-        minSdk = 21
-        targetSdk = 30
+        minSdk = VersionCodes.LOLLIPOP
+        targetSdk = VersionCodes.S
         versionCode = 1
         versionName = "1.0"
 
@@ -105,11 +107,11 @@ dependencies {
 
     val retrofitVersion = "2.9.0"
     implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
-    implementation("com.squareup.retrofit2:converter-moshi:${retrofitVersion}")
+    implementation("com.squareup.retrofit2:converter-moshi:$retrofitVersion")
 
     val moshiVersion = "1.12.0"
-    implementation("com.squareup.moshi:moshi:${moshiVersion}")
-    kapt("com.squareup.moshi:moshi-kotlin-codegen:${moshiVersion}")
+    implementation("com.squareup.moshi:moshi:$moshiVersion")
+    kapt("com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion")
 
     implementation("com.jakewharton.timber:timber:4.7.1")
 
