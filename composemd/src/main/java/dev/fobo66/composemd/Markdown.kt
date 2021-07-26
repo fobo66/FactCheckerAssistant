@@ -35,7 +35,7 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
-import com.google.accompanist.coil.rememberCoilPainter
+import coil.compose.rememberImagePainter
 import org.commonmark.node.BlockQuote
 import org.commonmark.node.BulletList
 import org.commonmark.node.Code
@@ -140,14 +140,13 @@ fun MarkdownListItems(
     }
 }
 
-
 @Composable
 fun MarkdownImage(image: Image) {
     Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
         Image(
-            painter = rememberCoilPainter(
-                request = image.destination,
-                shouldRefetchOnSizeChange = { _, _ -> false },
+            painter = rememberImagePainter(
+                data = image.destination,
+                onExecute = { _, _ -> false },
             ),
             contentDescription = image.title,
         )
@@ -261,9 +260,9 @@ fun MarkdownText(text: AnnotatedString, style: TextStyle) {
                 )
             ) {
                 Image(
-                    painter = rememberCoilPainter(
-                        request = it,
-                        shouldRefetchOnSizeChange = { _, _ -> false },
+                    painter = rememberImagePainter(
+                        data = it,
+                        onExecute = { _, _ -> false }
                     ),
                     contentDescription = null,
                 )
@@ -295,7 +294,8 @@ fun MarkdownBlockQuote(blockQuote: BlockQuote) {
 }
 
 private fun AnnotatedString.Builder.appendMarkdownChildren(
-    parent: Node, colors: Colors
+    parent: Node,
+    colors: Colors
 ) {
     var child = parent.firstChild
     while (child != null) {
