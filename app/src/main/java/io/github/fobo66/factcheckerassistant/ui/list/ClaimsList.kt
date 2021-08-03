@@ -1,6 +1,7 @@
 package io.github.fobo66.factcheckerassistant.ui.list
 
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -14,8 +15,10 @@ import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -24,8 +27,6 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
 import io.github.fobo66.factcheckerassistant.R
 import io.github.fobo66.factcheckerassistant.api.models.Claim
-import io.github.fobo66.factcheckerassistant.api.models.ClaimReview
-import io.github.fobo66.factcheckerassistant.api.models.Publisher
 import io.github.fobo66.factcheckerassistant.ui.main.MainViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import java.util.*
@@ -36,6 +37,9 @@ import java.util.*
 @Composable
 fun ClaimsList(mainViewModel: MainViewModel) {
     val claims = mainViewModel.claims.collectAsLazyPagingItems()
+    val query = mainViewModel.query.observeAsState()
+    val searchBarOffset =
+        animateDpAsState(if (query.value.isNullOrBlank()) (LocalConfiguration.current.screenHeightDp / 2).dp else 0.dp)
 
     LazyColumn {
         items(claims) { claim ->
@@ -88,7 +92,7 @@ fun ClaimItem(claim: Claim?, modifier: Modifier = Modifier) {
 
 @ExperimentalAnimationApi
 @ExperimentalMaterialApi
-@Preview(widthDp = 300)
+@Preview(widthDp = 450)
 @Composable
 fun ClaimItemPreview() {
     ClaimItem(
@@ -96,16 +100,7 @@ fun ClaimItemPreview() {
             "Imran Khan read COVID curve upside down to claim that the curve is flattening in Pakistan",
             "by Joe Smith",
             Date().toString(),
-            listOf(
-                ClaimReview(
-                    Publisher("", ""),
-                    "",
-                    "",
-                    Date().toString(),
-                    "True",
-                    Locale.US.toLanguageTag()
-                )
-            )
+            listOf()
         )
     )
 }

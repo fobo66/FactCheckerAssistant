@@ -17,15 +17,18 @@ class MainViewModel @Inject constructor(
     private val handle: SavedStateHandle
 ) : ViewModel() {
 
+    val query = handle.getLiveData<String>(KEY_QUERY)
+
     @ExperimentalCoroutinesApi
-    val claims = handle.getLiveData<String>(KEY_QUERY).asFlow()
+    val claims = query
+        .asFlow()
         .flatMapLatest { query ->
             factCheckRepository.search(query, DEFAULT_PAGE_SIZE).flow
         }
         .cachedIn(viewModelScope)
 
     fun search(query: String?) {
-        handle.set(KEY_QUERY, query)
+        this.query.postValue(query)
     }
 
     companion object {
