@@ -2,7 +2,6 @@ package io.github.fobo66.factcheckerassistant.ui.list
 
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentWidth
@@ -12,7 +11,6 @@ import androidx.compose.material.Button
 import androidx.compose.material.Card
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.ListItem
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -82,27 +80,6 @@ fun ClaimItem(claim: Claim?, modifier: Modifier = Modifier) {
                     .padding(vertical = 4.dp)
             )
             Button(modifier = Modifier.align(Alignment.End), onClick = { /*TODO*/ }) {
-                Text(text = stringResource(id = R.string.claim_learn_more))
-            }
-        }
-    }
-}
-
-@ExperimentalMaterialApi
-@Composable
-fun ClaimReviewItem(claimReview: ClaimReview, modifier: Modifier = Modifier) {
-    ListItem(modifier) {
-        Row {
-            Column {
-                Text(text = claimReview.title.orEmpty())
-                Text(
-                    text = stringResource(
-                        id = R.string.claim_rating,
-                        claimReview.textualRating
-                    )
-                )
-            }
-            Button(onClick = { /*TODO*/ }) {
                 Text(text = stringResource(id = R.string.claim_learn_more))
             }
         }
