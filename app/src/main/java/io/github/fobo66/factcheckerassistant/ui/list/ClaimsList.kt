@@ -1,15 +1,12 @@
-package io.github.fobo66.factcheckerassistant.ui.main
+package io.github.fobo66.factcheckerassistant.ui.list
 
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.animation.core.MutableTransitionState
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.material.Button
 import androidx.compose.material.Card
@@ -31,6 +28,7 @@ import io.github.fobo66.factcheckerassistant.R
 import io.github.fobo66.factcheckerassistant.api.models.Claim
 import io.github.fobo66.factcheckerassistant.api.models.ClaimReview
 import io.github.fobo66.factcheckerassistant.api.models.Publisher
+import io.github.fobo66.factcheckerassistant.ui.main.MainViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import java.util.*
 
@@ -66,7 +64,6 @@ fun ClaimItem(claim: Claim?, modifier: Modifier = Modifier) {
         modifier = modifier.padding(8.dp),
         shape = MaterialTheme.shapes.medium.copy(CornerSize(16.dp))
     ) {
-        val claimReviewVisibility = MutableTransitionState(true)
 
         Column(
             modifier = Modifier
@@ -78,13 +75,14 @@ fun ClaimItem(claim: Claim?, modifier: Modifier = Modifier) {
                 text = claim?.text.orEmpty(),
                 style = MaterialTheme.typography.h5,
             )
-            Text(text = claim?.claimant.orEmpty(), modifier = Modifier.align(Alignment.End))
-            AnimatedVisibility(claimReviewVisibility) {
-                LazyColumn(content = {
-                    items(claim?.claimReview ?: listOf()) {
-                        ClaimReviewItem(claimReview = it)
-                    }
-                })
+            Text(
+                text = claim?.claimant.orEmpty(),
+                modifier = Modifier
+                    .align(Alignment.End)
+                    .padding(vertical = 4.dp)
+            )
+            Button(modifier = Modifier.align(Alignment.End), onClick = { /*TODO*/ }) {
+                Text(text = stringResource(id = R.string.claim_learn_more))
             }
         }
     }
@@ -95,13 +93,15 @@ fun ClaimItem(claim: Claim?, modifier: Modifier = Modifier) {
 fun ClaimReviewItem(claimReview: ClaimReview, modifier: Modifier = Modifier) {
     ListItem(modifier) {
         Row {
-            Text(text = claimReview.title.orEmpty())
-            Text(
-                text = stringResource(
-                    id = R.string.claim_rating,
-                    claimReview.textualRating
+            Column {
+                Text(text = claimReview.title.orEmpty())
+                Text(
+                    text = stringResource(
+                        id = R.string.claim_rating,
+                        claimReview.textualRating
+                    )
                 )
-            )
+            }
             Button(onClick = { /*TODO*/ }) {
                 Text(text = stringResource(id = R.string.claim_learn_more))
             }
