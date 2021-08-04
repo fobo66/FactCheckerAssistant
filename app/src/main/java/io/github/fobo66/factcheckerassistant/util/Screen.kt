@@ -15,5 +15,5 @@ sealed class Screen(
 ) {
     object Search : Screen("search", R.string.main_fragment_title, Icons.Filled.Search)
     object Details : Screen("claim", R.string.main_fragment_title)
-    object Guide : Screen("guide", R.string.fact_check_guide_title, Icons.Filled.Plagiarism)
+    object Guide : Screen("guide", R.string.guide_fragment_title, Icons.Filled.Plagiarism)
 }

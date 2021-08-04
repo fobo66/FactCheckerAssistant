@@ -33,6 +33,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.insets.ProvideWindowInsets
+import com.google.accompanist.insets.navigationBarsPadding
 import com.google.accompanist.insets.statusBarsPadding
 import com.google.android.material.composethemeadapter.MdcTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -74,7 +75,7 @@ class MainActivity : ComponentActivity() {
                                 TopAppBar(
                                     title = {
                                         Text(
-                                            stringResource(R.string.fact_check_guide_title)
+                                            stringResource(R.string.app_name)
                                         )
                                     },
                                     backgroundColor = Color.Transparent,
@@ -85,7 +86,12 @@ class MainActivity : ComponentActivity() {
                             }
                         },
                         bottomBar = {
-                            BottomNavBar(navController)
+                            Surface(
+                                color = MaterialTheme.colors.primarySurface,
+                                elevation = topBarElevation
+                            ) {
+                                BottomNavBar(navController, Modifier.navigationBarsPadding())
+                            }
                         }
                     ) {
                         NavHost(navController, startDestination = "search") {
@@ -102,8 +108,10 @@ class MainActivity : ComponentActivity() {
     }
 
     @Composable
-    private fun BottomNavBar(navController: NavHostController) {
-        BottomNavigation {
+    private fun BottomNavBar(navController: NavHostController, modifier: Modifier = Modifier) {
+        BottomNavigation(
+            modifier = modifier
+        ) {
             val navBackStackEntry by navController.currentBackStackEntryAsState()
             val currentDestination = navBackStackEntry?.destination
             bottomBarItems.forEach { screen ->
