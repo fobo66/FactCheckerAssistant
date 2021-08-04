@@ -97,13 +97,12 @@ dependencies {
     implementation("androidx.compose.material:material-icons-core:$composeVersion")
     implementation("androidx.compose.material:material-icons-extended:$composeVersion")
     implementation("androidx.compose.runtime:runtime-livedata:$composeVersion")
-    implementation("com.google.android.material:compose-theme-adapter:$composeVersion")
+    implementation("com.google.android.material:compose-theme-adapter:1.0.0")
     implementation("androidx.paging:paging-compose:1.0.0-alpha12")
     implementation("androidx.navigation:navigation-compose:$navigationVersion")
     implementation("androidx.activity:activity-compose:$activityVersion")
     implementation(project(":composemd"))
 
-    implementation("dev.chrisbanes.insetter:insetter:0.6.0")
     implementation("com.google.accompanist:accompanist-insets:0.16.0")
 
     val hiltVersion = "2.38.1"
