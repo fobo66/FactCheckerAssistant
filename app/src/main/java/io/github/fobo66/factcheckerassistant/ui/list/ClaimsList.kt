@@ -1,7 +1,6 @@
 package io.github.fobo66.factcheckerassistant.ui.list
 
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -13,12 +12,15 @@ import androidx.compose.material.Card
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -37,11 +39,26 @@ import java.util.*
 @Composable
 fun ClaimsList(mainViewModel: MainViewModel) {
     val claims = mainViewModel.claims.collectAsLazyPagingItems()
-    val query = mainViewModel.query.observeAsState()
-    val searchBarOffset =
-        animateDpAsState(if (query.value.isNullOrBlank()) (LocalConfiguration.current.screenHeightDp / 2).dp else 0.dp)
+    var query by remember {
+        mutableStateOf("")
+    }
 
     LazyColumn {
+        item {
+            OutlinedTextField(
+                value = query,
+                onValueChange = {
+                    mainViewModel.search(it)
+                    query = it
+                },
+                modifier = Modifier
+                    .fillMaxWidth(),
+                placeholder = {
+                    Text(stringResource(R.string.search_hint))
+                }
+            )
+        }
+
         items(claims) { claim ->
             ClaimItem(claim)
         }
@@ -84,7 +101,7 @@ fun ClaimItem(claim: Claim?, modifier: Modifier = Modifier) {
                     .padding(vertical = 4.dp)
             )
             Button(modifier = Modifier.align(Alignment.End), onClick = { /*TODO*/ }) {
-                Text(text = stringResource(id = R.string.claim_learn_more))
+                Text(stringResource(R.string.claim_learn_more))
             }
         }
     }
