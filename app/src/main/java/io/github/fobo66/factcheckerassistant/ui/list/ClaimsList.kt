@@ -14,6 +14,8 @@ import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -22,8 +24,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
@@ -31,13 +34,12 @@ import io.github.fobo66.factcheckerassistant.R
 import io.github.fobo66.factcheckerassistant.api.models.Claim
 import io.github.fobo66.factcheckerassistant.ui.main.MainViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import java.util.*
 
 @ExperimentalAnimationApi
 @ExperimentalMaterialApi
 @ExperimentalCoroutinesApi
 @Composable
-fun ClaimsList(mainViewModel: MainViewModel) {
+fun ClaimsList(mainViewModel: MainViewModel = viewModel(), navController: NavController) {
     val claims = mainViewModel.claims.collectAsLazyPagingItems()
     var query by remember {
         mutableStateOf("")
@@ -55,12 +57,15 @@ fun ClaimsList(mainViewModel: MainViewModel) {
                     .fillMaxWidth(),
                 placeholder = {
                     Text(stringResource(R.string.search_hint))
+                },
+                leadingIcon = {
+                    Icons.Filled.Search
                 }
             )
         }
 
         items(claims) { claim ->
-            ClaimItem(claim)
+            ClaimItem(claim, navController)
         }
 
         if (claims.loadState.append == LoadState.Loading) {
@@ -78,7 +83,12 @@ fun ClaimsList(mainViewModel: MainViewModel) {
 @ExperimentalMaterialApi
 @ExperimentalAnimationApi
 @Composable
-fun ClaimItem(claim: Claim?, modifier: Modifier = Modifier) {
+fun ClaimItem(
+    claim: Claim?,
+    navController: NavController,
+    modifier: Modifier = Modifier,
+    mainViewModel: MainViewModel = viewModel()
+) {
     Card(
         modifier = modifier.padding(8.dp),
         shape = MaterialTheme.shapes.medium.copy(CornerSize(16.dp))
@@ -100,24 +110,12 @@ fun ClaimItem(claim: Claim?, modifier: Modifier = Modifier) {
                     .align(Alignment.End)
                     .padding(vertical = 4.dp)
             )
-            Button(modifier = Modifier.align(Alignment.End), onClick = { /*TODO*/ }) {
+            Button(modifier = Modifier.align(Alignment.End), onClick = {
+                mainViewModel.selectClaim(claim)
+                navController.navigate("details")
+            }) {
                 Text(stringResource(R.string.claim_learn_more))
             }
         }
     }
-}
-
-@ExperimentalAnimationApi
-@ExperimentalMaterialApi
-@Preview(widthDp = 450)
-@Composable
-fun ClaimItemPreview() {
-    ClaimItem(
-        claim = Claim(
-            "Imran Khan read COVID curve upside down to claim that the curve is flattening in Pakistan",
-            "by Joe Smith",
-            Date().toString(),
-            listOf()
-        )
-    )
 }

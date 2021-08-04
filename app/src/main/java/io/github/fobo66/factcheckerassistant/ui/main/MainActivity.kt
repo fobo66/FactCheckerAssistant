@@ -1,11 +1,8 @@
 package io.github.fobo66.factcheckerassistant.ui.main
 
-import android.app.SearchManager
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.viewModels
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
@@ -50,8 +47,6 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    private val mainViewModel: MainViewModel by viewModels()
-
     private val bottomBarItems = listOf(
         Screen.Search,
         Screen.Guide
@@ -95,16 +90,14 @@ class MainActivity : ComponentActivity() {
                         }
                     ) {
                         NavHost(navController, startDestination = "search") {
-                            composable("search") { ClaimsList(mainViewModel) }
-                            composable("search/{claimId}") { ClaimDetails() }
+                            composable("search") { ClaimsList(navController = navController) }
+                            composable("details") { ClaimDetails() }
                             composable("guide") { FactCheckGuide() }
                         }
                     }
                 }
             }
         }
-
-        processSearch(intent)
     }
 
     @Composable
@@ -136,18 +129,6 @@ class MainActivity : ComponentActivity() {
                     }
                 )
             }
-        }
-    }
-
-    override fun onNewIntent(intent: Intent) {
-        super.onNewIntent(intent)
-        processSearch(intent)
-    }
-
-    private fun processSearch(intent: Intent) {
-        if (Intent.ACTION_SEARCH == intent.action) {
-            val query = intent.getStringExtra(SearchManager.QUERY)
-            mainViewModel.search(query)
         }
     }
 
