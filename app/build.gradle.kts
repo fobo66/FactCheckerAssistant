@@ -8,7 +8,7 @@ plugins {
     id("dagger.hilt.android.plugin")
 }
 
-val composeVersion = "1.0.0"
+val composeVersion = "1.0.1"
 
 android {
     compileSdk = VersionCodes.S
@@ -71,8 +71,8 @@ kapt {
 
 dependencies {
     val lifecycleVersion = "2.3.1"
-    val activityVersion = "1.3.0"
-    val fragmentVersion = "1.4.0-alpha05"
+    val activityVersion = "1.3.1"
+    val fragmentVersion = "1.4.0-alpha06"
     val pagingVersion = "3.0.1"
     val navigationVersion = "2.4.0-alpha05"
     val coroutinesVersion = "1.5.1"
@@ -104,7 +104,7 @@ dependencies {
     implementation(project(":composemd"))
 
     implementation("dev.chrisbanes.insetter:insetter:0.6.0")
-    implementation("com.google.accompanist:accompanist-insets:0.15.0")
+    implementation("com.google.accompanist:accompanist-insets:0.16.0")
 
     val hiltVersion = "2.38.1"
     implementation("com.google.dagger:hilt-android:$hiltVersion")
