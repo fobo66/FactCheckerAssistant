@@ -28,7 +28,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavController
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
@@ -42,7 +41,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @ExperimentalMaterialApi
 @ExperimentalCoroutinesApi
 @Composable
-fun ClaimsSearch(mainViewModel: MainViewModel = viewModel(), navController: NavController) {
+fun ClaimsSearch(mainViewModel: MainViewModel = viewModel(), onItemClick: (Claim?) -> Unit) {
     val claims = mainViewModel.claims.collectAsLazyPagingItems()
     var query by remember {
         mutableStateOf("")
@@ -68,7 +67,7 @@ fun ClaimsSearch(mainViewModel: MainViewModel = viewModel(), navController: NavC
         }
 
         items(claims) { claim ->
-            ClaimItem(claim, navController)
+            ClaimItem(claim, onItemClick)
         }
 
         if (claims.loadState.append == LoadState.Loading) {
@@ -88,7 +87,7 @@ fun ClaimsSearch(mainViewModel: MainViewModel = viewModel(), navController: NavC
 @Composable
 fun ClaimItem(
     claim: Claim?,
-    navController: NavController,
+    onItemClick: (Claim?) -> Unit,
     modifier: Modifier = Modifier,
     mainViewModel: MainViewModel = viewModel()
 ) {
@@ -115,7 +114,7 @@ fun ClaimItem(
             )
             Button(modifier = Modifier.align(Alignment.End), onClick = {
                 mainViewModel.selectClaim(claim)
-                navController.navigate("details")
+                onItemClick(claim)
             }) {
                 Text(stringResource(R.string.claim_learn_more))
             }

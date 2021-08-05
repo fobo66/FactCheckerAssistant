@@ -92,7 +92,11 @@ class MainActivity : ComponentActivity() {
                         }
                     ) {
                         NavHost(navController, startDestination = "search") {
-                            composable("search") { ClaimsSearch(navController = navController) }
+                            composable("search") {
+                                ClaimsSearch(onItemClick = {
+                                    navController.navigate("details")
+                                })
+                            }
                             composable("details") { ClaimDetails() }
                             composable("guide") { FactCheckGuide() }
                         }
@@ -105,7 +109,8 @@ class MainActivity : ComponentActivity() {
     @Composable
     private fun BottomNavBar(navController: NavHostController, modifier: Modifier = Modifier) {
         BottomNavigation(
-            modifier = modifier
+            modifier = modifier,
+            elevation = 0.dp
         ) {
             val navBackStackEntry by navController.currentBackStackEntryAsState()
             val currentDestination = navBackStackEntry?.destination

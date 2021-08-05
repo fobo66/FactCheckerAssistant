@@ -6,11 +6,9 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import java.util.*
 import javax.inject.Inject
 
-
 interface LocaleProvider {
     val currentLocale: Locale
 }
-
 
 class LocaleProviderImpl @Inject constructor(
     @ApplicationContext private val context: Context
