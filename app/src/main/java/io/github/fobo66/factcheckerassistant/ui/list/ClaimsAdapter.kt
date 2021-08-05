@@ -27,7 +27,6 @@ class ClaimsAdapter : PagingDataAdapter<Claim, ClaimsViewHolder>(diffUtilCallbac
             override fun areContentsTheSame(oldItem: Claim, newItem: Claim): Boolean {
                 return oldItem.text == newItem.text
             }
-
         }
     }
 }

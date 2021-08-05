@@ -1,6 +1,7 @@
 package io.github.fobo66.factcheckerassistant.ui.list
 
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -11,6 +12,7 @@ import androidx.compose.material.Button
 import androidx.compose.material.Card
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
@@ -35,18 +37,19 @@ import io.github.fobo66.factcheckerassistant.api.models.Claim
 import io.github.fobo66.factcheckerassistant.ui.main.MainViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
+@ExperimentalFoundationApi
 @ExperimentalAnimationApi
 @ExperimentalMaterialApi
 @ExperimentalCoroutinesApi
 @Composable
-fun ClaimsList(mainViewModel: MainViewModel = viewModel(), navController: NavController) {
+fun ClaimsSearch(mainViewModel: MainViewModel = viewModel(), navController: NavController) {
     val claims = mainViewModel.claims.collectAsLazyPagingItems()
     var query by remember {
         mutableStateOf("")
     }
 
     LazyColumn {
-        item {
+        stickyHeader {
             OutlinedTextField(
                 value = query,
                 onValueChange = {
@@ -59,7 +62,7 @@ fun ClaimsList(mainViewModel: MainViewModel = viewModel(), navController: NavCon
                     Text(stringResource(R.string.search_hint))
                 },
                 leadingIcon = {
-                    Icons.Filled.Search
+                    Icon(imageVector = Icons.Filled.Search, contentDescription = null)
                 }
             )
         }

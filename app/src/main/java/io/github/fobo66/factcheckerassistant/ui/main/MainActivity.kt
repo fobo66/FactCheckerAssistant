@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.ExperimentalMaterialApi
@@ -37,10 +38,11 @@ import dagger.hilt.android.AndroidEntryPoint
 import io.github.fobo66.factcheckerassistant.R
 import io.github.fobo66.factcheckerassistant.ui.guide.FactCheckGuide
 import io.github.fobo66.factcheckerassistant.ui.list.ClaimDetails
-import io.github.fobo66.factcheckerassistant.ui.list.ClaimsList
+import io.github.fobo66.factcheckerassistant.ui.list.ClaimsSearch
 import io.github.fobo66.factcheckerassistant.util.Screen
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
+@ExperimentalFoundationApi
 @ExperimentalCoroutinesApi
 @ExperimentalMaterialApi
 @ExperimentalAnimationApi
@@ -90,7 +92,7 @@ class MainActivity : ComponentActivity() {
                         }
                     ) {
                         NavHost(navController, startDestination = "search") {
-                            composable("search") { ClaimsList(navController = navController) }
+                            composable("search") { ClaimsSearch(navController = navController) }
                             composable("details") { ClaimDetails() }
                             composable("guide") { FactCheckGuide() }
                         }
