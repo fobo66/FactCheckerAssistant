@@ -5,7 +5,7 @@ plugins {
     kotlin("android")
 }
 
-val composeVersion = "1.0.0"
+val composeVersion = "1.0.1"
 
 android {
     compileSdk = VersionCodes.S
