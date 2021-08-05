@@ -67,7 +67,7 @@ fun ClaimsSearch(mainViewModel: MainViewModel = viewModel(), onItemClick: (Claim
         }
 
         items(claims) { claim ->
-            ClaimItem(claim, onItemClick)
+            ClaimItem(claim, onItemClick = onItemClick)
         }
 
         if (claims.loadState.append == LoadState.Loading) {
@@ -87,8 +87,8 @@ fun ClaimsSearch(mainViewModel: MainViewModel = viewModel(), onItemClick: (Claim
 @Composable
 fun ClaimItem(
     claim: Claim?,
-    onItemClick: (Claim?) -> Unit,
     modifier: Modifier = Modifier,
+    onItemClick: (Claim?) -> Unit = {},
     mainViewModel: MainViewModel = viewModel()
 ) {
     Card(
