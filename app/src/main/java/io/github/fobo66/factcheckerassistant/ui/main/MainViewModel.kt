@@ -9,11 +9,15 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import io.github.fobo66.factcheckerassistant.api.models.Claim
 import io.github.fobo66.factcheckerassistant.data.FactCheckRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.filterNotNull
+import kotlinx.coroutines.flow.debounce
+import kotlinx.coroutines.flow.filterNot
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
+import kotlin.time.Duration
+import kotlin.time.ExperimentalTime
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
@@ -26,8 +30,11 @@ class MainViewModel @Inject constructor(
         .stateIn(viewModelScope, SharingStarted.Lazily, "")
 
     @ExperimentalCoroutinesApi
+    @FlowPreview
+    @ExperimentalTime
     val claims = query
-        .filterNotNull()
+        .filterNot { it.isNullOrBlank() }
+        .debounce(Duration.milliseconds(SEARCH_DEBOUNCE))
         .flatMapLatest { query ->
             factCheckRepository.search(query, DEFAULT_PAGE_SIZE).flow
         }
@@ -49,5 +56,6 @@ class MainViewModel @Inject constructor(
         private const val KEY_QUERY = "query"
         private const val KEY_SELECTED_CLAIM = "claim"
         private const val DEFAULT_PAGE_SIZE = 10
+        private const val SEARCH_DEBOUNCE = 500
     }
 }

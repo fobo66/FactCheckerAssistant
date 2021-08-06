@@ -33,11 +33,15 @@ import io.github.fobo66.factcheckerassistant.R
 import io.github.fobo66.factcheckerassistant.api.models.Claim
 import io.github.fobo66.factcheckerassistant.ui.main.MainViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
+import kotlin.time.ExperimentalTime
 
 @ExperimentalFoundationApi
 @ExperimentalAnimationApi
 @ExperimentalMaterialApi
 @ExperimentalCoroutinesApi
+@FlowPreview
+@ExperimentalTime
 @Composable
 fun ClaimsSearch(
     mainViewModel: MainViewModel = hiltViewModel(),

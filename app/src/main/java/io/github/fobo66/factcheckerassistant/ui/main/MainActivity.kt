@@ -41,11 +41,15 @@ import io.github.fobo66.factcheckerassistant.ui.list.ClaimDetails
 import io.github.fobo66.factcheckerassistant.ui.list.ClaimsSearch
 import io.github.fobo66.factcheckerassistant.util.Screen
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
+import kotlin.time.ExperimentalTime
 
 @ExperimentalFoundationApi
 @ExperimentalCoroutinesApi
 @ExperimentalMaterialApi
 @ExperimentalAnimationApi
+@FlowPreview
+@ExperimentalTime
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
