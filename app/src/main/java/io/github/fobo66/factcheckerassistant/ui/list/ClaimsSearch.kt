@@ -64,12 +64,25 @@ fun ClaimsSearch(
                 },
                 leadingIcon = {
                     Icon(imageVector = Icons.Filled.Search, contentDescription = null)
-                }
+                },
+                maxLines = 1
             )
         }
 
-        items(claims) { claim ->
-            ClaimItem(claim, onSearchResultClick = onSearchResultClick)
+        if (claims.itemCount == 0) {
+            item {
+                Text(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .wrapContentWidth(Alignment.CenterHorizontally)
+                        .padding(8.dp),
+                    text = stringResource(id = R.string.claims_empty_result)
+                )
+            }
+        } else {
+            items(claims) { claim ->
+                ClaimItem(claim, onSearchResultClick = onSearchResultClick)
+            }
         }
 
         if (claims.loadState.append == LoadState.Loading) {
@@ -78,6 +91,17 @@ fun ClaimsSearch(
                     modifier = Modifier
                         .fillMaxWidth()
                         .wrapContentWidth(Alignment.CenterHorizontally)
+                )
+            }
+        }
+
+        if (claims.loadState.append is LoadState.Error) {
+            item {
+                Text(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .wrapContentWidth(Alignment.CenterHorizontally),
+                    text = stringResource(id = R.string.claims_loading_error)
                 )
             }
         }

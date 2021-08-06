@@ -8,4 +8,6 @@
     <string name="fact_check_guide_title">How to check claims on the internet?</string>
     <string name="main_fragment_title">Search</string>
     <string name="guide_fragment_title">Guide</string>
+    <string name="claims_loading_error">Failed to load claims for the given query</string>
+    <string name="claims_empty_result">No items</string>
 </resources>
