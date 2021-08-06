@@ -10,6 +10,7 @@ import io.github.fobo66.factcheckerassistant.api.models.Claim
 import io.github.fobo66.factcheckerassistant.data.FactCheckRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
@@ -20,9 +21,13 @@ class MainViewModel @Inject constructor(
     private val handle: SavedStateHandle
 ) : ViewModel() {
 
-    @ExperimentalCoroutinesApi
-    val claims = handle.getLiveData<String>(KEY_QUERY)
+    val query = handle.getLiveData<String>(KEY_QUERY)
         .asFlow()
+        .stateIn(viewModelScope, SharingStarted.Lazily, "")
+
+    @ExperimentalCoroutinesApi
+    val claims = query
+        .filterNotNull()
         .flatMapLatest { query ->
             factCheckRepository.search(query, DEFAULT_PAGE_SIZE).flow
         }

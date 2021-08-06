@@ -93,7 +93,7 @@ class MainActivity : ComponentActivity() {
                     ) {
                         NavHost(navController, startDestination = "search") {
                             composable("search") {
-                                ClaimsSearch(onItemClick = {
+                                ClaimsSearch(onSearchResultClick = {
                                     navController.navigate("details")
                                 })
                             }

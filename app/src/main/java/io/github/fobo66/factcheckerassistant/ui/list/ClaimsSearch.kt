@@ -14,15 +14,13 @@ import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
+import androidx.compose.material.TextField
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -41,19 +39,19 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @ExperimentalMaterialApi
 @ExperimentalCoroutinesApi
 @Composable
-fun ClaimsSearch(mainViewModel: MainViewModel = hiltViewModel(), onItemClick: (Claim?) -> Unit) {
+fun ClaimsSearch(
+    mainViewModel: MainViewModel = hiltViewModel(),
+    onSearchResultClick: (Claim?) -> Unit
+) {
     val claims = mainViewModel.claims.collectAsLazyPagingItems()
-    var query by remember {
-        mutableStateOf("")
-    }
+    val query by mainViewModel.query.collectAsState(initial = "")
 
     LazyColumn {
         stickyHeader {
-            OutlinedTextField(
+            TextField(
                 value = query,
                 onValueChange = {
                     mainViewModel.search(it)
-                    query = it
                 },
                 modifier = Modifier
                     .fillMaxWidth(),
@@ -67,7 +65,7 @@ fun ClaimsSearch(mainViewModel: MainViewModel = hiltViewModel(), onItemClick: (C
         }
 
         items(claims) { claim ->
-            ClaimItem(claim, onItemClick = onItemClick)
+            ClaimItem(claim, onSearchResultClick = onSearchResultClick)
         }
 
         if (claims.loadState.append == LoadState.Loading) {
@@ -88,7 +86,7 @@ fun ClaimsSearch(mainViewModel: MainViewModel = hiltViewModel(), onItemClick: (C
 fun ClaimItem(
     claim: Claim?,
     modifier: Modifier = Modifier,
-    onItemClick: (Claim?) -> Unit = {},
+    onSearchResultClick: (Claim?) -> Unit = {},
     mainViewModel: MainViewModel = hiltViewModel()
 ) {
     Card(
@@ -114,7 +112,7 @@ fun ClaimItem(
             )
             Button(modifier = Modifier.align(Alignment.End), onClick = {
                 mainViewModel.selectClaim(claim)
-                onItemClick(claim)
+                onSearchResultClick(claim)
             }) {
                 Text(stringResource(R.string.claim_learn_more))
             }
