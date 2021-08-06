@@ -72,7 +72,6 @@ kapt {
 dependencies {
     val lifecycleVersion = "2.3.1"
     val activityVersion = "1.3.1"
-    val fragmentVersion = "1.4.0-alpha06"
     val pagingVersion = "3.0.1"
     val navigationVersion = "2.4.0-alpha05"
     val coroutinesVersion = "1.5.1"
@@ -81,14 +80,9 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
     implementation("androidx.core:core-ktx:1.7.0-alpha01")
     implementation("androidx.activity:activity-ktx:$activityVersion")
-    implementation("androidx.fragment:fragment-ktx:$fragmentVersion")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.0")
-    implementation("com.google.android.material:material:1.4.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
     implementation("androidx.paging:paging-runtime-ktx:$pagingVersion")
-    implementation("androidx.navigation:navigation-fragment-ktx:$navigationVersion")
-    implementation("androidx.navigation:navigation-ui-ktx:$navigationVersion")
 
     implementation("androidx.compose.ui:ui:$composeVersion")
     implementation("androidx.compose.ui:ui-tooling:$composeVersion")
