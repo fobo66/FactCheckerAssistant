@@ -27,7 +27,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
@@ -41,7 +41,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @ExperimentalMaterialApi
 @ExperimentalCoroutinesApi
 @Composable
-fun ClaimsSearch(mainViewModel: MainViewModel = viewModel(), onItemClick: (Claim?) -> Unit) {
+fun ClaimsSearch(mainViewModel: MainViewModel = hiltViewModel(), onItemClick: (Claim?) -> Unit) {
     val claims = mainViewModel.claims.collectAsLazyPagingItems()
     var query by remember {
         mutableStateOf("")
@@ -89,7 +89,7 @@ fun ClaimItem(
     claim: Claim?,
     modifier: Modifier = Modifier,
     onItemClick: (Claim?) -> Unit = {},
-    mainViewModel: MainViewModel = viewModel()
+    mainViewModel: MainViewModel = hiltViewModel()
 ) {
     Card(
         modifier = modifier.padding(8.dp),

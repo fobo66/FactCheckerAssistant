@@ -12,7 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import io.github.fobo66.factcheckerassistant.R
 import io.github.fobo66.factcheckerassistant.api.models.ClaimReview
 import io.github.fobo66.factcheckerassistant.api.models.Publisher
@@ -20,7 +20,7 @@ import io.github.fobo66.factcheckerassistant.ui.main.MainViewModel
 
 @ExperimentalMaterialApi
 @Composable
-fun ClaimDetails(viewModel: MainViewModel = viewModel()) {
+fun ClaimDetails(viewModel: MainViewModel = hiltViewModel()) {
     val claim by viewModel.selectedClaim.collectAsState()
 
     LazyColumn {

@@ -100,6 +100,7 @@ dependencies {
     implementation("com.google.android.material:compose-theme-adapter:1.0.0")
     implementation("androidx.paging:paging-compose:1.0.0-alpha12")
     implementation("androidx.navigation:navigation-compose:$navigationVersion")
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0-alpha03")
     implementation("androidx.activity:activity-compose:$activityVersion")
     implementation(project(":composemd"))
 
