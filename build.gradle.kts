@@ -19,11 +19,11 @@ allprojects {
     }
 }
 
-tasks.register("clean", Delete::class) {
-    delete(rootProject.buildDir)
-}
-
 tasks {
+    register("clean", Delete::class) {
+        delete(rootProject.buildDir)
+    }
+
     withType<io.gitlab.arturbosch.detekt.Detekt> {
         // Target version of the generated JVM bytecode. It is used for type resolution.
         this.jvmTarget = "11"
