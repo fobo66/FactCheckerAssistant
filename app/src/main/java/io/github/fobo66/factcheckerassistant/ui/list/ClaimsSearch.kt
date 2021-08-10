@@ -114,8 +114,7 @@ fun ClaimsSearch(
 fun ClaimItem(
     claim: Claim?,
     modifier: Modifier = Modifier,
-    onSearchResultClick: (Claim?) -> Unit = {},
-    mainViewModel: MainViewModel = hiltViewModel()
+    onSearchResultClick: (Claim?) -> Unit = {}
 ) {
     Card(
         modifier = modifier.padding(8.dp),
@@ -139,7 +138,6 @@ fun ClaimItem(
                     .padding(vertical = 4.dp)
             )
             Button(modifier = Modifier.align(Alignment.End), onClick = {
-                mainViewModel.selectClaim(claim)
                 onSearchResultClick(claim)
             }) {
                 Text(stringResource(R.string.claim_learn_more))

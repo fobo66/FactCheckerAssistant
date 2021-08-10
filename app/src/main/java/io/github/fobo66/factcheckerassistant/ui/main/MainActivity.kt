@@ -23,6 +23,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowCompat
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
@@ -97,7 +98,9 @@ class MainActivity : ComponentActivity() {
                     ) {
                         NavHost(navController, startDestination = "search") {
                             composable("search") {
-                                ClaimsSearch(onSearchResultClick = {
+                                val mainViewModel: MainViewModel = hiltViewModel()
+                                ClaimsSearch(mainViewModel, onSearchResultClick = {
+                                    mainViewModel.selectClaim(it)
                                     navController.navigate("details")
                                 })
                             }
