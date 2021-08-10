@@ -73,7 +73,7 @@ dependencies {
     val lifecycleVersion = "2.3.1"
     val activityVersion = "1.3.1"
     val pagingVersion = "3.0.1"
-    val navigationVersion = "2.4.0-alpha05"
+    val navigationVersion = "2.4.0-alpha06"
     val coroutinesVersion = "1.5.1"
 
     implementation(fileTree("dir" to "libs", "include" to listOf("*.jar")))
@@ -91,14 +91,14 @@ dependencies {
     implementation("androidx.compose.material:material-icons-core:$composeVersion")
     implementation("androidx.compose.material:material-icons-extended:$composeVersion")
     implementation("androidx.compose.runtime:runtime-livedata:$composeVersion")
-    implementation("com.google.android.material:compose-theme-adapter:1.0.0")
+    implementation("com.google.android.material:compose-theme-adapter:$composeVersion")
     implementation("androidx.paging:paging-compose:1.0.0-alpha12")
     implementation("androidx.navigation:navigation-compose:$navigationVersion")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0-alpha03")
     implementation("androidx.activity:activity-compose:$activityVersion")
     implementation(project(":composemd"))
 
-    implementation("com.google.accompanist:accompanist-insets:0.16.0")
+    implementation("com.google.accompanist:accompanist-insets:0.16.1")
 
     val hiltVersion = "2.38.1"
     implementation("com.google.dagger:hilt-android:$hiltVersion")
