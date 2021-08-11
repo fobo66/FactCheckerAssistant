@@ -91,7 +91,6 @@ dependencies {
     implementation("androidx.compose.material:material-icons-core:$composeVersion")
     implementation("androidx.compose.material:material-icons-extended:$composeVersion")
     implementation("androidx.compose.runtime:runtime-livedata:$composeVersion")
-    implementation("com.google.android.material:compose-theme-adapter:$composeVersion")
     implementation("androidx.paging:paging-compose:1.0.0-alpha12")
     implementation("androidx.navigation:navigation-compose:$navigationVersion")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0-alpha03")
