@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.material.Button
 import androidx.compose.material.Card
 import androidx.compose.material.CircularProgressIndicator
@@ -118,7 +117,7 @@ fun ClaimItem(
 ) {
     Card(
         modifier = modifier.padding(8.dp),
-        shape = MaterialTheme.shapes.medium.copy(CornerSize(16.dp))
+        shape = MaterialTheme.shapes.medium
     ) {
 
         Column(

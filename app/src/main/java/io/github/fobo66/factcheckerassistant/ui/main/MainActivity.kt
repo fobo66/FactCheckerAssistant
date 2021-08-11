@@ -34,12 +34,12 @@ import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.insets.ProvideWindowInsets
 import com.google.accompanist.insets.navigationBarsPadding
 import com.google.accompanist.insets.statusBarsPadding
-import com.google.android.material.composethemeadapter.MdcTheme
 import dagger.hilt.android.AndroidEntryPoint
 import io.github.fobo66.factcheckerassistant.R
 import io.github.fobo66.factcheckerassistant.ui.guide.FactCheckGuide
 import io.github.fobo66.factcheckerassistant.ui.list.ClaimDetails
 import io.github.fobo66.factcheckerassistant.ui.list.ClaimsSearch
+import io.github.fobo66.factcheckerassistant.ui.theme.FactCheckerAssistantTheme
 import io.github.fobo66.factcheckerassistant.util.Screen
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
@@ -65,14 +65,14 @@ class MainActivity : ComponentActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
 
         setContent {
-            MdcTheme {
+            FactCheckerAssistantTheme {
                 ProvideWindowInsets {
                     val navController = rememberNavController()
                     Scaffold(
                         topBar = {
                             Surface(
                                 color = MaterialTheme.colors.primarySurface,
-                                elevation = topBarElevation
+                                elevation = 4.dp
                             ) {
                                 TopAppBar(
                                     title = {
@@ -90,7 +90,7 @@ class MainActivity : ComponentActivity() {
                         bottomBar = {
                             Surface(
                                 color = MaterialTheme.colors.primarySurface,
-                                elevation = topBarElevation
+                                elevation = 4.dp
                             ) {
                                 BottomNavBar(navController, Modifier.navigationBarsPadding())
                             }
@@ -117,7 +117,9 @@ class MainActivity : ComponentActivity() {
     private fun BottomNavBar(navController: NavHostController, modifier: Modifier = Modifier) {
         BottomNavigation(
             modifier = modifier,
-            elevation = 0.dp
+            elevation = 0.dp,
+            backgroundColor = Color.Transparent,
+            contentColor = contentColorFor(MaterialTheme.colors.primarySurface)
         ) {
             val navBackStackEntry by navController.currentBackStackEntryAsState()
             val currentDestination = navBackStackEntry?.destination
@@ -144,9 +146,5 @@ class MainActivity : ComponentActivity() {
                 )
             }
         }
-    }
-
-    companion object {
-        private val topBarElevation = 4.dp
     }
 }
