@@ -118,7 +118,7 @@ dependencies {
     implementation("com.squareup.moshi:moshi:$moshiVersion")
     kapt("com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion")
 
-    implementation("com.jakewharton.timber:timber:5.0.0")
+    implementation("com.jakewharton.timber:timber:5.0.1")
 
     testImplementation("junit:junit:4.13.2")
     testImplementation("io.mockk:mockk:1.12.0")
