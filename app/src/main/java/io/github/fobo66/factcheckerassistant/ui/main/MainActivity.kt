@@ -96,15 +96,16 @@ class MainActivity : ComponentActivity() {
                             }
                         }
                     ) {
+                        val mainViewModel: MainViewModel = hiltViewModel()
+
                         NavHost(navController, startDestination = "search") {
                             composable("search") {
-                                val mainViewModel: MainViewModel = hiltViewModel()
                                 ClaimsSearch(mainViewModel, onSearchResultClick = {
                                     mainViewModel.selectClaim(it)
                                     navController.navigate("details")
                                 })
                             }
-                            composable("details") { ClaimDetails() }
+                            composable("details") { ClaimDetails(mainViewModel) }
                             composable("guide") { FactCheckGuide() }
                         }
                     }
