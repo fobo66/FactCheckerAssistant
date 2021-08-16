@@ -56,6 +56,6 @@ class MainViewModel @Inject constructor(
         private const val KEY_QUERY = "query"
         private const val KEY_SELECTED_CLAIM = "claim"
         private const val DEFAULT_PAGE_SIZE = 10
-        private const val SEARCH_DEBOUNCE = 500
+        private const val SEARCH_DEBOUNCE = 300
     }
 }
