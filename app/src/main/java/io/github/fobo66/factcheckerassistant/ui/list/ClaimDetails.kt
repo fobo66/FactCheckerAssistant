@@ -1,5 +1,6 @@
 package io.github.fobo66.factcheckerassistant.ui.list
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.ExperimentalMaterialApi
@@ -11,6 +12,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -24,14 +26,16 @@ import io.github.fobo66.factcheckerassistant.ui.main.MainViewModel
 fun ClaimDetails(viewModel: MainViewModel = hiltViewModel()) {
     val claim by viewModel.selectedClaim.collectAsState()
 
-    Text(
-        text = claim?.text.orEmpty(),
-        style = MaterialTheme.typography.h3
-    )
-
-    LazyColumn {
-        items(claim?.claimReview ?: listOf()) {
-            ClaimReviewItem(it)
+    Column {
+        Text(
+            text = claim?.text.orEmpty(),
+            style = MaterialTheme.typography.h5
+        )
+        Text(text = stringResource(R.string.claim_reviews_title), fontWeight = FontWeight.Bold)
+        LazyColumn {
+            items(claim?.claimReview ?: listOf()) {
+                ClaimReviewItem(it)
+            }
         }
     }
 }
