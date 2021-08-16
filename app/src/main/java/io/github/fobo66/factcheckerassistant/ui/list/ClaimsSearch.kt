@@ -47,7 +47,7 @@ import kotlin.time.ExperimentalTime
 @Composable
 fun ClaimsSearch(
     mainViewModel: MainViewModel = hiltViewModel(),
-    onSearchResultClick: (Claim?) -> Unit
+    onSearchResultClick: (Claim?) -> Unit = {}
 ) {
     val claims = mainViewModel.claims.collectAsLazyPagingItems()
     val query by mainViewModel.query.collectAsState(initial = "")
@@ -116,7 +116,7 @@ fun ClaimsSearch(
 fun ClaimItem(
     claim: Claim?,
     modifier: Modifier = Modifier,
-    onSearchResultClick: (Claim?) -> Unit = {}
+    onSearchResultClick: (Claim?) -> Unit
 ) {
     Card(
         modifier = modifier
