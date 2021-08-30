@@ -7,7 +7,7 @@ buildscript {
         classpath("com.android.tools.build:gradle:7.1.0-alpha10")
         classpath(kotlin("gradle-plugin", version = "1.5.10"))
         classpath("com.google.dagger:hilt-android-gradle-plugin:2.38.1")
-        classpath("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.18.0")
+        classpath("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.18.1")
     }
 }
 
