@@ -5,7 +5,7 @@ buildscript {
     }
     dependencies {
         classpath("com.android.tools.build:gradle:7.1.0-alpha11")
-        classpath(kotlin("gradle-plugin", version = "1.5.10"))
+        classpath(kotlin("gradle-plugin", version = "1.5.21"))
         classpath("com.google.dagger:hilt-android-gradle-plugin:2.38.1")
         classpath("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.18.1")
     }
@@ -19,11 +19,11 @@ allprojects {
     }
 }
 
-tasks.register("clean", Delete::class) {
-    delete(rootProject.buildDir)
-}
-
 tasks {
+    register("clean", Delete::class) {
+        delete(rootProject.buildDir)
+    }
+
     withType<io.gitlab.arturbosch.detekt.Detekt> {
         // Target version of the generated JVM bytecode. It is used for type resolution.
         this.jvmTarget = "11"

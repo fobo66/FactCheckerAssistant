@@ -6,10 +6,18 @@ import androidx.lifecycle.asFlow
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
 import dagger.hilt.android.lifecycle.HiltViewModel
+import io.github.fobo66.factcheckerassistant.api.models.Claim
 import io.github.fobo66.factcheckerassistant.data.FactCheckRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.debounce
+import kotlinx.coroutines.flow.filterNot
 import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
+import kotlin.time.Duration
+import kotlin.time.ExperimentalTime
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
@@ -17,19 +25,37 @@ class MainViewModel @Inject constructor(
     private val handle: SavedStateHandle
 ) : ViewModel() {
 
+    val query = handle.getLiveData<String>(KEY_QUERY)
+        .asFlow()
+        .stateIn(viewModelScope, SharingStarted.Lazily, "")
+
     @ExperimentalCoroutinesApi
-    val claims = handle.getLiveData<String>(KEY_QUERY).asFlow()
+    @FlowPreview
+    @ExperimentalTime
+    val claims = query
+        .filterNot { it.isNullOrBlank() }
+        .debounce(Duration.milliseconds(SEARCH_DEBOUNCE))
         .flatMapLatest { query ->
             factCheckRepository.search(query, DEFAULT_PAGE_SIZE).flow
         }
         .cachedIn(viewModelScope)
 
+    val selectedClaim = handle.getLiveData<Claim>(KEY_SELECTED_CLAIM)
+        .asFlow()
+        .stateIn(viewModelScope, SharingStarted.Lazily, null)
+
     fun search(query: String?) {
-        handle.set(KEY_QUERY, query)
+        handle.getLiveData<String>(KEY_QUERY).postValue(query)
+    }
+
+    fun selectClaim(claim: Claim?) {
+        handle.getLiveData<Claim>(KEY_SELECTED_CLAIM).postValue(claim)
     }
 
     companion object {
         private const val KEY_QUERY = "query"
+        private const val KEY_SELECTED_CLAIM = "claim"
         private const val DEFAULT_PAGE_SIZE = 10
+        private const val SEARCH_DEBOUNCE = 300
     }
 }

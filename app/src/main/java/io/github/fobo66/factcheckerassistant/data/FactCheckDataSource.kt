@@ -9,9 +9,9 @@ import retrofit2.HttpException
 import timber.log.Timber
 
 class FactCheckDataSource(
-        private val query: String,
-        private val factCheckApi: FactCheckApi,
-        private val languageTag: String
+    private val query: String,
+    private val factCheckApi: FactCheckApi,
+    private val languageTag: String
 ) : PagingSource<String, Claim>() {
     private var nextPageToken: String? = null
 
@@ -27,7 +27,7 @@ class FactCheckDataSource(
             )
             Timber.d("Loading claims finished")
             nextPageToken = result.nextPageToken
-            return LoadResult.Page(result.claims, null, nextPageToken)
+            return LoadResult.Page(result.claims ?: listOf(), null, nextPageToken)
         } catch (e: HttpException) {
             Timber.e(e, "Error occurred during loading claims for query %s", query)
             return LoadResult.Error(e)

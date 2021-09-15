@@ -4,6 +4,6 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class FactCheckResponse(
-    val claims: List<Claim>,
+    val claims: List<Claim>?,
     val nextPageToken: String?
 )
