@@ -8,7 +8,7 @@ plugins {
     id("dagger.hilt.android.plugin")
 }
 
-val composeVersion = "1.0.1"
+val composeVersion = "1.0.2"
 
 android {
     compileSdk = VersionCodes.S
@@ -73,11 +73,11 @@ dependencies {
     val activityVersion = "1.3.1"
     val pagingVersion = "3.0.1"
     val navigationVersion = "2.4.0-alpha06"
-    val coroutinesVersion = "1.5.1"
+    val coroutinesVersion = "1.5.2"
 
     implementation(fileTree("dir" to "libs", "include" to listOf("*.jar")))
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
-    implementation("androidx.core:core-ktx:1.7.0-alpha01")
+    implementation("androidx.core:core-ktx:1.7.0-alpha02")
     implementation("androidx.activity:activity-ktx:$activityVersion")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
@@ -96,7 +96,7 @@ dependencies {
     implementation("androidx.activity:activity-compose:$activityVersion")
     implementation(project(":composemd"))
 
-    implementation("com.google.accompanist:accompanist-insets:0.17.0")
+    implementation("com.google.accompanist:accompanist-insets:0.18.0")
 
     val hiltVersion = "2.38.1"
     implementation("com.google.dagger:hilt-android:$hiltVersion")
