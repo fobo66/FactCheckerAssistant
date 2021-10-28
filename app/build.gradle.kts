@@ -73,7 +73,7 @@ dependencies {
 
     implementation(fileTree("dir" to "libs", "include" to listOf("*.jar")))
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
-    implementation("androidx.core:core-ktx:1.7.0-rc01")
+    implementation("androidx.core:core-ktx:1.7.0")
     implementation("androidx.activity:activity-ktx:$activityVersion")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
