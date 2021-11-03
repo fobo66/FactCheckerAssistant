@@ -92,7 +92,7 @@ dependencies {
     implementation("androidx.activity:activity-compose:$activityVersion")
     implementation(project(":composemd"))
 
-    implementation("com.google.accompanist:accompanist-insets:0.20.0")
+    implementation("com.google.accompanist:accompanist-insets:0.20.1")
 
     val hiltVersion = "2.40"
     implementation("com.google.dagger:hilt-android:$hiltVersion")
