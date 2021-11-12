@@ -63,7 +63,8 @@ class MarkdownTest {
             )
         }
 
-        composeTestRule.onNode(hasContentDescription("Test image", substring = true)).assertIsDisplayed()
+        composeTestRule.onNode(hasContentDescription("Test image", substring = true))
+            .assertIsDisplayed()
     }
 
     @Test
@@ -96,7 +97,6 @@ Block of text
                     """.trimIndent()
                 )
             }
-
         }
 
         composeTestRule.onNode(hasTestTag("Fenced code block")).assertIsDisplayed()
