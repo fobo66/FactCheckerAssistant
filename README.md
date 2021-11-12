@@ -1,6 +1,6 @@
 # FactCheckerAssistant
 
-[![Build Status](https://app.bitrise.io/app/2a0e06b34c73dbf5/status.svg?token=UCxDyD8v4_e-uJxPbIL2Qg&branch=main)](https://app.bitrise.io/app/2a0e06b34c73dbf5)
+[![Build Status](https://circleci.com/gh/fobo66/FactCheckerAssistant/tree/main.svg?style=svg)](https://circleci.com/gh/fobo66/FactCheckerAssistant/tree/main)
 
 Android App to help you check claims from the internet. Currently in active development
 
