@@ -17,6 +17,7 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.material.contentColorFor
 import androidx.compose.material.primarySurface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -105,7 +106,7 @@ class MainActivity : ComponentActivity() {
                                     navController.navigate("details")
                                 })
                             }
-                            composable("details") { ClaimDetails(mainViewModel) }
+                            composable("details") { ClaimDetails(mainViewModel.selectedClaim.collectAsState()) }
                             composable("guide") { FactCheckGuide() }
                         }
                     }

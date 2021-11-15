@@ -11,8 +11,10 @@ import androidx.compose.material.ListItem
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -20,17 +22,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import io.github.fobo66.factcheckerassistant.R
+import io.github.fobo66.factcheckerassistant.api.models.Claim
 import io.github.fobo66.factcheckerassistant.api.models.ClaimReview
 import io.github.fobo66.factcheckerassistant.api.models.Publisher
-import io.github.fobo66.factcheckerassistant.ui.main.MainViewModel
+import io.github.fobo66.factcheckerassistant.ui.theme.FactCheckerAssistantTheme
+import java.util.*
 
 @ExperimentalMaterialApi
 @Composable
-fun ClaimDetails(viewModel: MainViewModel = hiltViewModel()) {
-    val claim by viewModel.selectedClaim.collectAsState()
-
+fun ClaimDetails(claimState: State<Claim?>) {
+    val claim by claimState
     Column {
         Text(
             text = claim?.text.orEmpty(),
@@ -92,4 +94,17 @@ fun ClaimReviewItemPreview() {
             Locale.current.language
         )
     )
+}
+
+@OptIn(ExperimentalMaterialApi::class)
+@Preview(showBackground = true)
+@Composable
+fun ClaimDetailsPreview() {
+    FactCheckerAssistantTheme {
+        val claimState = remember {
+            mutableStateOf(Claim("test", "tester", Date().toString(), listOf()))
+        }
+
+        ClaimDetails(claimState)
+    }
 }
