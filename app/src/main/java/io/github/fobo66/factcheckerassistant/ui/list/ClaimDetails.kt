@@ -1,6 +1,9 @@
 package io.github.fobo66.factcheckerassistant.ui.list
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.ExperimentalMaterialApi
@@ -10,11 +13,13 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import io.github.fobo66.factcheckerassistant.R
 import io.github.fobo66.factcheckerassistant.api.models.ClaimReview
@@ -33,8 +38,21 @@ fun ClaimDetails(viewModel: MainViewModel = hiltViewModel()) {
         )
         Text(text = stringResource(R.string.claim_reviews_title), fontWeight = FontWeight.Bold)
         LazyColumn {
-            items(claim?.claimReview ?: listOf()) {
-                ClaimReviewItem(it)
+            val claimReviews = claim?.claimReview
+            if (claimReviews.isNullOrEmpty()) {
+                item {
+                    Text(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .wrapContentWidth(Alignment.CenterHorizontally)
+                            .padding(8.dp),
+                        text = stringResource(id = R.string.claim_reviews_empty)
+                    )
+                }
+            } else {
+                items(claimReviews) {
+                    ClaimReviewItem(it)
+                }
             }
         }
     }
