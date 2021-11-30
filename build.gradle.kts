@@ -6,7 +6,7 @@ buildscript {
     dependencies {
         classpath("com.android.tools.build:gradle:7.2.0-alpha05")
         classpath(kotlin("gradle-plugin", version = "1.5.31"))
-        classpath("com.google.dagger:hilt-android-gradle-plugin:2.40.2")
+        classpath("com.google.dagger:hilt-android-gradle-plugin:2.40.3")
         classpath("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.19.0")
     }
 }
