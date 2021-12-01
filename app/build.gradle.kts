@@ -98,7 +98,7 @@ dependencies {
 
     implementation("com.google.accompanist:accompanist-insets:0.20.2")
 
-    val hiltVersion = "2.40.2"
+    val hiltVersion = "2.40.3"
     implementation("com.google.dagger:hilt-android:$hiltVersion")
     kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
 
