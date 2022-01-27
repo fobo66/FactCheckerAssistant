@@ -92,7 +92,7 @@ dependencies {
     implementation("androidx.compose.runtime:runtime-livedata:$composeVersion")
     implementation("androidx.paging:paging-compose:1.0.0-alpha14")
     implementation("androidx.navigation:navigation-compose:$navigationVersion")
-    implementation("androidx.hilt:hilt-navigation-compose:1.0.0-rc01")
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
     implementation("androidx.activity:activity-compose:$activityVersion")
     implementation(project(":composemd"))
 
