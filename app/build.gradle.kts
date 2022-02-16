@@ -69,7 +69,7 @@ kapt {
 }
 
 dependencies {
-    val lifecycleVersion = "2.4.0"
+    val lifecycleVersion = "2.4.1"
     val activityVersion = "1.4.0"
     val pagingVersion = "3.1.0"
     val navigationVersion = "2.5.0-alpha01"
