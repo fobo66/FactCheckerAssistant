@@ -3,7 +3,7 @@ package io.github.fobo66.factcheckerassistant.util
 import android.content.Context
 import androidx.core.os.ConfigurationCompat
 import dagger.hilt.android.qualifiers.ApplicationContext
-import java.util.*
+import java.util.Locale
 import javax.inject.Inject
 
 interface LocaleProvider {
@@ -15,4 +15,5 @@ class LocaleProviderImpl @Inject constructor(
 ) : LocaleProvider {
     override val currentLocale: Locale
         get() = ConfigurationCompat.getLocales(context.resources.configuration).get(0)
+            ?: Locale.getDefault()
 }
