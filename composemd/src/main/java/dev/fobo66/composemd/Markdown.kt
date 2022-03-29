@@ -1,6 +1,5 @@
 package dev.fobo66.composemd
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Box
@@ -20,6 +19,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTag
@@ -35,7 +35,8 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
-import coil.compose.rememberImagePainter
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
 import org.commonmark.node.BlockQuote
 import org.commonmark.node.BulletList
 import org.commonmark.node.Code
@@ -143,11 +144,10 @@ fun MarkdownListItems(
 @Composable
 fun MarkdownImage(image: Image) {
     Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
-        Image(
-            painter = rememberImagePainter(
-                data = image.destination,
-                onExecute = { _, _ -> false },
-            ),
+        AsyncImage(
+            model = ImageRequest.Builder(LocalContext.current)
+                .data(image.destination)
+                .build(),
             contentDescription = image.title,
         )
     }
@@ -156,11 +156,12 @@ fun MarkdownImage(image: Image) {
 @Composable
 fun MarkdownIndentedCodeBlock(indentedCodeBlock: IndentedCodeBlock) {
     val padding = if (indentedCodeBlock.parent is Document) 8.dp else 0.dp
-    Box(modifier = Modifier
-        .padding(padding)
-        .semantics {
-            testTag = "Indented code block"
-        }
+    Box(
+        modifier = Modifier
+            .padding(padding)
+            .semantics {
+                testTag = "Indented code block"
+            }
     ) {
         androidx.compose.material.Text(
             text = indentedCodeBlock.literal,
@@ -172,11 +173,12 @@ fun MarkdownIndentedCodeBlock(indentedCodeBlock: IndentedCodeBlock) {
 @Composable
 fun MarkdownFencedCodeBlock(fencedCodeBlock: FencedCodeBlock) {
     val padding = if (fencedCodeBlock.parent is Document) 8.dp else 0.dp
-    Box(modifier = Modifier
-        .padding(padding)
-        .semantics {
-            testTag = "Fenced code block"
-        }
+    Box(
+        modifier = Modifier
+            .padding(padding)
+            .semantics {
+                testTag = "Fenced code block"
+            }
     ) {
         androidx.compose.material.Text(
             text = fencedCodeBlock.literal,
@@ -259,11 +261,10 @@ fun MarkdownText(text: AnnotatedString, style: TextStyle) {
                     PlaceholderVerticalAlign.Bottom
                 )
             ) {
-                Image(
-                    painter = rememberImagePainter(
-                        data = it,
-                        onExecute = { _, _ -> false }
-                    ),
+                AsyncImage(
+                    model = ImageRequest.Builder(LocalContext.current)
+                        .data(it)
+                        .build(),
                     contentDescription = null,
                 )
             }
@@ -274,9 +275,11 @@ fun MarkdownText(text: AnnotatedString, style: TextStyle) {
 
 @Composable
 fun MarkdownThematicBreak() {
-    Divider(modifier = Modifier.semantics {
-        testTag = "Thematic break"
-    })
+    Divider(
+        modifier = Modifier.semantics {
+            testTag = "Thematic break"
+        }
+    )
 }
 
 @Composable
