@@ -5,14 +5,14 @@ plugins {
     kotlin("android")
 }
 
-val composeVersion = "1.1.1"
+val composeVersion = "1.2.0-alpha06"
 
 android {
-    compileSdk = VersionCodes.S
+    compileSdkPreview = "Tiramisu"
 
     defaultConfig {
         minSdk = VersionCodes.LOLLIPOP
-        targetSdk = VersionCodes.S
+        targetSdkPreview = "Tiramisu"
         version = 1
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -60,7 +60,7 @@ dependencies {
     implementation("io.coil-kt:coil-compose:1.4.0")
 
     testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+    androidTestImplementation("androidx.test.ext:junit-ktx:1.1.4-alpha05")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.0-alpha05")
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:$composeVersion")
 }

@@ -8,7 +8,7 @@ plugins {
     id("dagger.hilt.android.plugin")
 }
 
-val composeVersion = "1.1.1"
+val composeVersion = "1.2.0-alpha06"
 
 android {
     compileSdkPreview = "Tiramisu"
@@ -69,7 +69,7 @@ kapt {
 }
 
 dependencies {
-    val lifecycleVersion = "2.4.1"
+    val lifecycleVersion = "2.5.0-alpha05"
     val activityVersion = "1.6.0-alpha01"
     val pagingVersion = "3.1.1"
     val navigationVersion = "2.5.0-alpha03"
@@ -96,7 +96,7 @@ dependencies {
     implementation("androidx.activity:activity-compose:$activityVersion")
     implementation(project(":composemd"))
 
-    implementation("com.google.accompanist:accompanist-insets:0.23.1")
+    implementation("com.google.accompanist:accompanist-insets:0.24.5-alpha")
 
     val hiltVersion = "2.41"
     implementation("com.google.dagger:hilt-android:$hiltVersion")
@@ -119,6 +119,6 @@ dependencies {
     testImplementation("androidx.arch.core:core-testing:2.1.0")
     testImplementation("androidx.navigation:navigation-testing:$navigationVersion")
     testImplementation("com.squareup.retrofit2:retrofit-mock:$retrofitVersion")
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+    androidTestImplementation("androidx.test.ext:junit-ktx:1.1.4-alpha05")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.0-alpha05")
 }
