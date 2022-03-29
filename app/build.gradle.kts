@@ -11,12 +11,12 @@ plugins {
 val composeVersion = "1.1.1"
 
 android {
-    compileSdk = VersionCodes.S
+    compileSdkPreview = "Tiramisu"
 
     defaultConfig {
         applicationId = "io.github.fobo66.factcheckerassistant"
         minSdk = VersionCodes.LOLLIPOP
-        targetSdk = VersionCodes.S
+        targetSdkPreview = "Tiramisu"
         versionCode = 1
         versionName = "1.0"
 
