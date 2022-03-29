@@ -16,8 +16,7 @@ import kotlinx.coroutines.flow.filterNot
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
-import kotlin.time.Duration
-import kotlin.time.ExperimentalTime
+import kotlin.time.Duration.Companion.milliseconds
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
@@ -31,10 +30,9 @@ class MainViewModel @Inject constructor(
 
     @ExperimentalCoroutinesApi
     @FlowPreview
-    @ExperimentalTime
     val claims = query
         .filterNot { it.isNullOrBlank() }
-        .debounce(Duration.milliseconds(SEARCH_DEBOUNCE))
+        .debounce(SEARCH_DEBOUNCE.milliseconds)
         .flatMapLatest { query ->
             factCheckRepository.search(query, DEFAULT_PAGE_SIZE).flow
         }
