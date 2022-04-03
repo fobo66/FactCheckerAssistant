@@ -5,6 +5,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.ExperimentalMaterialApi
@@ -32,9 +34,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.google.accompanist.insets.ProvideWindowInsets
-import com.google.accompanist.insets.navigationBarsPadding
-import com.google.accompanist.insets.statusBarsPadding
 import dagger.hilt.android.AndroidEntryPoint
 import io.github.fobo66.factcheckerassistant.R
 import io.github.fobo66.factcheckerassistant.ui.guide.FactCheckGuide
@@ -67,48 +66,46 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             FactCheckerAssistantTheme {
-                ProvideWindowInsets {
-                    val navController = rememberNavController()
-                    Scaffold(
-                        topBar = {
-                            Surface(
-                                color = MaterialTheme.colors.primarySurface,
-                                elevation = 4.dp
-                            ) {
-                                TopAppBar(
-                                    title = {
-                                        Text(
-                                            stringResource(R.string.app_name)
-                                        )
-                                    },
-                                    backgroundColor = Color.Transparent,
-                                    contentColor = contentColorFor(MaterialTheme.colors.primarySurface),
-                                    elevation = 0.dp,
-                                    modifier = Modifier.statusBarsPadding()
-                                )
-                            }
-                        },
-                        bottomBar = {
-                            Surface(
-                                color = MaterialTheme.colors.primarySurface,
-                                elevation = 4.dp
-                            ) {
-                                BottomNavBar(navController, Modifier.navigationBarsPadding())
-                            }
+                val navController = rememberNavController()
+                Scaffold(
+                    topBar = {
+                        Surface(
+                            color = MaterialTheme.colors.primarySurface,
+                            elevation = 4.dp
+                        ) {
+                            TopAppBar(
+                                title = {
+                                    Text(
+                                        stringResource(R.string.app_name)
+                                    )
+                                },
+                                backgroundColor = Color.Transparent,
+                                contentColor = contentColorFor(MaterialTheme.colors.primarySurface),
+                                elevation = 0.dp,
+                                modifier = Modifier.statusBarsPadding()
+                            )
                         }
-                    ) {
-                        val mainViewModel: MainViewModel = hiltViewModel()
+                    },
+                    bottomBar = {
+                        Surface(
+                            color = MaterialTheme.colors.primarySurface,
+                            elevation = 4.dp
+                        ) {
+                            BottomNavBar(navController, Modifier.navigationBarsPadding())
+                        }
+                    }
+                ) {
+                    val mainViewModel: MainViewModel = hiltViewModel()
 
-                        NavHost(navController, startDestination = "search") {
-                            composable("search") {
-                                ClaimsSearch(mainViewModel, onSearchResultClick = {
-                                    mainViewModel.selectClaim(it)
-                                    navController.navigate("details")
-                                })
-                            }
-                            composable("details") { ClaimDetails(mainViewModel.selectedClaim.collectAsState()) }
-                            composable("guide") { FactCheckGuide() }
+                    NavHost(navController, startDestination = "search") {
+                        composable("search") {
+                            ClaimsSearch(mainViewModel, onSearchResultClick = {
+                                mainViewModel.selectClaim(it)
+                                navController.navigate("details")
+                            })
                         }
+                        composable("details") { ClaimDetails(mainViewModel.selectedClaim.collectAsState()) }
+                        composable("guide") { FactCheckGuide() }
                     }
                 }
             }
