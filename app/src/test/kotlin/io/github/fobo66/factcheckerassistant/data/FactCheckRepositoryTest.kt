@@ -51,7 +51,6 @@ class FactCheckRepositoryTest {
             .build().create(FactCheckApi::class.java)
     }
 
-
     @After
     fun tearDown() {
         Timber.uprootAll()
@@ -64,7 +63,8 @@ class FactCheckRepositoryTest {
                 FactCheckResponse(
                     listOf(), null
                 )
-            ), localeProvider
+            ),
+            localeProvider
         )
 
         runBlocking {

@@ -27,7 +27,7 @@ import io.github.fobo66.factcheckerassistant.api.models.Claim
 import io.github.fobo66.factcheckerassistant.api.models.ClaimReview
 import io.github.fobo66.factcheckerassistant.api.models.Publisher
 import io.github.fobo66.factcheckerassistant.ui.theme.FactCheckerAssistantTheme
-import java.util.*
+import java.util.Date
 
 @ExperimentalMaterialApi
 @Composable
