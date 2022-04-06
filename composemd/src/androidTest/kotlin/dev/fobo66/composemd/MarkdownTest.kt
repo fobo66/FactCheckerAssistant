@@ -33,7 +33,7 @@ class MarkdownTest {
                     input = """
                 1. First item
                 2. Second item
-            """.trimIndent()
+                    """.trimIndent()
                 )
             }
         }
@@ -48,7 +48,7 @@ class MarkdownTest {
                 input = """
                 * First item
                 * Second item
-            """.trimIndent()
+                """.trimIndent()
             )
         }
 
@@ -110,7 +110,7 @@ Block of text
                 First block of text
 
                 Second block of text
-            """.trimIndent()
+                """.trimIndent()
             )
         }
 
@@ -146,7 +146,7 @@ Block of text
                 ---
 
                 Second block of text
-            """.trimIndent()
+                    """.trimIndent()
                 )
             }
         }
@@ -160,7 +160,7 @@ Block of text
             MarkdownDocument(
                 input = """
                 > Quoted text
-            """.trimIndent()
+                """.trimIndent()
             )
         }
 
