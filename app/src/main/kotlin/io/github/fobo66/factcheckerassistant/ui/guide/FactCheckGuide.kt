@@ -13,9 +13,9 @@ import dev.fobo66.composemd.MarkdownDocument
 private val guideTextPadding = 16.dp
 
 @Composable
-fun FactCheckGuide() {
+fun FactCheckGuide(modifier: Modifier = Modifier) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .padding(guideTextPadding)
             .verticalScroll(rememberScrollState())
     ) {

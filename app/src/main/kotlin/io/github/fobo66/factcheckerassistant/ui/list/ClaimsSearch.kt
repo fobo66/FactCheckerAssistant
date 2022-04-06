@@ -42,13 +42,14 @@ import kotlin.time.ExperimentalTime
 @ExperimentalTime
 @Composable
 fun ClaimsSearch(
+    modifier: Modifier = Modifier,
     mainViewModel: MainViewModel = hiltViewModel(),
     onSearchResultClick: (Claim?) -> Unit = {}
 ) {
     val claims = mainViewModel.claims.collectAsLazyPagingItems()
     val query by mainViewModel.query.collectAsState(initial = "")
 
-    LazyColumn {
+    LazyColumn(modifier = modifier) {
         stickyHeader {
             TextField(
                 value = query,

@@ -31,9 +31,9 @@ import java.util.Date
 
 @ExperimentalMaterialApi
 @Composable
-fun ClaimDetails(claimState: State<Claim?>) {
+fun ClaimDetails(claimState: State<Claim?>, modifier: Modifier = Modifier) {
     val claim by claimState
-    Column {
+    Column(modifier = modifier) {
         Text(
             text = claim?.text.orEmpty(),
             style = MaterialTheme.typography.h5

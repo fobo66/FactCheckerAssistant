@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
@@ -94,18 +95,33 @@ class MainActivity : ComponentActivity() {
                             BottomNavBar(navController, Modifier.navigationBarsPadding())
                         }
                     }
-                ) {
+                ) { innerPadding ->
                     val mainViewModel: MainViewModel = hiltViewModel()
 
                     NavHost(navController, startDestination = "search") {
                         composable("search") {
-                            ClaimsSearch(mainViewModel, onSearchResultClick = {
-                                mainViewModel.selectClaim(it)
-                                navController.navigate("details")
-                            })
+                            ClaimsSearch(
+                                modifier = Modifier.padding(innerPadding),
+                                mainViewModel = mainViewModel,
+                                onSearchResultClick = {
+                                    mainViewModel.selectClaim(it)
+                                    navController.navigate("details")
+                                }
+                            )
                         }
-                        composable("details") { ClaimDetails(mainViewModel.selectedClaim.collectAsState()) }
-                        composable("guide") { FactCheckGuide() }
+                        composable("details") {
+                            ClaimDetails(
+                                mainViewModel.selectedClaim.collectAsState(),
+                                modifier = Modifier.padding(innerPadding)
+                            )
+                        }
+                        composable("guide") {
+                            FactCheckGuide(
+                                modifier = Modifier.padding(
+                                    innerPadding
+                                )
+                            )
+                        }
                     }
                 }
             }
