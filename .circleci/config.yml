@@ -18,7 +18,11 @@ jobs:
       - image: cimg/android:2022.03.1
     steps:
       - checkout
+      - android/restore-gradle-cache:
+          cache-prefix: v1a
       - run: ./gradlew detekt
+      - android/save-gradle-cache:
+          cache-prefix: v1a
   unit-tests:
     # These next lines define the Android machine image executor.
     # See: https://circleci.com/docs/2.0/executor-types/
@@ -30,25 +34,45 @@ jobs:
     steps:
       # Checkout the code as the first step.
       - checkout
-
+      - android/restore-build-cache:
+          cache-prefix: v1a
+      - android/restore-gradle-cache:
+          cache-prefix: v1a
       # The next step will run the unit tests
       - android/run-tests:
           test-command: ./gradlew  testDebug --continue
+      - store_test_results:
+          path: app/build/test-results/testDebugUnitTest
+      - android/save-build-cache:
+          cache-prefix: v1a
+      - android/save-gradle-cache:
+          cache-prefix: v1a
 
   ui-tests:
-    docker:
-      - image: cimg/android:2022.03.1
+    executor:
+      name: android/android-machine
+      tag: 2022.03.1
+      resource-class: large
     steps:
       - checkout
       - android/accept-licenses
       - android/create-avd:
           avd-name: myavd
           install: true
-          system-image: system-images;android-Tiramisu;google_apis_playstore;x86_64
+          system-image: system-images;android-Tiramisu;google_apis;x86_64
+      - android/restore-build-cache:
+          cache-prefix: v1a
       - android/start-emulator:
           avd-name: myavd
           restore-gradle-cache-prefix: v1a
       - android/run-tests
+      - store_test_results:
+          path: app/build/outputs/androidTest-results
+      - store_artifacts:
+          path: app/build/reports/androidTests/connected
+      - android/kill-emulators
+      - android/save-build-cache:
+          cache-prefix: v1a
       - android/save-gradle-cache:
           cache-prefix: v1a
 # Invoke jobs via workflows
@@ -59,4 +83,4 @@ workflows:
     jobs:
       - lint
       - unit-tests
-#      - ui-tests
+      - ui-tests
