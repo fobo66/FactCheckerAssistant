@@ -41,7 +41,7 @@ jobs:
     steps:
       - checkout
       - android/start-emulator-and-run-tests:
-          system-image: system-images;android-Tiramisu;google-apis;x86_64
+          system-image: system-images;android-Tiramisu;google_apis;x86_64
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
