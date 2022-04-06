@@ -8,15 +8,15 @@ plugins {
     id("dagger.hilt.android.plugin")
 }
 
-val composeVersion = "1.2.0-alpha06"
+val composeVersion = "1.2.0-alpha07"
 
 android {
-    compileSdkPreview = "Tiramisu"
+    compileSdk = 32
 
     defaultConfig {
         applicationId = "io.github.fobo66.factcheckerassistant"
         minSdk = VersionCodes.LOLLIPOP
-        targetSdkPreview = "Tiramisu"
+        targetSdk = 32
         versionCode = 1
         versionName = "1.0"
 
@@ -69,15 +69,15 @@ kapt {
 }
 
 dependencies {
-    val lifecycleVersion = "2.5.0-alpha05"
+    val lifecycleVersion = "2.5.0-alpha06"
     val activityVersion = "1.6.0-alpha01"
     val pagingVersion = "3.1.1"
-    val navigationVersion = "2.5.0-alpha03"
+    val navigationVersion = "2.5.0-alpha04"
     val coroutinesVersion = "1.6.1"
 
     implementation(fileTree("dir" to "libs", "include" to listOf("*.jar")))
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
-    implementation("androidx.core:core-ktx:1.9.0-alpha02")
+    implementation("androidx.core:core-ktx:1.8.0-alpha07")
     implementation("androidx.activity:activity-ktx:$activityVersion")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")

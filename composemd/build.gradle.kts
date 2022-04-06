@@ -5,14 +5,14 @@ plugins {
     kotlin("android")
 }
 
-val composeVersion = "1.2.0-alpha06"
+val composeVersion = "1.2.0-alpha07"
 
 android {
-    compileSdkPreview = "Tiramisu"
+    compileSdk = 32
 
     defaultConfig {
         minSdk = VersionCodes.LOLLIPOP
-        targetSdkPreview = "Tiramisu"
+        targetSdk = 32
         version = 1
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
