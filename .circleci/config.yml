@@ -59,4 +59,4 @@ workflows:
     jobs:
       - lint
       - unit-tests
-      - ui-tests
+#      - ui-tests
