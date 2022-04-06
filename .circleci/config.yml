@@ -40,8 +40,16 @@ jobs:
       - image: cimg/android:2022.03.1
     steps:
       - checkout
-      - android/start-emulator-and-run-tests:
-          system-image: system-images;android-Tiramisu;google_apis;x86_64
+      - android/create-avd:
+          avd-name: myavd
+          install: true
+          system-image: system-images;android-Tiramisu;google_apis_playstore;x86_64
+      - android/start-emulator:
+          avd-name: myavd
+          restore-gradle-cache-prefix: v1a
+      - android/run-tests
+      - android/save-gradle-cache:
+          cache-prefix: v1a
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
