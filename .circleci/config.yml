@@ -19,7 +19,7 @@ jobs:
     steps:
       - checkout
       - run: ./gradlew detekt
-  build-and-test:
+  unit-tests:
     # These next lines define the Android machine image executor.
     # See: https://circleci.com/docs/2.0/executor-types/
     docker:
@@ -35,10 +35,18 @@ jobs:
       - android/run-tests:
           test-command: ./gradlew  testDebug --continue
 
-      # Then start the emulator and run the Instrumentation tests!
+  ui-tests:
+    # These next lines define the Android machine image executor.
+    # See: https://circleci.com/docs/2.0/executor-types/
+    docker:
+      - image: cimg/android:2022.03.1
+
+    # Add steps to the job
+    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
+    steps:
+      - checkout
       - android/start-emulator-and-run-tests:
-          test-command: ./gradlew connectedDebugAndroidTest
-          system-image: system-images;android-Tiramisu;google_apis;x86_64
+          system-image: system-images;android-Tiramisu;default;x86_64
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
@@ -46,4 +54,5 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - lint
-      - build-and-test
+      - unit-tests
+      - ui-tests
