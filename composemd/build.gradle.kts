@@ -3,6 +3,7 @@ import com.android.sdklib.AndroidVersion.VersionCodes
 plugins {
     id("com.android.library")
     kotlin("android")
+    id("io.gitlab.arturbosch.detekt")
 }
 
 val composeVersion = "1.2.0-alpha07"
