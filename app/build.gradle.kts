@@ -58,6 +58,7 @@ android {
             excludes += "META-INF/LGPL2.1"
         }
     }
+    namespace = "io.github.fobo66.factcheckerassistant"
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {

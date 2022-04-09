@@ -50,6 +50,7 @@ android {
             excludes += "META-INF/LGPL2.1"
         }
     }
+    namespace = "dev.fobo66.composemd"
 }
 
 dependencies {
