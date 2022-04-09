@@ -65,8 +65,10 @@ private const val TAG_IMAGE_URL = "TAG_IMAGE_URL"
  */
 
 @Composable
-internal fun MarkdownDocument(document: Document) {
-    MarkdownBlockChildren(document)
+internal fun MarkdownDocument(document: Document, modifier: Modifier = Modifier) {
+    Column(modifier = modifier) {
+        MarkdownBlockChildren(document)
+    }
 }
 
 @Composable
@@ -208,12 +210,12 @@ fun MarkdownParagraph(paragraph: Paragraph) {
 @Composable
 fun MarkdownHeading(heading: Heading) {
     val style = when (heading.level) {
-        1 -> MaterialTheme.typography.h1
-        2 -> MaterialTheme.typography.h2
-        3 -> MaterialTheme.typography.h3
-        4 -> MaterialTheme.typography.h4
-        5 -> MaterialTheme.typography.h5
-        6 -> MaterialTheme.typography.h6
+        HEADING_LEVEL_1 -> MaterialTheme.typography.h1
+        HEADING_LEVEL_2 -> MaterialTheme.typography.h2
+        HEADING_LEVEL_3 -> MaterialTheme.typography.h3
+        HEADING_LEVEL_4 -> MaterialTheme.typography.h4
+        HEADING_LEVEL_5 -> MaterialTheme.typography.h5
+        HEADING_LEVEL_6 -> MaterialTheme.typography.h6
         else -> {
             // Not a header...
             MarkdownBlockChildren(heading)

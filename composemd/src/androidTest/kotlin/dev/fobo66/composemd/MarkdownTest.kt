@@ -28,14 +28,12 @@ class MarkdownTest {
     @Test
     fun markdownOrderedList() {
         composeTestRule.setContent {
-            Column {
-                MarkdownDocument(
-                    input = """
+            MarkdownDocument(
+                input = """
                 1. First item
                 2. Second item
-                    """.trimIndent()
-                )
-            }
+                """.trimIndent()
+            )
         }
 
         composeTestRule.onNode(hasText("First item", substring = true)).assertIsDisplayed()
@@ -86,17 +84,15 @@ Block of text
     @Test
     fun markdownFencedCodeBlock() {
         composeTestRule.setContent {
-            Column {
-                MarkdownDocument(
-                    input = """
+            MarkdownDocument(
+                input = """
                     Block of text
                     
                     ```
                         Block of code
                     ```
-                    """.trimIndent()
-                )
-            }
+                """.trimIndent()
+            )
         }
 
         composeTestRule.onNode(hasTestTag("Fenced code block")).assertIsDisplayed()

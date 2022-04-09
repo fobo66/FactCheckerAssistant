@@ -1,6 +1,5 @@
 package io.github.fobo66.factcheckerassistant.ui.guide
 
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -14,11 +13,10 @@ private val guideTextPadding = 16.dp
 
 @Composable
 fun FactCheckGuide(modifier: Modifier = Modifier) {
-    Column(
+    MarkdownDocument(
+        LocalContext.current.assets.open("guide.md"),
         modifier = modifier
             .padding(guideTextPadding)
             .verticalScroll(rememberScrollState())
-    ) {
-        MarkdownDocument(LocalContext.current.assets.open("guide.md"))
-    }
+    )
 }
