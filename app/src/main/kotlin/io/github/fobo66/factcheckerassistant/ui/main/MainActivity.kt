@@ -110,8 +110,9 @@ class MainActivity : ComponentActivity() {
                             )
                         }
                         composable("details") {
+                            val claim by mainViewModel.selectedClaim.collectAsState()
                             ClaimDetails(
-                                mainViewModel.selectedClaim.collectAsState(),
+                                claim,
                                 modifier = Modifier.padding(innerPadding)
                             )
                         }
