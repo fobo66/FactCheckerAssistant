@@ -66,11 +66,15 @@ jobs:
           avd-name: myavd
           restore-gradle-cache-prefix: v1a
       - android/run-tests
-          test-command: ./gradlew  connectedCheck
+        test-command: ./gradlew  connectedCheck
       - store_test_results:
           path: app/build/outputs/androidTest-results
+      - store_test_results:
+          path: composemd/build/outputs/androidTest-results
       - store_artifacts:
           path: app/build/reports/androidTests/connected
+      - store_artifacts:
+          path: composemd/build/reports/androidTests/connected
       - android/kill-emulators
       - android/save-build-cache:
           cache-prefix: v1a
