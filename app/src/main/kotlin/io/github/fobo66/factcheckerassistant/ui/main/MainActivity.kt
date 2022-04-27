@@ -35,6 +35,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.paging.compose.collectAsLazyPagingItems
 import dagger.hilt.android.AndroidEntryPoint
 import io.github.fobo66.factcheckerassistant.R
 import io.github.fobo66.factcheckerassistant.ui.guide.FactCheckGuide
@@ -100,9 +101,16 @@ class MainActivity : ComponentActivity() {
 
                     NavHost(navController, startDestination = "search") {
                         composable("search") {
+                            val claims = mainViewModel.claims.collectAsLazyPagingItems()
+                            val query by mainViewModel.query.collectAsState()
+
                             ClaimsSearch(
                                 modifier = Modifier.padding(innerPadding),
-                                mainViewModel = mainViewModel,
+                                query = query,
+                                claims = claims,
+                                onSearch = {
+                                    mainViewModel.search(it)
+                                },
                                 onSearchResultClick = {
                                     mainViewModel.selectClaim(it)
                                     navController.navigate("details")

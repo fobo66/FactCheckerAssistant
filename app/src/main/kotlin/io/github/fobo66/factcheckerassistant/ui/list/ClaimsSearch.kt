@@ -17,19 +17,15 @@ import androidx.compose.material.TextField
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.LoadState
-import androidx.paging.compose.collectAsLazyPagingItems
+import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.items
 import io.github.fobo66.factcheckerassistant.R
 import io.github.fobo66.factcheckerassistant.api.models.Claim
-import io.github.fobo66.factcheckerassistant.ui.main.MainViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlin.time.ExperimentalTime
@@ -42,20 +38,17 @@ import kotlin.time.ExperimentalTime
 @ExperimentalTime
 @Composable
 fun ClaimsSearch(
+    query: String,
+    claims: LazyPagingItems<Claim>,
+    onSearch: (String) -> Unit,
     modifier: Modifier = Modifier,
-    mainViewModel: MainViewModel = hiltViewModel(),
     onSearchResultClick: (Claim?) -> Unit = {}
 ) {
-    val claims = mainViewModel.claims.collectAsLazyPagingItems()
-    val query by mainViewModel.query.collectAsState(initial = "")
-
     LazyColumn(modifier = modifier) {
         stickyHeader {
             TextField(
                 value = query,
-                onValueChange = {
-                    mainViewModel.search(it)
-                },
+                onValueChange = onSearch,
                 modifier = Modifier
                     .fillMaxWidth(),
                 placeholder = {
