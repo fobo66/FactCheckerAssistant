@@ -61,6 +61,8 @@ dependencies {
     implementation("androidx.compose.material:material:$composeVersion")
     implementation("io.coil-kt:coil-compose:2.0.0-rc03")
 
+    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.20.0")
+
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit-ktx:1.1.4-alpha05")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.0-alpha05")
