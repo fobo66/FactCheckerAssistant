@@ -28,8 +28,7 @@ class MainViewModel @Inject constructor(
         .asFlow()
         .stateIn(viewModelScope, SharingStarted.Lazily, "")
 
-    @ExperimentalCoroutinesApi
-    @FlowPreview
+    @OptIn(FlowPreview::class, ExperimentalCoroutinesApi::class)
     val claims = query
         .filterNot { it.isNullOrBlank() }
         .debounce(SEARCH_DEBOUNCE.milliseconds)

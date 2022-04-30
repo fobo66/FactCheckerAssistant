@@ -3,7 +3,6 @@ package io.github.fobo66.factcheckerassistant.ui.main
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
@@ -43,16 +42,7 @@ import io.github.fobo66.factcheckerassistant.ui.list.ClaimDetails
 import io.github.fobo66.factcheckerassistant.ui.list.ClaimsSearch
 import io.github.fobo66.factcheckerassistant.ui.theme.FactCheckerAssistantTheme
 import io.github.fobo66.factcheckerassistant.util.Screen
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.FlowPreview
-import kotlin.time.ExperimentalTime
 
-@ExperimentalFoundationApi
-@ExperimentalCoroutinesApi
-@ExperimentalMaterialApi
-@ExperimentalAnimationApi
-@FlowPreview
-@ExperimentalTime
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
@@ -61,6 +51,10 @@ class MainActivity : ComponentActivity() {
         Screen.Guide
     )
 
+    @OptIn(
+        ExperimentalFoundationApi::class,
+        ExperimentalMaterialApi::class
+    )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

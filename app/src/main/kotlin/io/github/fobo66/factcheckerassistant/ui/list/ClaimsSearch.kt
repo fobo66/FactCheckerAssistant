@@ -1,6 +1,5 @@
 package io.github.fobo66.factcheckerassistant.ui.list
 
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -26,16 +25,9 @@ import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.items
 import io.github.fobo66.factcheckerassistant.R
 import io.github.fobo66.factcheckerassistant.api.models.Claim
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.FlowPreview
-import kotlin.time.ExperimentalTime
 
 @ExperimentalFoundationApi
-@ExperimentalAnimationApi
 @ExperimentalMaterialApi
-@ExperimentalCoroutinesApi
-@FlowPreview
-@ExperimentalTime
 @Composable
 fun ClaimsSearch(
     query: String,
@@ -101,7 +93,6 @@ fun ClaimsSearch(
 }
 
 @ExperimentalMaterialApi
-@ExperimentalAnimationApi
 @Composable
 fun ClaimItem(
     claim: Claim?,
