@@ -26,7 +26,8 @@ import io.github.fobo66.factcheckerassistant.api.models.Publisher
 import io.github.fobo66.factcheckerassistant.ui.theme.FactCheckerAssistantTheme
 import java.util.Date
 
-@OptIn(ExperimentalFoundationApi::class, ExperimentalMaterialApi::class)
+@ExperimentalFoundationApi
+@ExperimentalMaterialApi
 @Composable
 fun ClaimDetails(claim: Claim?, modifier: Modifier = Modifier) {
     LazyColumn(
@@ -100,6 +101,7 @@ fun ClaimReviewItemPreview() {
     )
 }
 
+@OptIn(ExperimentalFoundationApi::class, ExperimentalMaterialApi::class)
 @Preview(showBackground = true)
 @Composable
 fun ClaimDetailsPreview() {
