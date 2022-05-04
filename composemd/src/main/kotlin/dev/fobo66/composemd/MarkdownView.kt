@@ -12,9 +12,9 @@ fun MarkdownDocument(inputStream: InputStream, modifier: Modifier = Modifier) {
     val parser = remember {
         Parser.builder().build()
     }
-    val document = remember {
-        parser.parseReader(inputStream.reader()) as Document
-    }
+
+    val document = parser.parseReader(inputStream.bufferedReader()) as Document
+
     MarkdownDocument(document, modifier)
 }
 
@@ -23,9 +23,7 @@ fun MarkdownDocument(input: String, modifier: Modifier = Modifier) {
     val parser = remember {
         Parser.builder().build()
     }
-    val document = remember {
-        parser.parse(input) as Document
-    }
+    val document = parser.parse(input) as Document
 
     MarkdownDocument(document, modifier)
 }
