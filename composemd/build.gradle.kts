@@ -64,7 +64,7 @@ dependencies {
     detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.20.0")
 
     testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit-ktx:1.1.4-alpha06")
+    androidTestImplementation("androidx.test.ext:junit-ktx:1.1.4-alpha07")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.0-alpha06")
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:$composeVersion")
 }
