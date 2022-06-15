@@ -72,7 +72,7 @@ dependencies {
     val lifecycleVersion = "2.5.0-rc01"
     val activityVersion = "1.5.0-rc01"
     val pagingVersion = "3.1.1"
-    val navigationVersion = "2.5.0-rc01"
+    val navigationVersion = "2.5.0-rc02"
     val coroutinesVersion = "1.6.2"
 
     implementation(fileTree("dir" to "libs", "include" to listOf("*.jar")))
