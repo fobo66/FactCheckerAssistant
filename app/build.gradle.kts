@@ -110,7 +110,7 @@ dependencies {
 
     implementation("com.jakewharton.timber:timber:5.0.1")
 
-    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.20.0")
+    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.21.0")
 
     testImplementation("junit:junit:4.13.2")
     testImplementation("io.mockk:mockk:1.12.4")
