@@ -9,6 +9,7 @@ plugins {
 }
 
 val composeVersion = "1.2.0"
+val composeCompilerVersion = "1.2.0"
 
 android {
     compileSdk = 32
@@ -39,7 +40,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = composeVersion
+        kotlinCompilerExtensionVersion = composeCompilerVersion
     }
 
     buildTypes {
