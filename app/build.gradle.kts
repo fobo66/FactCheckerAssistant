@@ -12,12 +12,12 @@ val composeVersion = "1.2.0"
 val composeCompilerVersion = "1.2.0"
 
 android {
-    compileSdk = 32
+    compileSdk = 33
 
     defaultConfig {
         applicationId = "io.github.fobo66.factcheckerassistant"
         minSdk = VersionCodes.LOLLIPOP
-        targetSdk = 32
+        targetSdk = 33
         versionCode = 1
         versionName = "1.0"
 
@@ -79,6 +79,7 @@ dependencies {
     implementation(fileTree("dir" to "libs", "include" to listOf("*.jar")))
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
     implementation("androidx.core:core-ktx:1.8.0")
+    implementation("androidx.appcompat:appcompat:1.6.0-alpha05")
     implementation("androidx.activity:activity-compose:$activityVersion")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")

@@ -10,11 +10,11 @@ val composeVersion = "1.2.0"
 val composeCompilerVersion = "1.2.0"
 
 android {
-    compileSdk = 32
+    compileSdk = 33
 
     defaultConfig {
         minSdk = VersionCodes.LOLLIPOP
-        targetSdk = 32
+        targetSdk = 33
         version = 1
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
