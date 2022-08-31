@@ -6,8 +6,8 @@ plugins {
     id("io.gitlab.arturbosch.detekt")
 }
 
-val composeVersion = "1.2.0"
-val composeCompilerVersion = "1.2.0"
+val composeVersion = "1.3.0-beta01"
+val composeCompilerVersion = "1.3.0"
 
 android {
     compileSdk = 33
