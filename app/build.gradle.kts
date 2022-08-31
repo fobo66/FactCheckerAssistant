@@ -8,8 +8,8 @@ plugins {
     id("dagger.hilt.android.plugin")
 }
 
-val composeVersion = "1.2.0"
-val composeCompilerVersion = "1.2.0"
+val composeVersion = "1.3.0-beta01"
+val composeCompilerVersion = "1.3.0"
 
 android {
     compileSdk = 33
@@ -89,7 +89,6 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling:$composeVersion")
     implementation("androidx.compose.foundation:foundation:$composeVersion")
     implementation("androidx.compose.material:material:$composeVersion")
-    implementation("androidx.compose.material:material-icons-core:$composeVersion")
     implementation("androidx.compose.material:material-icons-extended:$composeVersion")
     implementation("androidx.compose.runtime:runtime-livedata:$composeVersion")
     implementation("androidx.paging:paging-compose:1.0.0-alpha16")
