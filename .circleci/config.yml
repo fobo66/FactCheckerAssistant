@@ -15,7 +15,7 @@ jobs:
   # Below is the definition of your job to build and test your app, you can rename and customize it as you want.
   lint:
     docker:
-      - image: cimg/android:2022.08.1
+      - image: cimg/android:2022.09.2
     steps:
       - checkout
       - android/restore-gradle-cache:
@@ -27,7 +27,7 @@ jobs:
     # These next lines define the Android machine image executor.
     # See: https://circleci.com/docs/2.0/executor-types/
     docker:
-      - image: cimg/android:2022.08.1
+      - image: cimg/android:2022.09.2
 
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
