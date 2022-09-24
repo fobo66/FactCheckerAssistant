@@ -13,8 +13,6 @@ import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -25,6 +23,7 @@ import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.items
 import io.github.fobo66.factcheckerassistant.R
 import io.github.fobo66.factcheckerassistant.api.models.Claim
+import io.github.fobo66.factcheckerassistant.ui.icons.Search
 
 @ExperimentalFoundationApi
 @ExperimentalMaterialApi
@@ -47,7 +46,7 @@ fun ClaimsSearch(
                     Text(stringResource(R.string.search_hint))
                 },
                 leadingIcon = {
-                    Icon(imageVector = Icons.Filled.Search, contentDescription = null)
+                    Icon(imageVector = Search, contentDescription = null)
                 },
                 maxLines = 1
             )
@@ -107,7 +106,6 @@ fun ClaimItem(
             onSearchResultClick(claim)
         }
     ) {
-
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -116,7 +114,7 @@ fun ClaimItem(
         ) {
             Text(
                 text = claim?.text.orEmpty(),
-                style = MaterialTheme.typography.h5,
+                style = MaterialTheme.typography.h5
             )
             Text(
                 text = claim?.claimant.orEmpty(),
