@@ -7,14 +7,13 @@ plugins {
 }
 
 val composeVersion = "1.3.0-beta03"
-val composeCompilerVersion = "1.3.0"
+val composeCompilerVersion = "1.3.1"
 
 android {
     compileSdk = 33
 
     defaultConfig {
         minSdk = VersionCodes.LOLLIPOP
-        targetSdk = 33
         version = 1
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"

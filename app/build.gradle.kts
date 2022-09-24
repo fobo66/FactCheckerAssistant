@@ -9,7 +9,7 @@ plugins {
 }
 
 val composeVersion = "1.3.0-beta03"
-val composeCompilerVersion = "1.3.0"
+val composeCompilerVersion = "1.3.1"
 
 android {
     compileSdk = 33
@@ -79,7 +79,6 @@ dependencies {
     implementation(fileTree("dir" to "libs", "include" to listOf("*.jar")))
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
     implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.appcompat:appcompat:1.6.0-rc01")
     implementation("androidx.activity:activity-compose:$activityVersion")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
