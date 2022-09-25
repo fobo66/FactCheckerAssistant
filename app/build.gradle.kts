@@ -27,6 +27,7 @@ android {
     }
 
     compileOptions {
+        isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
@@ -110,6 +111,8 @@ dependencies {
     kapt("com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion")
 
     implementation("com.jakewharton.timber:timber:5.0.1")
+
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.0")
 
     detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.21.0")
 

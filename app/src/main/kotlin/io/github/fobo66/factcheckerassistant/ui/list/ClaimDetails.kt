@@ -24,7 +24,7 @@ import io.github.fobo66.factcheckerassistant.api.models.Claim
 import io.github.fobo66.factcheckerassistant.api.models.ClaimReview
 import io.github.fobo66.factcheckerassistant.api.models.Publisher
 import io.github.fobo66.factcheckerassistant.ui.theme.FactCheckerAssistantTheme
-import java.util.Date
+import java.time.LocalDateTime
 
 @ExperimentalFoundationApi
 @ExperimentalMaterialApi
@@ -107,7 +107,7 @@ fun ClaimReviewItemPreview() {
 fun ClaimDetailsPreview() {
     FactCheckerAssistantTheme {
         val claim by remember {
-            mutableStateOf(Claim("test", "tester", Date().toString(), listOf()))
+            mutableStateOf(Claim("test", "tester", LocalDateTime.now().toString(), listOf()))
         }
 
         ClaimDetails(claim)
