@@ -37,12 +37,12 @@ fun ClaimDetails(claim: Claim?, modifier: Modifier = Modifier) {
         stickyHeader {
             Text(
                 text = claim?.text.orEmpty(),
-                style = MaterialTheme.typography.h5,
+                style = MaterialTheme.typography.h6,
                 modifier = Modifier.padding(top = 8.dp)
             )
             Text(
                 text = stringResource(R.string.claim_reviews_title),
-                style = MaterialTheme.typography.h6,
+                style = MaterialTheme.typography.subtitle1,
                 modifier = Modifier.padding(top = 8.dp)
             )
         }
