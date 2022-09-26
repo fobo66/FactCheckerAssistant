@@ -34,6 +34,7 @@ android {
 
     kotlinOptions {
         jvmTarget = "11"
+        freeCompilerArgs + "-opt-in=kotlin.RequiresOptIn"
     }
 
     buildFeatures {
@@ -60,10 +61,6 @@ android {
         }
     }
     namespace = "io.github.fobo66.factcheckerassistant"
-}
-
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-    kotlinOptions.freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
 }
 
 kapt {
