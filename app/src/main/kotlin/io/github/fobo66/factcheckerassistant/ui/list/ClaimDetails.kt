@@ -5,10 +5,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.ListItem
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ListItem
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -26,8 +26,7 @@ import io.github.fobo66.factcheckerassistant.api.models.Publisher
 import io.github.fobo66.factcheckerassistant.ui.theme.FactCheckerAssistantTheme
 import java.time.LocalDateTime
 
-@ExperimentalFoundationApi
-@ExperimentalMaterialApi
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun ClaimDetails(claim: Claim?, modifier: Modifier = Modifier) {
     LazyColumn(
@@ -37,12 +36,12 @@ fun ClaimDetails(claim: Claim?, modifier: Modifier = Modifier) {
         stickyHeader {
             Text(
                 text = claim?.text.orEmpty(),
-                style = MaterialTheme.typography.h6,
+                style = MaterialTheme.typography.titleMedium,
                 modifier = Modifier.padding(top = 8.dp)
             )
             Text(
                 text = stringResource(R.string.claim_reviews_title),
-                style = MaterialTheme.typography.subtitle1,
+                style = MaterialTheme.typography.titleSmall,
                 modifier = Modifier.padding(top = 8.dp)
             )
         }
@@ -65,27 +64,25 @@ fun ClaimDetails(claim: Claim?, modifier: Modifier = Modifier) {
     }
 }
 
-@ExperimentalMaterialApi
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ClaimReviewItem(claimReview: ClaimReview, modifier: Modifier = Modifier) {
     ListItem(
         modifier = modifier,
-        text = {
+        headlineText = {
             Text(text = claimReview.title.orEmpty())
         },
-        secondaryText = {
+        supportingText = {
             Text(
                 text = stringResource(
                     id = R.string.claim_rating,
                     claimReview.textualRating
                 )
             )
-        },
-        singleLineSecondaryText = false
+        }
     )
 }
 
-@ExperimentalMaterialApi
 @Preview(showBackground = true)
 @Composable
 fun ClaimReviewItemPreview() {
@@ -101,7 +98,6 @@ fun ClaimReviewItemPreview() {
     )
 }
 
-@OptIn(ExperimentalFoundationApi::class, ExperimentalMaterialApi::class)
 @Preview(showBackground = true)
 @Composable
 fun ClaimDetailsPreview() {
