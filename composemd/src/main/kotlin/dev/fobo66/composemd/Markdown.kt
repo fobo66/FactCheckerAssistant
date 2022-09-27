@@ -239,7 +239,7 @@ fun MarkdownText(text: AnnotatedString, style: TextStyle) {
         mutableStateOf<TextLayoutResult?>(null)
     }
 
-    androidx.compose.material.Text(
+    androidx.compose.material3.Text(
         text = text,
         modifier = Modifier.pointerInput(Unit) {
             detectTapGestures(onTap = { pos ->
