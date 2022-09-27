@@ -3,28 +3,20 @@ package io.github.fobo66.factcheckerassistant.ui.main
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.statusBarsPadding
-import androidx.compose.material.BottomNavigation
-import androidx.compose.material.BottomNavigationItem
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
-import androidx.compose.material.contentColorFor
-import androidx.compose.material.primarySurface
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowCompat
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavDestination.Companion.hierarchy
@@ -51,10 +43,7 @@ class MainActivity : ComponentActivity() {
         Screen.Guide
     )
 
-    @OptIn(
-        ExperimentalFoundationApi::class,
-        ExperimentalMaterialApi::class
-    )
+    @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -65,30 +54,16 @@ class MainActivity : ComponentActivity() {
                 val navController = rememberNavController()
                 Scaffold(
                     topBar = {
-                        Surface(
-                            color = MaterialTheme.colors.primarySurface,
-                            elevation = 4.dp
-                        ) {
-                            TopAppBar(
-                                title = {
-                                    Text(
-                                        stringResource(R.string.app_name)
-                                    )
-                                },
-                                backgroundColor = Color.Transparent,
-                                contentColor = contentColorFor(MaterialTheme.colors.primarySurface),
-                                elevation = 0.dp,
-                                modifier = Modifier.statusBarsPadding()
-                            )
-                        }
+                        TopAppBar(
+                            title = {
+                                Text(
+                                    stringResource(R.string.app_name)
+                                )
+                            }
+                        )
                     },
                     bottomBar = {
-                        Surface(
-                            color = MaterialTheme.colors.primarySurface,
-                            elevation = 4.dp
-                        ) {
-                            BottomNavBar(navController, Modifier.navigationBarsPadding())
-                        }
+                        BottomNavBar(navController, Modifier.navigationBarsPadding())
                     }
                 ) { innerPadding ->
                     val mainViewModel: MainViewModel = hiltViewModel()
@@ -133,16 +108,13 @@ class MainActivity : ComponentActivity() {
 
     @Composable
     private fun BottomNavBar(navController: NavHostController, modifier: Modifier = Modifier) {
-        BottomNavigation(
-            modifier = modifier,
-            elevation = 0.dp,
-            backgroundColor = Color.Transparent,
-            contentColor = contentColorFor(MaterialTheme.colors.primarySurface)
+        NavigationBar(
+            modifier = modifier
         ) {
             val navBackStackEntry by navController.currentBackStackEntryAsState()
             val currentDestination = navBackStackEntry?.destination
             bottomBarItems.forEach { screen ->
-                BottomNavigationItem(
+                NavigationBarItem(
                     icon = {
                         Icon(
                             screen.icon,
