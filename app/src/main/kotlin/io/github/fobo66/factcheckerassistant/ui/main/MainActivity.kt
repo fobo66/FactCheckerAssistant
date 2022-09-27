@@ -3,7 +3,6 @@ package io.github.fobo66.factcheckerassistant.ui.main
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -15,6 +14,9 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.core.view.WindowCompat
@@ -63,7 +65,7 @@ class MainActivity : ComponentActivity() {
                         )
                     },
                     bottomBar = {
-                        BottomNavBar(navController, Modifier.navigationBarsPadding())
+                        BottomNavBar(navController)
                     }
                 ) { innerPadding ->
                     val mainViewModel: MainViewModel = hiltViewModel()
@@ -71,13 +73,16 @@ class MainActivity : ComponentActivity() {
                     NavHost(navController, startDestination = "search") {
                         composable("search") {
                             val claims = mainViewModel.claims.collectAsLazyPagingItems()
-                            val query by mainViewModel.query.collectAsState()
+                            var query by rememberSaveable {
+                                mutableStateOf("")
+                            }
 
                             ClaimsSearch(
                                 modifier = Modifier.padding(innerPadding),
                                 query = query,
                                 claims = claims,
                                 onSearch = {
+                                    query = it
                                     mainViewModel.search(it)
                                 },
                                 onSearchResultClick = {
