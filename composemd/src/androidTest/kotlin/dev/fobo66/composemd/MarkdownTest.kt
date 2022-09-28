@@ -17,7 +17,6 @@ class MarkdownTest {
 
     @Test
     fun markdownDocument() {
-
         composeTestRule.setContent {
             MarkdownDocument(input = "Hello World!")
         }

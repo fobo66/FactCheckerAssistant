@@ -27,12 +27,14 @@ android {
     }
 
     compileOptions {
+        isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
 
     kotlinOptions {
         jvmTarget = "11"
+        freeCompilerArgs + "-opt-in=kotlin.RequiresOptIn"
     }
 
     buildFeatures {
@@ -61,10 +63,6 @@ android {
     namespace = "io.github.fobo66.factcheckerassistant"
 }
 
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-    kotlinOptions.freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
-}
-
 kapt {
     correctErrorTypes = true
 }
@@ -79,6 +77,7 @@ dependencies {
     implementation(fileTree("dir" to "libs", "include" to listOf("*.jar")))
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
     implementation("androidx.core:core-ktx:1.9.0")
+    implementation("com.google.android.material:material:1.8.0-alpha01")
     implementation("androidx.activity:activity-compose:$activityVersion")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
@@ -88,6 +87,7 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling:$composeVersion")
     implementation("androidx.compose.foundation:foundation:$composeVersion")
     implementation("androidx.compose.material:material:$composeVersion")
+    implementation("androidx.compose.material3:material3:1.0.0-beta03")
     implementation("androidx.compose.runtime:runtime-livedata:$composeVersion")
     implementation("androidx.paging:paging-compose:1.0.0-alpha16")
     implementation("androidx.navigation:navigation-compose:$navigationVersion")
@@ -108,6 +108,8 @@ dependencies {
     kapt("com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion")
 
     implementation("com.jakewharton.timber:timber:5.0.1")
+
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.0")
 
     detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.21.0")
 

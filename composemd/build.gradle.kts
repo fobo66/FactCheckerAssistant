@@ -36,6 +36,7 @@ android {
     }
 
     compileOptions {
+        isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
@@ -59,7 +60,10 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling:$composeVersion")
     implementation("androidx.compose.foundation:foundation:$composeVersion")
     implementation("androidx.compose.material:material:$composeVersion")
+    implementation("androidx.compose.material3:material3:1.0.0-beta03")
     implementation("io.coil-kt:coil-compose:2.2.1")
+
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.0")
 
     detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.21.0")
 
@@ -67,4 +71,5 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit-ktx:1.1.4-alpha07")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.0-alpha07")
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:$composeVersion")
+    debugImplementation("androidx.compose.ui:ui-test-manifest:$composeVersion")
 }

@@ -9,14 +9,12 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import dev.fobo66.composemd.MarkdownDocument
 
-private val guideTextPadding = 16.dp
-
 @Composable
 fun FactCheckGuide(modifier: Modifier = Modifier) {
     MarkdownDocument(
         LocalContext.current.assets.open("guide.md"),
         modifier = modifier
-            .padding(guideTextPadding)
+            .padding(horizontal = 16.dp)
             .verticalScroll(rememberScrollState())
     )
 }
