@@ -87,7 +87,7 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling:$composeVersion")
     implementation("androidx.compose.foundation:foundation:$composeVersion")
     implementation("androidx.compose.material:material:$composeVersion")
-    implementation("androidx.compose.material3:material3:1.0.0-beta03")
+    implementation("androidx.compose.material3:material3:1.0.0-rc01")
     implementation("androidx.compose.runtime:runtime-livedata:$composeVersion")
     implementation("androidx.paging:paging-compose:1.0.0-alpha16")
     implementation("androidx.navigation:navigation-compose:$navigationVersion")
