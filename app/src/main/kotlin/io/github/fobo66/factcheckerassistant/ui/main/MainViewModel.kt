@@ -24,7 +24,7 @@ class MainViewModel @Inject constructor(
     private val handle: SavedStateHandle
 ) : ViewModel() {
 
-    val query = handle.getLiveData<String>(KEY_QUERY)
+    private val query = handle.getLiveData<String>(KEY_QUERY)
         .asFlow()
         .stateIn(viewModelScope, SharingStarted.Lazily, "")
 

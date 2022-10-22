@@ -103,7 +103,31 @@ fun ClaimReviewItemPreview() {
 fun ClaimDetailsPreview() {
     FactCheckerAssistantTheme {
         val claim by remember {
-            mutableStateOf(Claim("test", "tester", LocalDateTime.now().toString(), listOf()))
+            mutableStateOf(
+                Claim(
+                    "test",
+                    "tester",
+                    LocalDateTime.now().toString(),
+                    listOf(
+                        ClaimReview(
+                            Publisher("test", "test.com"),
+                            "url",
+                            "test",
+                            "test",
+                            "test",
+                            Locale.current.language
+                        ),
+                        ClaimReview(
+                            Publisher("test", "test.com"),
+                            "url",
+                            "test",
+                            "test",
+                            "test",
+                            Locale.current.language
+                        )
+                    )
+                )
+            )
         }
 
         ClaimDetails(claim)
