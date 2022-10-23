@@ -21,6 +21,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.core.view.WindowCompat
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
@@ -45,7 +47,7 @@ class MainActivity : ComponentActivity() {
         Screen.Guide
     )
 
-    @OptIn(ExperimentalMaterial3Api::class)
+    @OptIn(ExperimentalMaterial3Api::class, ExperimentalLifecycleComposeApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -92,7 +94,7 @@ class MainActivity : ComponentActivity() {
                             )
                         }
                         composable("details") {
-                            val claim by mainViewModel.selectedClaim.collectAsState()
+                            val claim by mainViewModel.selectedClaim.collectAsStateWithLifecycle()
                             ClaimDetails(
                                 claim,
                                 modifier = Modifier.padding(innerPadding)

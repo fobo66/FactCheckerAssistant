@@ -68,9 +68,9 @@ kapt {
 }
 
 dependencies {
-    val lifecycleVersion = "2.5.1"
-    val activityVersion = "1.6.0"
-    val pagingVersion = "3.1.1"
+    val lifecycleVersion = "2.6.0-alpha02"
+    val activityVersion = "1.7.0-alpha01"
+    val pagingVersion = "3.2.0-alpha02"
     val navigationVersion = "2.5.2"
     val coroutinesVersion = "1.6.4"
 
@@ -80,6 +80,7 @@ dependencies {
     implementation("com.google.android.material:material:1.8.0-alpha01")
     implementation("androidx.activity:activity-compose:$activityVersion")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
     implementation("androidx.paging:paging-runtime-ktx:$pagingVersion")
 
@@ -92,7 +93,6 @@ dependencies {
     implementation("androidx.paging:paging-compose:1.0.0-alpha16")
     implementation("androidx.navigation:navigation-compose:$navigationVersion")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
-    implementation("androidx.activity:activity-compose:$activityVersion")
     implementation(project(":composemd"))
 
     val hiltVersion = "2.44"
