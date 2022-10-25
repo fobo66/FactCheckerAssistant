@@ -6,8 +6,8 @@ plugins {
     id("io.gitlab.arturbosch.detekt")
 }
 
-val composeVersion = "1.3.0"
-val composeCompilerVersion = "1.3.1"
+val composeVersion = "1.4.0-alpha01"
+val composeCompilerVersion = "1.3.2"
 
 android {
     compileSdk = 33
@@ -59,8 +59,7 @@ dependencies {
     implementation("androidx.compose.ui:ui:$composeVersion")
     implementation("androidx.compose.ui:ui-tooling:$composeVersion")
     implementation("androidx.compose.foundation:foundation:$composeVersion")
-    implementation("androidx.compose.material:material:$composeVersion")
-    implementation("androidx.compose.material3:material3:1.0.0")
+    implementation("androidx.compose.material3:material3:1.1.0-alpha01")
     implementation("io.coil-kt:coil-compose:2.2.2")
 
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.0")
