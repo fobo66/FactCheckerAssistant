@@ -8,7 +8,7 @@ plugins {
     id("dagger.hilt.android.plugin")
 }
 
-val composeVersion = "1.4.0-alpha01"
+val composeVersion = "1.4.0-alpha02"
 val composeCompilerVersion = "1.3.2"
 
 android {
