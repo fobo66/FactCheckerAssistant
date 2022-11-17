@@ -55,7 +55,7 @@ android {
 }
 
 dependencies {
-    implementation("org.commonmark:commonmark:0.20.0")
+    implementation("org.commonmark:commonmark:0.21.0")
     implementation("androidx.compose.ui:ui:$composeVersion")
     implementation("androidx.compose.ui:ui-tooling:$composeVersion")
     implementation("androidx.compose.foundation:foundation:$composeVersion")
