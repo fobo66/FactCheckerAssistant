@@ -6,7 +6,7 @@ plugins {
     id("io.gitlab.arturbosch.detekt")
 }
 
-val composeVersion = "1.4.0-alpha02"
+val composeVersion = "1.4.0-alpha03"
 val composeCompilerVersion = "1.3.2"
 
 android {
