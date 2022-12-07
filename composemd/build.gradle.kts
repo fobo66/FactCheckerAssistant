@@ -59,7 +59,7 @@ dependencies {
     implementation("androidx.compose.ui:ui:$composeVersion")
     implementation("androidx.compose.ui:ui-tooling:$composeVersion")
     implementation("androidx.compose.foundation:foundation:$composeVersion")
-    implementation("androidx.compose.material3:material3:1.1.0-alpha02")
+    implementation("androidx.compose.material3:material3:1.1.0-alpha03")
     implementation("io.coil-kt:coil-compose:2.2.2")
 
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.0")
