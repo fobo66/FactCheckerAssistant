@@ -8,9 +8,6 @@ plugins {
     id("dagger.hilt.android.plugin")
 }
 
-val composeVersion = "1.4.0-alpha03"
-val composeCompilerVersion = "1.4.0-alpha02"
-
 android {
     compileSdk = 33
 
@@ -43,7 +40,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = composeCompilerVersion
+        kotlinCompilerExtensionVersion = compose.versions.compiler.get()
     }
 
     buildTypes {
@@ -69,56 +66,48 @@ kapt {
 }
 
 dependencies {
-    val lifecycleVersion = "2.6.0-alpha03"
-    val activityVersion = "1.7.0-alpha02"
-    val pagingVersion = "3.2.0-alpha03"
-    val navigationVersion = "2.5.3"
-    val coroutinesVersion = "1.6.4"
-
     implementation(fileTree("dir" to "libs", "include" to listOf("*.jar")))
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("com.google.android.material:material:1.8.0-beta01")
-    implementation("androidx.activity:activity-compose:$activityVersion")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
-    implementation("androidx.lifecycle:lifecycle-runtime-compose:$lifecycleVersion")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
-    implementation("androidx.paging:paging-runtime-ktx:$pagingVersion")
+    implementation(libs.coroutines)
+    implementation(androidx.core)
+    implementation(libs.material)
+    implementation(androidx.activity)
+    implementation(androidx.viewmodel)
+    implementation(androidx.lifecycle)
+    implementation(androidx.paging)
 
-    implementation("androidx.compose.ui:ui:$composeVersion")
-    implementation("androidx.compose.ui:ui-tooling:$composeVersion")
-    implementation("androidx.compose.foundation:foundation:$composeVersion")
-    implementation("androidx.compose.material3:material3:1.1.0-alpha03")
-    implementation("androidx.compose.runtime:runtime:$composeVersion")
-    implementation("androidx.paging:paging-compose:1.0.0-alpha17")
-    implementation("androidx.navigation:navigation-compose:$navigationVersion")
-    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+    implementation(compose.ui)
+    implementation(compose.material)
+    implementation(compose.preview)
+    implementation(compose.windowsize)
+    androidTestImplementation(compose.testing)
+    debugImplementation(compose.testing.manifest)
+    debugImplementation(compose.tooling)
+    implementation(androidx.paging.compose)
+    implementation(androidx.navigation)
+    implementation(di.navigation)
     implementation(project(":composemd"))
 
-    val hiltVersion = "2.44.2"
-    implementation("com.google.dagger:hilt-android:$hiltVersion")
-    kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
+    implementation(di.core)
+    kapt(di.compiler)
 
-    val retrofitVersion = "2.9.0"
-    implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
-    implementation("com.squareup.retrofit2:converter-moshi:$retrofitVersion")
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.moshi)
 
-    val moshiVersion = "1.14.0"
-    implementation("com.squareup.moshi:moshi:$moshiVersion")
-    kapt("com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion")
+    implementation(libs.moshi)
+    kapt(libs.moshi.codegen)
 
-    implementation("com.jakewharton.timber:timber:5.0.1")
+    implementation(libs.timber)
 
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.0")
+    coreLibraryDesugaring(libs.desugar)
 
-    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.22.0")
+    detektPlugins(analysis.formatting)
+    detektPlugins(analysis.compose)
 
-    testImplementation("junit:junit:4.13.2")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion")
-    testImplementation("androidx.paging:paging-common-ktx:$pagingVersion")
-    testImplementation("androidx.arch.core:core-testing:2.1.0")
-    testImplementation("androidx.navigation:navigation-testing:$navigationVersion")
-    testImplementation("com.squareup.retrofit2:retrofit-mock:$retrofitVersion")
-    androidTestImplementation("androidx.test.ext:junit-ktx:1.1.4")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.0")
+    testImplementation(testing.junit4)
+    testImplementation(libs.coroutines.test)
+    testImplementation(androidx.paging.common)
+    testImplementation(libs.retrofit.mock)
+    androidTestImplementation(androidx.navigation.testing)
+    androidTestImplementation(androidx.uitest.junit)
+    androidTestImplementation(androidx.uitest.espresso)
 }
