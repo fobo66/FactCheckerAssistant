@@ -68,6 +68,7 @@ kapt {
 dependencies {
     implementation(fileTree("dir" to "libs", "include" to listOf("*.jar")))
     implementation(libs.coroutines)
+    implementation(libs.collections)
     implementation(androidx.core)
     implementation(libs.material)
     implementation(androidx.activity)
@@ -92,11 +93,11 @@ dependencies {
 
     implementation(libs.retrofit)
     implementation(libs.retrofit.moshi)
-
     implementation(libs.moshi)
     kapt(libs.moshi.codegen)
 
     implementation(libs.timber)
+    implementation(libs.leakcanary)
 
     coreLibraryDesugaring(libs.desugar)
 
