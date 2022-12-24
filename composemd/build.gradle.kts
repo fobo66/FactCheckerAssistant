@@ -6,9 +6,6 @@ plugins {
     id("io.gitlab.arturbosch.detekt")
 }
 
-val composeVersion = "1.4.0-alpha03"
-val composeCompilerVersion = "1.4.0-alpha02"
-
 android {
     compileSdk = 33
 
@@ -32,7 +29,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = composeCompilerVersion
+        kotlinCompilerExtensionVersion = compose.versions.compiler.get()
     }
 
     compileOptions {
