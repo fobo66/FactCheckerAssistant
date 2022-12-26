@@ -1,0 +1,73 @@
+name: Android CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+env:
+  FACTCHECK_API_KEY: ${{secrets.FACTCHECK_API_KEY}}
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3.2.0
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Check Gradle wrapper
+        uses: gradle/wrapper-validation-action@v1
+      - name: Detekt
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: detekt
+      - name: Upload build reports
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: detekt
+          path: |
+            app/build/reports/detekt/detekt.html
+            data/build/reports/detekt/detekt.html
+            domain/build/reports/detekt/detekt.html
+  ui-tests:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v3.2.0
+      - name: set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: 'gradle'
+      - name: Check Gradle wrapper
+        uses: gradle/wrapper-validation-action@v1
+      - name: Run tests
+        uses: reactivecircus/android-emulator-runner@v2.27.0
+        with:
+          script: ./gradlew connectedDebugAndroidTest -Pandroid.testInstrumentationRunnerArguments.size=small
+          arch: x86_64
+          target: google_apis
+          disable-animations: true
+          api-level: 33
+  unit-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3.2.0
+      - name: set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - name: Check Gradle wrapper
+        uses: gradle/wrapper-validation-action@v1
+      - name: Run tests
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: testDebugUnitTest
