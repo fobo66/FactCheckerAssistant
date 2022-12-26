@@ -92,6 +92,8 @@ dependencies {
     kapt(di.compiler)
 
     implementation(libs.retrofit)
+    implementation(platform(okhttp.bom))
+    implementation(okhttp.core)
     implementation(libs.retrofit.moshi)
     implementation(libs.moshi)
     kapt(libs.moshi.codegen)
