@@ -1,6 +1,6 @@
 # FactCheckerAssistant
 
-[![Build Status](https://circleci.com/gh/fobo66/FactCheckerAssistant/tree/main.svg?style=svg)](https://circleci.com/gh/fobo66/FactCheckerAssistant/tree/main)
+[![Android CI](https://github.com/fobo66/FactCheckerAssistant/actions/workflows/main.yml/badge.svg)](https://github.com/fobo66/FactCheckerAssistant/actions/workflows/main.yml)
 
 Android App to help you check claims from the internet. Currently in active development
 
