@@ -1,6 +1,5 @@
 package io.github.fobo66.factcheckerassistant.data
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import io.github.fobo66.factcheckerassistant.api.FactCheckApi
 import io.github.fobo66.factcheckerassistant.api.models.Claim
 import io.github.fobo66.factcheckerassistant.api.models.FactCheckResponse
@@ -11,7 +10,6 @@ import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertNotNull
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
 import retrofit2.Retrofit
 import retrofit2.mock.BehaviorDelegate
@@ -25,9 +23,6 @@ class FactCheckRepositoryTest {
     private lateinit var mockApi: BehaviorDelegate<FactCheckApi>
 
     private val localeProvider: LocaleProvider = TestLocaleProvider()
-
-    @get:Rule
-    val instantTaskExecutorRule = InstantTaskExecutorRule()
 
     @Before
     fun setUp() {
