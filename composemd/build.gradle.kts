@@ -6,9 +6,6 @@ plugins {
     id("io.gitlab.arturbosch.detekt")
 }
 
-val composeVersion = "1.4.0-alpha03"
-val composeCompilerVersion = "1.4.0-alpha02"
-
 android {
     compileSdk = 33
 
@@ -32,7 +29,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = composeCompilerVersion
+        kotlinCompilerExtensionVersion = compose.versions.compiler.get()
     }
 
     compileOptions {
@@ -55,20 +52,21 @@ android {
 }
 
 dependencies {
-    implementation("org.commonmark:commonmark:0.21.0")
-    implementation("androidx.compose.ui:ui:$composeVersion")
-    implementation("androidx.compose.ui:ui-tooling:$composeVersion")
-    implementation("androidx.compose.foundation:foundation:$composeVersion")
-    implementation("androidx.compose.material3:material3:1.1.0-alpha03")
-    implementation("io.coil-kt:coil-compose:2.2.2")
+    implementation(libs.commonmark)
+    implementation(compose.ui)
+    implementation(compose.material)
+    implementation(compose.preview)
+    androidTestImplementation(compose.testing)
+    debugImplementation(compose.testing.manifest)
+    debugImplementation(compose.tooling)
+    implementation(libs.coil)
 
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.0")
+    coreLibraryDesugaring(libs.desugar)
 
-    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.22.0")
+    detektPlugins(analysis.formatting)
+    detektPlugins(analysis.compose)
 
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit-ktx:1.1.4")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.0")
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4:$composeVersion")
-    debugImplementation("androidx.compose.ui:ui-test-manifest:$composeVersion")
+    testImplementation(testing.junit4)
+    androidTestImplementation(androidx.uitest.junit)
+    androidTestImplementation(androidx.uitest.espresso)
 }
