@@ -175,7 +175,7 @@ dependencyResolutionManagement {
         }
 
         register("testing") {
-            version("kaspresso", "1.4.3")
+            version("kaspresso", "1.5.1")
             version("mockk", "1.13.3")
             library("junit", "org.junit.jupiter:junit-jupiter:5.9.1")
             library("junit4", "junit:junit:4.13.2")
