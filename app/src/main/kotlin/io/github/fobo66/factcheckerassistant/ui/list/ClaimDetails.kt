@@ -1,13 +1,15 @@
 package io.github.fobo66.factcheckerassistant.ui.list
 
+import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -29,58 +31,53 @@ import java.time.LocalDateTime
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun ClaimDetails(claim: Claim?, modifier: Modifier = Modifier) {
-    LazyColumn(
-        modifier = modifier
-            .padding(horizontal = 16.dp)
-    ) {
-        stickyHeader {
+    Crossfade(targetState = claim?.claimReview) {
+        if (it.isNullOrEmpty()) {
             Text(
-                text = claim?.text.orEmpty(),
-                style = MaterialTheme.typography.titleMedium,
-                modifier = Modifier.padding(top = 8.dp)
+                modifier = modifier
+                    .fillMaxSize()
+                    .padding(8.dp),
+                textAlign = TextAlign.Center,
+                text = stringResource(id = R.string.claim_reviews_empty)
             )
-            Text(
-                text = stringResource(R.string.claim_reviews_title),
-                style = MaterialTheme.typography.titleSmall,
-                modifier = Modifier.padding(top = 8.dp)
-            )
-        }
-        val claimReviews = claim?.claimReview
-        if (claimReviews.isNullOrEmpty()) {
-            item {
-                Text(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(8.dp),
-                    textAlign = TextAlign.Center,
-                    text = stringResource(id = R.string.claim_reviews_empty)
-                )
-            }
         } else {
-            items(claimReviews) {
-                ClaimReviewItem(it)
+            LazyColumn(
+                modifier = modifier
+                    .padding(horizontal = 16.dp)
+            ) {
+                stickyHeader {
+                    Text(
+                        text = claim?.text.orEmpty(),
+                        style = MaterialTheme.typography.titleMedium,
+                        modifier = Modifier.padding(top = 8.dp)
+                    )
+                    Text(
+                        text = stringResource(R.string.claim_reviews_title),
+                        style = MaterialTheme.typography.titleSmall,
+                        modifier = Modifier.padding(top = 8.dp)
+                    )
+                }
+                items(it) { review ->
+                    ClaimReviewItem(review)
+                }
             }
         }
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ClaimReviewItem(claimReview: ClaimReview, modifier: Modifier = Modifier) {
-    ListItem(
-        modifier = modifier,
-        headlineText = {
-            Text(text = claimReview.title.orEmpty())
-        },
-        supportingText = {
-            Text(
-                text = stringResource(
-                    id = R.string.claim_rating,
-                    claimReview.textualRating
-                )
+    OutlinedCard(
+        modifier = modifier
+    ) {
+        Text(text = claimReview.title.orEmpty())
+        Text(
+            text = stringResource(
+                id = R.string.claim_rating,
+                claimReview.textualRating
             )
-        }
-    )
+        )
+    }
 }
 
 @Preview(showBackground = true)
