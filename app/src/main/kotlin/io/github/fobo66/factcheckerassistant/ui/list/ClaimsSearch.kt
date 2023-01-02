@@ -1,15 +1,18 @@
 package io.github.fobo66.factcheckerassistant.ui.list
 
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.Card
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -34,7 +37,9 @@ fun ClaimsSearch(
     modifier: Modifier = Modifier,
     onSearchResultClick: (Claim?) -> Unit = {}
 ) {
-    LazyColumn(modifier = modifier) {
+    LazyColumn(
+        modifier = modifier,
+    ) {
         stickyHeader {
             TextField(
                 value = query,
@@ -97,29 +102,30 @@ fun ClaimItem(
     modifier: Modifier = Modifier,
     onSearchResultClick: (Claim?) -> Unit
 ) {
-    Card(
+    ElevatedCard(
         modifier = modifier
+            .fillMaxWidth()
             .padding(8.dp),
         onClick = {
             onSearchResultClick(claim)
         }
     ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(8.dp)
-                .wrapContentWidth(Alignment.End)
-        ) {
-            Text(
-                text = claim?.text.orEmpty(),
-                style = MaterialTheme.typography.titleMedium
-            )
-            Text(
-                text = claim?.claimant.orEmpty(),
-                modifier = Modifier
-                    .align(Alignment.End)
-                    .padding(vertical = 4.dp)
-            )
-        }
+        ListItem(
+            headlineText = {
+                Text(
+                    text = claim?.claimant.orEmpty()
+                )
+            },
+            supportingText = {
+                Text(
+                    text = claim?.claimDate.orEmpty()
+                )
+            }
+        )
+        Text(
+            text = claim?.text.orEmpty(),
+            style = MaterialTheme.typography.titleMedium,
+            modifier = Modifier.padding(8.dp)
+        )
     }
 }
