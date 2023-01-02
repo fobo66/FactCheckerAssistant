@@ -2,10 +2,12 @@ package io.github.fobo66.factcheckerassistant.ui.list
 
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
@@ -16,6 +18,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.text.style.TextAlign
@@ -65,12 +68,36 @@ fun ClaimDetails(claim: Claim?, modifier: Modifier = Modifier) {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ClaimReviewItem(claimReview: ClaimReview, modifier: Modifier = Modifier) {
     OutlinedCard(
         modifier = modifier
     ) {
-        Text(text = claimReview.title.orEmpty())
+        ListItem(
+            leadingContent = {
+                if (claimReview.publisher.name != null) {
+                    Text(
+                        text = claimReview.publisher.name[0].toString(),
+                        color = MaterialTheme.colorScheme.onPrimary,
+                        modifier = Modifier
+                            .background(MaterialTheme.colorScheme.primary, CircleShape)
+                            .padding(8.dp)
+                            .clip(CircleShape)
+                    )
+                }
+            },
+            headlineText = {
+                Text(
+                    text = claimReview.title.orEmpty()
+                )
+            },
+            supportingText = {
+                Text(
+                    text = claimReview.publisher.name.orEmpty()
+                )
+            }
+        )
         Text(
             text = stringResource(
                 id = R.string.claim_rating,
