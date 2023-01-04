@@ -62,7 +62,7 @@ dependencyResolutionManagement {
             version("lifecycle", "2.6.0-alpha03")
             version("navigation", "2.6.0-alpha04")
             version("paging", "3.2.0-alpha03")
-            version("uitest", "1.5.1")
+            version("uitest", "1.5.2")
             version("espresso", "3.5.1")
             version("benchmark", "1.2.0-alpha08")
             library("core", "androidx.core:core-ktx:1.9.0")
