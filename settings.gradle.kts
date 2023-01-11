@@ -64,7 +64,7 @@ dependencyResolutionManagement {
             version("paging", "3.2.0-alpha03")
             version("uitest", "1.5.2")
             version("espresso", "3.5.1")
-            version("benchmark", "1.2.0-alpha08")
+            version("benchmark", "1.2.0-alpha09")
             library("core", "androidx.core:core-ktx:1.9.0")
             library("annotations", "androidx.annotation:annotation:1.5.0")
             library("activity", "androidx.activity:activity-compose:1.7.0-alpha02")
