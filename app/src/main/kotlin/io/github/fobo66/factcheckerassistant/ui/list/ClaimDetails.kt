@@ -3,8 +3,10 @@ package io.github.fobo66.factcheckerassistant.ui.list
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
@@ -17,8 +19,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.text.style.TextAlign
@@ -61,7 +63,7 @@ fun ClaimDetails(claim: Claim?, modifier: Modifier = Modifier) {
                     )
                 }
                 items(it) { review ->
-                    ClaimReviewItem(review)
+                    ClaimReviewItem(review, modifier = Modifier.padding(vertical = 8.dp))
                 }
             }
         }
@@ -77,14 +79,19 @@ fun ClaimReviewItem(claimReview: ClaimReview, modifier: Modifier = Modifier) {
         ListItem(
             leadingContent = {
                 if (claimReview.publisher.name != null) {
-                    Text(
-                        text = claimReview.publisher.name[0].toString(),
-                        color = MaterialTheme.colorScheme.onPrimary,
+                    Box(
                         modifier = Modifier
+                            .size(48.dp)
                             .background(MaterialTheme.colorScheme.primary, CircleShape)
-                            .padding(8.dp)
-                            .clip(CircleShape)
-                    )
+                    ) {
+                        Text(
+                            text = claimReview.publisher.name[0].titlecase(),
+                            style = MaterialTheme.typography.titleSmall,
+                            color = MaterialTheme.colorScheme.onPrimary,
+                            modifier = Modifier
+                                .align(Alignment.Center)
+                        )
+                    }
                 }
             },
             headlineText = {
@@ -102,7 +109,8 @@ fun ClaimReviewItem(claimReview: ClaimReview, modifier: Modifier = Modifier) {
             text = stringResource(
                 id = R.string.claim_rating,
                 claimReview.textualRating
-            )
+            ),
+            modifier = Modifier.padding(16.dp)
         )
     }
 }
