@@ -53,12 +53,16 @@ android {
         }
     }
 
-    packagingOptions {
+    packaging {
         resources {
             excludes += listOf("META-INF/AL2.0", "META-INF/LGPL2.1")
         }
     }
     namespace = "io.github.fobo66.factcheckerassistant"
+}
+
+kotlin {
+    jvmToolchain(11)
 }
 
 kapt {

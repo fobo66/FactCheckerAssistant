@@ -42,13 +42,17 @@ android {
         jvmTarget = "11"
     }
 
-    packagingOptions {
+    packaging {
         resources {
             excludes += "META-INF/AL2.0"
             excludes += "META-INF/LGPL2.1"
         }
     }
     namespace = "dev.fobo66.composemd"
+}
+
+kotlin {
+    jvmToolchain(11)
 }
 
 dependencies {
