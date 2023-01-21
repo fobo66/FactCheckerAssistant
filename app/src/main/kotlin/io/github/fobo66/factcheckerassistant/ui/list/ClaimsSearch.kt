@@ -1,6 +1,5 @@
 package io.github.fobo66.factcheckerassistant.ui.list
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentWidth
@@ -8,11 +7,9 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -23,36 +20,16 @@ import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.items
 import io.github.fobo66.factcheckerassistant.R
 import io.github.fobo66.factcheckerassistant.api.models.Claim
-import io.github.fobo66.factcheckerassistant.ui.icons.Search
 
-@OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun ClaimsSearch(
-    query: String,
     claims: LazyPagingItems<Claim>,
-    onSearch: (String) -> Unit,
     modifier: Modifier = Modifier,
     onSearchResultClick: (Claim?) -> Unit = {}
 ) {
     LazyColumn(
         modifier = modifier,
     ) {
-        stickyHeader {
-            TextField(
-                value = query,
-                onValueChange = onSearch,
-                modifier = Modifier
-                    .fillMaxWidth(),
-                placeholder = {
-                    Text(stringResource(R.string.search_hint))
-                },
-                leadingIcon = {
-                    Icon(imageVector = Search, contentDescription = null)
-                },
-                maxLines = 1
-            )
-        }
-
         if (claims.itemCount == 0) {
             item {
                 Text(

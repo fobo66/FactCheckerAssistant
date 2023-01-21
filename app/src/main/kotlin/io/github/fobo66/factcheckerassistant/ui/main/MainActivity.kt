@@ -3,14 +3,17 @@ package io.github.fobo66.factcheckerassistant.ui.main
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MediumTopAppBar
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -32,6 +35,7 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import dagger.hilt.android.AndroidEntryPoint
 import io.github.fobo66.factcheckerassistant.R
 import io.github.fobo66.factcheckerassistant.ui.guide.FactCheckGuide
+import io.github.fobo66.factcheckerassistant.ui.icons.Search
 import io.github.fobo66.factcheckerassistant.ui.list.ClaimDetails
 import io.github.fobo66.factcheckerassistant.ui.list.ClaimsSearch
 import io.github.fobo66.factcheckerassistant.ui.theme.FactCheckerAssistantTheme
@@ -54,42 +58,34 @@ class MainActivity : ComponentActivity() {
         setContent {
             FactCheckerAssistantTheme {
                 val navController = rememberNavController()
+                val mainViewModel: MainViewModel = hiltViewModel()
+                var query by rememberSaveable {
+                    mutableStateOf("")
+                }
                 Scaffold(
                     topBar = {
-                        MediumTopAppBar(
-                            title = {
-                                Text(
-                                    stringResource(R.string.app_name)
-                                )
-                            }
-                        )
+                        FactCheckTopAppBar(
+                            query = query,
+                            onQueryChanged = {
+                                query = it
+                                mainViewModel.search(it)
+                            })
                     },
                     bottomBar = {
                         BottomNavBar(navController)
                     }
                 ) { innerPadding ->
-                    val mainViewModel: MainViewModel = hiltViewModel()
-
                     NavHost(navController, startDestination = "search") {
                         composable("search") {
                             val claims = mainViewModel.claims.collectAsLazyPagingItems()
-                            var query by rememberSaveable {
-                                mutableStateOf("")
-                            }
 
                             ClaimsSearch(
-                                modifier = Modifier.padding(innerPadding),
-                                query = query,
                                 claims = claims,
-                                onSearch = {
-                                    query = it
-                                    mainViewModel.search(it)
-                                },
-                                onSearchResultClick = {
-                                    mainViewModel.selectClaim(it)
-                                    navController.navigate("details")
-                                }
-                            )
+                                modifier = Modifier.padding(innerPadding)
+                            ) {
+                                mainViewModel.selectClaim(it)
+                                navController.navigate("details")
+                            }
                         }
                         composable("details") {
                             val claim by mainViewModel.selectedClaim.collectAsStateWithLifecycle()
@@ -109,6 +105,37 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+    }
+
+    @Composable
+    @OptIn(ExperimentalMaterial3Api::class)
+    private fun FactCheckTopAppBar(
+        query: String,
+        onQueryChanged: (String) -> Unit,
+        modifier: Modifier = Modifier
+    ) {
+        TopAppBar(
+            title = {
+                TextField(
+                    value = query,
+                    onValueChange = onQueryChanged,
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    placeholder = {
+                        Text(stringResource(R.string.search_hint))
+                    },
+                    label = {
+                        Text(stringResource(R.string.search_hint))
+                    },
+                    leadingIcon = {
+                        Icon(imageVector = Search, contentDescription = null)
+                    },
+                    singleLine = true
+                )
+            },
+            scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(),
+            modifier = modifier
+        )
     }
 
     @Composable
