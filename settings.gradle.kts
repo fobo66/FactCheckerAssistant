@@ -18,7 +18,7 @@ dependencyResolutionManagement {
             version("moshi", "1.14.0")
             version("retrofit", "2.9.0")
             version("coroutines", "1.6.4")
-            library("material", "com.google.android.material:material:1.8.0-rc01")
+            library("material", "com.google.android.material:material:1.8.0")
             library("retrofit", "com.squareup.retrofit2", "retrofit").versionRef("retrofit")
             library("retrofit.moshi", "com.squareup.retrofit2", "converter-moshi").versionRef("retrofit")
             library("retrofit.mock", "com.squareup.retrofit2", "retrofit-mock").versionRef("retrofit")
