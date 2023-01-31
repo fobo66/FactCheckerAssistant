@@ -58,20 +58,30 @@ dependencyResolutionManagement {
         }
 
         register("androidx") {
-            version("plugin", "8.1.0-alpha01")
+            version("plugin", "8.1.0-alpha02")
             version("lifecycle", "2.6.0-alpha05")
             version("navigation", "2.6.0-alpha04")
             version("paging", "3.2.0-alpha03")
             version("uitest", "1.5.2")
             version("espresso", "3.5.1")
             version("benchmark", "1.2.0-alpha09")
+            plugin("application", "com.android.application").versionRef("plugin")
+            plugin("library", "com.android.library").versionRef("plugin")
             library("core", "androidx.core:core-ktx:1.9.0")
             library("annotations", "androidx.annotation:annotation:1.5.0")
             library("activity", "androidx.activity:activity-compose:1.7.0-alpha03")
             library("appstartup", "androidx.startup:startup-runtime:1.2.0-alpha02")
             library("datastore", "androidx.datastore:datastore-preferences:1.0.0")
-            library("navigation", "androidx.navigation", "navigation-compose").versionRef("navigation")
-            library("navigation.testing", "androidx.navigation", "navigation-testing").versionRef("navigation")
+            library(
+                "navigation",
+                "androidx.navigation",
+                "navigation-compose"
+            ).versionRef("navigation")
+            library(
+                "navigation.testing",
+                "androidx.navigation",
+                "navigation-testing"
+            ).versionRef("navigation")
             library("multidex", "androidx.multidex:multidex:2.0.1")
             library("splashscreen", "androidx.core:core-splashscreen:1.0.0")
             library("window", "androidx.window:window:1.1.0-alpha04")
@@ -168,7 +178,7 @@ dependencyResolutionManagement {
 
         register("di") {
             version("hilt", "2.44.2")
-            plugin("hilt", "dagger.hilt.android.plugin").versionRef("hilt")
+            plugin("hilt", "com.google.dagger.hilt.android").versionRef("hilt")
             library("core", "com.google.dagger", "hilt-android").versionRef("hilt")
             library("compiler", "com.google.dagger", "hilt-android-compiler").versionRef("hilt")
             library("navigation", "androidx.hilt:hilt-navigation-compose:1.0.0")
@@ -199,6 +209,7 @@ dependencyResolutionManagement {
 
         register("analysis") {
             version("detekt", "1.22.0")
+            plugin("detekt", "io.gitlab.arturbosch.detekt").versionRef("detekt")
             library(
                 "formatting",
                 "io.gitlab.arturbosch.detekt",
