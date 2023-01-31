@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    compileSdk = 33
+    compileSdk = VersionCodes.TIRAMISU
 
     defaultConfig {
         minSdk = VersionCodes.LOLLIPOP

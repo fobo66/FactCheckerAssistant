@@ -9,12 +9,12 @@ plugins {
 }
 
 android {
-    compileSdk = 33
+    compileSdk = VersionCodes.TIRAMISU
 
     defaultConfig {
         applicationId = "io.github.fobo66.factcheckerassistant"
         minSdk = VersionCodes.LOLLIPOP
-        targetSdk = 33
+        targetSdk = VersionCodes.TIRAMISU
         versionCode = 1
         versionName = "1.0"
 
