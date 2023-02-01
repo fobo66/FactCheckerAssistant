@@ -189,7 +189,7 @@ dependencyResolutionManagement {
             version("mockk", "1.13.3")
             library("junit", "org.junit.jupiter:junit-jupiter:5.9.2")
             library("junit4", "junit:junit:4.13.2")
-            library("kakao", "io.github.kakaocup:compose:0.2.1")
+            library("kakao", "io.github.kakaocup:compose:0.2.2")
             library(
                 "kaspresso",
                 "com.kaspersky.android-components",
