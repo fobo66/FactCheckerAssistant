@@ -27,7 +27,7 @@ dependencyResolutionManagement {
             library("timber", "com.jakewharton.timber:timber:5.0.1")
             library("coil", "io.coil-kt:coil-compose:2.2.2")
             library("collections", "org.jetbrains.kotlinx:kotlinx-collections-immutable:0.3.5")
-            library("desugar", "com.android.tools:desugar_jdk_libs:2.0.1")
+            library("desugar", "com.android.tools:desugar_jdk_libs:2.0.2")
             library(
                 "coroutines",
                 "org.jetbrains.kotlinx",
