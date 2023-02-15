@@ -136,7 +136,7 @@ dependencyResolutionManagement {
 
         register("compose") {
             version("compiler", "1.4.0")
-            version("compose", "1.4.0-alpha05")
+            version("compose", "1.4.0-beta01")
             version("material", "1.1.0-alpha06")
             library("ui", "androidx.compose.ui", "ui").versionRef("compose")
             library("preview", "androidx.compose.ui", "ui-tooling-preview").versionRef("compose")
