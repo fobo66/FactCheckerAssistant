@@ -72,29 +72,29 @@ internal fun MarkdownDocument(document: Document, modifier: Modifier = Modifier)
 }
 
 @Composable
-fun MarkdownBlockChildren(parent: Node) {
+fun MarkdownBlockChildren(parent: Node, modifier: Modifier = Modifier) {
     var child = parent.firstChild
     while (child != null) {
         when (child) {
-            is BlockQuote -> MarkdownBlockQuote(child)
-            is ThematicBreak -> MarkdownThematicBreak()
-            is Heading -> MarkdownHeading(child)
-            is Paragraph -> MarkdownParagraph(child)
-            is FencedCodeBlock -> MarkdownFencedCodeBlock(child)
-            is IndentedCodeBlock -> MarkdownIndentedCodeBlock(child)
-            is Image -> MarkdownImage(child)
-            is BulletList -> MarkdownBulletList(child)
-            is OrderedList -> MarkdownOrderedList(child)
+            is BlockQuote -> MarkdownBlockQuote(child, modifier)
+            is ThematicBreak -> MarkdownThematicBreak(modifier)
+            is Heading -> MarkdownHeading(child, modifier)
+            is Paragraph -> MarkdownParagraph(child, modifier)
+            is FencedCodeBlock -> MarkdownFencedCodeBlock(child, modifier)
+            is IndentedCodeBlock -> MarkdownIndentedCodeBlock(child, modifier)
+            is Image -> MarkdownImage(child, modifier)
+            is BulletList -> MarkdownBulletList(child, modifier)
+            is OrderedList -> MarkdownOrderedList(child, modifier)
         }
         child = child.next
     }
 }
 
 @Composable
-fun MarkdownOrderedList(orderedList: OrderedList) {
+fun MarkdownOrderedList(orderedList: OrderedList, modifier: Modifier = Modifier) {
     var number = orderedList.startNumber
     val delimiter = orderedList.delimiter
-    MarkdownListItems(orderedList) {
+    MarkdownListItems(orderedList, modifier) {
         val text = buildAnnotatedString {
             pushStyle(MaterialTheme.typography.bodyMedium.toSpanStyle())
             append("${number++}$delimiter ")
@@ -106,9 +106,9 @@ fun MarkdownOrderedList(orderedList: OrderedList) {
 }
 
 @Composable
-fun MarkdownBulletList(bulletList: BulletList) {
+fun MarkdownBulletList(bulletList: BulletList, modifier: Modifier = Modifier) {
     val marker = bulletList.bulletMarker
-    MarkdownListItems(bulletList) {
+    MarkdownListItems(bulletList, modifier) {
         val text = buildAnnotatedString {
             pushStyle(MaterialTheme.typography.bodyMedium.toSpanStyle())
             append("$marker ")
@@ -122,11 +122,12 @@ fun MarkdownBulletList(bulletList: BulletList) {
 @Composable
 fun MarkdownListItems(
     listBlock: ListBlock,
+    modifier: Modifier = Modifier,
     item: @Composable (node: Node) -> Unit
 ) {
     val bottom = if (listBlock.parent is Document) 8.dp else 0.dp
     val start = if (listBlock.parent is Document) 0.dp else 8.dp
-    Box(modifier = Modifier.padding(start = start, bottom = bottom)) {
+    Box(modifier = modifier.padding(start = start, bottom = bottom)) {
         var listItem = listBlock.firstChild
         while (listItem != null) {
             var child = listItem.firstChild
@@ -144,8 +145,8 @@ fun MarkdownListItems(
 }
 
 @Composable
-fun MarkdownImage(image: Image) {
-    Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+fun MarkdownImage(image: Image, modifier: Modifier = Modifier) {
+    Box(modifier = modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
         AsyncImage(
             model = ImageRequest.Builder(LocalContext.current)
                 .data(image.destination)
@@ -156,10 +157,10 @@ fun MarkdownImage(image: Image) {
 }
 
 @Composable
-fun MarkdownIndentedCodeBlock(indentedCodeBlock: IndentedCodeBlock) {
+fun MarkdownIndentedCodeBlock(indentedCodeBlock: IndentedCodeBlock, modifier: Modifier = Modifier) {
     val padding = if (indentedCodeBlock.parent is Document) 8.dp else 0.dp
     Box(
-        modifier = Modifier
+        modifier = modifier
             .padding(padding)
             .semantics {
                 testTag = "Indented code block"
@@ -173,10 +174,10 @@ fun MarkdownIndentedCodeBlock(indentedCodeBlock: IndentedCodeBlock) {
 }
 
 @Composable
-fun MarkdownFencedCodeBlock(fencedCodeBlock: FencedCodeBlock) {
+fun MarkdownFencedCodeBlock(fencedCodeBlock: FencedCodeBlock, modifier: Modifier = Modifier) {
     val padding = if (fencedCodeBlock.parent is Document) 8.dp else 0.dp
     Box(
-        modifier = Modifier
+        modifier = modifier
             .padding(padding)
             .semantics {
                 testTag = "Fenced code block"
@@ -190,13 +191,13 @@ fun MarkdownFencedCodeBlock(fencedCodeBlock: FencedCodeBlock) {
 }
 
 @Composable
-fun MarkdownParagraph(paragraph: Paragraph) {
+fun MarkdownParagraph(paragraph: Paragraph, modifier: Modifier = Modifier) {
     if (paragraph.firstChild is Image && paragraph.firstChild == paragraph.lastChild) {
         // Paragraph with single image
-        MarkdownImage(paragraph.firstChild as Image)
+        MarkdownImage(paragraph.firstChild as Image, modifier)
     } else {
         val padding = if (paragraph.parent is Document) 8.dp else 0.dp
-        Box(modifier = Modifier.padding(bottom = padding)) {
+        Box(modifier = modifier.padding(bottom = padding)) {
             val styledText = buildAnnotatedString {
                 pushStyle(MaterialTheme.typography.bodyMedium.toSpanStyle())
                 appendMarkdownChildren(paragraph, MaterialTheme.colorScheme)
@@ -208,7 +209,8 @@ fun MarkdownParagraph(paragraph: Paragraph) {
 }
 
 @Composable
-fun MarkdownHeading(heading: Heading) {
+@Suppress("ModifierReused") // modifier passed to the children is fine
+fun MarkdownHeading(heading: Heading, modifier: Modifier = Modifier) {
     val style = when (heading.level) {
         HEADING_LEVEL_1 -> MaterialTheme.typography.headlineLarge
         HEADING_LEVEL_2 -> MaterialTheme.typography.headlineMedium
@@ -218,13 +220,13 @@ fun MarkdownHeading(heading: Heading) {
         HEADING_LEVEL_6 -> MaterialTheme.typography.titleSmall
         else -> {
             // Not a header...
-            MarkdownBlockChildren(heading)
+            MarkdownBlockChildren(heading, modifier)
             return
         }
     }
 
     val padding = if (heading.parent is Document) 8.dp else 0.dp
-    Box(modifier = Modifier.padding(bottom = padding)) {
+    Box(modifier = modifier.padding(bottom = padding)) {
         val text = buildAnnotatedString {
             appendMarkdownChildren(heading, MaterialTheme.colorScheme)
         }
@@ -233,7 +235,7 @@ fun MarkdownHeading(heading: Heading) {
 }
 
 @Composable
-fun MarkdownText(text: AnnotatedString, style: TextStyle) {
+fun MarkdownText(text: AnnotatedString, style: TextStyle, modifier: Modifier = Modifier) {
     val uriHandler = LocalUriHandler.current
     val layoutResult = remember {
         mutableStateOf<TextLayoutResult?>(null)
@@ -241,7 +243,7 @@ fun MarkdownText(text: AnnotatedString, style: TextStyle) {
 
     androidx.compose.material3.Text(
         text = text,
-        modifier = Modifier.pointerInput(Unit) {
+        modifier = modifier.pointerInput(Unit) {
             detectTapGestures(onTap = { pos ->
                 layoutResult.value?.let {
                     val position = it.getOffsetForPosition(pos)
@@ -277,17 +279,17 @@ fun MarkdownText(text: AnnotatedString, style: TextStyle) {
 }
 
 @Composable
-fun MarkdownThematicBreak() {
+fun MarkdownThematicBreak(modifier: Modifier = Modifier) {
     Divider(
-        modifier = Modifier.semantics {
+        modifier = modifier.semantics {
             testTag = "Thematic break"
         }
     )
 }
 
 @Composable
-fun MarkdownBlockQuote(blockQuote: BlockQuote) {
-    Row {
+fun MarkdownBlockQuote(blockQuote: BlockQuote, modifier: Modifier = Modifier) {
+    Row(modifier) {
         Box(
             modifier = Modifier
                 .width(4.dp)
