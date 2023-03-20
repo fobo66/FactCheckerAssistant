@@ -21,6 +21,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowCompat
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -68,7 +69,8 @@ class MainActivity : ComponentActivity() {
                             onQueryChanged = {
                                 query = it
                                 mainViewModel.search(it)
-                            })
+                            }
+                        )
                     },
                     bottomBar = {
                         BottomNavBar(navController)
@@ -119,7 +121,8 @@ class MainActivity : ComponentActivity() {
                     value = query,
                     onValueChange = onQueryChanged,
                     modifier = Modifier
-                        .fillMaxWidth(),
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp),
                     placeholder = {
                         Text(stringResource(R.string.search_hint))
                     },
