@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedCard
@@ -36,7 +35,7 @@ import java.time.LocalDateTime
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun ClaimDetails(claim: Claim?, modifier: Modifier = Modifier) {
-    Crossfade(targetState = claim?.claimReview) {
+    Crossfade(targetState = claim?.claimReview, label = "ClaimDetails") {
         if (it.isNullOrEmpty()) {
             Text(
                 modifier = modifier
@@ -70,7 +69,6 @@ fun ClaimDetails(claim: Claim?, modifier: Modifier = Modifier) {
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ClaimReviewItem(claimReview: ClaimReview, modifier: Modifier = Modifier) {
     OutlinedCard(
@@ -94,12 +92,12 @@ fun ClaimReviewItem(claimReview: ClaimReview, modifier: Modifier = Modifier) {
                     }
                 }
             },
-            headlineText = {
+            headlineContent = {
                 Text(
                     text = claimReview.title.orEmpty()
                 )
             },
-            supportingText = {
+            supportingContent = {
                 Text(
                     text = claimReview.publisher.name.orEmpty()
                 )

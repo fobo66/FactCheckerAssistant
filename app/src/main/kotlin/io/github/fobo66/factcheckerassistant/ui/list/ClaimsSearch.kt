@@ -85,12 +85,12 @@ fun ClaimItem(
         }
     ) {
         ListItem(
-            headlineText = {
+            headlineContent = {
                 Text(
                     text = claim?.claimant.orEmpty()
                 )
             },
-            supportingText = {
+            supportingContent = {
                 Text(
                     text = claim?.claimDate.orEmpty()
                 )
