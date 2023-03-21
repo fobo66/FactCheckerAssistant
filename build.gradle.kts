@@ -5,6 +5,7 @@ plugins {
     kotlin("kapt") version libs.versions.kotlin apply false
     alias(di.plugins.hilt) apply false
     alias(analysis.plugins.detekt) apply false
+    alias(testing.plugins.junit) apply false
 }
 
 tasks {

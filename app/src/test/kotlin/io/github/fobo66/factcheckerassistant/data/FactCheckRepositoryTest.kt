@@ -8,11 +8,9 @@ import io.github.fobo66.factcheckerassistant.util.TestLocaleProvider
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.test.runTest
-import org.junit.Assert.assertNotNull
-import org.junit.Before
-import org.junit.Test
+import org.junit.jupiter.api.Assertions.assertNotNull
+import org.junit.jupiter.api.Test
 import retrofit2.Retrofit
-import retrofit2.mock.BehaviorDelegate
 import retrofit2.mock.MockRetrofit
 import retrofit2.mock.NetworkBehavior
 import java.util.concurrent.TimeUnit
@@ -20,24 +18,21 @@ import java.util.concurrent.TimeUnit
 @ExperimentalCoroutinesApi
 class FactCheckRepositoryTest {
     private lateinit var factCheckRepository: FactCheckRepository
-    private lateinit var mockApi: BehaviorDelegate<FactCheckApi>
 
     private val localeProvider: LocaleProvider = TestLocaleProvider()
 
-    @Before
-    fun setUp() {
+    private val retrofit = Retrofit.Builder()
+        .baseUrl("http://example.com")
+        .build()
 
-        val retrofit = Retrofit.Builder()
-            .baseUrl("http://example.com")
-            .build()
+    private val networkBehavior = NetworkBehavior
+        .create().apply {
+            setDelay(0, TimeUnit.MILLISECONDS)
+        }
 
-        val networkBehavior = NetworkBehavior.create()
-        networkBehavior.setDelay(0, TimeUnit.MILLISECONDS)
-
-        mockApi = MockRetrofit.Builder(retrofit)
-            .networkBehavior(networkBehavior)
-            .build().create(FactCheckApi::class.java)
-    }
+    private val mockApi = MockRetrofit.Builder(retrofit)
+        .networkBehavior(networkBehavior)
+        .build().create(FactCheckApi::class.java)
 
     @Test
     fun `Search for query with empty results`() = runTest {

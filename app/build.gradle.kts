@@ -6,6 +6,7 @@ plugins {
     kotlin("kapt")
     id("io.gitlab.arturbosch.detekt")
     id("dagger.hilt.android.plugin")
+    id("de.mannodermaus.android-junit5")
 }
 
 android {
@@ -110,7 +111,8 @@ dependencies {
     detektPlugins(analysis.formatting)
     detektPlugins(analysis.compose)
 
-    testImplementation(testing.junit4)
+    testImplementation(testing.junit)
+    testRuntimeOnly(testing.junit.engine)
     testImplementation(libs.coroutines.test)
     testImplementation(androidx.paging.common)
     testImplementation(libs.retrofit.mock)
