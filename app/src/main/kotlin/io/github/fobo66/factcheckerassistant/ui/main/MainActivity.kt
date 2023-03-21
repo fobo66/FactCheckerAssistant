@@ -3,17 +3,12 @@ package io.github.fobo66.factcheckerassistant.ui.main
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -21,7 +16,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowCompat
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -34,9 +28,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.paging.compose.collectAsLazyPagingItems
 import dagger.hilt.android.AndroidEntryPoint
-import io.github.fobo66.factcheckerassistant.R
 import io.github.fobo66.factcheckerassistant.ui.guide.FactCheckGuide
-import io.github.fobo66.factcheckerassistant.ui.icons.Search
 import io.github.fobo66.factcheckerassistant.ui.list.ClaimDetails
 import io.github.fobo66.factcheckerassistant.ui.list.ClaimsSearch
 import io.github.fobo66.factcheckerassistant.ui.theme.FactCheckerAssistantTheme
@@ -63,39 +55,37 @@ class MainActivity : ComponentActivity() {
                     mutableStateOf("")
                 }
                 Scaffold(
-                    topBar = {
-                        FactCheckTopAppBar(
-                            query = query,
-                            onQueryChanged = {
-                                query = it
-                                mainViewModel.search(it)
-                            }
-                        )
-                    },
                     bottomBar = {
                         BottomNavBar(navController)
                     }
                 ) { innerPadding ->
-                    NavHost(navController, startDestination = "search") {
-                        composable("search") {
+                    NavHost(navController, startDestination = Screen.DESTINATION_SEARCH) {
+                        composable(Screen.DESTINATION_SEARCH) {
                             val claims = mainViewModel.claims.collectAsLazyPagingItems()
 
                             ClaimsSearch(
+                                query = query,
+                                onQueryChange = {
+                                    query = it
+                                },
+                                onSearch = {
+                                    mainViewModel.search(it)
+                                },
                                 claims = claims,
                                 modifier = Modifier.padding(innerPadding)
                             ) {
                                 mainViewModel.selectClaim(it)
-                                navController.navigate("details")
+                                navController.navigate(Screen.DESTINATION_SEARCH_DETAILS)
                             }
                         }
-                        composable("details") {
+                        composable(Screen.DESTINATION_SEARCH_DETAILS) {
                             val claim by mainViewModel.selectedClaim.collectAsStateWithLifecycle()
                             ClaimDetails(
                                 claim,
                                 modifier = Modifier.padding(innerPadding)
                             )
                         }
-                        composable("guide") {
+                        composable(Screen.DESTINATION_GUIDE) {
                             FactCheckGuide(
                                 modifier = Modifier.padding(
                                     innerPadding
@@ -106,38 +96,6 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-    }
-
-    @Composable
-    @OptIn(ExperimentalMaterial3Api::class)
-    private fun FactCheckTopAppBar(
-        query: String,
-        onQueryChanged: (String) -> Unit,
-        modifier: Modifier = Modifier
-    ) {
-        TopAppBar(
-            title = {
-                TextField(
-                    value = query,
-                    onValueChange = onQueryChanged,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp),
-                    placeholder = {
-                        Text(stringResource(R.string.search_hint))
-                    },
-                    label = {
-                        Text(stringResource(R.string.search_hint))
-                    },
-                    leadingIcon = {
-                        Icon(imageVector = Search, contentDescription = null)
-                    },
-                    singleLine = true
-                )
-            },
-            scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(),
-            modifier = modifier
-        )
     }
 
     @Composable

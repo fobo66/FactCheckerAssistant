@@ -11,10 +11,16 @@ sealed class Screen(
     val icon: ImageVector
 ) {
     object Search : Screen(
-        "search",
+        DESTINATION_SEARCH,
         R.string.main_fragment_title,
         io.github.fobo66.factcheckerassistant.ui.icons.Search
     )
 
-    object Guide : Screen("guide", R.string.guide_fragment_title, GuideIcon)
+    object Guide : Screen(DESTINATION_GUIDE, R.string.guide_fragment_title, GuideIcon)
+
+    companion object {
+        const val DESTINATION_SEARCH = "search"
+        const val DESTINATION_SEARCH_DETAILS = "details"
+        const val DESTINATION_GUIDE = "guide"
+    }
 }

@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Fact Checker Assistant</string>
     <string name="search_hint">Search claims</string>
+    <string name="search_icon_description">Search</string>
+    <string name="search_placeholder">Search</string>
     <string name="claim_rating">Fact check rating: %1$s</string>
     <string name="claim_reviews_title">Claim reviews</string>
     <string name="claim_claimant">by %1$s</string>
