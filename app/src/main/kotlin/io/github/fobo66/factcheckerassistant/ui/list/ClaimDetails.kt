@@ -137,7 +137,7 @@ fun ClaimDetailsPreview() {
                 Claim(
                     "test",
                     "tester",
-                    LocalDateTime.now().toString(),
+                    LocalDateTime.now(),
                     listOf(
                         ClaimReview(
                             Publisher("test", "test.com"),

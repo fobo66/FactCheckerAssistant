@@ -1,5 +1,6 @@
 package io.github.fobo66.factcheckerassistant.ui.list
 
+import android.text.format.DateUtils
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -19,10 +20,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -32,6 +35,7 @@ import androidx.paging.compose.items
 import io.github.fobo66.factcheckerassistant.R
 import io.github.fobo66.factcheckerassistant.api.models.Claim
 import io.github.fobo66.factcheckerassistant.ui.icons.Search
+import java.time.ZoneOffset
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -129,6 +133,7 @@ fun ClaimItem(
     modifier: Modifier = Modifier,
     onSearchResultClick: (Claim?) -> Unit
 ) {
+    val context = LocalContext.current
     ElevatedCard(
         modifier = modifier
             .fillMaxWidth(),
@@ -143,8 +148,15 @@ fun ClaimItem(
                 )
             },
             supportingContent = {
+                val relativeDate = remember {
+                    DateUtils.getRelativeTimeSpanString(
+                        context,
+                        claim?.claimDate?.toInstant(ZoneOffset.UTC)?.toEpochMilli()
+                            ?: System.currentTimeMillis()
+                    )
+                }
                 Text(
-                    text = claim?.claimDate.orEmpty()
+                    text = relativeDate.toString()
                 )
             }
         )
