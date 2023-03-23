@@ -69,7 +69,7 @@ dependencyResolutionManagement {
             plugin("library", "com.android.library").versionRef("plugin")
             library("core", "androidx.core:core-ktx:1.9.0")
             library("annotations", "androidx.annotation:annotation:1.6.0")
-            library("activity", "androidx.activity:activity-compose:1.7.0-rc01")
+            library("activity", "androidx.activity:activity-compose:1.7.0")
             library("appstartup", "androidx.startup:startup-runtime:1.2.0-alpha02")
             library("datastore", "androidx.datastore:datastore-preferences:1.0.0")
             library(
