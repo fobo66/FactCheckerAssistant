@@ -1,6 +1,7 @@
 package io.github.fobo66.factcheckerassistant.ui.list
 
 import android.text.format.DateUtils
+import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -84,45 +85,50 @@ fun ClaimsSearch(
                 modifier = Modifier.padding(horizontal = 16.dp)
             )
         }
-        LazyColumn(
-            contentPadding = PaddingValues(start = 16.dp, top = 72.dp, end = 16.dp, bottom = 16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
-
-        ) {
-            if (claims.itemCount == 0) {
-                item {
+        Crossfade(claims, label = "searchItems") {
+            if (it.itemCount == 0) {
+                Box {
                     Text(
                         modifier = Modifier
-                            .fillMaxWidth()
-                            .wrapContentWidth(Alignment.CenterHorizontally)
-                            .padding(8.dp),
+                            .align(Alignment.Center),
                         text = stringResource(id = R.string.claims_empty_result)
                     )
                 }
             } else {
-                items(claims) { claim ->
-                    ClaimItem(claim, onSearchResultClick = onSearchResultClick)
-                }
-            }
+                LazyColumn(
+                    contentPadding = PaddingValues(
+                        start = 16.dp,
+                        top = 72.dp,
+                        end = 16.dp,
+                        bottom = 16.dp
+                    ),
+                    verticalArrangement = Arrangement.spacedBy(16.dp)
 
-            if (claims.loadState.append == LoadState.Loading) {
-                item {
-                    CircularProgressIndicator(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .wrapContentWidth(Alignment.CenterHorizontally)
-                    )
-                }
-            }
+                ) {
+                    items(it) { claim ->
+                        ClaimItem(claim, onSearchResultClick = onSearchResultClick)
+                    }
 
-            if (claims.loadState.append is LoadState.Error) {
-                item {
-                    Text(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .wrapContentWidth(Alignment.CenterHorizontally),
-                        text = stringResource(id = R.string.claims_loading_error)
-                    )
+                    if (it.loadState.append == LoadState.Loading) {
+                        item {
+                            CircularProgressIndicator(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .wrapContentWidth(Alignment.CenterHorizontally)
+                            )
+                        }
+                    }
+
+                    if (it.loadState.append is LoadState.Error) {
+                        item {
+                            Text(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .wrapContentWidth(Alignment.CenterHorizontally),
+                                text = stringResource(id = R.string.claims_loading_error)
+                            )
+                        }
+                    }
                 }
             }
         }
