@@ -87,7 +87,7 @@ fun ClaimsSearch(
         }
         Crossfade(claims, label = "searchItems") {
             if (it.itemCount == 0) {
-                Box {
+                Box(modifier = Modifier.fillMaxSize()) {
                     Text(
                         modifier = Modifier
                             .align(Alignment.Center),
