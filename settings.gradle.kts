@@ -1,16 +1,20 @@
 pluginManagement {
     repositories {
         gradlePluginPortal()
-        google()
         mavenCentral()
+        google()
     }
+}
+
+plugins {
+    id("org.gradle.toolchains.foojay-resolver-convention") version ("0.4.0")
 }
 
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
-        google()
         mavenCentral()
+        google()
     }
     versionCatalogs {
         register("libs") {
