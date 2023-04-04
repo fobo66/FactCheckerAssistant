@@ -79,7 +79,10 @@ fun ClaimsSearch(
             },
             modifier = Modifier.align(Alignment.TopCenter)
         ) {
-            Text(text = stringResource(id = R.string.search_hint))
+            Text(
+                text = stringResource(id = R.string.search_suggestion),
+                modifier = Modifier.padding(horizontal = 16.dp)
+            )
         }
         LazyColumn(
             contentPadding = PaddingValues(start = 16.dp, top = 72.dp, end = 16.dp, bottom = 16.dp),
