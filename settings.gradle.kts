@@ -68,7 +68,7 @@ dependencyResolutionManagement {
             version("paging", "3.2.0-alpha04")
             version("uitest", "1.5.2")
             version("espresso", "3.5.1")
-            version("benchmark", "1.2.0-alpha12")
+            version("benchmark", "1.2.0-alpha13")
             plugin("application", "com.android.application").versionRef("plugin")
             plugin("library", "com.android.library").versionRef("plugin")
             library("core", "androidx.core:core-ktx:1.9.0")
