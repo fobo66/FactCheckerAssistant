@@ -57,9 +57,11 @@ kotlin {
 
 dependencies {
     implementation(libs.commonmark)
+    implementation(platform(compose.bom))
     implementation(compose.ui)
     implementation(compose.material)
     implementation(compose.preview)
+    androidTestImplementation(platform(compose.bom))
     androidTestImplementation(compose.testing)
     debugImplementation(compose.testing.manifest)
     debugImplementation(compose.tooling)
