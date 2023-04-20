@@ -140,29 +140,26 @@ dependencyResolutionManagement {
 
         register("compose") {
             version("compiler", "1.4.5")
-            version("compose", "1.5.0-alpha02")
-            version("material", "1.1.0-beta02")
-            library("ui", "androidx.compose.ui", "ui").versionRef("compose")
-            library("preview", "androidx.compose.ui", "ui-tooling-preview").versionRef("compose")
-            library("tooling", "androidx.compose.ui", "ui-tooling").versionRef("compose")
-            library("testing", "androidx.compose.ui", "ui-test-junit4").versionRef("compose")
+            library("bom", "dev.chrisbanes.compose:compose-bom:2023.04.00-alpha03")
+            library("ui", "androidx.compose.ui", "ui").withoutVersion()
+            library("preview", "androidx.compose.ui", "ui-tooling-preview").withoutVersion()
+            library("tooling", "androidx.compose.ui", "ui-tooling").withoutVersion()
+            library("testing", "androidx.compose.ui", "ui-test-junit4").withoutVersion()
             library(
                 "testing.manifest",
                 "androidx.compose.ui",
                 "ui-test-manifest"
-            ).versionRef("compose")
-            library("material", "androidx.compose.material3", "material3").versionRef("material")
+            ).withoutVersion()
+            library("material", "androidx.compose.material3", "material3").withoutVersion()
             library(
                 "windowsize",
                 "androidx.compose.material3",
                 "material3-window-size-class"
-            ).versionRef(
-                "material"
-            )
+            ).withoutVersion()
         }
 
         register("accompanist") {
-            version("accompanist", "0.30.1")
+            version("accompanist", "0.31.0-alpha")
             library(
                 "swiperefresh",
                 "com.google.accompanist",

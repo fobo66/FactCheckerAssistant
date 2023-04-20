@@ -81,11 +81,13 @@ dependencies {
     implementation(androidx.lifecycle)
     implementation(androidx.paging)
 
+    implementation(platform(compose.bom))
     implementation(compose.ui)
     implementation(compose.material)
     implementation(compose.preview)
     implementation(compose.windowsize)
     androidTestImplementation(compose.testing)
+    androidTestImplementation(platform(compose.bom))
     debugImplementation(compose.testing.manifest)
     debugImplementation(compose.tooling)
     implementation(androidx.paging.compose)
