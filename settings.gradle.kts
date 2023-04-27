@@ -87,7 +87,7 @@ dependencyResolutionManagement {
                 "navigation-testing"
             ).versionRef("navigation")
             library("multidex", "androidx.multidex:multidex:2.0.1")
-            library("splashscreen", "androidx.core:core-splashscreen:1.0.0")
+            library("splashscreen", "androidx.core:core-splashscreen:1.0.1")
             library("window", "androidx.window:window:1.1.0-beta02")
             library("paging", "androidx.paging", "paging-runtime-ktx").versionRef("paging")
             library("paging.common", "androidx.paging", "paging-common-ktx").versionRef("paging")
