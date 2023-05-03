@@ -22,7 +22,7 @@ jobs:
       - name: Check Gradle wrapper
         uses: gradle/wrapper-validation-action@v1
       - name: Detekt
-        uses: gradle/gradle-build-action@v2.3.2
+        uses: gradle/gradle-build-action@v2.4.2
         with:
           arguments: detekt
       - name: Upload build reports
@@ -68,6 +68,6 @@ jobs:
       - name: Check Gradle wrapper
         uses: gradle/wrapper-validation-action@v1
       - name: Run tests
-        uses: gradle/gradle-build-action@v2.3.2
+        uses: gradle/gradle-build-action@v2.4.2
         with:
           arguments: testDebugUnitTest
