@@ -91,7 +91,7 @@ dependencyResolutionManagement {
             library("window", "androidx.window:window:1.1.0-beta02")
             library("paging", "androidx.paging", "paging-runtime-ktx").versionRef("paging")
             library("paging.common", "androidx.paging", "paging-common-ktx").versionRef("paging")
-            library("paging.compose", "androidx.paging:paging-compose:1.0.0-alpha18")
+            library("paging.compose", "androidx.paging:paging-compose:1.0.0-alpha19")
             library("lifecycle", "androidx.lifecycle", "lifecycle-runtime-compose").versionRef(
                 "lifecycle"
             )
