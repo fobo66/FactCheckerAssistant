@@ -140,7 +140,7 @@ dependencyResolutionManagement {
 
         register("compose") {
             version("compiler", "1.4.7")
-            library("bom", "dev.chrisbanes.compose:compose-bom:2023.04.00-alpha03")
+            library("bom", "dev.chrisbanes.compose:compose-bom:2023.04.00-alpha04")
             library("ui", "androidx.compose.ui", "ui").withoutVersion()
             library("preview", "androidx.compose.ui", "ui-tooling-preview").withoutVersion()
             library("tooling", "androidx.compose.ui", "ui-tooling").withoutVersion()
