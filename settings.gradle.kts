@@ -21,7 +21,7 @@ dependencyResolutionManagement {
             version("kotlin", "1.8.21")
             version("moshi", "1.14.0")
             version("retrofit", "2.9.0")
-            version("coroutines", "1.6.4")
+            version("coroutines", "1.7.1")
             library("material", "com.google.android.material:material:1.9.0")
             library("retrofit", "com.squareup.retrofit2", "retrofit").versionRef("retrofit")
             library("retrofit.moshi", "com.squareup.retrofit2", "converter-moshi").versionRef("retrofit")
