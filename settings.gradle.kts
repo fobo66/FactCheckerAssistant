@@ -19,7 +19,7 @@ dependencyResolutionManagement {
     versionCatalogs {
         register("libs") {
             version("kotlin", "1.8.21")
-            version("moshi", "1.14.0")
+            version("moshi", "1.15.0")
             version("retrofit", "2.9.0")
             version("coroutines", "1.6.4")
             library("material", "com.google.android.material:material:1.9.0")
