@@ -32,7 +32,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
-import androidx.paging.compose.items
+import androidx.paging.compose.itemContentType
+import androidx.paging.compose.itemKey
 import io.github.fobo66.factcheckerassistant.R
 import io.github.fobo66.factcheckerassistant.api.models.Claim
 import io.github.fobo66.factcheckerassistant.ui.icons.Search
@@ -105,8 +106,14 @@ fun ClaimsSearch(
                     verticalArrangement = Arrangement.spacedBy(16.dp)
 
                 ) {
-                    items(it) { claim ->
-                        ClaimItem(claim, onSearchResultClick = onSearchResultClick)
+                    items(
+                        count = it.itemCount,
+                        key = it.itemKey(),
+                        contentType = it.itemContentType(
+                        )
+                    ) { index ->
+                        val item = it[index]
+                        ClaimItem(item, onSearchResultClick = onSearchResultClick)
                     }
 
                     if (it.loadState.append == LoadState.Loading) {
