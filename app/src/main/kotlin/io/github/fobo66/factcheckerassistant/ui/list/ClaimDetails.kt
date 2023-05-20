@@ -30,12 +30,13 @@ import io.github.fobo66.factcheckerassistant.api.models.Claim
 import io.github.fobo66.factcheckerassistant.api.models.ClaimReview
 import io.github.fobo66.factcheckerassistant.api.models.Publisher
 import io.github.fobo66.factcheckerassistant.ui.theme.FactCheckerAssistantTheme
+import kotlinx.collections.immutable.toImmutableList
 import java.time.LocalDateTime
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun ClaimDetails(claim: Claim?, modifier: Modifier = Modifier) {
-    Crossfade(targetState = claim?.claimReview, label = "ClaimDetails") {
+    Crossfade(targetState = claim?.claimReview?.toImmutableList(), label = "ClaimDetails") {
         if (it.isNullOrEmpty()) {
             Text(
                 modifier = modifier
