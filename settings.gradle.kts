@@ -26,7 +26,7 @@ dependencyResolutionManagement {
             library("retrofit", "com.squareup.retrofit2", "retrofit").versionRef("retrofit")
             library("retrofit.moshi", "com.squareup.retrofit2", "converter-moshi").versionRef("retrofit")
             library("retrofit.mock", "com.squareup.retrofit2", "retrofit-mock").versionRef("retrofit")
-            library("leakcanary", "com.squareup.leakcanary:leakcanary-android:2.10")
+            library("leakcanary", "com.squareup.leakcanary:leakcanary-android:2.11")
             library("commonmark", "org.commonmark:commonmark:0.21.0")
             library("timber", "com.jakewharton.timber:timber:5.0.1")
             library("coil", "io.coil-kt:coil-compose:2.3.0")
