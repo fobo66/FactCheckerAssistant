@@ -115,22 +115,24 @@ fun ClaimReviewItem(claimReview: ClaimReview, modifier: Modifier = Modifier) {
 
 @Preview(showBackground = true)
 @Composable
-fun ClaimReviewItemPreview() {
-    ClaimReviewItem(
-        claimReview = ClaimReview(
-            Publisher("test", "test.com"),
-            "url",
-            "test",
-            "test",
-            "test",
-            Locale.current.language
+private fun ClaimReviewItemPreview() {
+    FactCheckerAssistantTheme {
+        ClaimReviewItem(
+            claimReview = ClaimReview(
+                Publisher("test", "test.com"),
+                "url",
+                "test",
+                "test",
+                "test",
+                Locale.current.language
+            )
         )
-    )
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun ClaimDetailsPreview() {
+private fun ClaimDetailsPreview() {
     FactCheckerAssistantTheme {
         val claim by remember {
             mutableStateOf(

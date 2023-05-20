@@ -691,6 +691,7 @@ style:
   UnusedPrivateMember:
     active: true
     allowedNames: '(_|ignored|expected|serialVersionUID)'
+    ignoreAnnotated: [ 'Preview' ]
   UseArrayLiteralsInAnnotations:
     active: false
   UseCheckNotNull:
