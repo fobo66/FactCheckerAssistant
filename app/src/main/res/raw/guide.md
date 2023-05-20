@@ -1,12 +1,30 @@
-_The claim is true when it's proved to be true. Sometimes claims are forged intentionally to mislead people. Or some claims can originate from poor education of cognitive biases that make people explain something with their assumptions and opinions, not facts. Some claims are specifically designed to trigger people, to catch their attention and urge them to spread it further. So it's important to detect such claims and be sceptical to all the info you can find in the internet to reduce potential harm caused by false claims. Here we have some actions that you can use to detect false claims, alongside with our app._
+# Fact checking guide
+
+_The claim is true when it's proved to be true. Sometimes claims are forged intentionally to mislead
+people. Or some claims can originate from poor education of cognitive biases that make people
+explain something with their assumptions and opinions, not facts. Some claims are specifically
+designed to trigger people, to catch their attention and urge them to spread it further. So it's
+important to detect such claims and be sceptical to all the info you can find in the internet to
+reduce potential harm caused by false claims. Here we have some actions that you can use to detect
+false claims, alongside with our app._
 
 #### What creates solid proof?
 
-Solid proof is traceable: you can find the origin of the claim easily and find any experiments that were used to prove the claim and their results. Also, the solid proof is most likely validated by the experts in the field, e.g. science articles are peer-reviewed before publication. It can happen that you can find a lot of the same false claim in different sources that are not interlinked with each other or don't have reference to the source. Lack of the reference to the source marks a false claim, most likely.
+Solid proof is traceable: you can find the origin of the claim easily and find any experiments that
+were used to prove the claim and their results. Also, the solid proof is most likely validated by
+the experts in the field, e.g. science articles are peer-reviewed before publication. It can happen
+that you can find a lot of the same false claim in different sources that are not interlinked with
+each other or don't have reference to the source. Lack of the reference to the source marks a false
+claim, most likely.
 
 #### Keep calm
 
-False claims tend to trigger emotions in the readers, so they will share it further in fear or anger without checking if the claim is actually true. It's usually done by using ALL CAPS text in a lot of places where it's unnecessary, blaming, hate speech, exaggeration. These tools are most certainly pointing to the false claim. Try to read the claim in doubt with calm and rational mind, and if you find some of the things mentioned above, the claim is most likely false. True claims don't use emotions to convince people, they use facts.
+False claims tend to trigger emotions in the readers, so they will share it further in fear or anger
+without checking if the claim is actually true. It's usually done by using ALL CAPS text in a lot of
+places where it's unnecessary, blaming, hate speech, exaggeration. These tools are most certainly
+pointing to the false claim. Try to read the claim in doubt with calm and rational mind, and if you
+find some of the things mentioned above, the claim is most likely false. True claims don't use
+emotions to convince people, they use facts.
 
 #### Don't share claim in concern further
 
