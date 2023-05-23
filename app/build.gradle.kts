@@ -4,6 +4,7 @@ plugins {
     id("com.android.application")
     kotlin("android")
     kotlin("kapt")
+    id("kotlin-parcelize")
     id("io.gitlab.arturbosch.detekt")
     id("dagger.hilt.android.plugin")
     id("de.mannodermaus.android-junit5")
