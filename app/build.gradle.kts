@@ -10,7 +10,7 @@ plugins {
 }
 
 android {
-    compileSdk = VersionCodes.TIRAMISU
+    compileSdkPreview = "UpsideDownCake"
 
     defaultConfig {
         applicationId = "io.github.fobo66.factcheckerassistant"

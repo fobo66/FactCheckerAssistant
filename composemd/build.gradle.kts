@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    compileSdk = VersionCodes.TIRAMISU
+    compileSdkPreview = "UpsideDownCake"
 
     defaultConfig {
         minSdk = VersionCodes.LOLLIPOP
