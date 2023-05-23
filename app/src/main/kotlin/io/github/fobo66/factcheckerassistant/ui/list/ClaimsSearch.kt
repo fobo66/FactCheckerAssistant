@@ -109,8 +109,7 @@ fun ClaimsSearch(
                     items(
                         count = it.itemCount,
                         key = it.itemKey(),
-                        contentType = it.itemContentType(
-                        )
+                        contentType = it.itemContentType()
                     ) { index ->
                         val item = it[index]
                         ClaimItem(item, onSearchResultClick = onSearchResultClick)
