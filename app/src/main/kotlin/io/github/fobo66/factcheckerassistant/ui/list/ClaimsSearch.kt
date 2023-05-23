@@ -159,7 +159,7 @@ fun ClaimItem(
         ListItem(
             headlineContent = {
                 Text(
-                    text = claim?.claimant.orEmpty()
+                    text = claim?.claimant ?: stringResource(id = R.string.claim_unknown_claimant)
                 )
             },
             supportingContent = {
