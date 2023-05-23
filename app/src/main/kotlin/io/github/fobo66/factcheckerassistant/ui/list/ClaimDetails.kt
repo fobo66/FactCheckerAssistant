@@ -4,6 +4,8 @@ import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -47,23 +49,30 @@ fun ClaimDetails(claim: Claim?, modifier: Modifier = Modifier) {
             )
         } else {
             LazyColumn(
-                modifier = modifier
-                    .padding(horizontal = 16.dp)
+                modifier = modifier,
+                contentPadding = PaddingValues(vertical = 8.dp, horizontal = 16.dp)
             ) {
                 stickyHeader {
-                    Text(
-                        text = claim?.text.orEmpty(),
-                        style = MaterialTheme.typography.titleMedium,
-                        modifier = Modifier.padding(top = 8.dp)
-                    )
-                    Text(
-                        text = stringResource(R.string.claim_reviews_title),
-                        style = MaterialTheme.typography.titleSmall,
-                        modifier = Modifier.padding(top = 8.dp)
-                    )
+                    Column {
+                        Text(
+                            text = claim?.text.orEmpty(),
+                            style = MaterialTheme.typography.titleLarge,
+                            modifier = Modifier.padding(top = 8.dp)
+                        )
+                        Text(
+                            text = stringResource(R.string.claim_reviews_title),
+                            style = MaterialTheme.typography.titleMedium,
+                            modifier = Modifier.padding(top = 8.dp)
+                        )
+                    }
                 }
                 items(it) { review ->
-                    ClaimReviewItem(review, modifier = Modifier.padding(vertical = 8.dp))
+                    ClaimReviewItem(
+                        review,
+                        modifier = Modifier
+                            .padding(vertical = 8.dp)
+                            .animateItemPlacement()
+                    )
                 }
             }
         }
