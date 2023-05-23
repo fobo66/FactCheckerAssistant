@@ -67,15 +67,15 @@ dependencyResolutionManagement {
             version("navigation", "2.6.0-rc01")
             version("paging", "3.2.0-alpha05")
             version("uitest", "1.5.2")
-            version("espresso", "3.5.1")
+            version("espresso", "3.6.0-alpha01")
             version("benchmark", "1.2.0-alpha14")
             plugin("application", "com.android.application").versionRef("plugin")
             plugin("library", "com.android.library").versionRef("plugin")
-            library("core", "androidx.core:core-ktx:1.10.1")
-            library("annotations", "androidx.annotation:annotation:1.6.0")
-            library("activity", "androidx.activity:activity-compose:1.7.1")
+            library("core", "androidx.core:core-ktx:1.12.0-alpha04")
+            library("annotations", "androidx.annotation:annotation:1.7.0-alpha02")
+            library("activity", "androidx.activity:activity-compose:1.8.0-alpha04")
             library("appstartup", "androidx.startup:startup-runtime:1.2.0-alpha02")
-            library("datastore", "androidx.datastore:datastore-preferences:1.0.0")
+            library("datastore", "androidx.datastore:datastore-preferences:1.1.0-alpha04")
             library(
                 "navigation",
                 "androidx.navigation",
@@ -98,8 +98,8 @@ dependencyResolutionManagement {
             library("viewmodel", "androidx.lifecycle", "lifecycle-viewmodel-compose").versionRef(
                 "lifecycle"
             )
-            library("uitest.core", "androidx.test", "core-ktx").versionRef("uitest")
-            library("uitest.runner", "androidx.test", "runner").versionRef("uitest")
+            library("uitest.core", "androidx.test:core-ktx:1.6.0-alpha01")
+            library("uitest.runner", "androidx.test:runner:1.6.0-alpha02")
             library("uitest.rules", "androidx.test", "rules").versionRef("uitest")
             library(
                 "uitest.espresso",
@@ -117,7 +117,7 @@ dependencyResolutionManagement {
                 "espresso-intents"
             ).versionRef("espresso")
 
-            library("uitest.junit", "androidx.test.ext:junit-ktx:1.1.5")
+            library("uitest.junit", "androidx.test.ext:junit-ktx:1.2.0-alpha01")
             library("uitest.automator", "androidx.test.uiautomator:uiautomator:2.3.0-alpha03")
             library(
                 "uitest.benchmark",
