@@ -47,6 +47,8 @@ jobs:
           cache: 'gradle'
       - name: Check Gradle wrapper
         uses: gradle/wrapper-validation-action@v1
+      - name: Install latest build tools
+        run: echo "y" | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager --install "build-tools;34.0.0-rc3"
       - name: Run tests
         uses: reactivecircus/android-emulator-runner@v2.28.0
         with:
@@ -67,7 +69,7 @@ jobs:
           distribution: 'temurin'
       - name: Check Gradle wrapper
         uses: gradle/wrapper-validation-action@v1
-      - name: Update licenses
+      - name: Install latest build tools
         run: echo "y" | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager --install "build-tools;34.0.0-rc3"
       - name: Run tests
         uses: gradle/gradle-build-action@v2.4.2
