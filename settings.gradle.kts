@@ -206,7 +206,7 @@ dependencyResolutionManagement {
         }
 
         register("analysis") {
-            version("detekt", "1.22.0")
+            version("detekt", "1.23.0")
             plugin("detekt", "io.gitlab.arturbosch.detekt").versionRef("detekt")
             library(
                 "formatting",
