@@ -47,7 +47,7 @@ jobs:
       - name: Check Gradle wrapper
         uses: gradle/wrapper-validation-action@v1
       - name: Gradle cache
-        uses: gradle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v2.4.2
       - name: AVD cache
         uses: actions/cache@v3
         id: avd-cache
@@ -55,7 +55,7 @@ jobs:
           path: |
             ~/.android/avd/*
             ~/.android/adb*
-          key: avd-33
+          key: avd-34
 
       - name: Run tests
         uses: reactivecircus/android-emulator-runner@v2.28.0
