@@ -64,7 +64,7 @@ dependencyResolutionManagement {
         register("androidx") {
             version("plugin", "8.2.0-alpha06")
             version("lifecycle", "2.6.1")
-            version("navigation", "2.6.0-rc01")
+            version("navigation", "2.6.0-rc02")
             version("paging", "3.2.0-alpha06")
             version("uitest", "1.5.2")
             version("espresso", "3.6.0-alpha01")
