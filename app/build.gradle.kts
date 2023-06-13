@@ -15,7 +15,7 @@ android {
 
     defaultConfig {
         applicationId = "io.github.fobo66.factcheckerassistant"
-        minSdk = VersionCodes.LOLLIPOP
+        minSdk = VersionCodes.N
         targetSdkPreview = "UpsideDownCake"
         versionCode = 1
         versionName = "1.0"
