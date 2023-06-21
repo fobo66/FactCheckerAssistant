@@ -198,7 +198,7 @@ dependencyResolutionManagement {
                 "com.kaspersky.android-components",
                 "kaspresso-compose-support"
             ).versionRef("kaspresso")
-            library("turbine", "app.cash.turbine:turbine:0.13.0")
+            library("turbine", "app.cash.turbine:turbine:1.0.0")
             library("truth", "com.google.truth:truth:1.1.5")
             library("hamcrest", "org.hamcrest:hamcrest-core:2.2")
             library("mockk", "io.mockk", "mockk").versionRef("mockk")
