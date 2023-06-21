@@ -16,4 +16,5 @@
     <string name="claims_empty_result">No items</string>
     <string name="claim_reviews_empty">No reviews</string>
     <string name="claim_unknown_claimant">Unknown claimant</string>
+    <string name="claim_details_more">Learn more</string>
 </resources>
