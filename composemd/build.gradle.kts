@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    compileSdkPreview = "UpsideDownCake"
+    compileSdk = 34
 
     defaultConfig {
         minSdk = VersionCodes.N

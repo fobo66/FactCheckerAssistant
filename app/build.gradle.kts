@@ -11,12 +11,12 @@ plugins {
 }
 
 android {
-    compileSdkPreview = "UpsideDownCake"
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "io.github.fobo66.factcheckerassistant"
         minSdk = VersionCodes.N
-        targetSdkPreview = "UpsideDownCake"
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
