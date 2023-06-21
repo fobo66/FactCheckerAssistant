@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.Button
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedCard
@@ -22,6 +23,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.text.style.TextAlign
@@ -84,6 +86,7 @@ fun ClaimReviewItem(claimReview: ClaimReview, modifier: Modifier = Modifier) {
     OutlinedCard(
         modifier = modifier
     ) {
+        val uriHandler = LocalUriHandler.current
         ListItem(
             leadingContent = {
                 if (claimReview.publisher.name != null) {
@@ -120,6 +123,15 @@ fun ClaimReviewItem(claimReview: ClaimReview, modifier: Modifier = Modifier) {
             ),
             modifier = Modifier.padding(16.dp)
         )
+        Button(
+            onClick = {
+                uriHandler.openUri(claimReview.url)
+            }, modifier = Modifier
+                .align(Alignment.End)
+                .padding(16.dp)
+        ) {
+            Text(text = stringResource(R.string.claim_details_more))
+        }
     }
 }
 
