@@ -4,7 +4,7 @@ import dev.fobo66.factcheckerassistant.api.FactCheckApi
 import dev.fobo66.factcheckerassistant.api.models.Claim
 import dev.fobo66.factcheckerassistant.api.models.FactCheckResponse
 import dev.fobo66.factcheckerassistant.util.LocaleProvider
-import io.github.fobo66.factcheckerassistant.util.TestLocaleProvider
+import dev.fobo66.factcheckerassistant.util.TestLocaleProvider
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.test.runTest

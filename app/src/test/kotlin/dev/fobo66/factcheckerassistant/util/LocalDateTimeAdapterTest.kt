@@ -1,6 +1,5 @@
 package dev.fobo66.factcheckerassistant.util
 
-import dev.fobo66.factcheckerassistant.util.LocalDateTimeAdapter
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows

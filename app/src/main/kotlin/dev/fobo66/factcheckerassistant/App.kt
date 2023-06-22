@@ -2,7 +2,6 @@ package dev.fobo66.factcheckerassistant
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
-import dev.fobo66.factcheckerassistant.BuildConfig
 import timber.log.Timber
 
 @HiltAndroidApp
