@@ -2,7 +2,7 @@ package io.github.fobo66.factcheckerassistant.util
 
 import androidx.annotation.StringRes
 import androidx.compose.ui.graphics.vector.ImageVector
-import io.github.fobo66.factcheckerassistant.R
+import dev.fobo66.factcheckerassistant.R
 import io.github.fobo66.factcheckerassistant.ui.icons.GuideIcon
 
 sealed class Screen(

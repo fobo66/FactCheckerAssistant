@@ -2,7 +2,7 @@ package io.github.fobo66.factcheckerassistant.data
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import io.github.fobo66.factcheckerassistant.BuildConfig
+import dev.fobo66.factcheckerassistant.BuildConfig
 import io.github.fobo66.factcheckerassistant.api.FactCheckApi
 import io.github.fobo66.factcheckerassistant.api.models.Claim
 import retrofit2.HttpException

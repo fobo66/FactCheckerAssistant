@@ -14,7 +14,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "io.github.fobo66.factcheckerassistant"
+        applicationId = "dev.fobo66.factcheckerassistant"
         minSdk = VersionCodes.N
         targetSdk = 34
         versionCode = 1
@@ -60,7 +60,7 @@ android {
             excludes += listOf("META-INF/AL2.0", "META-INF/LGPL2.1")
         }
     }
-    namespace = "io.github.fobo66.factcheckerassistant"
+    namespace = "dev.fobo66.factcheckerassistant"
 }
 
 kotlin {

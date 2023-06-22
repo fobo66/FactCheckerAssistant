@@ -9,7 +9,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.fobo66.composemd.MarkdownDocument
-import io.github.fobo66.factcheckerassistant.R
+import dev.fobo66.factcheckerassistant.R
 import io.github.fobo66.factcheckerassistant.ui.theme.FactCheckerAssistantTheme
 
 @Composable
