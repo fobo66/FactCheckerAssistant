@@ -14,6 +14,8 @@
  *    limitations under the License.
  */
 
+import io.github.cdimascio.dotenv.dotenv
+import org.gradle.api.Project
 import java.io.File
 import java.util.*
 
@@ -32,15 +34,11 @@ import java.util.*
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
+
 /**
- * Load properties from file in the way recommended by Android docs
- * <p>
- * Usage:
- * <p>
- * `def keystoreProperties = PropertiesLoaderKt.loadProperties(rootProject.file("keystore.properties"))`
+ * Load secret from the env var or .env file
  */
-fun loadProperties(propertiesFile: File): Properties {
-    val properties = Properties()
-    properties.load(propertiesFile.inputStream())
-    return properties
-}
+fun loadSecret(project: Project, key: String): String = dotenv {
+    ignoreIfMissing = true
+    directory = project.layout.projectDirectory.asFile.path
+}[key]
