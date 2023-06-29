@@ -99,7 +99,7 @@ dependencyResolutionManagement {
                 "lifecycle"
             )
             library("uitest.core", "androidx.test:core-ktx:1.6.0-alpha01")
-            library("uitest.runner", "androidx.test:runner:1.6.0-alpha02")
+            library("uitest.runner", "androidx.test:runner:1.6.0-alpha03")
             library("uitest.rules", "androidx.test", "rules").versionRef("uitest")
             library(
                 "uitest.espresso",
