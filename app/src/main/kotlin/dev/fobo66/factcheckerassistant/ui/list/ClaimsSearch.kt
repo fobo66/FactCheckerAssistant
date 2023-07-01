@@ -159,6 +159,7 @@ fun ClaimItem(
         ListItem(
             headlineContent = {
                 Text(
+                    style = MaterialTheme.typography.titleMedium,
                     text = claim?.claimant ?: stringResource(id = R.string.claim_unknown_claimant)
                 )
             },
@@ -177,8 +178,8 @@ fun ClaimItem(
         )
         Text(
             text = claim?.text.orEmpty(),
-            style = MaterialTheme.typography.titleMedium,
-            modifier = Modifier.padding(8.dp)
+            style = MaterialTheme.typography.bodyLarge,
+            modifier = Modifier.padding(16.dp)
         )
     }
 }
