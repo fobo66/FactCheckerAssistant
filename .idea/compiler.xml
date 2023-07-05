@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="11" />
+    <bytecodeTargetLevel target="11">
+      <module name="Fact Checker Assistant.Fact_Checker_Assistant.app" target="17" />
+      <module name="Fact_Checker_Assistant.buildSrc" target="17" />
+      <module name="Fact_Checker_Assistant.buildSrc.main" target="17" />
+      <module name="Fact_Checker_Assistant.buildSrc.test" target="17" />
+      <module name="Fact_Checker_Assistant.composemd" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>
