@@ -18,7 +18,7 @@ dependencyResolutionManagement {
     }
     versionCatalogs {
         register("libs") {
-            version("kotlin", "1.8.21")
+            version("kotlin", "1.8.22")
             version("moshi", "1.15.0")
             version("retrofit", "2.9.0")
             version("coroutines", "1.7.2")
@@ -139,7 +139,7 @@ dependencyResolutionManagement {
         }
 
         register("compose") {
-            version("compiler", "1.4.7")
+            version("compiler", "1.4.8")
             library("bom", "dev.chrisbanes.compose:compose-bom:2023.04.00-beta02")
             library("ui", "androidx.compose.ui", "ui").withoutVersion()
             library("preview", "androidx.compose.ui", "ui-tooling-preview").withoutVersion()
