@@ -29,6 +29,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
@@ -37,6 +38,7 @@ import androidx.paging.compose.itemKey
 import dev.fobo66.factcheckerassistant.R
 import dev.fobo66.factcheckerassistant.api.models.Claim
 import dev.fobo66.factcheckerassistant.ui.icons.Search
+import io.github.fobo66.factcheckerassistant.ui.theme.FactCheckerAssistantTheme
 import java.time.ZoneOffset
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -111,8 +113,23 @@ fun ClaimsSearch(
                         key = it.itemKey(),
                         contentType = it.itemContentType()
                     ) { index ->
-                        val item = it[index]
-                        ClaimItem(item, onSearchResultClick = onSearchResultClick)
+                        val claim = it[index]
+                        val context = LocalContext.current
+
+                        val claimDate = remember {
+                            DateUtils.getRelativeTimeSpanString(
+                                context,
+                                claim?.claimDate?.toInstant(ZoneOffset.UTC)?.toEpochMilli()
+                                    ?: System.currentTimeMillis()
+                            ).toString()
+                        }
+                        ClaimItem(
+                            claimant = claim?.claimant,
+                            claimDate = claimDate,
+                            claimTitle = claim?.text,
+                            onItemClick = {
+                                onSearchResultClick(claim)
+                            })
                     }
 
                     if (it.loadState.append == LoadState.Loading) {
@@ -144,42 +161,47 @@ fun ClaimsSearch(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ClaimItem(
-    claim: Claim?,
+    claimDate: String,
+    onItemClick: () -> Unit,
     modifier: Modifier = Modifier,
-    onSearchResultClick: (Claim?) -> Unit
+    claimant: String? = null,
+    claimTitle: String? = null
 ) {
-    val context = LocalContext.current
     ElevatedCard(
         modifier = modifier
             .fillMaxWidth(),
-        onClick = {
-            onSearchResultClick(claim)
-        }
+        onClick = onItemClick
     ) {
         ListItem(
             headlineContent = {
                 Text(
                     style = MaterialTheme.typography.titleMedium,
-                    text = claim?.claimant ?: stringResource(id = R.string.claim_unknown_claimant)
+                    text = claimant ?: stringResource(id = R.string.claim_unknown_claimant)
                 )
             },
             supportingContent = {
-                val relativeDate = remember {
-                    DateUtils.getRelativeTimeSpanString(
-                        context,
-                        claim?.claimDate?.toInstant(ZoneOffset.UTC)?.toEpochMilli()
-                            ?: System.currentTimeMillis()
-                    )
-                }
                 Text(
-                    text = relativeDate.toString()
+                    text = claimDate
                 )
             }
         )
         Text(
-            text = claim?.text.orEmpty(),
+            text = claimTitle.orEmpty(),
             style = MaterialTheme.typography.bodyLarge,
             modifier = Modifier.padding(16.dp)
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun ClaimItemPreview() {
+    FactCheckerAssistantTheme {
+        ClaimItem(
+            claimant = "test",
+            claimDate = "just now",
+            claimTitle = "test",
+            onItemClick = {}
         )
     }
 }
