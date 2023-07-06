@@ -81,6 +81,7 @@ dependencies {
     implementation(androidx.viewmodel)
     implementation(androidx.lifecycle)
     implementation(androidx.paging)
+    implementation(androidx.tracing)
 
     implementation(platform(compose.bom))
     implementation(compose.ui)

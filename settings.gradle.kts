@@ -98,6 +98,7 @@ dependencyResolutionManagement {
             library("viewmodel", "androidx.lifecycle", "lifecycle-viewmodel-compose").versionRef(
                 "lifecycle"
             )
+            library("tracing", "androidx.tracing:tracing:1.3.0-alpha02")
             library("uitest.core", "androidx.test:core-ktx:1.6.0-alpha01")
             library("uitest.runner", "androidx.test:runner:1.6.0-alpha03")
             library("uitest.rules", "androidx.test", "rules").versionRef("uitest")

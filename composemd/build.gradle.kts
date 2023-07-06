@@ -57,6 +57,7 @@ kotlin {
 
 dependencies {
     implementation(libs.commonmark)
+    implementation(androidx.tracing)
     implementation(platform(compose.bom))
     implementation(compose.ui)
     implementation(compose.material)
