@@ -83,7 +83,13 @@ fun MainActivityContent(
         },
         modifier = modifier
     ) { innerPadding ->
-        NavHost(navController, startDestination = Screen.DESTINATION_SEARCH) {
+        NavHost(
+            navController,
+            startDestination = Screen.DESTINATION_SEARCH,
+            modifier = Modifier.padding(
+                innerPadding
+            )
+        ) {
             composable(Screen.DESTINATION_SEARCH) {
                 val claims = mainViewModel.claims.collectAsLazyPagingItems()
 
@@ -96,7 +102,6 @@ fun MainActivityContent(
                         mainViewModel.search(it)
                     },
                     claims = claims,
-                    modifier = Modifier.padding(innerPadding)
                 ) {
                     mainViewModel.selectClaim(it)
                     navController.navigate(Screen.DESTINATION_SEARCH_DETAILS)
@@ -105,16 +110,11 @@ fun MainActivityContent(
             composable(Screen.DESTINATION_SEARCH_DETAILS) {
                 val claim by mainViewModel.selectedClaim.collectAsStateWithLifecycle()
                 ClaimDetails(
-                    claim,
-                    modifier = Modifier.padding(innerPadding)
+                    claim
                 )
             }
             composable(Screen.DESTINATION_GUIDE) {
-                FactCheckGuide(
-                    modifier = Modifier.padding(
-                        innerPadding
-                    )
-                )
+                FactCheckGuide()
             }
         }
     }
