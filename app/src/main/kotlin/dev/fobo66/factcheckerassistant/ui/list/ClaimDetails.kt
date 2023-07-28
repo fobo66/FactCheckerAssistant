@@ -33,7 +33,7 @@ import dev.fobo66.factcheckerassistant.R
 import dev.fobo66.factcheckerassistant.api.models.Claim
 import dev.fobo66.factcheckerassistant.api.models.ClaimReview
 import dev.fobo66.factcheckerassistant.api.models.Publisher
-import io.github.fobo66.factcheckerassistant.ui.theme.FactCheckerAssistantTheme
+import dev.fobo66.factcheckerassistant.ui.theme.FactCheckerAssistantTheme
 import kotlinx.collections.immutable.toImmutableList
 import java.time.LocalDateTime
 

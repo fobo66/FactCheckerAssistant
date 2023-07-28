@@ -1,4 +1,4 @@
-package io.github.fobo66.factcheckerassistant.ui.theme
+package dev.fobo66.factcheckerassistant.ui.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme

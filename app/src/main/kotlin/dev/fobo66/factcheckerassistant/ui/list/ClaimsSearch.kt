@@ -39,7 +39,7 @@ import androidx.paging.compose.itemContentType
 import androidx.paging.compose.itemKey
 import dev.fobo66.factcheckerassistant.R
 import dev.fobo66.factcheckerassistant.api.models.Claim
-import io.github.fobo66.factcheckerassistant.ui.theme.FactCheckerAssistantTheme
+import dev.fobo66.factcheckerassistant.ui.theme.FactCheckerAssistantTheme
 import java.time.ZoneOffset
 
 @Composable
