@@ -10,9 +10,9 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-abstract class DataModule {
+interface DataModule {
 
     @Binds
     @Singleton
-    abstract fun bindLocaleProvider(localeProviderImpl: LocaleProviderImpl): LocaleProvider
+    fun bindLocaleProvider(localeProviderImpl: LocaleProviderImpl): LocaleProvider
 }
