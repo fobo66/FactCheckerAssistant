@@ -13,7 +13,7 @@ class LocalDateTimeAdapterTest {
     @Test
     fun `parse date`() {
         val date = adapter.toJson(now)
-        assertEquals(EXPECTED_TIMESTAMP, date)
+        assertEquals(DEFAULT_TIMESTAMP, date)
     }
 
     @Test
