@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.DockedSearchBar
 import androidx.compose.material3.ElevatedCard
@@ -37,11 +39,9 @@ import androidx.paging.compose.itemContentType
 import androidx.paging.compose.itemKey
 import dev.fobo66.factcheckerassistant.R
 import dev.fobo66.factcheckerassistant.api.models.Claim
-import dev.fobo66.factcheckerassistant.ui.icons.Search
 import io.github.fobo66.factcheckerassistant.ui.theme.FactCheckerAssistantTheme
 import java.time.ZoneOffset
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ClaimsSearch(
     query: String,
@@ -51,43 +51,14 @@ fun ClaimsSearch(
     modifier: Modifier = Modifier,
     onSearchResultClick: (Claim?) -> Unit = {}
 ) {
-    var isActive by rememberSaveable {
-        mutableStateOf(false)
-    }
-    val focusManager = LocalFocusManager.current
 
     Box(modifier = modifier.fillMaxSize()) {
-        DockedSearchBar(
-            query = query,
-            onQueryChange = onQueryChange,
-            onSearch = {
-                onSearch(it)
-                focusManager.clearFocus()
-                isActive = false
-            },
-            active = isActive,
-            onActiveChange = {
-                isActive = it
-                if (!isActive) {
-                    focusManager.clearFocus()
-                }
-            },
-            leadingIcon = {
-                Icon(
-                    Search,
-                    contentDescription = stringResource(id = R.string.search_icon_description)
-                )
-            },
-            placeholder = {
-                Text(text = stringResource(id = R.string.search_placeholder))
-            },
+        ClaimsSearchBar(
+            query,
+            onQueryChange,
+            onSearch,
             modifier = Modifier.align(Alignment.TopCenter)
-        ) {
-            Text(
-                text = stringResource(id = R.string.search_suggestion),
-                modifier = Modifier.padding(horizontal = 16.dp)
-            )
-        }
+        )
         Crossfade(claims, label = "searchItems") {
             if (it.itemCount == 0) {
                 Box(modifier = Modifier.fillMaxSize()) {
@@ -155,6 +126,51 @@ fun ClaimsSearch(
                 }
             }
         }
+    }
+}
+
+@Composable
+@OptIn(ExperimentalMaterial3Api::class)
+private fun ClaimsSearchBar(
+    query: String,
+    onQueryChange: (String) -> Unit,
+    onSearch: (String) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    val focusManager = LocalFocusManager.current
+    var isActive by rememberSaveable {
+        mutableStateOf(false)
+    }
+    DockedSearchBar(
+        query = query,
+        onQueryChange = onQueryChange,
+        onSearch = {
+            onSearch(it)
+            focusManager.clearFocus()
+            isActive = false
+        },
+        active = isActive,
+        onActiveChange = {
+            isActive = it
+            if (!isActive) {
+                focusManager.clearFocus()
+            }
+        },
+        leadingIcon = {
+            Icon(
+                Icons.Default.Search,
+                contentDescription = stringResource(id = R.string.search_icon_description)
+            )
+        },
+        placeholder = {
+            Text(text = stringResource(id = R.string.search_placeholder))
+        },
+        modifier = modifier
+    ) {
+        Text(
+            text = stringResource(id = R.string.search_suggestion),
+            modifier = Modifier.padding(horizontal = 16.dp)
+        )
     }
 }
 

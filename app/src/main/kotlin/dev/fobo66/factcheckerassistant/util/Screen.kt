@@ -10,13 +10,13 @@ sealed class Screen(
     @StringRes val resourceId: Int,
     val icon: ImageVector
 ) {
-    object Search : Screen(
+    data object Search : Screen(
         DESTINATION_SEARCH,
         R.string.main_fragment_title,
         dev.fobo66.factcheckerassistant.ui.icons.Search
     )
 
-    object Guide : Screen(DESTINATION_GUIDE, R.string.guide_fragment_title, GuideIcon)
+    data object Guide : Screen(DESTINATION_GUIDE, R.string.guide_fragment_title, GuideIcon)
 
     companion object {
         const val DESTINATION_SEARCH = "search"
