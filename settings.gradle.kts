@@ -18,7 +18,7 @@ dependencyResolutionManagement {
     }
     versionCatalogs {
         register("libs") {
-            version("kotlin", "1.8.22")
+            version("kotlin", "1.9.0")
             version("moshi", "1.15.0")
             version("retrofit", "2.9.0")
             version("coroutines", "1.7.2")
@@ -62,7 +62,7 @@ dependencyResolutionManagement {
         }
 
         register("androidx") {
-            version("plugin", "8.0.2")
+            version("plugin", "8.1.0")
             version("lifecycle", "2.6.1")
             version("navigation", "2.6.0")
             version("paging", "3.2.0-alpha06")
@@ -140,8 +140,8 @@ dependencyResolutionManagement {
         }
 
         register("compose") {
-            version("compiler", "1.4.8")
-            library("bom", "dev.chrisbanes.compose:compose-bom:2023.04.00-beta02")
+            version("compiler", "1.5.1")
+            library("bom", "dev.chrisbanes.compose:compose-bom:2023.07.00-alpha02")
             library("ui", "androidx.compose.ui", "ui").withoutVersion()
             library("preview", "androidx.compose.ui", "ui-tooling-preview").withoutVersion()
             library("tooling", "androidx.compose.ui", "ui-tooling").withoutVersion()
@@ -160,7 +160,7 @@ dependencyResolutionManagement {
         }
 
         register("accompanist") {
-            version("accompanist", "0.31.2-alpha")
+            version("accompanist", "0.31.6-rc")
             library(
                 "permissions",
                 "com.google.accompanist",
