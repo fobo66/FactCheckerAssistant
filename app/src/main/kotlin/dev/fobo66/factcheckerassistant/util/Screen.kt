@@ -1,6 +1,8 @@
 package dev.fobo66.factcheckerassistant.util
 
 import androidx.annotation.StringRes
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.ui.graphics.vector.ImageVector
 import dev.fobo66.factcheckerassistant.R
 import dev.fobo66.factcheckerassistant.ui.icons.GuideIcon
@@ -13,7 +15,7 @@ sealed class Screen(
     data object Search : Screen(
         DESTINATION_SEARCH,
         R.string.main_fragment_title,
-        dev.fobo66.factcheckerassistant.ui.icons.Search
+        Icons.Default.Search
     )
 
     data object Guide : Screen(DESTINATION_GUIDE, R.string.guide_fragment_title, GuideIcon)
