@@ -10,7 +10,7 @@ plugins {
 
 tasks {
     register("clean", Delete::class) {
-        delete(rootProject.buildDir)
+        delete(rootProject.layout.buildDirectory)
     }
 
     withType<io.gitlab.arturbosch.detekt.Detekt> {
