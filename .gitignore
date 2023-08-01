@@ -16,3 +16,4 @@
 .cxx
 *.log
 *.apk
+.env
