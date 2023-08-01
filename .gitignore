@@ -17,3 +17,4 @@
 *.log
 *.apk
 .env
+/.idea/androidTestResultsUserPreferences.xml
