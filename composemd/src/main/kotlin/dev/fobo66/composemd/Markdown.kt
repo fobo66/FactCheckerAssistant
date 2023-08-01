@@ -11,7 +11,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.InlineTextContent
 import androidx.compose.foundation.text.appendInlineContent
 import androidx.compose.material3.ColorScheme
-import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -280,10 +280,9 @@ fun MarkdownText(text: AnnotatedString, style: TextStyle, modifier: Modifier = M
 
 @Composable
 fun MarkdownThematicBreak(modifier: Modifier = Modifier) {
-    Divider(
-        modifier = modifier.semantics {
-            testTag = "Thematic break"
-        }
+    HorizontalDivider(modifier = modifier.semantics {
+        testTag = "Thematic break"
+    }
     )
 }
 
