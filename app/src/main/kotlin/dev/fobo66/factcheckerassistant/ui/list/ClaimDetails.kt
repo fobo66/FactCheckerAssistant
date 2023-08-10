@@ -92,13 +92,13 @@ fun ClaimReviewItem(claimReview: ClaimReview, modifier: Modifier = Modifier) {
                 if (claimReview.publisher.name != null) {
                     Box(
                         modifier = Modifier
-                            .size(48.dp)
-                            .background(MaterialTheme.colorScheme.primary, CircleShape)
+                            .size(40.dp)
+                            .background(MaterialTheme.colorScheme.primaryContainer, CircleShape)
                     ) {
                         Text(
                             text = claimReview.publisher.name[0].titlecase(),
-                            style = MaterialTheme.typography.titleSmall,
-                            color = MaterialTheme.colorScheme.onPrimary,
+                            style = MaterialTheme.typography.titleMedium,
+                            color = MaterialTheme.colorScheme.onPrimaryContainer,
                             modifier = Modifier
                                 .align(Alignment.Center)
                         )
