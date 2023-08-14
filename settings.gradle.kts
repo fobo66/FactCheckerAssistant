@@ -214,7 +214,7 @@ dependencyResolutionManagement {
                 "io.gitlab.arturbosch.detekt",
                 "detekt-formatting"
             ).versionRef("detekt")
-            library("compose", "io.nlopez.compose.rules:detekt:0.2.0")
+            library("compose", "io.nlopez.compose.rules:detekt:0.2.1")
         }
     }
 }
