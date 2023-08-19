@@ -13,9 +13,9 @@ import org.junit.jupiter.api.Test
 import retrofit2.Retrofit
 import retrofit2.mock.MockRetrofit
 import retrofit2.mock.NetworkBehavior
+import retrofit2.mock.create
 import java.util.concurrent.TimeUnit
 
-@ExperimentalCoroutinesApi
 class FactCheckRepositoryTest {
     private lateinit var factCheckRepository: FactCheckRepository
 
@@ -32,8 +32,9 @@ class FactCheckRepositoryTest {
 
     private val mockApi = MockRetrofit.Builder(retrofit)
         .networkBehavior(networkBehavior)
-        .build().create(FactCheckApi::class.java)
+        .build().create<FactCheckApi>()
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     @Test
     fun `Search for query with empty results`() = runTest {
         factCheckRepository = FactCheckRepository(
@@ -50,6 +51,7 @@ class FactCheckRepositoryTest {
         assertNotNull(result)
     }
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     @Test
     fun `Search for query with one result`() = runTest {
         val claim = Claim("test", null, null, listOf())
