@@ -160,7 +160,7 @@ dependencyResolutionManagement {
         }
 
         register("accompanist") {
-            version("accompanist", "0.31.6-rc")
+            version("accompanist", "0.32.0")
             library(
                 "permissions",
                 "com.google.accompanist",
