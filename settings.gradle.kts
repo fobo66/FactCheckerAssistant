@@ -71,6 +71,8 @@ dependencyResolutionManagement {
             version("benchmark", "1.2.0-alpha15")
             plugin("application", "com.android.application").versionRef("plugin")
             plugin("library", "com.android.library").versionRef("plugin")
+            plugin("test", "com.android.test").versionRef("plugin")
+            plugin("baseline-profile", "androidx.baselineprofile").version("1.2.0-beta04")
             library("core", "androidx.core:core-ktx:1.12.0-rc01")
             library("annotations", "androidx.annotation:annotation:1.7.0-beta01")
             library("activity", "androidx.activity:activity-compose:1.8.0-alpha06")
@@ -221,3 +223,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Fact Checker Assistant"
 include(":app", ":composemd")
+include(":baselineprofile")

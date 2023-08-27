@@ -1,11 +1,13 @@
 plugins {
     alias(androidx.plugins.application) apply false
     alias(androidx.plugins.library) apply false
+    alias(androidx.plugins.test) apply false
     kotlin("android") version libs.versions.kotlin apply false
     kotlin("kapt") version libs.versions.kotlin apply false
     alias(di.plugins.hilt) apply false
     alias(analysis.plugins.detekt) apply false
     alias(testing.plugins.junit) apply false
+    alias(androidx.plugins.baseline.profile) apply false
 }
 
 tasks {
