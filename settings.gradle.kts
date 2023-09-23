@@ -75,7 +75,7 @@ dependencyResolutionManagement {
             plugin("baseline-profile", "androidx.baselineprofile").version("1.2.0-beta04")
             library("core", "androidx.core:core-ktx:1.12.0-rc01")
             library("annotations", "androidx.annotation:annotation:1.7.0")
-            library("activity", "androidx.activity:activity-compose:1.8.0-alpha06")
+            library("activity", "androidx.activity:activity-compose:1.8.0-beta01")
             library("appstartup", "androidx.startup:startup-runtime:1.2.0-alpha02")
             library("datastore", "androidx.datastore:datastore-preferences:1.1.0-alpha04")
             library(
@@ -185,7 +185,7 @@ dependencyResolutionManagement {
 
         register("testing") {
             version("kaspresso", "1.5.2")
-            version("mockk", "1.13.5")
+            version("mockk", "1.13.8")
             plugin("junit", "de.mannodermaus.android-junit5").version("1.9.3.0")
             library("junit", "org.junit.jupiter:junit-jupiter-api:5.10.0")
             library("junit.engine", "org.junit.jupiter:junit-jupiter-engine:5.10.0")
