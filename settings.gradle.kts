@@ -93,7 +93,7 @@ dependencyResolutionManagement {
             library("window", "androidx.window:window:1.1.0")
             library("paging", "androidx.paging", "paging-runtime-ktx").versionRef("paging")
             library("paging.common", "androidx.paging", "paging-common-ktx").versionRef("paging")
-            library("paging.compose", "androidx.paging:paging-compose:3.2.0")
+            library("paging.compose", "androidx.paging:paging-compose:3.2.1")
             library("lifecycle", "androidx.lifecycle", "lifecycle-runtime-compose").versionRef(
                 "lifecycle"
             )
@@ -184,7 +184,7 @@ dependencyResolutionManagement {
         }
 
         register("testing") {
-            version("kaspresso", "1.5.2")
+            version("kaspresso", "1.5.3")
             version("mockk", "1.13.8")
             plugin("junit", "de.mannodermaus.android-junit5").version("1.9.3.0")
             library("junit", "org.junit.jupiter:junit-jupiter-api:5.10.0")
