@@ -180,7 +180,7 @@ dependencyResolutionManagement {
             plugin("hilt", "com.google.dagger.hilt.android").versionRef("hilt")
             library("core", "com.google.dagger", "hilt-android").versionRef("hilt")
             library("compiler", "com.google.dagger", "hilt-android-compiler").versionRef("hilt")
-            library("navigation", "androidx.hilt:hilt-navigation-compose:1.0.0")
+            library("navigation", "androidx.hilt:hilt-navigation-compose:1.1.0")
         }
 
         register("testing") {
