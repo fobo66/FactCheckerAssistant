@@ -65,7 +65,7 @@ dependencyResolutionManagement {
             version("plugin", "8.1.3")
             version("lifecycle", "2.6.1")
             version("navigation", "2.6.0")
-            version("paging", "3.2.0-alpha06")
+            version("paging", "3.2.1")
             version("uitest", "1.5.2")
             version("espresso", "3.6.0-alpha01")
             version("benchmark", "1.2.0-rc02")
