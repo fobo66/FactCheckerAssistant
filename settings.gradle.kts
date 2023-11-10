@@ -29,7 +29,7 @@ dependencyResolutionManagement {
             library("leakcanary", "com.squareup.leakcanary:leakcanary-android:2.12")
             library("commonmark", "org.commonmark:commonmark:0.21.0")
             library("timber", "com.jakewharton.timber:timber:5.0.1")
-            library("coil", "io.coil-kt:coil-compose:2.4.0")
+            library("coil", "io.coil-kt:coil-compose:2.5.0")
             library("collections", "org.jetbrains.kotlinx:kotlinx-collections-immutable:0.3.6")
             library("desugar", "com.android.tools:desugar_jdk_libs:2.0.4")
             library(
