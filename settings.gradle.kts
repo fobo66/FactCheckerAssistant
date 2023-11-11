@@ -22,6 +22,8 @@ dependencyResolutionManagement {
             version("moshi", "1.15.0")
             version("retrofit", "2.9.0")
             version("coroutines", "1.7.3")
+            version("ksp", "1.9.20-1.0.14")
+            plugin("ksp", "com.google.devtools.ksp").versionRef("ksp")
             library("material", "com.google.android.material:material:1.9.0")
             library("retrofit", "com.squareup.retrofit2", "retrofit").versionRef("retrofit")
             library("retrofit.moshi", "com.squareup.retrofit2", "converter-moshi").versionRef("retrofit")
@@ -176,7 +178,7 @@ dependencyResolutionManagement {
         }
 
         register("di") {
-            version("hilt", "2.47")
+            version("hilt", "2.48.1")
             plugin("hilt", "com.google.dagger.hilt.android").versionRef("hilt")
             library("core", "com.google.dagger", "hilt-android").versionRef("hilt")
             library("compiler", "com.google.dagger", "hilt-android-compiler").versionRef("hilt")

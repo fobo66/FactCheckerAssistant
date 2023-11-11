@@ -3,7 +3,7 @@ import com.android.sdklib.AndroidVersion.VersionCodes
 plugins {
     id("com.android.application")
     kotlin("android")
-    kotlin("kapt")
+    alias(libs.plugins.ksp)
     id("kotlin-parcelize")
     id("io.gitlab.arturbosch.detekt")
     id("dagger.hilt.android.plugin")
@@ -68,8 +68,11 @@ kotlin {
     jvmToolchain(17)
 }
 
-kapt {
-    correctErrorTypes = true
+ksp {
+    arg("room.schemaLocation", "$projectDir/schemas")
+    arg("room.incremental", "true")
+    arg("room.expandProjection", "true")
+    arg("room.generateKotlin", "true")
 }
 
 dependencies {
@@ -102,14 +105,14 @@ dependencies {
     implementation(project(":composemd"))
 
     implementation(di.core)
-    kapt(di.compiler)
+    ksp(di.compiler)
 
     implementation(libs.retrofit)
     implementation(platform(okhttp.bom))
     implementation(okhttp.core)
     implementation(libs.retrofit.moshi)
     implementation(libs.moshi)
-    kapt(libs.moshi.codegen)
+    ksp(libs.moshi.codegen)
 
     implementation(libs.timber)
     implementation(libs.leakcanary)
