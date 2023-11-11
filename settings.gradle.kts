@@ -18,7 +18,7 @@ dependencyResolutionManagement {
     }
     versionCatalogs {
         register("libs") {
-            version("kotlin", "1.9.10")
+            version("kotlin", "1.9.20")
             version("moshi", "1.15.0")
             version("retrofit", "2.9.0")
             version("coroutines", "1.7.3")
@@ -62,7 +62,7 @@ dependencyResolutionManagement {
         }
 
         register("androidx") {
-            version("plugin", "8.1.3")
+            version("plugin", "8.3.0-alpha13")
             version("lifecycle", "2.6.1")
             version("navigation", "2.6.0")
             version("paging", "3.2.1")
@@ -142,8 +142,8 @@ dependencyResolutionManagement {
         }
 
         register("compose") {
-            version("compiler", "1.5.3")
-            library("bom", "dev.chrisbanes.compose:compose-bom:2023.07.00-alpha02")
+            version("compiler", "1.5.4")
+            library("bom", "dev.chrisbanes.compose:compose-bom:2023.11.00-alpha02")
             library("ui", "androidx.compose.ui", "ui").withoutVersion()
             library("preview", "androidx.compose.ui", "ui-tooling-preview").withoutVersion()
             library("tooling", "androidx.compose.ui", "ui-tooling").withoutVersion()
