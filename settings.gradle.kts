@@ -24,7 +24,7 @@ dependencyResolutionManagement {
             version("coroutines", "1.7.3")
             version("ksp", "1.9.20-1.0.14")
             plugin("ksp", "com.google.devtools.ksp").versionRef("ksp")
-            library("material", "com.google.android.material:material:1.9.0")
+            library("material", "com.google.android.material:material:1.10.0")
             library("retrofit", "com.squareup.retrofit2", "retrofit").versionRef("retrofit")
             library("retrofit.moshi", "com.squareup.retrofit2", "converter-moshi").versionRef("retrofit")
             library("retrofit.mock", "com.squareup.retrofit2", "retrofit-mock").versionRef("retrofit")
