@@ -27,6 +27,7 @@ dependencyResolutionManagement {
             library("material", "com.google.android.material:material:1.10.0")
             library("retrofit", "com.squareup.retrofit2", "retrofit").versionRef("retrofit")
             library("retrofit.moshi", "com.squareup.retrofit2", "converter-moshi").versionRef("retrofit")
+            library("retrofit.kotlinx", "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:1.0.0")
             library("retrofit.mock", "com.squareup.retrofit2", "retrofit-mock").versionRef("retrofit")
             library("leakcanary", "com.squareup.leakcanary:leakcanary-android:2.12")
             library("commonmark", "org.commonmark:commonmark:0.21.0")
@@ -34,6 +35,8 @@ dependencyResolutionManagement {
             library("coil", "io.coil-kt:coil-compose:2.5.0")
             library("collections", "org.jetbrains.kotlinx:kotlinx-collections-immutable:0.3.6")
             library("desugar", "com.android.tools:desugar_jdk_libs:2.0.4")
+            library("kotlinx.serialization", "org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.1")
+            library("kotlinx.datetime", "org.jetbrains.kotlinx:kotlinx-datetime:0.4.1")
             library(
                 "coroutines",
                 "org.jetbrains.kotlinx",

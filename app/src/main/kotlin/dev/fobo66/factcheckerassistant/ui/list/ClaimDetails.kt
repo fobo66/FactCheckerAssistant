@@ -35,7 +35,7 @@ import dev.fobo66.factcheckerassistant.api.models.ClaimReview
 import dev.fobo66.factcheckerassistant.api.models.Publisher
 import dev.fobo66.factcheckerassistant.ui.theme.FactCheckerAssistantTheme
 import kotlinx.collections.immutable.toImmutableList
-import java.time.LocalDateTime
+import kotlinx.datetime.Clock
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -161,7 +161,7 @@ private fun ClaimDetailsPreview() {
                 Claim(
                     "test",
                     "tester",
-                    LocalDateTime.now(),
+                    Clock.System.now(),
                     listOf(
                         ClaimReview(
                             Publisher("test", "test.com"),

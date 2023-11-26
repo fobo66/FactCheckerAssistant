@@ -90,7 +90,7 @@ fun ClaimsSearch(
                         val claimDate = remember {
                             DateUtils.getRelativeTimeSpanString(
                                 context,
-                                claim?.claimDate?.toInstant(ZoneOffset.UTC)?.toEpochMilli()
+                                claim?.claimDate?.toEpochMilliseconds()
                                     ?: System.currentTimeMillis()
                             ).toString()
                         }

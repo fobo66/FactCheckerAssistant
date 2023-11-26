@@ -2,16 +2,18 @@ package dev.fobo66.factcheckerassistant.api.models
 
 import android.os.Parcelable
 import androidx.compose.runtime.Immutable
-import com.squareup.moshi.JsonClass
+import dev.fobo66.factcheckerassistant.util.InstantParceler
+import kotlinx.datetime.Instant
 import kotlinx.parcelize.Parcelize
-import java.time.LocalDateTime
+import kotlinx.parcelize.TypeParceler
+import kotlinx.serialization.Serializable
 
-@JsonClass(generateAdapter = true)
+@Serializable
 @Immutable
 @Parcelize
 data class Claim(
     val text: String,
-    val claimant: String?,
-    val claimDate: LocalDateTime?,
-    val claimReview: List<ClaimReview>
+    val claimant: String? = null,
+    @TypeParceler<Instant?, InstantParceler>() val claimDate: Instant? = null,
+    val claimReview: List<ClaimReview> = emptyList()
 ) : Parcelable

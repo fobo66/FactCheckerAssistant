@@ -1,8 +1,8 @@
 package dev.fobo66.factcheckerassistant.api.models
 
-import com.squareup.moshi.JsonClass
+import kotlinx.serialization.Serializable
 
-@JsonClass(generateAdapter = true)
+@Serializable
 data class FactCheckResponse(
     val claims: List<Claim>?,
     val nextPageToken: String?

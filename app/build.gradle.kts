@@ -3,6 +3,7 @@ import com.android.sdklib.AndroidVersion.VersionCodes
 plugins {
     id("com.android.application")
     kotlin("android")
+    kotlin("plugin.serialization")
     alias(libs.plugins.ksp)
     id("kotlin-parcelize")
     id("io.gitlab.arturbosch.detekt")
@@ -110,9 +111,9 @@ dependencies {
     implementation(libs.retrofit)
     implementation(platform(okhttp.bom))
     implementation(okhttp.core)
-    implementation(libs.retrofit.moshi)
-    implementation(libs.moshi)
-    ksp(libs.moshi.codegen)
+    implementation(libs.retrofit.kotlinx)
+    implementation(libs.kotlinx.serialization)
+    implementation(libs.kotlinx.datetime)
 
     implementation(libs.timber)
     implementation(libs.leakcanary)
