@@ -1,9 +1,9 @@
 import com.android.build.api.dsl.ManagedVirtualDevice
 
 plugins {
-    id("com.android.test")
-    id("org.jetbrains.kotlin.android")
-    id("androidx.baselineprofile")
+    alias(androidx.plugins.test)
+    kotlin("android")
+    alias(androidx.plugins.baseline.profile)
 }
 
 android {
@@ -45,8 +45,8 @@ baselineProfile {
 }
 
 dependencies {
-    implementation("androidx.test.ext:junit:1.1.5")
-    implementation("androidx.test.espresso:espresso-core:3.5.1")
-    implementation("androidx.test.uiautomator:uiautomator:2.2.0")
-    implementation("androidx.benchmark:benchmark-macro-junit4:1.2.0")
+    implementation(androidx.uitest.junit)
+    implementation(androidx.uitest.espresso)
+    implementation(androidx.uitest.automator)
+    implementation(androidx.uitest.macrobenchmark)
 }
