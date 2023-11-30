@@ -72,7 +72,7 @@ dependencyResolutionManagement {
             version("navigation", "2.7.5")
             version("paging", "3.2.1")
             version("uitest", "1.5.2")
-            version("espresso", "3.6.0-alpha01")
+            version("espresso", "3.6.0-alpha02")
             version("benchmark", "1.2.1")
             plugin("application", "com.android.application").versionRef("plugin")
             plugin("library", "com.android.library").versionRef("plugin")
