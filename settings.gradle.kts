@@ -18,11 +18,11 @@ dependencyResolutionManagement {
     }
     versionCatalogs {
         register("libs") {
-            version("kotlin", "1.9.20")
+            version("kotlin", "1.9.21")
             version("moshi", "1.15.0")
             version("retrofit", "2.9.0")
             version("coroutines", "1.7.3")
-            version("ksp", "1.9.20-1.0.14")
+            version("ksp", "1.9.21-1.0.15")
             plugin("ksp", "com.google.devtools.ksp").versionRef("ksp")
             library("material", "com.google.android.material:material:1.10.0")
             library("retrofit", "com.squareup.retrofit2", "retrofit").versionRef("retrofit")
@@ -67,7 +67,7 @@ dependencyResolutionManagement {
         }
 
         register("androidx") {
-            version("plugin", "8.3.0-alpha17")
+            version("plugin", "8.3.0-alpha18")
             version("lifecycle", "2.6.2")
             version("navigation", "2.7.5")
             version("paging", "3.2.1")
@@ -79,8 +79,8 @@ dependencyResolutionManagement {
             plugin("test", "com.android.test").versionRef("plugin")
             plugin("baseline-profile", "androidx.baselineprofile").version("1.2.1")
             library("core", "androidx.core:core-ktx:1.12.0")
-            library("annotations", "androidx.annotation:annotation:1.7.0")
-            library("activity", "androidx.activity:activity-compose:1.8.1")
+            library("annotations", "androidx.annotation:annotation:1.7.1")
+            library("activity", "androidx.activity:activity-compose:1.8.2")
             library("appstartup", "androidx.startup:startup-runtime:1.2.0-alpha02")
             library("datastore", "androidx.datastore:datastore-preferences:1.1.0-alpha07")
             library(
@@ -147,7 +147,7 @@ dependencyResolutionManagement {
         }
 
         register("compose") {
-            version("compiler", "1.5.4")
+            version("compiler", "1.5.6")
             library("bom", "dev.chrisbanes.compose:compose-bom:2023.11.00-alpha02")
             library("ui", "androidx.compose.ui", "ui").withoutVersion()
             library("preview", "androidx.compose.ui", "ui-tooling-preview").withoutVersion()
@@ -167,7 +167,7 @@ dependencyResolutionManagement {
         }
 
         register("accompanist") {
-            version("accompanist", "0.32.0")
+            version("accompanist", "0.33.2-alpha")
             library(
                 "permissions",
                 "com.google.accompanist",
