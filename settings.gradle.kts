@@ -33,7 +33,7 @@ dependencyResolutionManagement {
             library("commonmark", "org.commonmark:commonmark:0.21.0")
             library("timber", "com.jakewharton.timber:timber:5.0.1")
             library("coil", "io.coil-kt:coil-compose:2.5.0")
-            library("collections", "org.jetbrains.kotlinx:kotlinx-collections-immutable:0.3.6")
+            library("collections", "org.jetbrains.kotlinx:kotlinx-collections-immutable:0.3.7")
             library("desugar", "com.android.tools:desugar_jdk_libs:2.0.4")
             library("kotlinx.serialization", "org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
             library("kotlinx.datetime", "org.jetbrains.kotlinx:kotlinx-datetime:0.5.0")
