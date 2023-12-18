@@ -140,7 +140,7 @@ dependencyResolutionManagement {
         }
 
         register("okhttp") {
-            version("okhttp", "5.0.0-alpha.11")
+            version("okhttp", "5.0.0-alpha.12")
             library("bom", "com.squareup.okhttp3", "okhttp-bom").versionRef("okhttp")
             library("core", "com.squareup.okhttp3", "okhttp").withoutVersion()
             library("logging", "com.squareup.okhttp3", "logging-interceptor").withoutVersion()
