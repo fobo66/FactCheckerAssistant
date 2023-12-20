@@ -22,7 +22,7 @@ jobs:
       - name: Check Gradle wrapper
         uses: gradle/wrapper-validation-action@v1
       - name: Detekt
-        uses: gradle/gradle-build-action@v2.10.0
+        uses: gradle/gradle-build-action@v2.11.1
         with:
           arguments: detekt
       - name: Upload build reports
@@ -47,7 +47,7 @@ jobs:
       - name: Check Gradle wrapper
         uses: gradle/wrapper-validation-action@v1
       - name: Gradle cache
-        uses: gradle/gradle-build-action@v2.10.0
+        uses: gradle/gradle-build-action@v2.11.1
       - name: Run tests
         uses: reactivecircus/android-emulator-runner@v2.29.0
         with:
@@ -72,6 +72,6 @@ jobs:
       - name: Install latest build tools
         run: echo "y" | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager --install "build-tools;34.0.0-rc3"
       - name: Run tests
-        uses: gradle/gradle-build-action@v2.10.0
+        uses: gradle/gradle-build-action@v2.11.1
         with:
           arguments: testDebugUnitTest
