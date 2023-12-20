@@ -77,7 +77,7 @@ dependencyResolutionManagement {
             plugin("application", "com.android.application").versionRef("plugin")
             plugin("library", "com.android.library").versionRef("plugin")
             plugin("test", "com.android.test").versionRef("plugin")
-            plugin("baseline-profile", "androidx.baselineprofile").version("1.2.1")
+            plugin("baseline-profile", "androidx.baselineprofile").version("1.2.2")
             library("core", "androidx.core:core-ktx:1.12.0")
             library("annotations", "androidx.annotation:annotation:1.7.1")
             library("activity", "androidx.activity:activity-compose:1.8.2")
