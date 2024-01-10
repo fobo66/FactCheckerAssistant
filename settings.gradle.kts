@@ -68,7 +68,7 @@ dependencyResolutionManagement {
 
         register("androidx") {
             version("plugin", "8.3.0-beta01")
-            version("lifecycle", "2.6.2")
+            version("lifecycle", "2.7.0")
             version("navigation", "2.7.6")
             version("paging", "3.2.1")
             version("uitest", "1.5.2")
