@@ -18,11 +18,11 @@ dependencyResolutionManagement {
     }
     versionCatalogs {
         register("libs") {
-            version("kotlin", "1.9.21")
+            version("kotlin", "1.9.22")
             version("moshi", "1.15.0")
             version("retrofit", "2.9.0")
             version("coroutines", "1.7.3")
-            version("ksp", "1.9.21-1.0.16")
+            version("ksp", "1.9.22-1.0.16")
             plugin("ksp", "com.google.devtools.ksp").versionRef("ksp")
             library("material", "com.google.android.material:material:1.11.0")
             library("retrofit", "com.squareup.retrofit2", "retrofit").versionRef("retrofit")
@@ -67,8 +67,8 @@ dependencyResolutionManagement {
         }
 
         register("androidx") {
-            version("plugin", "8.3.0-beta01")
-            version("lifecycle", "2.6.2")
+            version("plugin", "8.2.1")
+            version("lifecycle", "2.7.0")
             version("navigation", "2.7.6")
             version("paging", "3.2.1")
             version("uitest", "1.5.2")
@@ -147,8 +147,8 @@ dependencyResolutionManagement {
         }
 
         register("compose") {
-            version("compiler", "1.5.6")
-            library("bom", "dev.chrisbanes.compose:compose-bom:2023.11.00-alpha02")
+            version("compiler", "1.5.8")
+            library("bom", "dev.chrisbanes.compose:compose-bom:2024.01.00-alpha01")
             library("ui", "androidx.compose.ui", "ui").withoutVersion()
             library("preview", "androidx.compose.ui", "ui-tooling-preview").withoutVersion()
             library("tooling", "androidx.compose.ui", "ui-tooling").withoutVersion()
