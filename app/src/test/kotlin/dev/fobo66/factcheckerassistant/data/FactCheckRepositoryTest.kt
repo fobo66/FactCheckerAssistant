@@ -74,8 +74,6 @@ class FactCheckRepositoryTest {
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
     fun `Search for query with error`() = runTest {
-        val claim = Claim("test", null, null, listOf())
-
         factCheckRepository = FactCheckRepository(
             mockApi.returning<FactCheckResponse>(Calls.failure(IOException())),
             localeProvider
