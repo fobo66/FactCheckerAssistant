@@ -93,7 +93,6 @@ dependencies {
     implementation(compose.material)
     implementation(compose.preview)
     implementation(compose.windowsize)
-    implementation(accompanist.systemuicontroller)
     implementation("androidx.profileinstaller:profileinstaller:1.3.1")
     androidTestImplementation(compose.testing)
     androidTestImplementation(platform(compose.bom))
