@@ -8,9 +8,11 @@ import dev.fobo66.factcheckerassistant.util.TestLocaleProvider
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.test.runTest
+import okio.IOException
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
 import retrofit2.Retrofit
+import retrofit2.mock.Calls
 import retrofit2.mock.MockRetrofit
 import retrofit2.mock.NetworkBehavior
 import retrofit2.mock.create
@@ -62,6 +64,20 @@ class FactCheckRepositoryTest {
                     listOf(claim), null
                 )
             ),
+            localeProvider
+        )
+        val result = factCheckRepository.search("test", 10).flow.firstOrNull()
+        testScheduler.advanceTimeBy(DEFAULT_API_DELAY)
+        assertNotNull(result)
+    }
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    @Test
+    fun `Search for query with error`() = runTest {
+        val claim = Claim("test", null, null, listOf())
+
+        factCheckRepository = FactCheckRepository(
+            mockApi.returning<FactCheckResponse>(Calls.failure(IOException())),
             localeProvider
         )
         val result = factCheckRepository.search("test", 10).flow.firstOrNull()
