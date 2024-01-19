@@ -22,7 +22,7 @@ dependencyResolutionManagement {
             version("moshi", "1.15.0")
             version("retrofit", "2.9.0")
             version("coroutines", "1.7.3")
-            version("ksp", "1.9.22-1.0.16")
+            version("ksp", "1.9.22-1.0.17")
             plugin("ksp", "com.google.devtools.ksp").versionRef("ksp")
             library("material", "com.google.android.material:material:1.11.0")
             library("retrofit", "com.squareup.retrofit2", "retrofit").versionRef("retrofit")
