@@ -67,45 +67,9 @@ dependencyResolutionManagement {
         }
 
         register("androidx") {
-            version("plugin", "8.2.1")
-            version("lifecycle", "2.7.0")
-            version("navigation", "2.7.6")
-            version("paging", "3.2.1")
             version("uitest", "1.5.2")
             version("espresso", "3.6.0-alpha02")
             version("benchmark", "1.2.2")
-            plugin("application", "com.android.application").versionRef("plugin")
-            plugin("library", "com.android.library").versionRef("plugin")
-            plugin("test", "com.android.test").versionRef("plugin")
-            plugin("baseline-profile", "androidx.baselineprofile").version("1.2.2")
-            library("core", "androidx.core:core-ktx:1.12.0")
-            library("annotations", "androidx.annotation:annotation:1.7.1")
-            library("activity", "androidx.activity:activity-compose:1.8.2")
-            library("appstartup", "androidx.startup:startup-runtime:1.2.0-alpha02")
-            library("datastore", "androidx.datastore:datastore-preferences:1.1.0-alpha07")
-            library(
-                "navigation",
-                "androidx.navigation",
-                "navigation-compose"
-            ).versionRef("navigation")
-            library(
-                "navigation.testing",
-                "androidx.navigation",
-                "navigation-testing"
-            ).versionRef("navigation")
-            library("multidex", "androidx.multidex:multidex:2.0.1")
-            library("splashscreen", "androidx.core:core-splashscreen:1.0.1")
-            library("window", "androidx.window:window:1.2.0")
-            library("paging", "androidx.paging", "paging-runtime-ktx").versionRef("paging")
-            library("paging.common", "androidx.paging", "paging-common-ktx").versionRef("paging")
-            library("paging.compose", "androidx.paging:paging-compose:3.2.1")
-            library("lifecycle", "androidx.lifecycle", "lifecycle-runtime-compose").versionRef(
-                "lifecycle"
-            )
-            library("viewmodel", "androidx.lifecycle", "lifecycle-viewmodel-compose").versionRef(
-                "lifecycle"
-            )
-            library("tracing", "androidx.tracing:tracing:1.3.0-alpha02")
             library("uitest.core", "androidx.test:core-ktx:1.6.0-alpha04")
             library("uitest.runner", "androidx.test:runner:1.6.0-alpha05")
             library("uitest.rules", "androidx.test", "rules").versionRef("uitest")

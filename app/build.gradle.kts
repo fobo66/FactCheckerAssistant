@@ -1,15 +1,15 @@
 import com.android.sdklib.AndroidVersion.VersionCodes
 
 plugins {
-    id("com.android.application")
+    alias(libs.plugins.android.app)
     kotlin("android")
     kotlin("plugin.serialization")
     alias(libs.plugins.ksp)
     id("kotlin-parcelize")
-    id("io.gitlab.arturbosch.detekt")
+    alias(libs.plugins.detekt)
     id("dagger.hilt.android.plugin")
     id("de.mannodermaus.android-junit5")
-    alias(androidx.plugins.baseline.profile)
+    alias(libs.plugins.baseline.profile)
 }
 
 android {
@@ -80,13 +80,13 @@ dependencies {
     implementation(fileTree("dir" to "libs", "include" to listOf("*.jar")))
     implementation(libs.coroutines)
     implementation(libs.collections)
-    implementation(androidx.core)
+    implementation(libs.androidx.core)
     implementation(libs.material)
-    implementation(androidx.activity)
-    implementation(androidx.viewmodel)
-    implementation(androidx.lifecycle)
-    implementation(androidx.paging)
-    implementation(androidx.tracing)
+    implementation(libs.androidx.activity)
+    implementation(libs.androidx.lifecycle.viewmodel)
+    implementation(libs.androidx.lifecycle.compose)
+    implementation(libs.androidx.paging.compose)
+    implementation(libs.androidx.tracing)
 
     implementation(platform(compose.bom))
     implementation(compose.ui)
@@ -99,8 +99,8 @@ dependencies {
     baselineProfile(project(":baselineprofile"))
     debugImplementation(compose.testing.manifest)
     debugImplementation(compose.tooling)
-    implementation(androidx.paging.compose)
-    implementation(androidx.navigation)
+    implementation(libs.androidx.paging.compose)
+    implementation(libs.androidx.navigation)
     implementation(di.navigation)
     implementation(project(":composemd"))
 
@@ -125,9 +125,9 @@ dependencies {
     testImplementation(testing.junit)
     testRuntimeOnly(testing.junit.engine)
     testImplementation(libs.coroutines.test)
-    testImplementation(androidx.paging.common)
+    testImplementation(libs.androidx.paging.common)
     testImplementation(libs.retrofit.mock)
-    androidTestImplementation(androidx.navigation.testing)
+    androidTestImplementation(libs.androidx.navigation.test)
     androidTestImplementation(androidx.uitest.junit)
     androidTestImplementation(androidx.uitest.espresso)
 }

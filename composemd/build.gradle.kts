@@ -1,9 +1,9 @@
 import com.android.sdklib.AndroidVersion.VersionCodes
 
 plugins {
-    id("com.android.library")
+    alias(libs.plugins.android.library)
     kotlin("android")
-    id("io.gitlab.arturbosch.detekt")
+    alias(libs.plugins.detekt)
 }
 
 android {
@@ -57,7 +57,7 @@ kotlin {
 
 dependencies {
     implementation(libs.commonmark)
-    implementation(androidx.tracing)
+    implementation(libs.androidx.tracing)
     implementation(platform(compose.bom))
     implementation(compose.ui)
     implementation(compose.material)

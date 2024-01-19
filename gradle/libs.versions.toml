@@ -1,0 +1,49 @@
+[versions]
+androidGradlePlugin = "8.2.1"
+androidxActivity = "1.9.0-alpha01"
+androidxAnnotations = "1.8.2"
+androidxCore = "1.13.0-alpha03"
+androidxDatastore = "1.1.0-beta01"
+androidxLifecycle = "2.7.0"
+androidxNavigation = "2.7.6"
+androidxPaging = "3.3.0-alpha02"
+androidxSplashscreen = "1.1.0-alpha02"
+androidxStartup = "1.2.0-alpha02"
+androidxTracing = "1.3.0-alpha02"
+androidxWindow = "1.2.0"
+multidex = "2.0.1"
+baselineProfilePlugin = "1.2.2"
+composeBom = "2024.01.00-alpha01"
+composeCompiler = "1.5.8"
+coroutines = "1.7.3"
+detekt = "1.23.4"
+hilt = "2.50"
+hiltNavigation = "1.1.0"
+kotlin = "1.9.22"
+profileinstallerVersion = "1.3.1"
+
+[libraries]
+androidx-activity = { module = "androidx.activity:activity-compose", version.ref = "androidxActivity"}
+androidx-annotations = { module = "androidx.annotation:annotation", version.ref = "androidxAnnotations"}
+androidx-core = { module = "androidx.core:core-ktx", version.ref = "androidxCore"}
+androidx-datastore = { module = "androidx.datastore:datastore-preferences", version.ref = "androidxDatastore"}
+androidx-lifecycle-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidxLifecycle"}
+androidx-lifecycle-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "androidxLifecycle"}
+androidx-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidxNavigation"}
+androidx-navigation-test = { group = "androidx.navigation", name = "navigation-testing-ktx", version.ref = "androidxNavigation"}
+androidx-paging-compose = { group = "androidx.paging", name = "paging-compose", version.ref = "androidxPaging"}
+androidx-paging-common = { group = "androidx.paging", name = "paging-common", version.ref = "androidxPaging"}
+androidx-paging-runtime = { group = "androidx.paging", name = "paging-runtime-ktx", version.ref = "androidxPaging"}
+androidx-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "androidxSplashscreen"}
+androidx-startup = { module = "androidx.startup:startup-runtime", version.ref = "androidxStartup"}
+androidx-tracing = { module = "androidx.tracing:tracing", version.ref = "androidxTracing"}
+androidx-window = { module = "androidx.window:window", version.ref = "androidxWindow"}
+multidex = { module = "androidx.multidex:multidex", version.ref = "multidex" }
+profileinstaller = { module = "androidx.profileinstaller:profileinstaller", version.ref = "profileinstallerVersion" }
+
+[plugins]
+android-app = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
+android-test = { id = "com.android.test", version.ref = "androidGradlePlugin" }
+baseline-profile = { id = "androidx.baselineprofile", version.ref = "baselineProfilePlugin" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }

@@ -1,9 +1,9 @@
 import com.android.build.api.dsl.ManagedVirtualDevice
 
 plugins {
-    alias(androidx.plugins.test)
+    alias(libs.plugins.android.test)
     kotlin("android")
-    alias(androidx.plugins.baseline.profile)
+    alias(libs.plugins.baseline.profile)
 }
 
 android {

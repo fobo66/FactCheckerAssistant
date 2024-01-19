@@ -1,14 +1,14 @@
 plugins {
-    alias(androidx.plugins.application) apply false
-    alias(androidx.plugins.library) apply false
-    alias(androidx.plugins.test) apply false
+    alias(libs.plugins.android.app) apply false
+    alias(libs.plugins.android.library) apply false
+    alias(libs.plugins.android.test) apply false
     kotlin("android") version libs.versions.kotlin apply false
     kotlin("plugin.serialization") version libs.versions.kotlin apply false
     alias(libs.plugins.ksp) apply false
     alias(di.plugins.hilt) apply false
-    alias(analysis.plugins.detekt) apply false
+    alias(libs.plugins.detekt) apply false
     alias(testing.plugins.junit) apply false
-    alias(androidx.plugins.baseline.profile) apply false
+    alias(libs.plugins.baseline.profile) apply false
 }
 
 tasks {
