@@ -123,28 +123,6 @@ dependencyResolutionManagement {
             ).withoutVersion()
         }
 
-        register("accompanist") {
-            version("accompanist", "0.33.2-alpha")
-            library(
-                "permissions",
-                "com.google.accompanist",
-                "accompanist-permissions"
-            ).versionRef("accompanist")
-            library(
-                "systemuicontroller",
-                "com.google.accompanist",
-                "accompanist-systemuicontroller"
-            ).versionRef("accompanist")
-        }
-
-        register("di") {
-            version("hilt", "2.50")
-            plugin("hilt", "com.google.dagger.hilt.android").versionRef("hilt")
-            library("core", "com.google.dagger", "hilt-android").versionRef("hilt")
-            library("compiler", "com.google.dagger", "hilt-android-compiler").versionRef("hilt")
-            library("navigation", "androidx.hilt:hilt-navigation-compose:1.1.0")
-        }
-
         register("testing") {
             version("kaspresso", "1.5.3")
             version("mockk", "1.13.9")

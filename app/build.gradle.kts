@@ -101,11 +101,11 @@ dependencies {
     debugImplementation(compose.tooling)
     implementation(libs.androidx.paging.compose)
     implementation(libs.androidx.navigation)
-    implementation(di.navigation)
+    implementation(libs.hilt.navigation)
     implementation(project(":composemd"))
 
-    implementation(di.core)
-    ksp(di.compiler)
+    implementation(libs.hilt.core)
+    ksp(libs.hilt.compiler)
 
     implementation(libs.retrofit)
     implementation(platform(libs.okhttp.bom))
