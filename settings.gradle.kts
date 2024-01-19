@@ -54,16 +54,6 @@ dependencyResolutionManagement {
                 "org.jetbrains.kotlinx",
                 "kotlinx-coroutines-test"
             ).versionRef("coroutines")
-            library(
-                "moshi",
-                "com.squareup.moshi",
-                "moshi"
-            ).versionRef("moshi")
-            library(
-                "moshi-codegen",
-                "com.squareup.moshi",
-                "moshi-kotlin-codegen"
-            ).versionRef("moshi")
         }
 
         register("androidx") {
@@ -125,7 +115,6 @@ dependencyResolutionManagement {
 
         register("testing") {
             version("kaspresso", "1.5.3")
-            version("mockk", "1.13.9")
             plugin("junit", "de.mannodermaus.android-junit5").version("1.10.0.0")
             library("junit", "org.junit.jupiter:junit-jupiter-api:5.10.1")
             library("junit.engine", "org.junit.jupiter:junit-jupiter-engine:5.10.1")
@@ -144,19 +133,6 @@ dependencyResolutionManagement {
             library("turbine", "app.cash.turbine:turbine:1.0.0")
             library("truth", "com.google.truth:truth:1.2.0")
             library("hamcrest", "org.hamcrest:hamcrest-core:2.2")
-            library("mockk", "io.mockk", "mockk").versionRef("mockk")
-            library("mockk.agent", "io.mockk", "mockk-agent-jvm").versionRef("mockk")
-        }
-
-        register("analysis") {
-            version("detekt", "1.23.4")
-            plugin("detekt", "io.gitlab.arturbosch.detekt").versionRef("detekt")
-            library(
-                "formatting",
-                "io.gitlab.arturbosch.detekt",
-                "detekt-formatting"
-            ).versionRef("detekt")
-            library("compose", "io.nlopez.compose.rules:detekt:0.3.9")
         }
     }
 }

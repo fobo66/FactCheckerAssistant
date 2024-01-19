@@ -70,8 +70,8 @@ dependencies {
 
     coreLibraryDesugaring(libs.desugar)
 
-    detektPlugins(analysis.formatting)
-    detektPlugins(analysis.compose)
+    detektPlugins(libs.detekt.rules.formatting)
+    detektPlugins(libs.detekt.rules.compose)
 
     testImplementation(testing.junit4)
     androidTestImplementation(androidx.uitest.junit)

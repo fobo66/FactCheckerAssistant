@@ -17,6 +17,7 @@ composeBom = "2024.01.00-alpha01"
 composeCompiler = "1.5.8"
 coroutines = "1.7.3"
 detekt = "1.23.4"
+detektCompose = "0.3.10"
 hilt = "2.50"
 hiltNavigation = "1.2.0-alpha01"
 kotlin = "1.9.22"
@@ -39,6 +40,8 @@ androidx-splashscreen = { module = "androidx.core:core-splashscreen", version.re
 androidx-startup = { module = "androidx.startup:startup-runtime", version.ref = "androidxStartup"}
 androidx-tracing = { module = "androidx.tracing:tracing", version.ref = "androidxTracing"}
 androidx-window = { module = "androidx.window:window", version.ref = "androidxWindow"}
+detekt-rules-compose = { module = "io.nlopez.compose.rules:detekt", version.ref = "detektCompose"}
+detekt-rules-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt"}
 hilt-navigation = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigation"}
 hilt-core = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt"}
 hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt"}
