@@ -1,4 +1,5 @@
 import com.android.build.api.dsl.ManagedVirtualDevice
+import com.android.sdklib.AndroidVersion
 
 plugins {
     alias(libs.plugins.android.test)
@@ -8,7 +9,7 @@ plugins {
 
 android {
     namespace = "dev.fobo66.baselineprofile"
-    compileSdk = 34
+    compileSdk = AndroidVersion.VersionCodes.UPSIDE_DOWN_CAKE
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -20,8 +21,8 @@ android {
     }
 
     defaultConfig {
-        minSdk = 28
-        targetSdk = 34
+        minSdk = AndroidVersion.VersionCodes.P
+        targetSdk = AndroidVersion.VersionCodes.UPSIDE_DOWN_CAKE
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -31,7 +32,7 @@ android {
     testOptions.managedDevices.devices {
         create<ManagedVirtualDevice>("pixel6Api34") {
             device = "Pixel 6"
-            apiLevel = 34
+            apiLevel = AndroidVersion.VersionCodes.UPSIDE_DOWN_CAKE
             systemImageSource = "google"
         }
     }
