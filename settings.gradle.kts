@@ -103,13 +103,6 @@ dependencyResolutionManagement {
             ).versionRef("benchmark")
         }
 
-        register("okhttp") {
-            version("okhttp", "5.0.0-alpha.12")
-            library("bom", "com.squareup.okhttp3", "okhttp-bom").versionRef("okhttp")
-            library("core", "com.squareup.okhttp3", "okhttp").withoutVersion()
-            library("logging", "com.squareup.okhttp3", "logging-interceptor").withoutVersion()
-        }
-
         register("compose") {
             version("compiler", "1.5.8")
             library("bom", "dev.chrisbanes.compose:compose-bom:2024.01.00-alpha01")

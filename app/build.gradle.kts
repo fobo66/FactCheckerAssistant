@@ -108,8 +108,8 @@ dependencies {
     ksp(di.compiler)
 
     implementation(libs.retrofit)
-    implementation(platform(okhttp.bom))
-    implementation(okhttp.core)
+    implementation(platform(libs.okhttp.bom))
+    implementation(libs.okhttp.core)
     implementation(libs.retrofit.kotlinx)
     implementation(libs.kotlinx.serialization)
     implementation(libs.kotlinx.datetime)
