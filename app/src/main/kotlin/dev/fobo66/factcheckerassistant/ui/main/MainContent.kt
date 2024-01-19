@@ -89,9 +89,7 @@ fun MainActivityContent(
             }
             composable(Screen.DESTINATION_SEARCH_DETAILS) {
                 val claim by mainViewModel.selectedClaim.collectAsStateWithLifecycle()
-                ClaimDetails(
-                    claim
-                )
+                ClaimDetails(claim)
             }
             composable(Screen.DESTINATION_GUIDE) {
                 FactCheckGuide()
