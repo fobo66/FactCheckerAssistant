@@ -9,7 +9,7 @@ plugins {
     id("io.gitlab.arturbosch.detekt")
     id("dagger.hilt.android.plugin")
     id("de.mannodermaus.android-junit5")
-    id("androidx.baselineprofile")
+    alias(androidx.plugins.baseline.profile)
 }
 
 android {
@@ -93,10 +93,10 @@ dependencies {
     implementation(compose.material)
     implementation(compose.preview)
     implementation(compose.windowsize)
-    implementation("androidx.profileinstaller:profileinstaller:1.3.1")
+    implementation(libs.profileinstaller)
     androidTestImplementation(compose.testing)
     androidTestImplementation(platform(compose.bom))
-    "baselineProfile"(project(":baselineprofile"))
+    baselineProfile(project(":baselineprofile"))
     debugImplementation(compose.testing.manifest)
     debugImplementation(compose.tooling)
     implementation(androidx.paging.compose)
@@ -115,7 +115,7 @@ dependencies {
     implementation(libs.kotlinx.datetime)
 
     implementation(libs.timber)
-    implementation(libs.leakcanary)
+    debugImplementation(libs.leakcanary)
 
     coreLibraryDesugaring(libs.desugar)
 
