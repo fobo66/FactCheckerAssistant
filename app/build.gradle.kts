@@ -133,6 +133,6 @@ dependencies {
     testImplementation(libs.androidx.paging.common)
     testImplementation(libs.retrofit.mock)
     androidTestImplementation(libs.androidx.navigation.test)
-    androidTestImplementation(androidx.uitest.junit)
-    androidTestImplementation(androidx.uitest.espresso)
+    androidTestImplementation(libs.androidx.test.junit)
+    androidTestImplementation(libs.espresso.core)
 }

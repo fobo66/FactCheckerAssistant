@@ -74,6 +74,6 @@ dependencies {
     detektPlugins(libs.detekt.rules.compose)
 
     testImplementation(testing.junit4)
-    androidTestImplementation(androidx.uitest.junit)
-    androidTestImplementation(androidx.uitest.espresso)
+    androidTestImplementation(libs.androidx.test.junit)
+    androidTestImplementation(libs.espresso.core)
 }

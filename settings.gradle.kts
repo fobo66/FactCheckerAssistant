@@ -56,43 +56,6 @@ dependencyResolutionManagement {
             ).versionRef("coroutines")
         }
 
-        register("androidx") {
-            version("uitest", "1.5.2")
-            version("espresso", "3.6.0-alpha02")
-            version("benchmark", "1.2.2")
-            library("uitest.core", "androidx.test:core-ktx:1.6.0-alpha04")
-            library("uitest.runner", "androidx.test:runner:1.6.0-alpha05")
-            library("uitest.rules", "androidx.test", "rules").versionRef("uitest")
-            library(
-                "uitest.espresso",
-                "androidx.test.espresso",
-                "espresso-core"
-            ).versionRef("espresso")
-            library(
-                "uitest.espresso.contrib",
-                "androidx.test.espresso",
-                "espresso-contrib"
-            ).versionRef("espresso")
-            library(
-                "uitest.espresso.intents",
-                "androidx.test.espresso",
-                "espresso-intents"
-            ).versionRef("espresso")
-
-            library("uitest.junit", "androidx.test.ext:junit-ktx:1.2.0-alpha02")
-            library("uitest.automator", "androidx.test.uiautomator:uiautomator:2.3.0-beta01")
-            library(
-                "uitest.benchmark",
-                "androidx.benchmark",
-                "benchmark-junit4"
-            ).versionRef("benchmark")
-            library(
-                "uitest.macrobenchmark",
-                "androidx.benchmark",
-                "benchmark-macro-junit4"
-            ).versionRef("benchmark")
-        }
-
         register("compose") {
             version("compiler", "1.5.8")
             library("bom", "dev.chrisbanes.compose:compose-bom:2024.01.00-alpha01")
