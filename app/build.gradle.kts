@@ -63,6 +63,10 @@ android {
         }
     }
     namespace = "dev.fobo66.factcheckerassistant"
+
+    testOptions {
+        unitTests.isReturnDefaultValues = true
+    }
 }
 
 kotlin {
@@ -99,6 +103,7 @@ dependencies {
     baselineProfile(project(":baselineprofile"))
     debugImplementation(compose.testing.manifest)
     debugImplementation(compose.tooling)
+    implementation(libs.androidx.paging.runtime)
     implementation(libs.androidx.paging.compose)
     implementation(libs.androidx.navigation)
     implementation(libs.hilt.navigation)
