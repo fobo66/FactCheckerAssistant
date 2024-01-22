@@ -27,6 +27,9 @@ detektCompose = "0.3.10"
 espresso = "3.6.0-alpha02"
 hilt = "2.50"
 hiltNavigation = "1.2.0-alpha01"
+junit = "5.10.1"
+junitPlugin = "1.10.0.0"
+kaspresso = "1.5.3"
 kotlin = "1.9.22"
 kotlinxCollections = "0.3.7"
 kotlinxCoroutines= "1.7.3"
@@ -40,6 +43,8 @@ profileinstallerVersion = "1.3.1"
 retrofit = "2.9.0"
 retrofitKotlinx = "1.0.0"
 timber = "5.0.1"
+truth = "1.3.0"
+turbine = "1.0.0"
 
 [libraries]
 androidx-activity = { module = "androidx.activity:activity-compose", version.ref = "androidxActivity"}
@@ -72,6 +77,10 @@ espresso-core = { group = "androidx.test.espresso", name = "espresso-core", vers
 hilt-navigation = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigation"}
 hilt-core = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt"}
 hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt"}
+junit-api = { group = "org.junit.jupiter", name = "junit-jupiter-api", version.ref = "junit"}
+junit-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version.ref = "junit"}
+kaspresso = { group = "com.kaspersky.android-components", name = "kaspresso", version.ref = "kaspresso"}
+kaspresso-compose = { group = "com.kaspersky.android-components", name = "kaspresso-compose-support", version.ref = "kaspresso"}
 kotlinx-collections = { group = "org.jetbrains.kotlinx", name = "kotlinx-collections-immutable", version.ref = "kotlinxCollections"}
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines"}
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinxCoroutines"}
@@ -86,6 +95,8 @@ retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = 
 retrofit-kotlinx = { module = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter", version.ref = "retrofitKotlinx" }
 retrofit-mock = { group = "com.squareup.retrofit2", name = "retrofit-mock", version.ref = "retrofit" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
+truth = { module = "com.google.truth:truth", version.ref = "truth" }
+turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 
 [plugins]
 android-app = { id = "com.android.application", version.ref = "androidGradlePlugin" }
@@ -94,4 +105,5 @@ android-test = { id = "com.android.test", version.ref = "androidGradlePlugin" }
 baseline-profile = { id = "androidx.baselineprofile", version.ref = "baselineProfilePlugin" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+junit = { id = "de.mannodermaus.android-junit5", version.ref = "junitPlugin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

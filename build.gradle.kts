@@ -7,7 +7,7 @@ plugins {
     alias(libs.plugins.ksp) apply false
     alias(libs.plugins.hilt) apply false
     alias(libs.plugins.detekt) apply false
-    alias(testing.plugins.junit) apply false
+    alias(libs.plugins.junit) apply false
     alias(libs.plugins.baseline.profile) apply false
 }
 

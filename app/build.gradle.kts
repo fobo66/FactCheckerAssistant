@@ -8,7 +8,7 @@ plugins {
     id("kotlin-parcelize")
     alias(libs.plugins.detekt)
     id("dagger.hilt.android.plugin")
-    id("de.mannodermaus.android-junit5")
+    alias(libs.plugins.junit)
     alias(libs.plugins.baseline.profile)
 }
 
@@ -127,12 +127,15 @@ dependencies {
     detektPlugins(libs.detekt.rules.formatting)
     detektPlugins(libs.detekt.rules.compose)
 
-    testImplementation(testing.junit)
-    testRuntimeOnly(testing.junit.engine)
+    testImplementation(libs.junit.api)
+    testImplementation(libs.truth)
+    testRuntimeOnly(libs.junit.engine)
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.androidx.paging.common)
     testImplementation(libs.retrofit.mock)
     androidTestImplementation(libs.androidx.navigation.test)
     androidTestImplementation(libs.androidx.test.junit)
     androidTestImplementation(libs.espresso.core)
+    androidTestImplementation(libs.kaspresso)
+    androidTestImplementation(libs.kaspresso.compose)
 }
