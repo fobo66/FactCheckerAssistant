@@ -43,11 +43,8 @@ timber = "5.0.1"
 
 [libraries]
 androidx-activity = { module = "androidx.activity:activity-compose", version.ref = "androidxActivity"}
-androidx-annotations = { module = "androidx.annotation:annotation", version.ref = "androidxAnnotations"}
-androidx-benchmark-micro = { group = "androidx.benchmark", name = "benchmark-junit4", version.ref = "androidxBenchmark"}
 androidx-benchmark-macro = { group = "androidx.benchmark", name = "benchmark-macro-junit4", version.ref = "androidxBenchmark"}
 androidx-core = { module = "androidx.core:core-ktx", version.ref = "androidxCore"}
-androidx-datastore = { module = "androidx.datastore:datastore-preferences", version.ref = "androidxDatastore"}
 androidx-lifecycle-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidxLifecycle"}
 androidx-lifecycle-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "androidxLifecycle"}
 androidx-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidxNavigation"}
@@ -56,11 +53,7 @@ androidx-paging-compose = { group = "androidx.paging", name = "paging-compose", 
 androidx-paging-common = { group = "androidx.paging", name = "paging-common", version.ref = "androidxPaging"}
 androidx-paging-runtime = { group = "androidx.paging", name = "paging-runtime-ktx", version.ref = "androidxPaging"}
 androidx-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "androidxSplashscreen"}
-androidx-startup = { module = "androidx.startup:startup-runtime", version.ref = "androidxStartup"}
-androidx-test-core = { group = "androidx.test", name = "core-ktx", version.ref = "androidxTestCore"}
 androidx-test-junit = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "androidxTestJunit"}
-androidx-test-rules = { group = "androidx.test", name = "rules", version.ref = "androidxTestRules"}
-androidx-test-runner = { group = "androidx.test", name = "runner", version.ref = "androidxTestRunner"}
 androidx-test-uiautomator = { group = "androidx.test.uiautomator", name = "uiautomator", version.ref = "androidxTestUiAutomator"}
 androidx-tracing = { module = "androidx.tracing:tracing", version.ref = "androidxTracing"}
 coil = { module = "io.coil-kt:coil-compose", version.ref = "coil"}
