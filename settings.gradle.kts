@@ -17,26 +17,6 @@ dependencyResolutionManagement {
         google()
     }
     versionCatalogs {
-        register("compose") {
-            version("compiler", "1.5.8")
-            library("bom", "dev.chrisbanes.compose:compose-bom:2024.01.00-alpha01")
-            library("ui", "androidx.compose.ui", "ui").withoutVersion()
-            library("preview", "androidx.compose.ui", "ui-tooling-preview").withoutVersion()
-            library("tooling", "androidx.compose.ui", "ui-tooling").withoutVersion()
-            library("testing", "androidx.compose.ui", "ui-test-junit4").withoutVersion()
-            library(
-                "testing.manifest",
-                "androidx.compose.ui",
-                "ui-test-manifest"
-            ).withoutVersion()
-            library("material", "androidx.compose.material3", "material3").withoutVersion()
-            library(
-                "windowsize",
-                "androidx.compose.material3",
-                "material3-window-size-class"
-            ).withoutVersion()
-        }
-
         register("testing") {
             version("kaspresso", "1.5.3")
             plugin("junit", "de.mannodermaus.android-junit5").version("1.10.0.0")
@@ -62,5 +42,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Fact Checker Assistant"
-include(":app", ":composemd")
-include(":baselineprofile")
+include(":app", ":composemd", ":baselineprofile")
