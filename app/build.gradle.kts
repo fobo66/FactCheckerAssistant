@@ -90,6 +90,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel)
     implementation(libs.androidx.lifecycle.compose)
     implementation(libs.androidx.paging.compose)
+    implementation(libs.androidx.splashscreen)
     implementation(libs.androidx.tracing)
 
     implementation(platform(libs.compose.bom))
