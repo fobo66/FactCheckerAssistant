@@ -21,7 +21,6 @@ coil = "2.5.0"
 commonmark = "0.21.0"
 composeBom = "2024.01.00-alpha01"
 composeCompiler = "1.5.8"
-coroutines = "1.7.3"
 desugar = "2.0.4"
 detekt = "1.23.4"
 detektCompose = "0.3.10"
@@ -29,6 +28,10 @@ espresso = "3.6.0-alpha02"
 hilt = "2.50"
 hiltNavigation = "1.2.0-alpha01"
 kotlin = "1.9.22"
+kotlinxCollections = "0.3.7"
+kotlinxCoroutines= "1.7.3"
+kotlinxDatetime = "0.5.0"
+kotlinxSerialization = "1.6.2"
 ksp = "1.9.22-1.0.17"
 leakCanary = "2.13"
 materialLegacy = "1.11.0"
@@ -69,6 +72,12 @@ espresso-core = { group = "androidx.test.espresso", name = "espresso-core", vers
 hilt-navigation = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigation"}
 hilt-core = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt"}
 hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt"}
+kotlinx-collections = { group = "org.jetbrains.kotlinx", name = "kotlinx-collections-immutable", version.ref = "kotlinxCollections"}
+kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines"}
+kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinxCoroutines"}
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinxCoroutines"}
+kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinxDatetime"}
+kotlinx-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerialization"}
 leakcanary = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakCanary"}
 material-legacy = { module = "com.google.android.material:material", version.ref = "materialLegacy"}
 okhttp-bom = { group = "com.squareup.okhttp3", name = "okhttp-bom", version.ref = "okhttp" }

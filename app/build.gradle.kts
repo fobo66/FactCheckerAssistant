@@ -44,7 +44,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = compose.versions.compiler.get()
+        kotlinCompilerExtensionVersion = libs.versions.composeCompiler.get()
     }
 
     buildTypes {
@@ -82,8 +82,8 @@ ksp {
 
 dependencies {
     implementation(fileTree("dir" to "libs", "include" to listOf("*.jar")))
-    implementation(libs.coroutines)
-    implementation(libs.collections)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.kotlinx.collections)
     implementation(libs.androidx.core)
     implementation(libs.material.legacy)
     implementation(libs.androidx.activity)
@@ -129,7 +129,7 @@ dependencies {
 
     testImplementation(testing.junit)
     testRuntimeOnly(testing.junit.engine)
-    testImplementation(libs.coroutines.test)
+    testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.androidx.paging.common)
     testImplementation(libs.retrofit.mock)
     androidTestImplementation(libs.androidx.navigation.test)

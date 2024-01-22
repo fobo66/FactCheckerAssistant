@@ -17,29 +17,6 @@ dependencyResolutionManagement {
         google()
     }
     versionCatalogs {
-        register("libs") {
-            library("collections", "org.jetbrains.kotlinx:kotlinx-collections-immutable:0.3.7")
-            library("kotlinx.serialization", "org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
-            library("kotlinx.datetime", "org.jetbrains.kotlinx:kotlinx-datetime:0.5.0")
-            library(
-                "coroutines",
-                "org.jetbrains.kotlinx",
-                "kotlinx-coroutines-android"
-            )
-                .versionRef("coroutines")
-            library(
-                "coroutines.core",
-                "org.jetbrains.kotlinx",
-                "kotlinx-coroutines-core"
-            )
-                .versionRef("coroutines")
-            library(
-                "coroutines-test",
-                "org.jetbrains.kotlinx",
-                "kotlinx-coroutines-test"
-            ).versionRef("coroutines")
-        }
-
         register("compose") {
             version("compiler", "1.5.8")
             library("bom", "dev.chrisbanes.compose:compose-bom:2024.01.00-alpha01")
