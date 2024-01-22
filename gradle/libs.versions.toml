@@ -41,7 +41,7 @@ androidx-datastore = { module = "androidx.datastore:datastore-preferences", vers
 androidx-lifecycle-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidxLifecycle"}
 androidx-lifecycle-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "androidxLifecycle"}
 androidx-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidxNavigation"}
-androidx-navigation-test = { group = "androidx.navigation", name = "navigation-testing-ktx", version.ref = "androidxNavigation"}
+androidx-navigation-test = { group = "androidx.navigation", name = "navigation-testing", version.ref = "androidxNavigation"}
 androidx-paging-compose = { group = "androidx.paging", name = "paging-compose", version.ref = "androidxPaging"}
 androidx-paging-common = { group = "androidx.paging", name = "paging-common", version.ref = "androidxPaging"}
 androidx-paging-runtime = { group = "androidx.paging", name = "paging-runtime-ktx", version.ref = "androidxPaging"}
@@ -56,9 +56,7 @@ androidx-tracing = { module = "androidx.tracing:tracing", version.ref = "android
 androidx-window = { module = "androidx.window:window", version.ref = "androidxWindow"}
 detekt-rules-compose = { module = "io.nlopez.compose.rules:detekt", version.ref = "detektCompose"}
 detekt-rules-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt"}
-espresso-contrib = { group = "androidx.test.espresso", name = "espresso-contrib", version.ref = "espresso"}
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso"}
-espresso-intents = { group = "androidx.test.espresso", name = "espresso-intents", version.ref = "espresso"}
 hilt-navigation = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigation"}
 hilt-core = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt"}
 hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt"}
