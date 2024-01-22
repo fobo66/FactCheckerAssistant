@@ -85,7 +85,7 @@ dependencies {
     implementation(libs.coroutines)
     implementation(libs.collections)
     implementation(libs.androidx.core)
-    implementation(libs.material)
+    implementation(libs.material.legacy)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.lifecycle.viewmodel)
     implementation(libs.androidx.lifecycle.compose)
