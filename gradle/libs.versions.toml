@@ -2,7 +2,7 @@
 androidGradlePlugin = "8.2.2"
 androidxActivity = "1.9.0-alpha01"
 androidxBenchmark = "1.2.2"
-androidxCore = "1.13.0-alpha03"
+androidxCore = "1.13.0-alpha04"
 androidxLifecycle = "2.7.0"
 androidxNavigation = "2.7.6"
 androidxPaging = "3.3.0-alpha02"
