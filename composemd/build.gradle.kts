@@ -48,6 +48,11 @@ android {
             excludes += "META-INF/LGPL2.1"
         }
     }
+
+    testOptions {
+        animationsDisabled = true
+    }
+
     namespace = "dev.fobo66.composemd"
 }
 
