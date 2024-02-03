@@ -126,7 +126,8 @@ fun ClaimReviewItem(claimReview: ClaimReview, modifier: Modifier = Modifier) {
         Button(
             onClick = {
                 uriHandler.openUri(claimReview.url)
-            }, modifier = Modifier
+            },
+            modifier = Modifier
                 .align(Alignment.End)
                 .padding(16.dp)
         ) {

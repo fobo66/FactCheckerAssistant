@@ -47,8 +47,8 @@ fun ClaimsSearch(
     claims: LazyPagingItems<Claim>,
     onQueryChange: (String) -> Unit,
     onSearch: (String) -> Unit,
-    modifier: Modifier = Modifier,
-    onSearchResultClick: (Claim?) -> Unit = {}
+    onSearchResultClick: (Claim?) -> Unit,
+    modifier: Modifier = Modifier
 ) {
 
     Box(modifier = modifier.fillMaxSize()) {
@@ -99,7 +99,8 @@ fun ClaimsSearch(
                             claimTitle = claim?.text,
                             onItemClick = {
                                 onSearchResultClick(claim)
-                            })
+                            }
+                        )
                     }
 
                     if (it.loadState.append == LoadState.Loading) {
@@ -173,7 +174,6 @@ private fun ClaimsSearchBar(
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ClaimItem(
     claimDate: String,

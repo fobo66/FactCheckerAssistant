@@ -82,10 +82,11 @@ fun MainActivityContent(
                         mainViewModel.search(it)
                     },
                     claims = claims,
-                ) {
-                    mainViewModel.selectClaim(it)
-                    navController.navigate(Screen.DESTINATION_SEARCH_DETAILS)
-                }
+                    onSearchResultClick = {
+                        mainViewModel.selectClaim(it)
+                        navController.navigate(Screen.DESTINATION_SEARCH_DETAILS)
+                    }
+                )
             }
             composable(Screen.DESTINATION_SEARCH_DETAILS) {
                 val claim by mainViewModel.selectedClaim.collectAsStateWithLifecycle()
