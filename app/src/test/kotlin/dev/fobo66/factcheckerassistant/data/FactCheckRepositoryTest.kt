@@ -1,5 +1,6 @@
 package dev.fobo66.factcheckerassistant.data
 
+import com.google.common.truth.Truth.assertThat
 import dev.fobo66.factcheckerassistant.api.FactCheckApi
 import dev.fobo66.factcheckerassistant.api.models.Claim
 import dev.fobo66.factcheckerassistant.api.models.FactCheckResponse
@@ -9,7 +10,6 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.test.runTest
 import okio.IOException
-import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
 import retrofit2.Retrofit
 import retrofit2.mock.Calls
@@ -50,7 +50,7 @@ class FactCheckRepositoryTest {
 
         val result = factCheckRepository.search("test", 10).flow.firstOrNull()
         testScheduler.advanceTimeBy(DEFAULT_API_DELAY)
-        assertNotNull(result)
+        assertThat(result).isNotNull()
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
@@ -68,7 +68,7 @@ class FactCheckRepositoryTest {
         )
         val result = factCheckRepository.search("test", 10).flow.firstOrNull()
         testScheduler.advanceTimeBy(DEFAULT_API_DELAY)
-        assertNotNull(result)
+        assertThat(result).isNotNull()
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
@@ -80,7 +80,7 @@ class FactCheckRepositoryTest {
         )
         val result = factCheckRepository.search("test", 10).flow.firstOrNull()
         testScheduler.advanceTimeBy(DEFAULT_API_DELAY)
-        assertNotNull(result)
+        assertThat(result).isNotNull()
     }
 
     companion object {
