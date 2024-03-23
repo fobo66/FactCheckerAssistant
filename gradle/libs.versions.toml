@@ -36,7 +36,6 @@ materialLegacy = "1.11.0"
 okhttp = "5.0.0-alpha.12"
 profileinstallerVersion = "1.3.1"
 retrofit = "2.10.0"
-retrofitKotlinx = "1.0.0"
 timber = "5.0.1"
 truth = "1.4.2"
 
@@ -86,9 +85,10 @@ material-legacy = { module = "com.google.android.material:material", version.ref
 okhttp-bom = { group = "com.squareup.okhttp3", name = "okhttp-bom", version.ref = "okhttp" }
 okhttp-core = { group = "com.squareup.okhttp3", name = "okhttp" }
 profileinstaller = { module = "androidx.profileinstaller:profileinstaller", version.ref = "profileinstallerVersion" }
-retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
-retrofit-kotlinx = { module = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter", version.ref = "retrofitKotlinx" }
-retrofit-mock = { group = "com.squareup.retrofit2", name = "retrofit-mock", version.ref = "retrofit" }
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit" }
+retrofit-bom = { group = "com.squareup.retrofit2", name = "retrofit-bom", version.ref = "retrofit" }
+retrofit-kotlinx = { group = "com.squareup.retrofit2", name = "converter-kotlinx-serialization" }
+retrofit-mock = { group = "com.squareup.retrofit2", name = "retrofit-mock" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 truth = { module = "com.google.truth:truth", version.ref = "truth" }
 
