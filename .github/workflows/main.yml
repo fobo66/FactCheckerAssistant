@@ -14,10 +14,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4.1.1
-      - name: Set up JDK 17
+      - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
-          java-version: '17'
+          java-version: '21'
           distribution: 'temurin'
       - name: Check Gradle wrapper
         uses: gradle/wrapper-validation-action@v2
@@ -41,10 +41,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4.1.1
-      - name: set up JDK 17
+      - name: set up JDK 21
         uses: actions/setup-java@v4
         with:
-          java-version: '17'
+          java-version: '21'
           distribution: 'temurin'
       - name: Enable KVM group perms
         run: |
@@ -79,10 +79,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4.1.1
-      - name: set up JDK 17
+      - name: set up JDK 21
         uses: actions/setup-java@v4
         with:
-          java-version: '17'
+          java-version: '21'
           distribution: 'temurin'
       - name: Check Gradle wrapper
         uses: gradle/wrapper-validation-action@v2
