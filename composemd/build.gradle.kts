@@ -55,10 +55,6 @@ android {
     namespace = "dev.fobo66.composemd"
 }
 
-kotlin {
-    jvmToolchain(17)
-}
-
 dependencies {
     implementation(libs.commonmark)
     implementation(libs.androidx.tracing)
