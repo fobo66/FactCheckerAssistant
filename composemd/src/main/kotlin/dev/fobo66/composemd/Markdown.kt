@@ -21,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.text.AnnotatedString
@@ -280,9 +281,8 @@ fun MarkdownText(text: AnnotatedString, style: TextStyle, modifier: Modifier = M
 
 @Composable
 fun MarkdownThematicBreak(modifier: Modifier = Modifier) {
-    HorizontalDivider(modifier = modifier.semantics {
-        testTag = "Thematic break"
-    }
+    HorizontalDivider(
+        modifier = modifier.testTag("Thematic break")
     )
 }
 
@@ -313,16 +313,19 @@ private fun AnnotatedString.Builder.appendMarkdownChildren(
                 TAG_IMAGE_URL,
                 child.destination
             )
+
             is Emphasis -> {
                 pushStyle(SpanStyle(fontStyle = FontStyle.Italic))
                 appendMarkdownChildren(child, colors)
                 pop()
             }
+
             is StrongEmphasis -> {
                 pushStyle(SpanStyle(fontWeight = FontWeight.Bold))
                 appendMarkdownChildren(child, colors)
                 pop()
             }
+
             is Code -> {
                 pushStyle(
                     TextStyle(
@@ -333,9 +336,11 @@ private fun AnnotatedString.Builder.appendMarkdownChildren(
                 append(child.literal)
                 pop()
             }
+
             is HardLineBreak -> {
                 append("\n")
             }
+
             is Link -> {
                 val underline = SpanStyle(
                     colors.primary,
