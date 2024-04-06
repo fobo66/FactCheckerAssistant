@@ -7,6 +7,7 @@ import dev.fobo66.factcheckerassistant.api.FactCheckApi
 import dev.fobo66.factcheckerassistant.api.models.Claim
 import retrofit2.HttpException
 import timber.log.Timber
+import java.io.IOException
 
 class FactCheckDataSource(
     private val query: String,
@@ -29,6 +30,9 @@ class FactCheckDataSource(
             nextPageToken = result.nextPageToken
             return LoadResult.Page(result.claims ?: listOf(), null, nextPageToken)
         } catch (e: HttpException) {
+            Timber.e(e, "Error occurred during loading claims for query %s", query)
+            return LoadResult.Error(e)
+        } catch (e: IOException) {
             Timber.e(e, "Error occurred during loading claims for query %s", query)
             return LoadResult.Error(e)
         }

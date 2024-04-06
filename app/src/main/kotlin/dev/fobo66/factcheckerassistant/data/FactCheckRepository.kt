@@ -13,16 +13,14 @@ class FactCheckRepository @Inject constructor(
     private val factCheckApi: FactCheckApi,
     private val localeProvider: LocaleProvider
 ) {
-    fun search(query: String, pageSize: Int): Pager<String, Claim> {
-        return Pager(
-            config = PagingConfig(pageSize),
-            pagingSourceFactory = {
-                FactCheckDataSource(
-                    query,
-                    factCheckApi,
-                    localeProvider.currentLocale.toLanguageTag()
-                )
-            }
-        )
-    }
+    fun search(query: String, pageSize: Int): Pager<String, Claim> = Pager(
+        config = PagingConfig(pageSize),
+        pagingSourceFactory = {
+            FactCheckDataSource(
+                query,
+                factCheckApi,
+                localeProvider.currentLocale.toLanguageTag()
+            )
+        }
+    )
 }
