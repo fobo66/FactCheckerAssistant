@@ -69,13 +69,6 @@ android {
     }
 }
 
-ksp {
-    arg("room.schemaLocation", "$projectDir/schemas")
-    arg("room.incremental", "true")
-    arg("room.expandProjection", "true")
-    arg("room.generateKotlin", "true")
-}
-
 dependencies {
     implementation(fileTree("dir" to "libs", "include" to listOf("*.jar")))
     implementation(libs.kotlinx.coroutines.android)
