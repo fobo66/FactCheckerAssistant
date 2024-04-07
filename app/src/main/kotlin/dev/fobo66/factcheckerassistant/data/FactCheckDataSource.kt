@@ -16,26 +16,24 @@ class FactCheckDataSource(
 ) : PagingSource<String, Claim>() {
     private var nextPageToken: String? = null
 
-    override suspend fun load(params: LoadParams<String>): LoadResult<String, Claim> {
-        try {
-            Timber.d("Loading claims started")
-            val result = factCheckApi.search(
-                query,
-                languageCode = languageTag,
-                pageSize = params.loadSize,
-                pageToken = params.key,
-                key = BuildConfig.API_KEY
-            )
-            Timber.d("Loading claims finished")
-            nextPageToken = result.nextPageToken
-            return LoadResult.Page(result.claims ?: listOf(), null, nextPageToken)
-        } catch (e: HttpException) {
-            Timber.e(e, "Error occurred during loading claims for query %s", query)
-            return LoadResult.Error(e)
-        } catch (e: IOException) {
-            Timber.e(e, "Error occurred during loading claims for query %s", query)
-            return LoadResult.Error(e)
-        }
+    override suspend fun load(params: LoadParams<String>): LoadResult<String, Claim> = try {
+        Timber.d("Loading claims started")
+        val result = factCheckApi.search(
+            query,
+            languageCode = languageTag,
+            pageSize = params.loadSize,
+            pageToken = params.key,
+            key = BuildConfig.API_KEY
+        )
+        Timber.d("Loading claims finished")
+        nextPageToken = result.nextPageToken
+        LoadResult.Page(result.claims ?: listOf(), null, nextPageToken)
+    } catch (e: HttpException) {
+        Timber.e(e, "Error occurred during loading claims for query %s", query)
+        LoadResult.Error(e)
+    } catch (e: IOException) {
+        Timber.e(e, "Error occurred during loading claims for query %s", query)
+        LoadResult.Error(e)
     }
 
     override fun getRefreshKey(state: PagingState<String, Claim>): String? {
