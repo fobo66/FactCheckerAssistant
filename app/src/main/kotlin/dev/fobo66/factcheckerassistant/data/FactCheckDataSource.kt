@@ -5,9 +5,9 @@ import androidx.paging.PagingState
 import dev.fobo66.factcheckerassistant.BuildConfig
 import dev.fobo66.factcheckerassistant.api.FactCheckApi
 import dev.fobo66.factcheckerassistant.api.models.Claim
+import java.io.IOException
 import retrofit2.HttpException
 import timber.log.Timber
-import java.io.IOException
 
 class FactCheckDataSource(
     private val query: String,
