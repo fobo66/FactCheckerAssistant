@@ -19,6 +19,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -141,28 +142,39 @@ private fun ClaimsSearchBar(
         mutableStateOf(false)
     }
     DockedSearchBar(
-        query = query,
-        onQueryChange = onQueryChange,
-        onSearch = {
-            onSearch(it)
-            focusManager.clearFocus()
-            isActive = false
+        inputField = {
+            SearchBarDefaults.InputField(
+                query = query,
+                onQueryChange = onQueryChange,
+                onSearch = {
+                    onSearch(it)
+                    focusManager.clearFocus()
+                    isActive = false
+                },
+                expanded = isActive,
+                onExpandedChange = {
+                    isActive = it
+                    if (!isActive) {
+                        focusManager.clearFocus()
+                    }
+                },
+                placeholder = {
+                    Text(text = stringResource(id = R.string.search_placeholder))
+                },
+                leadingIcon = {
+                    Icon(
+                        Icons.Default.Search,
+                        contentDescription = stringResource(id = R.string.search_icon_description)
+                    )
+                }
+            )
         },
-        active = isActive,
-        onActiveChange = {
+        expanded = isActive,
+        onExpandedChange = {
             isActive = it
             if (!isActive) {
                 focusManager.clearFocus()
             }
-        },
-        leadingIcon = {
-            Icon(
-                Icons.Default.Search,
-                contentDescription = stringResource(id = R.string.search_icon_description)
-            )
-        },
-        placeholder = {
-            Text(text = stringResource(id = R.string.search_placeholder))
         },
         modifier = modifier
     ) {
