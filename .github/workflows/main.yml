@@ -19,23 +19,13 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
-      - name: Check Gradle wrapper
-        uses: gradle/wrapper-validation-action@v3
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3.0.0-rc.1
+        uses: gradle/actions/setup-gradle@v3
         with:
           cache-encryption-key: ${{ secrets.GRADLE_ENCRYPTION_KEY }}
-      - name: Detekt
-        run: ./gradlew detekt
-      - name: Upload build reports
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: detekt
-          path: |
-            app/build/reports/detekt/detekt.html
-            data/build/reports/detekt/detekt.html
-            domain/build/reports/detekt/detekt.html
+          validate-wrappers: true
+      - name: Lint
+        run: ./gradlew detekt lintKotlin --continue
   ui-tests:
     runs-on: ubuntu-latest
 
@@ -54,9 +44,10 @@ jobs:
       - name: Check Gradle wrapper
         uses: gradle/wrapper-validation-action@v3
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3.0.0-rc.1
+        uses: gradle/actions/setup-gradle@v3
         with:
           cache-encryption-key: ${{ secrets.GRADLE_ENCRYPTION_KEY }}
+          validate-wrappers: true
       - name: AVD cache
         uses: actions/cache@v4
         id: avd-cache
@@ -87,8 +78,9 @@ jobs:
       - name: Check Gradle wrapper
         uses: gradle/wrapper-validation-action@v3
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3.0.0-rc.1
+        uses: gradle/actions/setup-gradle@v3
         with:
           cache-encryption-key: ${{ secrets.GRADLE_ENCRYPTION_KEY }}
+          validate-wrappers: true
       - name: Run tests
         run: ./gradlew testDebugUnitTest
