@@ -9,6 +9,7 @@ plugins {
     alias(libs.plugins.detekt) apply false
     alias(libs.plugins.junit) apply false
     alias(libs.plugins.baseline.profile) apply false
+    alias(libs.plugins.kotlinter)
 }
 
 tasks {

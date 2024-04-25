@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.android.library)
     kotlin("android")
     alias(libs.plugins.detekt)
+    alias(libs.plugins.kotlinter)
 }
 
 android {
@@ -19,7 +20,10 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = true
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
 

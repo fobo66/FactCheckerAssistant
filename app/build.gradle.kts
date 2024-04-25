@@ -10,6 +10,7 @@ plugins {
     id("dagger.hilt.android.plugin")
     alias(libs.plugins.junit)
     alias(libs.plugins.baseline.profile)
+    alias(libs.plugins.kotlinter)
 }
 
 android {

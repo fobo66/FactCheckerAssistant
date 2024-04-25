@@ -50,7 +50,6 @@ fun ClaimsSearch(
     onSearchResultClick: (Claim?) -> Unit,
     modifier: Modifier = Modifier
 ) {
-
     Box(modifier = modifier.fillMaxSize()) {
         ClaimsSearchBar(
             query,

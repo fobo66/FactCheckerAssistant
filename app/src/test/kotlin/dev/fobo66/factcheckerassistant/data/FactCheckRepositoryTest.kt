@@ -6,6 +6,7 @@ import dev.fobo66.factcheckerassistant.api.models.Claim
 import dev.fobo66.factcheckerassistant.api.models.FactCheckResponse
 import dev.fobo66.factcheckerassistant.util.LocaleProvider
 import dev.fobo66.factcheckerassistant.util.TestLocaleProvider
+import java.util.concurrent.TimeUnit
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.test.runTest
@@ -16,7 +17,6 @@ import retrofit2.mock.Calls
 import retrofit2.mock.MockRetrofit
 import retrofit2.mock.NetworkBehavior
 import retrofit2.mock.create
-import java.util.concurrent.TimeUnit
 
 class FactCheckRepositoryTest {
     private lateinit var factCheckRepository: FactCheckRepository
@@ -42,7 +42,8 @@ class FactCheckRepositoryTest {
         factCheckRepository = FactCheckRepository(
             mockApi.returningResponse(
                 FactCheckResponse(
-                    listOf(), null
+                    listOf(),
+                    null
                 )
             ),
             localeProvider
@@ -61,7 +62,8 @@ class FactCheckRepositoryTest {
         factCheckRepository = FactCheckRepository(
             mockApi.returningResponse(
                 FactCheckResponse(
-                    listOf(claim), null
+                    listOf(claim),
+                    null
                 )
             ),
             localeProvider

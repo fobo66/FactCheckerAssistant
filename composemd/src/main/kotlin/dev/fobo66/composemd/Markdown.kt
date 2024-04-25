@@ -25,6 +25,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.LinkAnnotation
 import androidx.compose.ui.text.Placeholder
 import androidx.compose.ui.text.PlaceholderVerticalAlign
 import androidx.compose.ui.text.SpanStyle
@@ -96,12 +97,13 @@ fun MarkdownOrderedList(orderedList: OrderedList, modifier: Modifier = Modifier)
     var number = orderedList.markerStartNumber
     val delimiter = orderedList.markerDelimiter
     MarkdownListItems(orderedList, modifier) {
-        val text = buildAnnotatedString {
-            pushStyle(MaterialTheme.typography.bodyMedium.toSpanStyle())
-            append("${number++}$delimiter ")
-            appendMarkdownChildren(it, MaterialTheme.colorScheme)
-            pop()
-        }
+        val text =
+            buildAnnotatedString {
+                pushStyle(MaterialTheme.typography.bodyMedium.toSpanStyle())
+                append("${number++}$delimiter ")
+                appendMarkdownChildren(it, MaterialTheme.colorScheme)
+                pop()
+            }
         MarkdownText(text, MaterialTheme.typography.bodyMedium)
     }
 }
@@ -110,12 +112,13 @@ fun MarkdownOrderedList(orderedList: OrderedList, modifier: Modifier = Modifier)
 fun MarkdownBulletList(bulletList: BulletList, modifier: Modifier = Modifier) {
     val marker = bulletList.marker
     MarkdownListItems(bulletList, modifier) {
-        val text = buildAnnotatedString {
-            pushStyle(MaterialTheme.typography.bodyMedium.toSpanStyle())
-            append("$marker ")
-            appendMarkdownChildren(it, MaterialTheme.colorScheme)
-            pop()
-        }
+        val text =
+            buildAnnotatedString {
+                pushStyle(MaterialTheme.typography.bodyMedium.toSpanStyle())
+                append("$marker ")
+                appendMarkdownChildren(it, MaterialTheme.colorScheme)
+                pop()
+            }
         MarkdownText(text, MaterialTheme.typography.bodyMedium)
     }
 }
@@ -149,7 +152,8 @@ fun MarkdownListItems(
 fun MarkdownImage(image: Image, modifier: Modifier = Modifier) {
     Box(modifier = modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
         AsyncImage(
-            model = ImageRequest.Builder(LocalContext.current)
+            model =
+            ImageRequest.Builder(LocalContext.current)
                 .data(image.destination)
                 .build(),
             contentDescription = image.title
@@ -161,7 +165,8 @@ fun MarkdownImage(image: Image, modifier: Modifier = Modifier) {
 fun MarkdownIndentedCodeBlock(indentedCodeBlock: IndentedCodeBlock, modifier: Modifier = Modifier) {
     val padding = if (indentedCodeBlock.parent is Document) 8.dp else 0.dp
     Box(
-        modifier = modifier
+        modifier =
+        modifier
             .padding(padding)
             .semantics {
                 testTag = "Indented code block"
@@ -178,7 +183,8 @@ fun MarkdownIndentedCodeBlock(indentedCodeBlock: IndentedCodeBlock, modifier: Mo
 fun MarkdownFencedCodeBlock(fencedCodeBlock: FencedCodeBlock, modifier: Modifier = Modifier) {
     val padding = if (fencedCodeBlock.parent is Document) 8.dp else 0.dp
     Box(
-        modifier = modifier
+        modifier =
+        modifier
             .padding(padding)
             .semantics {
                 testTag = "Fenced code block"
@@ -199,11 +205,12 @@ fun MarkdownParagraph(paragraph: Paragraph, modifier: Modifier = Modifier) {
     } else {
         val padding = if (paragraph.parent is Document) 8.dp else 0.dp
         Box(modifier = modifier.padding(bottom = padding)) {
-            val styledText = buildAnnotatedString {
-                pushStyle(MaterialTheme.typography.bodyMedium.toSpanStyle())
-                appendMarkdownChildren(paragraph, MaterialTheme.colorScheme)
-                pop()
-            }
+            val styledText =
+                buildAnnotatedString {
+                    pushStyle(MaterialTheme.typography.bodyMedium.toSpanStyle())
+                    appendMarkdownChildren(paragraph, MaterialTheme.colorScheme)
+                    pop()
+                }
             MarkdownText(styledText, MaterialTheme.typography.bodyMedium)
         }
     }
@@ -212,25 +219,27 @@ fun MarkdownParagraph(paragraph: Paragraph, modifier: Modifier = Modifier) {
 @Composable
 @Suppress("ModifierReused") // modifier passed to the children is fine
 fun MarkdownHeading(heading: Heading, modifier: Modifier = Modifier) {
-    val style = when (heading.level) {
-        HEADING_LEVEL_1 -> MaterialTheme.typography.headlineLarge
-        HEADING_LEVEL_2 -> MaterialTheme.typography.headlineMedium
-        HEADING_LEVEL_3 -> MaterialTheme.typography.headlineSmall
-        HEADING_LEVEL_4 -> MaterialTheme.typography.titleLarge
-        HEADING_LEVEL_5 -> MaterialTheme.typography.titleMedium
-        HEADING_LEVEL_6 -> MaterialTheme.typography.titleSmall
-        else -> {
-            // Not a header...
-            MarkdownBlockChildren(heading, modifier)
-            return
+    val style =
+        when (heading.level) {
+            HEADING_LEVEL_1 -> MaterialTheme.typography.headlineLarge
+            HEADING_LEVEL_2 -> MaterialTheme.typography.headlineMedium
+            HEADING_LEVEL_3 -> MaterialTheme.typography.headlineSmall
+            HEADING_LEVEL_4 -> MaterialTheme.typography.titleLarge
+            HEADING_LEVEL_5 -> MaterialTheme.typography.titleMedium
+            HEADING_LEVEL_6 -> MaterialTheme.typography.titleSmall
+            else -> {
+                // Not a header...
+                MarkdownBlockChildren(heading, modifier)
+                return
+            }
         }
-    }
 
     val padding = if (heading.parent is Document) 8.dp else 0.dp
     Box(modifier = modifier.padding(bottom = padding)) {
-        val text = buildAnnotatedString {
-            appendMarkdownChildren(heading, MaterialTheme.colorScheme)
-        }
+        val text =
+            buildAnnotatedString {
+                appendMarkdownChildren(heading, MaterialTheme.colorScheme)
+            }
         MarkdownText(text, style)
     }
 }
@@ -238,13 +247,15 @@ fun MarkdownHeading(heading: Heading, modifier: Modifier = Modifier) {
 @Composable
 fun MarkdownText(text: AnnotatedString, style: TextStyle, modifier: Modifier = Modifier) {
     val uriHandler = LocalUriHandler.current
-    val layoutResult = remember {
-        mutableStateOf<TextLayoutResult?>(null)
-    }
+    val layoutResult =
+        remember {
+            mutableStateOf<TextLayoutResult?>(null)
+        }
 
     androidx.compose.material3.Text(
         text = text,
-        modifier = modifier.pointerInput(Unit) {
+        modifier =
+        modifier.pointerInput(Unit) {
             detectTapGestures(onTap = { pos ->
                 layoutResult.value?.let {
                     val position = it.getOffsetForPosition(pos)
@@ -259,21 +270,24 @@ fun MarkdownText(text: AnnotatedString, style: TextStyle, modifier: Modifier = M
             })
         },
         style = style,
-        inlineContent = mapOf(
-            TAG_IMAGE_URL to InlineTextContent(
-                Placeholder(
-                    style.fontSize,
-                    style.fontSize,
-                    PlaceholderVerticalAlign.Bottom
-                )
-            ) {
-                AsyncImage(
-                    model = ImageRequest.Builder(LocalContext.current)
-                        .data(it)
-                        .build(),
-                    contentDescription = null
-                )
-            }
+        inlineContent =
+        mapOf(
+            TAG_IMAGE_URL to
+                InlineTextContent(
+                    Placeholder(
+                        style.fontSize,
+                        style.fontSize,
+                        PlaceholderVerticalAlign.Bottom
+                    )
+                ) {
+                    AsyncImage(
+                        model =
+                        ImageRequest.Builder(LocalContext.current)
+                            .data(it)
+                            .build(),
+                        contentDescription = null
+                    )
+                }
         ),
         onTextLayout = { layoutResult.value = it }
     )
@@ -290,7 +304,8 @@ fun MarkdownThematicBreak(modifier: Modifier = Modifier) {
 fun MarkdownBlockQuote(blockQuote: BlockQuote, modifier: Modifier = Modifier) {
     Row(modifier) {
         Box(
-            modifier = Modifier
+            modifier =
+            Modifier
                 .width(4.dp)
                 .background(color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.12f))
         )
@@ -300,19 +315,17 @@ fun MarkdownBlockQuote(blockQuote: BlockQuote, modifier: Modifier = Modifier) {
     }
 }
 
-private fun AnnotatedString.Builder.appendMarkdownChildren(
-    parent: Node,
-    colors: ColorScheme
-) {
+private fun AnnotatedString.Builder.appendMarkdownChildren(parent: Node, colors: ColorScheme) {
     var child = parent.firstChild
     while (child != null) {
         when (child) {
             is Paragraph -> appendMarkdownChildren(child, colors)
             is Text -> append(child.literal)
-            is Image -> appendInlineContent(
-                TAG_IMAGE_URL,
-                child.destination
-            )
+            is Image ->
+                appendInlineContent(
+                    TAG_IMAGE_URL,
+                    child.destination
+                )
 
             is Emphasis -> {
                 pushStyle(SpanStyle(fontStyle = FontStyle.Italic))
@@ -342,14 +355,13 @@ private fun AnnotatedString.Builder.appendMarkdownChildren(
             }
 
             is Link -> {
-                val underline = SpanStyle(
-                    colors.primary,
-                    textDecoration = TextDecoration.Underline
-                )
-                pushStyle(underline)
-                pushStringAnnotation(TAG_URL, child.destination)
+                val underline =
+                    SpanStyle(
+                        colors.primary,
+                        textDecoration = TextDecoration.Underline
+                    )
+                pushLink(LinkAnnotation.Url(child.destination, underline))
                 appendMarkdownChildren(child, colors)
-                pop()
                 pop()
             }
         }

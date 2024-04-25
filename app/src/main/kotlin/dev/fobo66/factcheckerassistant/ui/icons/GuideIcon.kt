@@ -22,10 +22,10 @@ import androidx.compose.ui.graphics.vector.ImageVector
 
 val GuideIcon: ImageVector
     get() {
-        if (_questionMark != null) {
-            return _questionMark!!
+        if (questionMark != null) {
+            return questionMark!!
         }
-        _questionMark = materialIcon(name = "Filled.QuestionMark") {
+        questionMark = materialIcon(name = "Filled.QuestionMark") {
             materialPath {
                 moveTo(11.07f, 12.85f)
                 curveToRelative(0.77f, -1.39f, 2.25f, -2.21f, 3.11f, -3.44f)
@@ -48,7 +48,7 @@ val GuideIcon: ImageVector
                 close()
             }
         }
-        return _questionMark!!
+        return questionMark!!
     }
 
-private var _questionMark: ImageVector? = null
+private var questionMark: ImageVector? = null

@@ -8,6 +8,8 @@ import androidx.paging.cachedIn
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.fobo66.factcheckerassistant.api.models.Claim
 import dev.fobo66.factcheckerassistant.data.FactCheckRepository
+import javax.inject.Inject
+import kotlin.time.Duration.Companion.milliseconds
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.SharingStarted
@@ -15,8 +17,6 @@ import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.filterNot
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.stateIn
-import javax.inject.Inject
-import kotlin.time.Duration.Companion.milliseconds
 
 @HiltViewModel
 class MainViewModel @Inject constructor(

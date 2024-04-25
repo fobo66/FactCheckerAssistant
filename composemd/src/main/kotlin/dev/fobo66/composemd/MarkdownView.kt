@@ -3,9 +3,9 @@ package dev.fobo66.composemd
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import java.io.InputStream
 import org.commonmark.node.Document
 import org.commonmark.parser.Parser
-import java.io.InputStream
 
 @Composable
 fun MarkdownDocument(inputStream: InputStream, modifier: Modifier = Modifier) {
