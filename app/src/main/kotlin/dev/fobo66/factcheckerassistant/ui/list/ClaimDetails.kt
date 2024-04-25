@@ -3,6 +3,7 @@ package dev.fobo66.factcheckerassistant.ui.list
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -40,10 +41,14 @@ import kotlinx.datetime.Clock
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun ClaimDetails(claim: Claim?, modifier: Modifier = Modifier) {
-    Crossfade(targetState = claim?.claimReview?.toImmutableList(), label = "ClaimDetails") {
+    Crossfade(
+        targetState = claim?.claimReview?.toImmutableList(),
+        label = "ClaimDetails",
+        modifier = modifier
+    ) {
         if (it.isNullOrEmpty()) {
             Text(
-                modifier = modifier
+                modifier = Modifier
                     .fillMaxSize()
                     .padding(8.dp),
                 textAlign = TextAlign.Center,
@@ -51,29 +56,27 @@ fun ClaimDetails(claim: Claim?, modifier: Modifier = Modifier) {
             )
         } else {
             LazyColumn(
-                modifier = modifier,
                 contentPadding = PaddingValues(vertical = 8.dp, horizontal = 16.dp)
             ) {
                 stickyHeader {
-                    Column {
+                    Column(
+                        verticalArrangement = Arrangement.spacedBy(8.dp),
+                        modifier = Modifier.padding(vertical = 16.dp)
+                    ) {
                         Text(
                             text = claim?.text.orEmpty(),
-                            style = MaterialTheme.typography.titleLarge,
-                            modifier = Modifier.padding(top = 8.dp)
+                            style = MaterialTheme.typography.titleLarge
                         )
                         Text(
                             text = stringResource(R.string.claim_reviews_title),
-                            style = MaterialTheme.typography.titleMedium,
-                            modifier = Modifier.padding(top = 8.dp)
+                            style = MaterialTheme.typography.titleMedium
                         )
                     }
                 }
                 items(it) { review ->
                     ClaimReviewItem(
                         review,
-                        modifier = Modifier
-                            .padding(vertical = 8.dp)
-                            .animateItemPlacement()
+                        modifier = Modifier.animateItem()
                     )
                 }
             }
