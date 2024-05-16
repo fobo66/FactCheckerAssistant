@@ -9,7 +9,7 @@ env:
   FACTCHECK_API_KEY: ${{secrets.FACTCHECK_API_KEY}}
 
 jobs:
-  lint:
+  check:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,8 +24,8 @@ jobs:
         with:
           cache-encryption-key: ${{ secrets.GRADLE_ENCRYPTION_KEY }}
           validate-wrappers: true
-      - name: Lint
-        run: ./gradlew detekt lintKotlin --continue
+      - name: Check
+        run: ./gradlew check
   ui-tests:
     runs-on: ubuntu-latest
 
@@ -62,25 +62,6 @@ jobs:
           script: ./gradlew connectedDebugAndroidTest
           arch: x86_64
           target: google_apis
-          emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-metric
           disable-animations: true
           api-level: 34
-  unit-tests:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4.1.4
-      - name: set up JDK 21
-        uses: actions/setup-java@v4
-        with:
-          java-version: '21'
-          distribution: 'temurin'
-      - name: Check Gradle wrapper
-        uses: gradle/wrapper-validation-action@v3
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3
-        with:
-          cache-encryption-key: ${{ secrets.GRADLE_ENCRYPTION_KEY }}
-          validate-wrappers: true
-      - name: Run tests
-        run: ./gradlew testDebugUnitTest
