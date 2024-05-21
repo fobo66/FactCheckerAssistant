@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.android.app)
     kotlin("android")
     kotlin("plugin.serialization")
+    kotlin("plugin.compose")
     alias(libs.plugins.ksp)
     id("kotlin-parcelize")
     alias(libs.plugins.detekt)
@@ -42,10 +43,6 @@ android {
     buildFeatures {
         buildConfig = true
         compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.composeCompiler.get()
     }
 
     buildTypes {

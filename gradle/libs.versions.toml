@@ -14,7 +14,6 @@ baselineProfilePlugin = "1.2.4"
 coil = "2.6.0"
 commonmark = "0.22.0"
 composeBom = "2024.05.00-alpha02"
-composeCompiler = "1.5.14"
 desugar = "2.0.4"
 detekt = "1.23.6"
 detektCompose = "0.4.1"
@@ -25,13 +24,13 @@ hiltNavigation = "1.2.0"
 junit = "5.10.2"
 junitPlugin = "1.10.0.0"
 kaspresso = "1.5.5"
-kotlin = "1.9.24"
+kotlin = "2.0.0"
 kotlinter = "4.3.0"
 kotlinxCollections = "0.3.7"
 kotlinxCoroutines= "1.8.1"
 kotlinxDatetime = "0.6.0"
 kotlinxSerialization = "1.6.3"
-ksp = "1.9.24-1.0.20"
+ksp = "2.0.0-RC3-1.0.20"
 leakCanary = "2.14"
 materialLegacy = "1.12.0"
 okhttp = "5.0.0-alpha.14"
@@ -98,8 +97,11 @@ android-app = { id = "com.android.application", version.ref = "androidGradlePlug
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
 android-test = { id = "com.android.test", version.ref = "androidGradlePlugin" }
 baseline-profile = { id = "androidx.baselineprofile", version.ref = "baselineProfilePlugin" }
+compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 junit = { id = "de.mannodermaus.android-junit5", version.ref = "junitPlugin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 kotlinter = { id = "org.jmailen.kotlinter", version.ref = "kotlinter" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
