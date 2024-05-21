@@ -1,6 +1,6 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="@style/Theme.Material3.DayNight.NoActionBar">
+    <style name="AppTheme" parent="android:Theme.DeviceDefault.NoActionBar">
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">
             @android:color/transparent
