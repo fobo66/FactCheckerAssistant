@@ -1,12 +1,12 @@
 package dev.fobo66.factcheckerassistant.api
 
+import de.jensklingenberg.ktorfit.http.GET
+import de.jensklingenberg.ktorfit.http.Query
 import dev.fobo66.factcheckerassistant.api.models.FactCheckResponse
-import retrofit2.http.GET
-import retrofit2.http.Query
 
 interface FactCheckApi {
 
-    @GET("/v1alpha1/claims:search")
+    @GET("v1alpha1/claims:search")
     suspend fun search(
         @Query("query") query: String,
         @Query("languageCode") languageCode: String,

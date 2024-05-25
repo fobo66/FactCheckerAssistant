@@ -31,6 +31,8 @@ kotlinxCoroutines= "1.8.1"
 kotlinxDatetime = "0.6.0"
 kotlinxSerialization = "1.6.3"
 ksp = "2.0.0-1.0.21"
+ktor = "2.3.11"
+ktorfit = "2.0.0-rc01"
 leakCanary = "2.14"
 materialLegacy = "1.12.0"
 okhttp = "5.0.0-alpha.14"
@@ -80,6 +82,11 @@ kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinxCoroutines"}
 kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinxDatetime"}
 kotlinx-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerialization"}
+ktor-cio = { group = "io.ktor", name = "ktor-client-cio", version.ref = "ktor"}
+ktor-content = { group = "io.ktor", name = "ktor-client-content-negotiation", version.ref = "ktor"}
+ktor-json = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor"}
+ktorfit = { group = "de.jensklingenberg.ktorfit", name = "ktorfit-lib", version.ref = "ktorfit"}
+ktorfit-compiler = { group = "de.jensklingenberg.ktorfit", name = "ktorfit-ksp", version.ref = "ktorfit"}
 leakcanary = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakCanary"}
 material-legacy = { module = "com.google.android.material:material", version.ref = "materialLegacy"}
 okhttp-bom = { group = "com.squareup.okhttp3", name = "okhttp-bom", version.ref = "okhttp" }
@@ -105,3 +112,4 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 kotlinter = { id = "org.jmailen.kotlinter", version.ref = "kotlinter" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+ktorfit = { id = "de.jensklingenberg.ktorfit", version.ref = "ktorfit" }

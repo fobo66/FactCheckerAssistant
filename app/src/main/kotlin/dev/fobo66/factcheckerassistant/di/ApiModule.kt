@@ -4,13 +4,14 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import de.jensklingenberg.ktorfit.Ktorfit
 import dev.fobo66.factcheckerassistant.api.FactCheckApi
-import javax.inject.Singleton
+import io.ktor.client.HttpClient
+import io.ktor.client.engine.cio.CIO
+import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
+import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
-import okhttp3.MediaType.Companion.toMediaType
-import retrofit2.Retrofit
-import retrofit2.converter.kotlinx.serialization.asConverterFactory
-import retrofit2.create
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -25,9 +26,17 @@ object ApiModule {
 
     @Provides
     @Singleton
-    fun provideFactCheckApi(json: Json) = Retrofit.Builder()
-        .baseUrl("https://factchecktools.googleapis.com")
-        .addConverterFactory(json.asConverterFactory("text/json".toMediaType()))
+    fun provideHttpClient(json: Json): HttpClient = HttpClient(CIO) {
+        install(ContentNegotiation) {
+            json(json)
+        }
+    }
+
+    @Provides
+    @Singleton
+    fun provideFactCheckApi(httpClient: HttpClient): FactCheckApi = Ktorfit.Builder()
+        .baseUrl("https://factchecktools.googleapis.com/")
+        .httpClient(httpClient)
         .build()
         .create<FactCheckApi>()
 }
