@@ -100,16 +100,11 @@ dependencies {
     implementation(libs.hilt.core)
     ksp(libs.hilt.compiler)
 
-    implementation(libs.retrofit)
     implementation(libs.ktorfit)
     implementation(libs.ktor.cio)
     implementation(libs.ktor.content)
     implementation(libs.ktor.json)
     ksp(libs.ktorfit.compiler)
-    implementation(platform(libs.okhttp.bom))
-    implementation(libs.okhttp.core)
-    implementation(libs.retrofit.kotlinx)
-    implementation(platform(libs.retrofit.bom))
     implementation(libs.kotlinx.serialization)
     implementation(libs.kotlinx.datetime)
 

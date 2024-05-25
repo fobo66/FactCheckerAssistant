@@ -5,8 +5,8 @@ import androidx.paging.PagingState
 import dev.fobo66.factcheckerassistant.BuildConfig
 import dev.fobo66.factcheckerassistant.api.FactCheckApi
 import dev.fobo66.factcheckerassistant.api.models.Claim
+import io.ktor.client.plugins.ResponseException
 import java.io.IOException
-import retrofit2.HttpException
 import timber.log.Timber
 
 class FactCheckDataSource(
@@ -28,7 +28,7 @@ class FactCheckDataSource(
         Timber.d("Loading claims finished")
         nextPageToken = result.nextPageToken
         LoadResult.Page(result.claims ?: listOf(), null, nextPageToken)
-    } catch (e: HttpException) {
+    } catch (e: ResponseException) {
         Timber.e(e, "Error occurred during loading claims for query %s", query)
         LoadResult.Error(e)
     } catch (e: IOException) {
