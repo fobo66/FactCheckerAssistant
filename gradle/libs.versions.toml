@@ -88,7 +88,6 @@ ktorfit-compiler = { group = "de.jensklingenberg.ktorfit", name = "ktorfit-ksp",
 leakcanary = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakCanary"}
 material-legacy = { module = "com.google.android.material:material", version.ref = "materialLegacy"}
 profileinstaller = { module = "androidx.profileinstaller:profileinstaller", version.ref = "profileinstallerVersion" }
-retrofit-mock = { group = "com.squareup.retrofit2", name = "retrofit-mock" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 truth = { module = "com.google.truth:truth", version.ref = "truth" }
 

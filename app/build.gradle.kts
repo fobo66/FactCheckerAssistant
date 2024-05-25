@@ -121,7 +121,6 @@ dependencies {
     testRuntimeOnly(libs.junit.engine)
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.androidx.paging.common)
-    testImplementation(libs.retrofit.mock)
     androidTestImplementation(libs.androidx.navigation.test)
     androidTestImplementation(libs.androidx.test.junit)
     androidTestImplementation(libs.espresso.core)

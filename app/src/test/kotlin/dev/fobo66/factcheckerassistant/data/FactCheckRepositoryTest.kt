@@ -1,46 +1,26 @@
 package dev.fobo66.factcheckerassistant.data
 
 import com.google.common.truth.Truth.assertThat
-import dev.fobo66.factcheckerassistant.api.FactCheckApi
 import dev.fobo66.factcheckerassistant.api.models.Claim
 import dev.fobo66.factcheckerassistant.api.models.FactCheckResponse
 import dev.fobo66.factcheckerassistant.util.LocaleProvider
 import dev.fobo66.factcheckerassistant.util.TestLocaleProvider
-import java.util.concurrent.TimeUnit
+import java.io.IOException
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.test.runTest
-import okio.IOException
 import org.junit.jupiter.api.Test
-import retrofit2.Retrofit
-import retrofit2.mock.Calls
-import retrofit2.mock.MockRetrofit
-import retrofit2.mock.NetworkBehavior
-import retrofit2.mock.create
 
 class FactCheckRepositoryTest {
     private lateinit var factCheckRepository: FactCheckRepository
 
     private val localeProvider: LocaleProvider = TestLocaleProvider()
 
-    private val retrofit = Retrofit.Builder()
-        .baseUrl("http://example.com")
-        .build()
-
-    private val networkBehavior = NetworkBehavior
-        .create().apply {
-            setDelay(0, TimeUnit.MILLISECONDS)
-        }
-
-    private val mockApi = MockRetrofit.Builder(retrofit)
-        .networkBehavior(networkBehavior)
-        .build().create<FactCheckApi>()
-
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
     fun `Search for query with empty results`() = runTest {
         factCheckRepository = FactCheckRepository(
-            mockApi.returningResponse(
+            FakeFactCheckApi(
                 FactCheckResponse(
                     listOf(),
                     null
@@ -60,7 +40,7 @@ class FactCheckRepositoryTest {
         val claim = Claim("test", null, null, listOf())
 
         factCheckRepository = FactCheckRepository(
-            mockApi.returningResponse(
+            FakeFactCheckApi(
                 FactCheckResponse(
                     listOf(claim),
                     null
@@ -77,7 +57,10 @@ class FactCheckRepositoryTest {
     @Test
     fun `Search for query with error`() = runTest {
         factCheckRepository = FactCheckRepository(
-            mockApi.returning<FactCheckResponse>(Calls.failure(IOException())),
+            FakeFactCheckApi(
+                error = IOException(),
+                response = FactCheckResponse(emptyList(), null)
+            ),
             localeProvider
         )
         val result = factCheckRepository.search("test", 10).flow.firstOrNull()
