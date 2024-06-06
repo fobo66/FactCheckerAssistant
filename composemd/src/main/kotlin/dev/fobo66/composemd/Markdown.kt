@@ -274,21 +274,21 @@ fun MarkdownText(text: AnnotatedString, style: TextStyle, modifier: Modifier = M
         inlineContent =
         mapOf(
             TAG_IMAGE_URL to
-                    InlineTextContent(
-                        Placeholder(
-                            style.fontSize,
-                            style.fontSize,
-                            PlaceholderVerticalAlign.Bottom
-                        )
-                    ) {
-                        AsyncImage(
-                            model =
-                            ImageRequest.Builder(LocalContext.current)
-                                .data(it)
-                                .build(),
-                            contentDescription = null
-                        )
-                    }
+                InlineTextContent(
+                    Placeholder(
+                        style.fontSize,
+                        style.fontSize,
+                        PlaceholderVerticalAlign.Bottom
+                    )
+                ) {
+                    AsyncImage(
+                        model =
+                        ImageRequest.Builder(LocalContext.current)
+                            .data(it)
+                            .build(),
+                        contentDescription = null
+                    )
+                }
         ),
         onTextLayout = { layoutResult.value = it }
     )
