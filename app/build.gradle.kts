@@ -104,7 +104,6 @@ dependencies {
     implementation(libs.ktor.cio)
     implementation(libs.ktor.content)
     implementation(libs.ktor.json)
-    ksp(libs.ktorfit.compiler)
     implementation(libs.kotlinx.serialization)
     implementation(libs.kotlinx.datetime)
 

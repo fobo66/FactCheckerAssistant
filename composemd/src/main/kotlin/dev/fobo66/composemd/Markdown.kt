@@ -30,6 +30,7 @@ import androidx.compose.ui.text.Placeholder
 import androidx.compose.ui.text.PlaceholderVerticalAlign
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextLayoutResult
+import androidx.compose.ui.text.TextLinkStyles
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontFamily
@@ -273,21 +274,21 @@ fun MarkdownText(text: AnnotatedString, style: TextStyle, modifier: Modifier = M
         inlineContent =
         mapOf(
             TAG_IMAGE_URL to
-                InlineTextContent(
-                    Placeholder(
-                        style.fontSize,
-                        style.fontSize,
-                        PlaceholderVerticalAlign.Bottom
-                    )
-                ) {
-                    AsyncImage(
-                        model =
-                        ImageRequest.Builder(LocalContext.current)
-                            .data(it)
-                            .build(),
-                        contentDescription = null
-                    )
-                }
+                    InlineTextContent(
+                        Placeholder(
+                            style.fontSize,
+                            style.fontSize,
+                            PlaceholderVerticalAlign.Bottom
+                        )
+                    ) {
+                        AsyncImage(
+                            model =
+                            ImageRequest.Builder(LocalContext.current)
+                                .data(it)
+                                .build(),
+                            contentDescription = null
+                        )
+                    }
         ),
         onTextLayout = { layoutResult.value = it }
     )
@@ -360,7 +361,12 @@ private fun AnnotatedString.Builder.appendMarkdownChildren(parent: Node, colors:
                         colors.primary,
                         textDecoration = TextDecoration.Underline
                     )
-                pushLink(LinkAnnotation.Url(child.destination, underline))
+                pushLink(
+                    LinkAnnotation.Url(
+                        url = child.destination,
+                        styles = TextLinkStyles(style = underline)
+                    )
+                )
                 appendMarkdownChildren(child, colors)
                 pop()
             }
