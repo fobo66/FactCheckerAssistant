@@ -16,12 +16,12 @@ plugins {
 }
 
 android {
-    compileSdk = VersionCodes.UPSIDE_DOWN_CAKE
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "dev.fobo66.factcheckerassistant"
         minSdk = VersionCodes.N
-        targetSdk = VersionCodes.UPSIDE_DOWN_CAKE
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 

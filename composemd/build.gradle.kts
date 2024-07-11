@@ -9,7 +9,7 @@ plugins {
 }
 
 android {
-    compileSdk = VersionCodes.UPSIDE_DOWN_CAKE
+    compileSdk = 35
 
     defaultConfig {
         minSdk = VersionCodes.N
