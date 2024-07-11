@@ -31,7 +31,6 @@ android {
     }
 
     compileOptions {
-        isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
@@ -109,8 +108,6 @@ dependencies {
 
     implementation(libs.timber)
     debugImplementation(libs.leakcanary)
-
-    coreLibraryDesugaring(libs.desugar)
 
     detektPlugins(libs.detekt.rules.formatting)
     detektPlugins(libs.detekt.rules.compose)
