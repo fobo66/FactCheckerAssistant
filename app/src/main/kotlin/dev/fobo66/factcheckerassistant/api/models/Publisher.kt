@@ -8,7 +8,4 @@ import kotlinx.serialization.Serializable
 @Serializable
 @Immutable
 @Parcelize
-data class Publisher(
-    val name: String? = null,
-    val site: String? = null
-) : Parcelable
+data class Publisher(val name: String? = null, val site: String? = null) : Parcelable

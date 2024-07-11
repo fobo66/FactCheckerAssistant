@@ -36,7 +36,5 @@ class FactCheckDataSource(
         LoadResult.Error(e)
     }
 
-    override fun getRefreshKey(state: PagingState<String, Claim>): String? {
-        return nextPageToken
-    }
+    override fun getRefreshKey(state: PagingState<String, Claim>): String? = nextPageToken
 }
