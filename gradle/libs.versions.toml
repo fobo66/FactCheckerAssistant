@@ -1,11 +1,11 @@
 [versions]
-androidGradlePlugin = "8.6.0-beta01"
-androidxActivity = "1.9.0"
+androidGradlePlugin = "8.7.0-alpha02"
+androidxActivity = "1.9.1"
 androidxBenchmark = "1.2.4"
 androidxCore = "1.13.1"
 androidxLifecycle = "2.8.4"
 androidxNavigation = "2.7.7"
-androidxPaging = "3.3.0"
+androidxPaging = "3.3.1"
 androidxSplashscreen = "1.1.0-rc01"
 androidxTestJunit = "1.2.1"
 androidxTestUiAutomator = "2.3.0"
@@ -63,7 +63,6 @@ compose-ui-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview
 compose-ui-testing = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 compose-ui-testing-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
-desugar = { module = "com.android.tools:desugar_jdk_libs", version.ref = "desugar"}
 detekt-rules-compose = { module = "io.nlopez.compose.rules:detekt", version.ref = "detektCompose"}
 detekt-rules-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt"}
 dotenv-kotlin = { module = "io.github.cdimascio:dotenv-kotlin", version.ref = "dotenvKotlin" }
