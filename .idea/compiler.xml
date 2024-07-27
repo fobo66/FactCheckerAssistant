@@ -2,12 +2,12 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="11">
-      <module name="Fact Checker Assistant.Fact_Checker_Assistant.app" target="17" />
-      <module name="Fact_Checker_Assistant.baselineprofile" target="17" />
+      <module name="Fact Checker Assistant.Fact_Checker_Assistant.app" target="21" />
+      <module name="Fact_Checker_Assistant.baselineprofile" target="21" />
       <module name="Fact_Checker_Assistant.buildSrc" target="17" />
       <module name="Fact_Checker_Assistant.buildSrc.main" target="17" />
       <module name="Fact_Checker_Assistant.buildSrc.test" target="17" />
-      <module name="Fact_Checker_Assistant.composemd" target="17" />
+      <module name="Fact_Checker_Assistant.composemd" target="21" />
     </bytecodeTargetLevel>
   </component>
 </project>
