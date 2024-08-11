@@ -9,6 +9,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -24,14 +25,12 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import dev.fobo66.factcheckerassistant.ui.guide.FactCheckGuide
 import dev.fobo66.factcheckerassistant.ui.list.ClaimDetails
 import dev.fobo66.factcheckerassistant.ui.list.ClaimsSearch
+import dev.fobo66.factcheckerassistant.util.ROUTE_GUIDE
+import dev.fobo66.factcheckerassistant.util.ROUTE_SEARCH
+import dev.fobo66.factcheckerassistant.util.ROUTE_SEARCH_DETAILS
 import dev.fobo66.factcheckerassistant.util.Screen
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
-
-private val bottomBarItems = persistentListOf(
-    Screen.Search,
-    Screen.Guide
-)
 
 @Composable
 fun MainActivityContent(
@@ -47,6 +46,12 @@ fun MainActivityContent(
         bottomBar = {
             val navBackStackEntry by navController.currentBackStackEntryAsState()
             val currentRoute = navBackStackEntry?.destination?.route
+            val bottomBarItems = remember {
+                persistentListOf(
+                    Screen.Search,
+                    Screen.Guide
+                )
+            }
             BottomNavBar(
                 currentRoute = currentRoute,
                 bottomBarItems = bottomBarItems,
@@ -65,12 +70,10 @@ fun MainActivityContent(
     ) { innerPadding ->
         NavHost(
             navController,
-            startDestination = Screen.DESTINATION_SEARCH,
-            modifier = Modifier.padding(
-                innerPadding
-            )
+            startDestination = ROUTE_SEARCH,
+            modifier = Modifier.padding(innerPadding)
         ) {
-            composable(Screen.DESTINATION_SEARCH) {
+            composable(ROUTE_SEARCH) {
                 val claims = mainViewModel.claims.collectAsLazyPagingItems()
 
                 ClaimsSearch(
@@ -84,15 +87,15 @@ fun MainActivityContent(
                     claims = claims,
                     onSearchResultClick = {
                         mainViewModel.selectClaim(it)
-                        navController.navigate(Screen.DESTINATION_SEARCH_DETAILS)
+                        navController.navigate(ROUTE_SEARCH_DETAILS)
                     }
                 )
             }
-            composable(Screen.DESTINATION_SEARCH_DETAILS) {
+            composable(ROUTE_SEARCH_DETAILS) {
                 val claim by mainViewModel.selectedClaim.collectAsStateWithLifecycle()
                 ClaimDetails(claim)
             }
-            composable(Screen.DESTINATION_GUIDE) {
+            composable(ROUTE_GUIDE) {
                 FactCheckGuide()
             }
         }
