@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="claim_reviews_title">Агляды заяў</string>
+    <string name="claim_claimant">ад %1$s</string>
+    <string name="claim_unknown_claimant">Невядомы заяўца</string>
+    <string name="claim_details_more">Даведацца больш</string>
+    <string name="claim_learn_more">Дэталі</string>
+    <string name="search_suggestion">Вы можаце выкарыстоўваць у якасці запыта адно слова, напрыклад, тэму, ці дакладны тэкст заявы</string>
+    <string name="claim_rating">Рэйтынг праверкі фактаў: %1$s</string>
+    <string name="claims_loading_error">Не атрымалася загрузіць заявы для вашага пашуковага запыту</string>
+    <string name="claims_empty_result">Няма заяў</string>
+    <string name="claim_reviews_empty">Няма аглядаў</string>
+    <string name="app_name">Дапаможнік з праверкай фактаў</string>
+    <string name="fact_check_guide_title">Як правераць заявы ў інтэрнэце?</string>
+    <string name="main_fragment_title">Пошук</string>
+    <string name="search_hint">Шукаць заявы</string>
+    <string name="search_icon_description">Пошук</string>
+    <string name="search_placeholder">Шукаць</string>
+    <string name="guide_fragment_title">Даведкі</string>
+    <string name="claims_indicator">Шукайце па заявах, каб убачыць агляды на іх</string>
+</resources>
