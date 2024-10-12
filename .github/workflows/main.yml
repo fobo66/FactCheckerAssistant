@@ -55,7 +55,7 @@ jobs:
             ~/.android/adb*
           key: avd-34
       - name: Run tests
-        uses: reactivecircus/android-emulator-runner@v2.32.0
+        uses: reactivecircus/android-emulator-runner@v2.33.0
         with:
           script: ./gradlew connectedDebugAndroidTest
           arch: x86_64
