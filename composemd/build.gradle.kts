@@ -9,7 +9,7 @@ plugins {
 }
 
 android {
-    compileSdk = 35
+    compileSdk = VersionCodes.VANILLA_ICE_CREAM
 
     defaultConfig {
         minSdk = VersionCodes.N

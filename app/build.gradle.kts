@@ -16,12 +16,12 @@ plugins {
 }
 
 android {
-    compileSdk = 35
+    compileSdk = VersionCodes.VANILLA_ICE_CREAM
 
     defaultConfig {
         applicationId = "dev.fobo66.factcheckerassistant"
         minSdk = VersionCodes.N
-        targetSdk = 35
+        targetSdk = VersionCodes.VANILLA_ICE_CREAM
         versionCode = 1
         versionName = "1.0"
 
