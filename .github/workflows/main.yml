@@ -7,6 +7,9 @@ on:
     branches: [ "main" ]
 env:
   FACTCHECK_API_KEY: ${{secrets.FACTCHECK_API_KEY}}
+  FACTCHECK_KEYSTORE_FILE: test
+  FACTCHECK_KEY_ALIAS: test
+  FACTCHECK_KEYSTORE_PASSWORD: test
 
 jobs:
   check:
