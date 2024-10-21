@@ -7,6 +7,8 @@ on:
 env:
   FACTCHECK_API_KEY: ${{secrets.FACTCHECK_API_KEY}}
   FACTCHECK_KEYSTORE: ${{secrets.FACTCHECK_KEYSTORE}}
+  FACTCHECK_KEYSTORE_FILE: ${{secrets.FACTCHECK_KEYSTORE_FILE}}
+  FACTCHECK_KEY_ALIAS: ${{secrets.FACTCHECK_KEY_ALIAS}}
   FACTCHECK_KEYSTORE_PASSWORD: ${{secrets.FACTCHECK_KEYSTORE_PASSWORD}}
 
 jobs:
@@ -14,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4.2.1
+      - uses: actions/checkout@v4
       - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
