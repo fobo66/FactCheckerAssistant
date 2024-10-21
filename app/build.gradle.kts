@@ -18,6 +18,20 @@ plugins {
 android {
     compileSdk = VersionCodes.VANILLA_ICE_CREAM
 
+    signingConfigs {
+        register("releaseSignConfig") {
+            keyAlias = loadSecret(rootProject, KEY_ALIAS)
+            keyPassword = loadSecret(rootProject, KEY_PASSWORD)
+            storeFile = file(loadSecret(rootProject, STORE_FILE))
+            storePassword = loadSecret(rootProject, STORE_PASSWORD)
+
+            enableV1Signing = true
+            enableV2Signing = true
+            enableV3Signing = true
+            enableV4Signing = true
+        }
+    }
+
     defaultConfig {
         applicationId = "dev.fobo66.factcheckerassistant"
         minSdk = VersionCodes.N
