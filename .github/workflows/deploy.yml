@@ -1,7 +1,6 @@
 name: Android Release
 
 on:
-  workflow_dispatch:
   push:
     tags: [ "v*.*.*" ]
 env:
@@ -27,6 +26,8 @@ jobs:
         with:
           cache-encryption-key: ${{ secrets.GRADLE_ENCRYPTION_KEY }}
           validate-wrappers: true
+      - name: Setup keystore
+        run: echo $FACTCHECK_KEYSTORE | base64 -d -o $FACTCHECK_KEYSTORE_FILE
       - name: Build release artifact
         run: ./gradlew assembleRelease
       - name: Archive production artifacts
