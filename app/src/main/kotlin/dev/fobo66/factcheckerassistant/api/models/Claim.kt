@@ -12,7 +12,7 @@ import kotlinx.serialization.Serializable
 @Immutable
 @Parcelize
 data class Claim(
-    val text: String,
+    val text: String? = null,
     val claimant: String? = null,
     @TypeParceler<Instant?, InstantParceler>() val claimDate: Instant? = null,
     val claimReview: List<ClaimReview> = emptyList()
