@@ -30,7 +30,7 @@ android {
 
     targetProjectPath = ":app"
 
-    testOptions.managedDevices.devices {
+    testOptions.managedDevices.allDevices {
         create<ManagedVirtualDevice>("pixel6Api34") {
             device = "Pixel 6"
             apiLevel = VersionCodes.UPSIDE_DOWN_CAKE
