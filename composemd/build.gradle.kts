@@ -9,10 +9,10 @@ plugins {
 }
 
 android {
-    compileSdk = 36
+    compileSdk = VersionCodes.BAKLAVA
 
     defaultConfig {
-        minSdk = VersionCodes.N
+        minSdk = VersionCodes.R
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")

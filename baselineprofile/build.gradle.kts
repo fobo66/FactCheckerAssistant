@@ -1,4 +1,3 @@
-import com.android.build.api.dsl.ManagedVirtualDevice
 import com.android.sdklib.AndroidVersion.VersionCodes
 
 plugins {
@@ -10,7 +9,7 @@ plugins {
 
 android {
     namespace = "dev.fobo66.baselineprofile"
-    compileSdk = 36
+    compileSdk = VersionCodes.BAKLAVA
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -23,7 +22,7 @@ android {
 
     defaultConfig {
         minSdk = VersionCodes.P
-        targetSdk = VersionCodes.UPSIDE_DOWN_CAKE
+        targetSdk = VersionCodes.BAKLAVA
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }

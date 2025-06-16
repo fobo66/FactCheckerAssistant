@@ -16,7 +16,7 @@ plugins {
 }
 
 android {
-    compileSdk = 36
+    compileSdk = VersionCodes.BAKLAVA
 
     signingConfigs {
         register("releaseSignConfig") {
@@ -34,8 +34,8 @@ android {
 
     defaultConfig {
         applicationId = "dev.fobo66.factcheckerassistant"
-        minSdk = VersionCodes.N
-        targetSdk = 36
+        minSdk = VersionCodes.R
+        targetSdk = VersionCodes.BAKLAVA
         versionCode = 1
         versionName = "1.0"
 
