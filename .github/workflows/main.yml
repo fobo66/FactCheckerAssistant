@@ -62,6 +62,8 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2.34.0
         with:
           api-level: 35
+          target: google_apis
+          arch: x86_64
           force-avd-creation: false
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-metrics
           disable-animations: false
