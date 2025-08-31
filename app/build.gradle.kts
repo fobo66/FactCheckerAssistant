@@ -37,8 +37,8 @@ android {
         applicationId = "dev.fobo66.factcheckerassistant"
         minSdk = VersionCodes.R
         targetSdk = VersionCodes.BAKLAVA
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 2
+        versionName = "1.0.1"
 
         buildConfigField("String", "API_KEY", "\"${loadSecret(rootProject, API_KEY)}\"")
 
