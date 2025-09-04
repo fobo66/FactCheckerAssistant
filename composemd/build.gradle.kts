@@ -70,7 +70,6 @@ dependencies {
     debugImplementation(libs.compose.ui.tooling)
     implementation(libs.coil)
 
-    detektPlugins(libs.detekt.rules.formatting)
     detektPlugins(libs.detekt.rules.compose)
 
     androidTestImplementation(libs.androidx.test.junit)

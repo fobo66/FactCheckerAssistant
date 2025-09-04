@@ -14,7 +14,7 @@ baselineProfilePlugin = "1.4.0"
 coil = "2.7.0"
 commonmark = "0.25.1"
 composeBom = "2025.08.01"
-detekt = "1.23.8"
+detekt = "2.0.0-alpha.0"
 detektCompose = "0.4.27"
 dotenvKotlin = "6.5.1"
 espresso = "3.7.0"
@@ -33,7 +33,7 @@ ksp = "2.2.10-2.0.2"
 ktor = "3.2.3"
 ktorfit = "2.6.4"
 leakCanary = "2.14"
-materialLegacy = "1.12.0"
+materialLegacy = "1.13.0"
 profileinstallerVersion = "1.4.1"
 timber = "5.0.1"
 truth = "1.4.4"
@@ -64,7 +64,7 @@ compose-ui-testing = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 compose-ui-testing-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 detekt-rules-compose = { module = "io.nlopez.compose.rules:detekt", version.ref = "detektCompose"}
-detekt-rules-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt"}
+detekt-rules-formatting = { module = "dev.detekt:detekt-formatting", version.ref = "detekt" }
 dotenv-kotlin = { module = "io.github.cdimascio:dotenv-kotlin", version.ref = "dotenvKotlin" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso"}
 hilt-navigation = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigation"}
@@ -95,7 +95,7 @@ android-library = { id = "com.android.library", version.ref = "androidGradlePlug
 android-test = { id = "com.android.test", version.ref = "androidGradlePlugin" }
 baseline-profile = { id = "androidx.baselineprofile", version.ref = "baselineProfilePlugin" }
 compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+detekt = { id = "dev.detekt", version.ref = "detekt" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 junit = { id = "de.mannodermaus.android-junit5", version.ref = "junitPlugin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
