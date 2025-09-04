@@ -18,7 +18,7 @@ android {
     }
 
     defaultConfig {
-        minSdk = VersionCodes.P
+        minSdk = VersionCodes.R
         targetSdk = VersionCodes.BAKLAVA
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
