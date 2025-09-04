@@ -1,4 +1,5 @@
 import com.android.sdklib.AndroidVersion.VersionCodes
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.android.app)
@@ -49,11 +50,6 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
-        jvmTarget = "17"
-        freeCompilerArgs + "-opt-in=kotlin.RequiresOptIn"
-    }
-
     buildFeatures {
         buildConfig = true
         compose = true
@@ -78,6 +74,12 @@ android {
 
     testOptions {
         unitTests.isReturnDefaultValues = true
+    }
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget = JvmTarget.JVM_17
     }
 }
 
