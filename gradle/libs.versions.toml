@@ -64,7 +64,6 @@ compose-ui-testing = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 compose-ui-testing-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 detekt-rules-compose = { module = "io.nlopez.compose.rules:detekt", version.ref = "detektCompose"}
-detekt-rules-formatting = { module = "dev.detekt:detekt-formatting", version.ref = "detekt" }
 dotenv-kotlin = { module = "io.github.cdimascio:dotenv-kotlin", version.ref = "dotenvKotlin" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso"}
 hilt-navigation = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigation"}
