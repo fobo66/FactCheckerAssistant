@@ -126,7 +126,6 @@ dependencies {
     implementation(libs.timber)
     debugImplementation(libs.leakcanary)
 
-    detektPlugins(libs.detekt.rules.formatting)
     detektPlugins(libs.detekt.rules.compose)
 
     testImplementation(libs.junit.api)

@@ -1,3 +1,5 @@
+@file:Suppress("MagicNumber") // ok for colors
+
 package dev.fobo66.factcheckerassistant.ui.theme
 
 import androidx.compose.ui.graphics.Color

@@ -1,3 +1,4 @@
+@file:Suppress("MagicNumber") // ok for icons
 /*
  * Copyright 2022 The Android Open Source Project
  *
