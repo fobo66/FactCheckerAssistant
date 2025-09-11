@@ -36,7 +36,7 @@ leakCanary = "2.14"
 materialLegacy = "1.13.0"
 profileinstallerVersion = "1.4.1"
 timber = "5.0.1"
-truth = "1.4.4"
+truth = "1.4.5"
 
 [libraries]
 androidx-activity = { module = "androidx.activity:activity-compose", version.ref = "androidxActivity"}
