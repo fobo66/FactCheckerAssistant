@@ -9,7 +9,11 @@ import dev.fobo66.factcheckerassistant.R
 import dev.fobo66.factcheckerassistant.ui.icons.GuideIcon
 
 @Immutable
-sealed class Screen(val route: String, @StringRes val resourceId: Int, val icon: ImageVector) {
+sealed class Screen(
+    val route: String,
+    @param:StringRes val resourceId: Int,
+    val icon: ImageVector
+) {
     @Immutable
     data object Search : Screen(
         ROUTE_SEARCH,

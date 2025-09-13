@@ -41,7 +41,10 @@ import androidx.paging.compose.itemKey
 import dev.fobo66.factcheckerassistant.R
 import dev.fobo66.factcheckerassistant.api.models.Claim
 import dev.fobo66.factcheckerassistant.ui.theme.FactCheckerAssistantTheme
+import kotlin.time.ExperimentalTime
+import kotlinx.datetime.toStdlibInstant
 
+@OptIn(ExperimentalTime::class)
 @Composable
 fun ClaimsSearch(
     query: String,
@@ -89,7 +92,7 @@ fun ClaimsSearch(
                         val claimDate = remember {
                             DateUtils.getRelativeTimeSpanString(
                                 context,
-                                claim?.claimDate?.toEpochMilliseconds()
+                                claim?.claimDate?.toStdlibInstant()?.toEpochMilliseconds()
                                     ?: System.currentTimeMillis()
                             ).toString()
                         }
