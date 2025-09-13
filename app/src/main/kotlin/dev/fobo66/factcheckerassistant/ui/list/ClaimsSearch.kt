@@ -4,20 +4,23 @@ import android.text.format.DateUtils
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.DockedSearchBar
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
+import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.Text
@@ -35,13 +38,16 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.paging.LoadState
+import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
+import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemContentType
 import androidx.paging.compose.itemKey
 import dev.fobo66.factcheckerassistant.R
 import dev.fobo66.factcheckerassistant.api.models.Claim
 import dev.fobo66.factcheckerassistant.ui.theme.FactCheckerAssistantTheme
 import kotlin.time.ExperimentalTime
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.datetime.toStdlibInstant
 
 @OptIn(ExperimentalTime::class)
@@ -54,30 +60,24 @@ fun ClaimsSearch(
     onSearchResultClick: (Claim?) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    Box(modifier = modifier.fillMaxSize()) {
+    Column(modifier = modifier) {
         ClaimsSearchBar(
-            query,
-            onQueryChange,
-            onSearch,
-            modifier = Modifier.align(Alignment.TopCenter)
+            query = query,
+            onQueryChange = onQueryChange,
+            onSearch = onSearch,
+            modifier = Modifier.align(Alignment.CenterHorizontally)
         )
-        Crossfade(claims, label = "searchItems") {
+        Crossfade(claims, label = "searchItems", modifier = Modifier.weight(1f)) {
             if (it.itemCount == 0) {
                 Box(modifier = Modifier.fillMaxSize()) {
                     Text(
-                        modifier = Modifier
-                            .align(Alignment.Center),
+                        modifier = Modifier.align(Alignment.Center),
                         text = stringResource(id = R.string.claims_empty_result)
                     )
                 }
             } else {
                 LazyColumn(
-                    contentPadding = PaddingValues(
-                        start = 16.dp,
-                        top = 72.dp,
-                        end = 16.dp,
-                        bottom = 16.dp
-                    ),
+                    contentPadding = PaddingValues(16.dp),
                     verticalArrangement = Arrangement.spacedBy(16.dp)
 
                 ) {
@@ -106,28 +106,34 @@ fun ClaimsSearch(
                         )
                     }
 
-                    if (it.loadState.append == LoadState.Loading) {
-                        item {
-                            CircularProgressIndicator(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .wrapContentWidth(Alignment.CenterHorizontally)
-                            )
-                        }
-                    }
-
-                    if (it.loadState.append is LoadState.Error) {
-                        item {
-                            Text(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .wrapContentWidth(Alignment.CenterHorizontally),
-                                text = stringResource(id = R.string.claims_loading_error)
-                            )
-                        }
-                    }
+                    claimsListFooter(it)
                 }
             }
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
+private fun LazyListScope.claimsListFooter(items: LazyPagingItems<Claim>) {
+    if (items.loadState.append == LoadState.Loading) {
+        item {
+            LoadingIndicator(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .wrapContentWidth(Alignment.CenterHorizontally)
+            )
+        }
+    }
+
+    if (items.loadState.append is LoadState.Error) {
+        item {
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .wrapContentWidth(Alignment.CenterHorizontally),
+                text = stringResource(id = R.string.claims_loading_error),
+                color = MaterialTheme.colorScheme.error
+            )
         }
     }
 }
@@ -231,6 +237,25 @@ private fun ClaimItemPreview() {
             claimDate = "just now",
             claimTitle = "test",
             onItemClick = {}
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun ClaimSearchPreview() {
+    FactCheckerAssistantTheme {
+        val pagingData = remember {
+            PagingData.empty<Claim>()
+        }
+        val claims = MutableStateFlow(pagingData).collectAsLazyPagingItems()
+
+        ClaimsSearch(
+            query = "",
+            claims = claims,
+            onSearch = {},
+            onSearchResultClick = {},
+            onQueryChange = {}
         )
     }
 }
