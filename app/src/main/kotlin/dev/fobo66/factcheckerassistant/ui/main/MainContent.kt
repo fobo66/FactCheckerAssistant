@@ -11,11 +11,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -38,7 +38,7 @@ fun MainActivityContent(
     mainViewModel: MainViewModel = hiltViewModel()
 ) {
     val navController = rememberNavController()
-    var query by rememberSaveable {
+    val (query, onQueryChange) = rememberSaveable {
         mutableStateOf("")
     }
 
@@ -56,13 +56,7 @@ fun MainActivityContent(
                 currentRoute = currentRoute,
                 bottomBarItems = bottomBarItems,
                 onItemClick = {
-                    navController.navigate(it.route) {
-                        popUpTo(navController.graph.findStartDestination().id) {
-                            saveState = true
-                        }
-                        launchSingleTop = true
-                        restoreState = true
-                    }
+                    navController.navigateToScreen(it)
                 }
             )
         },
@@ -78,9 +72,7 @@ fun MainActivityContent(
 
                 ClaimsSearch(
                     query = query,
-                    onQueryChange = {
-                        query = it
-                    },
+                    onQueryChange = onQueryChange,
                     onSearch = {
                         mainViewModel.search(it)
                     },
@@ -99,6 +91,16 @@ fun MainActivityContent(
                 FactCheckGuide()
             }
         }
+    }
+}
+
+private fun NavController.navigateToScreen(screen: Screen) {
+    navigate(screen.route) {
+        popUpTo(graph.findStartDestination().id) {
+            saveState = true
+        }
+        launchSingleTop = true
+        restoreState = true
     }
 }
 
