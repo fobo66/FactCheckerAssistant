@@ -246,12 +246,16 @@ private fun ClaimItemPreview() {
 private fun ClaimSearchPreview() {
     FactCheckerAssistantTheme {
         val pagingData = remember {
-            PagingData.empty<Claim>()
+            PagingData.from(
+                listOf(
+                    Claim(text = "test", claimant = "test")
+                )
+            )
         }
         val claims = MutableStateFlow(pagingData).collectAsLazyPagingItems()
 
         ClaimsSearch(
-            query = "",
+            query = "test",
             claims = claims,
             onSearch = {},
             onSearchResultClick = {},
