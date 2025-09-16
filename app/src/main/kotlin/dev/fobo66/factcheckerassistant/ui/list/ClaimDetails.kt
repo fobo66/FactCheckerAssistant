@@ -35,8 +35,9 @@ import dev.fobo66.factcheckerassistant.api.models.Claim
 import dev.fobo66.factcheckerassistant.api.models.ClaimReview
 import dev.fobo66.factcheckerassistant.api.models.Publisher
 import dev.fobo66.factcheckerassistant.ui.theme.FactCheckerAssistantTheme
+import kotlin.time.Clock
+import kotlin.time.ExperimentalTime
 import kotlinx.collections.immutable.toImmutableList
-import kotlinx.datetime.Clock
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -156,6 +157,7 @@ private fun ClaimReviewItemPreview() {
     }
 }
 
+@OptIn(ExperimentalTime::class)
 @Preview(showBackground = true)
 @Composable
 private fun ClaimDetailsPreview() {

@@ -6,6 +6,7 @@ import dev.fobo66.factcheckerassistant.api.models.FactCheckResponse
 import dev.fobo66.factcheckerassistant.util.LocaleProvider
 import dev.fobo66.factcheckerassistant.util.TestLocaleProvider
 import java.io.IOException
+import kotlin.time.ExperimentalTime
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.test.runTest
@@ -34,7 +35,7 @@ class FactCheckRepositoryTest {
         assertThat(result).isNotNull()
     }
 
-    @OptIn(ExperimentalCoroutinesApi::class)
+    @OptIn(ExperimentalCoroutinesApi::class, ExperimentalTime::class)
     @Test
     fun `Search for query with one result`() = runTest {
         val claim = Claim("test", null, null, listOf())

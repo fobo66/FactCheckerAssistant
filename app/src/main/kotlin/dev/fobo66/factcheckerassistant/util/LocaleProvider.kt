@@ -10,8 +10,9 @@ interface LocaleProvider {
     val currentLocale: Locale
 }
 
-class LocaleProviderImpl @Inject constructor(@ApplicationContext private val context: Context) :
-    LocaleProvider {
+class LocaleProviderImpl @Inject constructor(
+    @param:ApplicationContext private val context: Context
+) : LocaleProvider {
     override val currentLocale: Locale
         get() = ConfigurationCompat.getLocales(context.resources.configuration).get(0)
             ?: Locale.getDefault()

@@ -1,9 +1,11 @@
 package dev.fobo66.factcheckerassistant.util
 
 import android.os.Parcel
-import kotlinx.datetime.Instant
+import kotlin.time.ExperimentalTime
+import kotlin.time.Instant
 import kotlinx.parcelize.Parceler
 
+@OptIn(ExperimentalTime::class)
 object InstantParceler : Parceler<Instant?> {
     override fun create(parcel: Parcel): Instant? {
         val timestamp = parcel.readString()

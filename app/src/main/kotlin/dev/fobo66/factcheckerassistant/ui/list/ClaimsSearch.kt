@@ -48,7 +48,6 @@ import dev.fobo66.factcheckerassistant.api.models.Claim
 import dev.fobo66.factcheckerassistant.ui.theme.FactCheckerAssistantTheme
 import kotlin.time.ExperimentalTime
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.datetime.toStdlibInstant
 
 @OptIn(ExperimentalTime::class)
 @Composable
@@ -92,7 +91,7 @@ fun ClaimsSearch(
                         val claimDate = remember {
                             DateUtils.getRelativeTimeSpanString(
                                 context,
-                                claim?.claimDate?.toStdlibInstant()?.toEpochMilliseconds()
+                                claim?.claimDate?.toEpochMilliseconds()
                                     ?: System.currentTimeMillis()
                             ).toString()
                         }
@@ -241,6 +240,7 @@ private fun ClaimItemPreview() {
     }
 }
 
+@OptIn(ExperimentalTime::class)
 @Preview
 @Composable
 private fun ClaimSearchPreview() {
