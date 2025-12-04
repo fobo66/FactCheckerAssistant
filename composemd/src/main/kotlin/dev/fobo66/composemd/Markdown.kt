@@ -71,7 +71,9 @@ internal fun AnnotatedString.Builder.appendMarkdownChildren(parent: Node, colors
     while (child != null) {
         when (child) {
             is Paragraph -> appendMarkdownChildren(child, colors)
+
             is Text -> append(child.literal)
+
             is Image ->
                 appendInlineContent(
                     TAG_IMAGE_URL,
@@ -94,7 +96,7 @@ internal fun AnnotatedString.Builder.appendMarkdownChildren(parent: Node, colors
                 pushStyle(
                     TextStyle(
                         fontFamily =
-                        FontFamily.Monospace
+                            FontFamily.Monospace
                     ).toSpanStyle()
                 )
                 append(child.literal)

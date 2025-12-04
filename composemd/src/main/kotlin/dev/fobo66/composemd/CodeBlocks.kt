@@ -19,11 +19,11 @@ fun MarkdownIndentedCodeBlock(indentedCodeBlock: IndentedCodeBlock, modifier: Mo
     val padding = if (indentedCodeBlock.parent is Document) 8.dp else 0.dp
     Box(
         modifier =
-        modifier
-            .padding(padding)
-            .semantics {
-                testTag = "Indented code block"
-            }
+            modifier
+                .padding(padding)
+                .semantics {
+                    testTag = "Indented code block"
+                }
     ) {
         Text(
             text = indentedCodeBlock.literal,
@@ -37,11 +37,11 @@ fun MarkdownFencedCodeBlock(fencedCodeBlock: FencedCodeBlock, modifier: Modifier
     val padding = if (fencedCodeBlock.parent is Document) 8.dp else 0.dp
     Box(
         modifier =
-        modifier
-            .padding(padding)
-            .semantics {
-                testTag = "Fenced code block"
-            }
+            modifier
+                .padding(padding)
+                .semantics {
+                    testTag = "Fenced code block"
+                }
     ) {
         Text(
             text = fencedCodeBlock.literal,

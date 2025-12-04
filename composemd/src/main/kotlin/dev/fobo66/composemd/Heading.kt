@@ -15,11 +15,17 @@ fun MarkdownHeading(heading: Heading, modifier: Modifier = Modifier) {
     val style =
         when (heading.level) {
             HEADING_LEVEL_1 -> MaterialTheme.typography.headlineLarge
+
             HEADING_LEVEL_2 -> MaterialTheme.typography.headlineMedium
+
             HEADING_LEVEL_3 -> MaterialTheme.typography.headlineSmall
+
             HEADING_LEVEL_4 -> MaterialTheme.typography.titleLarge
+
             HEADING_LEVEL_5 -> MaterialTheme.typography.titleMedium
+
             HEADING_LEVEL_6 -> MaterialTheme.typography.titleSmall
+
             else -> {
                 // Not a header...
                 MarkdownBlockChildren(heading, modifier)

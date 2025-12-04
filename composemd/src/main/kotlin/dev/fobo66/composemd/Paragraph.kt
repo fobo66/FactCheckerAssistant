@@ -56,40 +56,40 @@ fun MarkdownText(text: AnnotatedString, style: TextStyle, modifier: Modifier = M
     Text(
         text = text,
         modifier =
-        modifier.pointerInput(Unit) {
-            detectTapGestures(onTap = { pos ->
-                layoutResult.value?.let {
-                    val position = it.getOffsetForPosition(pos)
-                    text.getStringAnnotations(position, position)
-                        .firstOrNull()
-                        ?.let { sa ->
-                            if (sa.tag == TAG_URL) {
-                                uriHandler.openUri(sa.item)
+            modifier.pointerInput(Unit) {
+                detectTapGestures(onTap = { pos ->
+                    layoutResult.value?.let {
+                        val position = it.getOffsetForPosition(pos)
+                        text.getStringAnnotations(position, position)
+                            .firstOrNull()
+                            ?.let { sa ->
+                                if (sa.tag == TAG_URL) {
+                                    uriHandler.openUri(sa.item)
+                                }
                             }
-                        }
-                }
-            })
-        },
+                    }
+                })
+            },
         style = style,
         inlineContent =
-        mapOf(
-            TAG_IMAGE_URL to
-                InlineTextContent(
-                    Placeholder(
-                        style.fontSize,
-                        style.fontSize,
-                        PlaceholderVerticalAlign.Bottom
-                    )
-                ) {
-                    AsyncImage(
-                        model =
-                        ImageRequest.Builder(LocalContext.current)
-                            .data(it)
-                            .build(),
-                        contentDescription = null
-                    )
-                }
-        ),
+            mapOf(
+                TAG_IMAGE_URL to
+                    InlineTextContent(
+                        Placeholder(
+                            style.fontSize,
+                            style.fontSize,
+                            PlaceholderVerticalAlign.Bottom
+                        )
+                    ) {
+                        AsyncImage(
+                            model =
+                                ImageRequest.Builder(LocalContext.current)
+                                    .data(it)
+                                    .build(),
+                            contentDescription = null
+                        )
+                    }
+            ),
         onTextLayout = { layoutResult.value = it }
     )
 }

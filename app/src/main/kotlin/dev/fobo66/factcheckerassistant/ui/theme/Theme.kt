@@ -103,6 +103,7 @@ fun FactCheckerAssistantTheme(
         }
 
         darkTheme -> darkScheme
+
         else -> lightScheme
     }
     val view = LocalView.current

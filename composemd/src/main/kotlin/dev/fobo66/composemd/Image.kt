@@ -15,9 +15,9 @@ fun MarkdownImage(image: Image, modifier: Modifier = Modifier) {
     Box(modifier = modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
         AsyncImage(
             model =
-            ImageRequest.Builder(LocalContext.current)
-                .data(image.destination)
-                .build(),
+                ImageRequest.Builder(LocalContext.current)
+                    .data(image.destination)
+                    .build(),
             contentDescription = image.title
         )
     }
