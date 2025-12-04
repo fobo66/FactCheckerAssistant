@@ -27,8 +27,6 @@ fun MarkdownHeading(heading: Heading, modifier: Modifier = Modifier) {
             HEADING_LEVEL_6 -> MaterialTheme.typography.titleSmall
 
             else -> {
-                // Not a header...
-                MarkdownBlockChildren(heading, modifier)
                 return
             }
         }
