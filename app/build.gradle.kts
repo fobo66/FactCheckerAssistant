@@ -107,7 +107,6 @@ dependencies {
     implementation(platform(libs.compose.bom))
     implementation(libs.compose.ui)
     implementation(libs.compose.material)
-    implementation(libs.compose.material.icons)
     implementation(libs.compose.ui.preview)
     implementation(libs.profileinstaller)
     androidTestImplementation(libs.compose.ui.testing)

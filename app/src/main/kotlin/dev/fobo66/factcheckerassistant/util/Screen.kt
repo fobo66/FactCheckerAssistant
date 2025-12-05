@@ -1,28 +1,26 @@
 package dev.fobo66.factcheckerassistant.util
 
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Immutable
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.runtime.Stable
 import dev.fobo66.factcheckerassistant.R
-import dev.fobo66.factcheckerassistant.ui.icons.GuideIcon
 
-@Immutable
+@Stable
 sealed class Screen(
     val route: String,
     @param:StringRes val resourceId: Int,
-    val icon: ImageVector
+    @param:DrawableRes val icon: Int
 ) {
     @Immutable
     data object Search : Screen(
         ROUTE_SEARCH,
         R.string.main_fragment_title,
-        Icons.Default.Search
+        R.drawable.ic_search
     )
 
     @Immutable
-    data object Guide : Screen(ROUTE_GUIDE, R.string.guide_fragment_title, GuideIcon)
+    data object Guide : Screen(ROUTE_GUIDE, R.string.guide_fragment_title, R.drawable.ic_guide)
 }
 
 const val ROUTE_SEARCH = "search"
