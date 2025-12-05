@@ -12,9 +12,3 @@ plugins {
     alias(libs.plugins.baseline.profile) apply false
     alias(libs.plugins.kotlinter)
 }
-
-tasks {
-    register("clean", Delete::class) {
-        delete(rootProject.layout.buildDirectory)
-    }
-}

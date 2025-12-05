@@ -1,4 +1,7 @@
 import com.android.sdklib.AndroidVersion.VersionCodes
+import dev.detekt.gradle.Detekt
+import org.gradle.kotlin.dsl.assign
+import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -58,6 +61,7 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -81,6 +85,10 @@ kotlin {
     compilerOptions {
         jvmTarget = JvmTarget.JVM_17
     }
+}
+
+tasks.withType<Detekt> {
+    jvmTarget = "17"
 }
 
 dependencies {
