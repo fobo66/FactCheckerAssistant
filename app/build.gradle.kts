@@ -1,6 +1,5 @@
 import com.android.sdklib.AndroidVersion.VersionCodes
 import dev.detekt.gradle.Detekt
-import org.gradle.kotlin.dsl.assign
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
@@ -60,6 +59,7 @@ android {
 
     buildTypes {
         release {
+            signingConfig = signingConfigs["releaseSignConfig"]
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(
