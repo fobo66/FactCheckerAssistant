@@ -125,6 +125,7 @@ dependencies {
     implementation(project(":composemd"))
 
     implementation(libs.hilt.core)
+    implementation(libs.kotlin.metadata)
     ksp(libs.hilt.compiler)
 
     implementation(libs.ktorfit)
