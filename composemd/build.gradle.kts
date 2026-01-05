@@ -63,6 +63,7 @@ tasks.withType<Detekt> {
 }
 
 dependencies {
+    implementation(libs.kotlin.metadata)
     implementation(libs.commonmark)
     implementation(libs.androidx.tracing)
     implementation(platform(libs.compose.bom))
