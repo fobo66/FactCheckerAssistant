@@ -1,20 +1,24 @@
 package dev.fobo66.composemd
 
+import androidx.annotation.RawRes
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.retain.retain
 import androidx.compose.ui.Modifier
-import java.io.InputStream
+import androidx.compose.ui.platform.LocalResources
 import org.commonmark.node.Document
 import org.commonmark.parser.Parser
 
 @Composable
-fun MarkdownDocument(inputStream: InputStream, modifier: Modifier = Modifier) {
-    val parser = remember {
+fun MarkdownDocument(@RawRes resourceId: Int, modifier: Modifier = Modifier) {
+    val resources = LocalResources.current
+
+    val parser = retain {
         Parser.builder().build()
     }
 
-    val document = remember(inputStream) {
-        inputStream.bufferedReader().use {
+    val document = retain {
+        resources.openRawResource(resourceId).bufferedReader().use {
             parser.parseReader(it) as Document
         }
     }
@@ -24,7 +28,7 @@ fun MarkdownDocument(inputStream: InputStream, modifier: Modifier = Modifier) {
 
 @Composable
 fun MarkdownDocument(input: String, modifier: Modifier = Modifier) {
-    val parser = remember {
+    val parser = retain {
         Parser.builder().build()
     }
     val document = remember(input) {

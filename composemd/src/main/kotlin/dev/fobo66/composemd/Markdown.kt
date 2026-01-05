@@ -1,7 +1,9 @@
 package dev.fobo66.composemd
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.appendInlineContent
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -42,7 +44,7 @@ internal const val TAG_IMAGE_URL = "TAG_IMAGE_URL"
 
 @Composable
 internal fun MarkdownDocument(document: Document, modifier: Modifier = Modifier) {
-    Column(modifier = modifier) {
+    Column(modifier = modifier.verticalScroll(rememberScrollState())) {
         MarkdownBlockChildren(document)
     }
 }
