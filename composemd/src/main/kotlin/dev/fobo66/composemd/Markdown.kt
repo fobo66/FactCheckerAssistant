@@ -44,7 +44,7 @@ internal const val TAG_IMAGE_URL = "TAG_IMAGE_URL"
 
 @Composable
 internal fun MarkdownDocument(document: Document, modifier: Modifier = Modifier) {
-    Column(modifier = modifier.verticalScroll(rememberScrollState())) {
+    Column(modifier = modifier) {
         MarkdownBlockChildren(document)
     }
 }
