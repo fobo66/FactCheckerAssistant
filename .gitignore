@@ -16,9 +16,11 @@
 .cxx
 *.log
 *.apk
+*.aab
 .env
 /.idea/androidTestResultsUserPreferences.xml
 /.idea/appInsightsSettings.xml
 /.idea/deploymentTargetSelector.xml
 /.idea/other.xml
 /.kotlin
+*.jks
