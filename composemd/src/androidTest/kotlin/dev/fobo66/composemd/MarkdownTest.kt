@@ -56,7 +56,9 @@ class MarkdownTest {
     fun markdownImage() {
         composeTestRule.setContent {
             MarkdownDocument(
-                input = "![Test image](https://source.unsplash.com/random/800x600 \"Test image\")"
+                input = """
+                    ![Test image](https://unsplash.com/photos/GOwRkZa_gik/download?force=true&w=640 "Test image")
+                """.trimIndent()
             )
         }
 
