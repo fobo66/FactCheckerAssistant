@@ -8,17 +8,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
-import org.commonmark.node.Image
 
 @Composable
-fun MarkdownImage(image: Image, modifier: Modifier = Modifier) {
+fun MarkdownImage(imageDestination: String, imageTitle: String?, modifier: Modifier = Modifier) {
     Box(modifier = modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
         AsyncImage(
             model =
                 ImageRequest.Builder(LocalContext.current)
-                    .data(image.destination)
+                    .data(imageDestination)
                     .build(),
-            contentDescription = image.title
+            contentDescription = imageTitle
         )
     }
 }

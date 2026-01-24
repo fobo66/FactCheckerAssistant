@@ -20,8 +20,8 @@ import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.unit.dp
-import coil.compose.AsyncImage
-import coil.request.ImageRequest
+import coil3.compose.AsyncImage
+import coil3.request.ImageRequest
 import org.commonmark.node.Document
 import org.commonmark.node.Image
 import org.commonmark.node.Paragraph
@@ -30,7 +30,11 @@ import org.commonmark.node.Paragraph
 fun MarkdownParagraph(paragraph: Paragraph, modifier: Modifier = Modifier) {
     if (paragraph.firstChild is Image && paragraph.firstChild == paragraph.lastChild) {
         // Paragraph with single image
-        MarkdownImage(paragraph.firstChild as Image, modifier)
+        MarkdownImage(
+            imageDestination = (paragraph.firstChild as Image).destination,
+            imageTitle = (paragraph.firstChild as Image).title,
+            modifier = modifier
+        )
     } else {
         val padding = if (paragraph.parent is Document) 8.dp else 0.dp
         Box(modifier = modifier.padding(bottom = padding)) {

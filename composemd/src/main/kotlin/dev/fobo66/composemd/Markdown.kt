@@ -1,9 +1,7 @@
 package dev.fobo66.composemd
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.appendInlineContent
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -60,7 +58,7 @@ fun MarkdownBlockChildren(parent: Node, modifier: Modifier = Modifier) {
             is Paragraph -> MarkdownParagraph(child, modifier)
             is FencedCodeBlock -> MarkdownFencedCodeBlock(child, modifier)
             is IndentedCodeBlock -> MarkdownIndentedCodeBlock(child, modifier)
-            is Image -> MarkdownImage(child, modifier)
+            is Image -> MarkdownImage(child.destination, child.title, modifier)
             is BulletList -> MarkdownBulletList(child, modifier)
             is OrderedList -> MarkdownOrderedList(child, modifier)
         }
