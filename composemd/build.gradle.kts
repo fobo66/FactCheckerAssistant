@@ -73,6 +73,7 @@ dependencies {
     debugImplementation(libs.compose.ui.testing.manifest)
     debugImplementation(libs.compose.ui.tooling)
     implementation(libs.coil)
+    implementation(libs.coil.network)
 
     detektPlugins(libs.detekt.rules.compose)
 
