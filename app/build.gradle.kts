@@ -5,7 +5,6 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.android.app)
-    kotlin("android")
     kotlin("plugin.serialization")
     kotlin("plugin.compose")
     alias(libs.plugins.hilt)
@@ -125,7 +124,6 @@ dependencies {
     implementation(project(":composemd"))
 
     implementation(libs.hilt.core)
-    ksp(libs.kotlin.metadata)
     ksp(libs.hilt.compiler)
 
     implementation(libs.ktorfit)

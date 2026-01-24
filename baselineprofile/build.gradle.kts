@@ -5,7 +5,6 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.android.test)
-    kotlin("android")
     alias(libs.plugins.baseline.profile)
     alias(libs.plugins.kotlinter)
 }

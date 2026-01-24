@@ -4,7 +4,6 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.android.library)
-    kotlin("android")
     kotlin("plugin.compose")
     alias(libs.plugins.detekt)
     alias(libs.plugins.kotlinter)
@@ -63,7 +62,6 @@ tasks.withType<Detekt> {
 }
 
 dependencies {
-    implementation(libs.kotlin.metadata)
     implementation(libs.commonmark)
     implementation(libs.androidx.tracing)
     implementation(platform(libs.compose.bom))
