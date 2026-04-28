@@ -6,13 +6,15 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import dev.fobo66.factcheckerassistant.util.LocaleProvider
 import dev.fobo66.factcheckerassistant.util.LocaleProviderImpl
+import dev.zacsweers.metro.AppScope
+import dev.zacsweers.metro.BindingContainer
+import dev.zacsweers.metro.ContributesTo
 import javax.inject.Singleton
 
-@Module
-@InstallIn(SingletonComponent::class)
+@ContributesTo(AppScope::class)
+@BindingContainer
 interface DataModule {
 
     @Binds
-    @Singleton
     fun bindLocaleProvider(localeProviderImpl: LocaleProviderImpl): LocaleProvider
 }
