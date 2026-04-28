@@ -33,6 +33,7 @@ ktor = "3.4.3"
 ktorfit = "2.7.3"
 leakCanary = "2.14"
 materialLegacy = "1.13.0"
+metro = "1.0.0"
 profileinstallerVersion = "1.4.1"
 timber = "5.0.1"
 truth = "1.4.5"
@@ -101,3 +102,4 @@ kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", versi
 kotlinter = { id = "org.jmailen.kotlinter", version.ref = "kotlinter" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 ktorfit = { id = "de.jensklingenberg.ktorfit", version.ref = "ktorfit" }
+metro = { id = "dev.zacsweers.metro", version.ref = "metro" }

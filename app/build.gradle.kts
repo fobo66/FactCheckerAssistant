@@ -15,6 +15,7 @@ plugins {
     alias(libs.plugins.junit)
     alias(libs.plugins.baseline.profile)
     alias(libs.plugins.kotlinter)
+    alias(libs.plugins.metro)
 }
 
 android {
