@@ -7,7 +7,6 @@ plugins {
     alias(libs.plugins.android.app)
     kotlin("plugin.serialization")
     kotlin("plugin.compose")
-    alias(libs.plugins.hilt)
     alias(libs.plugins.ksp)
     id("kotlin-parcelize")
     alias(libs.plugins.detekt)
@@ -123,11 +122,7 @@ dependencies {
     implementation(libs.androidx.navigation)
     implementation(libs.metro.android)
     implementation(libs.metro.viewmodel)
-    implementation(libs.hilt.navigation)
     implementation(project(":composemd"))
-
-    implementation(libs.hilt.core)
-    ksp(libs.hilt.compiler)
 
     implementation(libs.ktorfit)
     implementation(libs.ktor.cio)

@@ -7,7 +7,6 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import dagger.hilt.android.AndroidEntryPoint
 import dev.fobo66.factcheckerassistant.ui.theme.FactCheckerAssistantTheme
 import dev.zacsweers.metro.AppScope
 import dev.zacsweers.metro.ContributesIntoMap

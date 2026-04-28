@@ -2,11 +2,10 @@ package dev.fobo66.factcheckerassistant.util
 
 import android.content.Context
 import androidx.core.os.ConfigurationCompat
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dev.zacsweers.metro.AppScope
 import dev.zacsweers.metro.ContributesBinding
+import dev.zacsweers.metro.Inject
 import java.util.Locale
-import javax.inject.Inject
 
 interface LocaleProvider {
     val currentLocale: Locale
