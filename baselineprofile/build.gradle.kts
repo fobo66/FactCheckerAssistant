@@ -44,4 +44,5 @@ dependencies {
     implementation(libs.espresso.core)
     implementation(libs.androidx.test.uiautomator)
     implementation(libs.androidx.benchmark.macro)
+    detektPlugins(libs.detekt.rules.compose)
 }

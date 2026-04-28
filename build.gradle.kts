@@ -9,5 +9,6 @@ plugins {
     alias(libs.plugins.junit) apply false
     alias(libs.plugins.metro) apply false
     alias(libs.plugins.baseline.profile) apply false
+    alias(libs.plugins.detekt) apply false
     alias(libs.plugins.kotlinter) apply false
 }
