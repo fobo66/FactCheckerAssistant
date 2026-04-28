@@ -86,10 +86,6 @@ kotlin {
     }
 }
 
-ktorfit {
-    compilerPluginVersion = "2.3.3"
-}
-
 tasks.withType<Detekt> {
     jvmTarget = "17"
 }
