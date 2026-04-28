@@ -27,8 +27,8 @@ private const val SEARCH_DEBOUNCE = 300
 
 @ViewModelKey
 @ContributesIntoMap(AppScope::class)
-class MainViewModel @Inject constructor(private val factCheckRepository: FactCheckRepository) :
-    ViewModel() {
+@Inject
+class MainViewModel(private val factCheckRepository: FactCheckRepository) : ViewModel() {
 
     private val query = MutableStateFlow("")
     private val _selectedClaim: MutableStateFlow<Claim?> = MutableStateFlow(null)

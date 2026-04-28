@@ -7,7 +7,8 @@ import dev.fobo66.factcheckerassistant.api.models.Claim
 import dev.fobo66.factcheckerassistant.util.LocaleProvider
 import dev.zacsweers.metro.Inject
 
-class FactCheckRepository @Inject constructor(
+@Inject
+class FactCheckRepository(
     private val factCheckApi: FactCheckApi,
     private val localeProvider: LocaleProvider
 ) {

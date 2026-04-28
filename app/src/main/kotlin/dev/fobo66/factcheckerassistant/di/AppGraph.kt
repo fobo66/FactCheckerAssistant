@@ -8,7 +8,7 @@ import dev.zacsweers.metro.Provides
 import dev.zacsweers.metrox.android.MetroAppComponentProviders
 import dev.zacsweers.metrox.viewmodel.ViewModelGraph
 
-@DependencyGraph(AppScope::class)
+@DependencyGraph(scope = AppScope::class, bindingContainers = [ApiModule::class])
 interface AppGraph :
     MetroAppComponentProviders,
     ViewModelGraph {

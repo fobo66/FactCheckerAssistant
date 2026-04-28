@@ -12,7 +12,8 @@ interface LocaleProvider {
 }
 
 @ContributesBinding(AppScope::class)
-class LocaleProviderImpl @Inject constructor(private val context: Context) : LocaleProvider {
+@Inject
+class LocaleProviderImpl(private val context: Context) : LocaleProvider {
     override val currentLocale: Locale
         get() = ConfigurationCompat.getLocales(context.resources.configuration).get(0)
             ?: Locale.getDefault()
