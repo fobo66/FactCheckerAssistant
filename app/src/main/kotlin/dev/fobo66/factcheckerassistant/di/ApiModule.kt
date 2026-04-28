@@ -1,12 +1,12 @@
 package dev.fobo66.factcheckerassistant.di
 
-import dagger.Provides
 import de.jensklingenberg.ktorfit.Ktorfit
 import dev.fobo66.factcheckerassistant.api.FactCheckApi
 import dev.fobo66.factcheckerassistant.api.createFactCheckApi
 import dev.zacsweers.metro.AppScope
 import dev.zacsweers.metro.BindingContainer
 import dev.zacsweers.metro.ContributesTo
+import dev.zacsweers.metro.Provides
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation

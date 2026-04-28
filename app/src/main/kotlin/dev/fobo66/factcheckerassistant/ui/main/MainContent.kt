@@ -30,13 +30,14 @@ import dev.fobo66.factcheckerassistant.util.ROUTE_GUIDE
 import dev.fobo66.factcheckerassistant.util.ROUTE_SEARCH
 import dev.fobo66.factcheckerassistant.util.ROUTE_SEARCH_DETAILS
 import dev.fobo66.factcheckerassistant.util.Screen
+import dev.zacsweers.metrox.viewmodel.metroViewModel
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
 
 @Composable
 fun MainActivityContent(
     modifier: Modifier = Modifier,
-    mainViewModel: MainViewModel = hiltViewModel()
+    mainViewModel: MainViewModel = metroViewModel()
 ) {
     val navController = rememberNavController()
     val (query, onQueryChange) = rememberSaveable {

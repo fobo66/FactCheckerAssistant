@@ -4,45 +4,52 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asFlow
 import androidx.lifecycle.viewModelScope
-import androidx.paging.cachedIn
-import dagger.hilt.android.lifecycle.HiltViewModel
+import androidx.paging.PagingData
 import dev.fobo66.factcheckerassistant.api.models.Claim
 import dev.fobo66.factcheckerassistant.data.FactCheckRepository
-import javax.inject.Inject
+import dev.zacsweers.metro.AppScope
+import dev.zacsweers.metro.ContributesIntoMap
+import dev.zacsweers.metro.Inject
+import dev.zacsweers.metrox.viewmodel.ViewModelKey
 import kotlin.time.Duration.Companion.milliseconds
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.filterNot
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.update
 
-@HiltViewModel
+@ViewModelKey
+@ContributesIntoMap(AppScope::class)
 class MainViewModel @Inject constructor(
     private val factCheckRepository: FactCheckRepository,
     private val handle: SavedStateHandle
 ) : ViewModel() {
 
-    private val query = handle.getLiveData<String>(KEY_QUERY)
-        .asFlow()
-        .stateIn(viewModelScope, SharingStarted.Lazily, "")
+    private val query = MutableStateFlow("")
 
     @OptIn(FlowPreview::class, ExperimentalCoroutinesApi::class)
     val claims = query
-        .filterNot { it.isNullOrBlank() }
+        .filterNot { it.isBlank() }
         .debounce(SEARCH_DEBOUNCE.milliseconds)
         .flatMapLatest { query ->
             factCheckRepository.search(query, DEFAULT_PAGE_SIZE).flow
         }
-        .cachedIn(viewModelScope)
+        .stateIn(
+            viewModelScope,
+            SharingStarted.WhileSubscribed(5000),
+            initialValue = PagingData.empty()
+        )
 
     val selectedClaim = handle.getLiveData<Claim>(KEY_SELECTED_CLAIM)
         .asFlow()
         .stateIn(viewModelScope, SharingStarted.Lazily, null)
 
-    fun search(query: String?) {
-        handle.getLiveData<String>(KEY_QUERY).postValue(query)
+    fun search(query: String) {
+        this.query.update { query }
     }
 
     fun selectClaim(claim: Claim?) {

@@ -25,7 +25,7 @@ kaspresso = "1.6.1"
 kotlin = "2.3.21"
 kotlinter = "5.4.2"
 kotlinxCollections = "0.4.0"
-kotlinxCoroutines= "1.10.2"
+kotlinxCoroutines = "1.10.2"
 kotlinxDatetime = "0.7.1"
 kotlinxSerialization = "1.11.0"
 ksp = "2.3.7"
@@ -39,51 +39,53 @@ timber = "5.0.1"
 truth = "1.4.5"
 
 [libraries]
-androidx-activity = { module = "androidx.activity:activity-compose", version.ref = "androidxActivity"}
-androidx-benchmark-macro = { group = "androidx.benchmark", name = "benchmark-macro-junit4", version.ref = "androidxBenchmark"}
-androidx-core = { module = "androidx.core:core-ktx", version.ref = "androidxCore"}
-androidx-lifecycle-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidxLifecycle"}
-androidx-lifecycle-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "androidxLifecycle"}
-androidx-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidxNavigation"}
-androidx-navigation-test = { group = "androidx.navigation", name = "navigation-testing", version.ref = "androidxNavigation"}
-androidx-paging-compose = { group = "androidx.paging", name = "paging-compose", version.ref = "androidxPaging"}
-androidx-paging-common = { group = "androidx.paging", name = "paging-common", version.ref = "androidxPaging"}
-androidx-paging-runtime = { group = "androidx.paging", name = "paging-runtime-ktx", version.ref = "androidxPaging"}
-androidx-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "androidxSplashscreen"}
-androidx-test-junit = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "androidxTestJunit"}
-androidx-test-uiautomator = { group = "androidx.test.uiautomator", name = "uiautomator", version.ref = "androidxTestUiAutomator"}
-androidx-tracing = { module = "androidx.tracing:tracing", version.ref = "androidxTracing"}
-coil = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil"}
-coil-network = { group = "io.coil-kt.coil3", name = "coil-network-ktor3", version.ref = "coil"}
-commonmark = { module = "org.commonmark:commonmark", version.ref = "commonmark"}
-compose-bom = { module = "androidx.compose:compose-bom-alpha", version.ref = "composeBom"}
+androidx-activity = { module = "androidx.activity:activity-compose", version.ref = "androidxActivity" }
+androidx-benchmark-macro = { group = "androidx.benchmark", name = "benchmark-macro-junit4", version.ref = "androidxBenchmark" }
+androidx-core = { module = "androidx.core:core-ktx", version.ref = "androidxCore" }
+androidx-lifecycle-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidxLifecycle" }
+androidx-lifecycle-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "androidxLifecycle" }
+androidx-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidxNavigation" }
+androidx-navigation-test = { group = "androidx.navigation", name = "navigation-testing", version.ref = "androidxNavigation" }
+androidx-paging-compose = { group = "androidx.paging", name = "paging-compose", version.ref = "androidxPaging" }
+androidx-paging-common = { group = "androidx.paging", name = "paging-common", version.ref = "androidxPaging" }
+androidx-paging-runtime = { group = "androidx.paging", name = "paging-runtime-ktx", version.ref = "androidxPaging" }
+androidx-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "androidxSplashscreen" }
+androidx-test-junit = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "androidxTestJunit" }
+androidx-test-uiautomator = { group = "androidx.test.uiautomator", name = "uiautomator", version.ref = "androidxTestUiAutomator" }
+androidx-tracing = { module = "androidx.tracing:tracing", version.ref = "androidxTracing" }
+coil = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil" }
+coil-network = { group = "io.coil-kt.coil3", name = "coil-network-ktor3", version.ref = "coil" }
+commonmark = { module = "org.commonmark:commonmark", version.ref = "commonmark" }
+compose-bom = { module = "androidx.compose:compose-bom-alpha", version.ref = "composeBom" }
 compose-material = { group = "androidx.compose.material3", name = "material3" }
 compose-ui = { group = "androidx.compose.ui", name = "ui" }
 compose-ui-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 compose-ui-testing = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 compose-ui-testing-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
-detekt-rules-compose = { module = "io.nlopez.compose.rules:detekt", version.ref = "detektCompose"}
+detekt-rules-compose = { module = "io.nlopez.compose.rules:detekt", version.ref = "detektCompose" }
 dotenv-kotlin = { module = "io.github.cdimascio:dotenv-kotlin", version.ref = "dotenvKotlin" }
-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso"}
-hilt-navigation = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigation"}
-hilt-core = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt"}
-hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt"}
-junit-api = { group = "org.junit.jupiter", name = "junit-jupiter-api", version.ref = "junit"}
-junit-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version.ref = "junit"}
-kaspresso = { group = "com.kaspersky.android-components", name = "kaspresso", version.ref = "kaspresso"}
-kaspresso-compose = { group = "com.kaspersky.android-components", name = "kaspresso-compose-support", version.ref = "kaspresso"}
-kotlinx-collections = { group = "org.jetbrains.kotlinx", name = "kotlinx-collections-immutable", version.ref = "kotlinxCollections"}
-kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines"}
-kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinxCoroutines"}
-kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinxDatetime"}
-kotlinx-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerialization"}
-ktor-cio = { group = "io.ktor", name = "ktor-client-cio", version.ref = "ktor"}
-ktor-content = { group = "io.ktor", name = "ktor-client-content-negotiation", version.ref = "ktor"}
-ktor-json = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor"}
-ktorfit = { group = "de.jensklingenberg.ktorfit", name = "ktorfit-lib", version.ref = "ktorfit"}
-leakcanary = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakCanary"}
-material-legacy = { module = "com.google.android.material:material", version.ref = "materialLegacy"}
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso" }
+hilt-navigation = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigation" }
+hilt-core = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
+junit-api = { group = "org.junit.jupiter", name = "junit-jupiter-api", version.ref = "junit" }
+junit-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version.ref = "junit" }
+kaspresso = { group = "com.kaspersky.android-components", name = "kaspresso", version.ref = "kaspresso" }
+kaspresso-compose = { group = "com.kaspersky.android-components", name = "kaspresso-compose-support", version.ref = "kaspresso" }
+kotlinx-collections = { group = "org.jetbrains.kotlinx", name = "kotlinx-collections-immutable", version.ref = "kotlinxCollections" }
+kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
+kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinxDatetime" }
+kotlinx-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
+ktor-cio = { group = "io.ktor", name = "ktor-client-cio", version.ref = "ktor" }
+ktor-content = { group = "io.ktor", name = "ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-json = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor" }
+ktorfit = { group = "de.jensklingenberg.ktorfit", name = "ktorfit-lib", version.ref = "ktorfit" }
+leakcanary = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakCanary" }
+material-legacy = { module = "com.google.android.material:material", version.ref = "materialLegacy" }
+metro-android = { group = "dev.zacsweers.metro", name = "metrox-android", version.ref = "metro" }
+metro-viewmodel = { group = "dev.zacsweers.metro", name = "metrox-viewmodel-compose", version.ref = "metro" }
 profileinstaller = { module = "androidx.profileinstaller:profileinstaller", version.ref = "profileinstallerVersion" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 truth = { module = "com.google.truth:truth", version.ref = "truth" }

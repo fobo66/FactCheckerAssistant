@@ -121,6 +121,8 @@ dependencies {
     implementation(libs.androidx.paging.runtime)
     implementation(libs.androidx.paging.compose)
     implementation(libs.androidx.navigation)
+    implementation(libs.metro.android)
+    implementation(libs.metro.viewmodel)
     implementation(libs.hilt.navigation)
     implementation(project(":composemd"))
 
