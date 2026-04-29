@@ -6,6 +6,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     alias(libs.plugins.android.test)
     alias(libs.plugins.baseline.profile)
+    alias(libs.plugins.detekt)
     alias(libs.plugins.kotlinter)
 }
 
@@ -43,4 +44,5 @@ dependencies {
     implementation(libs.espresso.core)
     implementation(libs.androidx.test.uiautomator)
     implementation(libs.androidx.benchmark.macro)
+    detektPlugins(libs.detekt.rules.compose)
 }

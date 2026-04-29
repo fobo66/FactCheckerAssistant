@@ -7,7 +7,6 @@ plugins {
     alias(libs.plugins.android.app)
     kotlin("plugin.serialization")
     kotlin("plugin.compose")
-    alias(libs.plugins.hilt)
     alias(libs.plugins.ksp)
     id("kotlin-parcelize")
     alias(libs.plugins.detekt)
@@ -15,6 +14,7 @@ plugins {
     alias(libs.plugins.junit)
     alias(libs.plugins.baseline.profile)
     alias(libs.plugins.kotlinter)
+    alias(libs.plugins.metro)
 }
 
 android {
@@ -86,10 +86,6 @@ kotlin {
     }
 }
 
-ktorfit {
-    compilerPluginVersion = "2.3.3"
-}
-
 tasks.withType<Detekt> {
     jvmTarget = "17"
 }
@@ -120,11 +116,9 @@ dependencies {
     implementation(libs.androidx.paging.runtime)
     implementation(libs.androidx.paging.compose)
     implementation(libs.androidx.navigation)
-    implementation(libs.hilt.navigation)
+    implementation(libs.metro.android)
+    implementation(libs.metro.viewmodel)
     implementation(project(":composemd"))
-
-    implementation(libs.hilt.core)
-    ksp(libs.hilt.compiler)
 
     implementation(libs.ktorfit)
     implementation(libs.ktor.cio)
