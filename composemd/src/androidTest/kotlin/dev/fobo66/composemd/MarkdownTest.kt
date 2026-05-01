@@ -62,8 +62,10 @@ class MarkdownTest {
             )
         }
 
-        composeTestRule.onNode(hasContentDescription("Test image", substring = true))
-            .assertIsDisplayed()
+        composeTestRule.runWhenIdle {
+            composeTestRule.onNode(hasContentDescription("Test image", substring = true))
+                .assertIsDisplayed()
+        }
     }
 
     @Test
