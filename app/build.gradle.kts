@@ -35,7 +35,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "dev.fobo66.factcheckerassistant"
+        applicationId = "dev.fobo66.factchecker.assistant"
         minSdk = VersionCodes.R
         targetSdk = VersionCodes.BAKLAVA
         versionCode = 2
