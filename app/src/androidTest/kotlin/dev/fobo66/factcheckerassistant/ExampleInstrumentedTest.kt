@@ -17,6 +17,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("dev.fobo66.factcheckerassistant", appContext.packageName)
+        assertEquals("dev.fobo66.factchecker.assistant", appContext.packageName)
     }
 }
