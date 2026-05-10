@@ -10,7 +10,7 @@ plugins {
 }
 
 android {
-    compileSdk = VersionCodes.BAKLAVA
+    compileSdk = 37
 
     defaultConfig {
         minSdk = VersionCodes.R
