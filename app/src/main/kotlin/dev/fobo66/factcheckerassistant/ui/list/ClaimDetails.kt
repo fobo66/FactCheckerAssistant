@@ -29,12 +29,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewWrapper
 import androidx.compose.ui.unit.dp
 import dev.fobo66.factcheckerassistant.R
 import dev.fobo66.factcheckerassistant.api.models.Claim
 import dev.fobo66.factcheckerassistant.api.models.ClaimReview
 import dev.fobo66.factcheckerassistant.api.models.Publisher
-import dev.fobo66.factcheckerassistant.ui.theme.FactCheckerAssistantTheme
+import dev.fobo66.factcheckerassistant.ui.theme.ThemeWrapper
 import kotlin.time.Clock
 import kotlin.time.ExperimentalTime
 import kotlinx.collections.immutable.toImmutableList
@@ -141,55 +142,52 @@ fun ClaimReviewItem(claimReview: ClaimReview, modifier: Modifier = Modifier) {
 }
 
 @Preview(showBackground = true)
+@PreviewWrapper(wrapper = ThemeWrapper::class)
 @Composable
 private fun ClaimReviewItemPreview() {
-    FactCheckerAssistantTheme {
-        ClaimReviewItem(
-            claimReview = ClaimReview(
-                Publisher("test", "test.com"),
-                "url",
-                "test",
-                "test",
-                "test",
-                Locale.current.language
-            )
+    ClaimReviewItem(
+        claimReview = ClaimReview(
+            Publisher("test", "test.com"),
+            "url",
+            "test",
+            "test",
+            "test",
+            Locale.current.language
         )
-    }
+    )
 }
 
-@OptIn(ExperimentalTime::class)
 @Preview(showBackground = true)
+@PreviewWrapper(wrapper = ThemeWrapper::class)
 @Composable
 private fun ClaimDetailsPreview() {
-    FactCheckerAssistantTheme {
-        val claim by remember {
-            mutableStateOf(
-                Claim(
-                    "test",
-                    "tester",
-                    Clock.System.now(),
-                    listOf(
-                        ClaimReview(
-                            Publisher("test", "test.com"),
-                            "url",
-                            "test",
-                            "test",
-                            "test",
-                            Locale.current.language
-                        ),
-                        ClaimReview(
-                            Publisher("test", "test.com"),
-                            "url",
-                            "test",
-                            "test",
-                            "test",
-                            Locale.current.language
-                        )
+    val claim by remember {
+        mutableStateOf(
+            Claim(
+                "test",
+                "tester",
+                Clock.System.now(),
+                listOf(
+                    ClaimReview(
+                        Publisher("test", "test.com"),
+                        "url",
+                        "test",
+                        "test",
+                        "test",
+                        Locale.current.language
+                    ),
+                    ClaimReview(
+                        Publisher("test", "test.com"),
+                        "url",
+                        "test",
+                        "test",
+                        "test",
+                        Locale.current.language
                     )
                 )
             )
-        }
-
-        ClaimDetails(claim)
+        )
     }
+
+    ClaimDetails(claim)
 }

@@ -35,6 +35,7 @@ import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewWrapper
 import androidx.compose.ui.unit.dp
 import androidx.paging.LoadState
 import androidx.paging.PagingData
@@ -44,7 +45,7 @@ import androidx.paging.compose.itemContentType
 import androidx.paging.compose.itemKey
 import dev.fobo66.factcheckerassistant.R
 import dev.fobo66.factcheckerassistant.api.models.Claim
-import dev.fobo66.factcheckerassistant.ui.theme.FactCheckerAssistantTheme
+import dev.fobo66.factcheckerassistant.ui.theme.ThemeWrapper
 import kotlin.time.ExperimentalTime
 import kotlinx.coroutines.flow.MutableStateFlow
 
@@ -227,38 +228,36 @@ fun ClaimItem(
 }
 
 @Preview
+@PreviewWrapper(wrapper = ThemeWrapper::class)
 @Composable
 private fun ClaimItemPreview() {
-    FactCheckerAssistantTheme {
-        ClaimItem(
-            claimant = "test",
-            claimDate = "just now",
-            claimTitle = "test",
-            onItemClick = {}
-        )
-    }
+    ClaimItem(
+        claimant = "test",
+        claimDate = "just now",
+        claimTitle = "test",
+        onItemClick = {}
+    )
 }
 
 @OptIn(ExperimentalTime::class)
 @Preview
+@PreviewWrapper(wrapper = ThemeWrapper::class)
 @Composable
 private fun ClaimSearchPreview() {
-    FactCheckerAssistantTheme {
-        val pagingData = remember {
-            PagingData.from(
-                listOf(
-                    Claim(text = "test", claimant = "test")
-                )
+    val pagingData = remember {
+        PagingData.from(
+            listOf(
+                Claim(text = "test", claimant = "test")
             )
-        }
-        val claims = MutableStateFlow(pagingData).collectAsLazyPagingItems()
-
-        ClaimsSearch(
-            query = "test",
-            claims = claims,
-            onSearch = {},
-            onSearchResultClick = {},
-            onQueryChange = {}
         )
     }
+    val claims = MutableStateFlow(pagingData).collectAsLazyPagingItems()
+
+    ClaimsSearch(
+        query = "test",
+        claims = claims,
+        onSearch = {},
+        onSearchResultClick = {},
+        onQueryChange = {}
+    )
 }

@@ -12,6 +12,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.tooling.preview.PreviewWrapper
+import androidx.compose.ui.tooling.preview.PreviewWrapperProvider
 import androidx.core.view.WindowCompat
 
 private val lightScheme = lightColorScheme(
@@ -119,4 +121,11 @@ fun FactCheckerAssistantTheme(
         typography = Typography,
         content = content
     )
+}
+
+class ThemeWrapper : PreviewWrapperProvider {
+    @Composable
+    override fun Wrap(content: @Composable (() -> Unit)) {
+        FactCheckerAssistantTheme(content = content)
+    }
 }
