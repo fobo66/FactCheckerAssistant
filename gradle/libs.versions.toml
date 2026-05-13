@@ -30,7 +30,6 @@ ksp = "2.3.7"
 ktor = "3.4.3"
 ktorfit = "2.7.3"
 leakCanary = "2.14"
-materialLegacy = "1.13.0"
 metro = "1.0.0"
 profileinstallerVersion = "1.4.1"
 timber = "5.0.1"
@@ -78,7 +77,6 @@ ktor-content = { group = "io.ktor", name = "ktor-client-content-negotiation", ve
 ktor-json = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor" }
 ktorfit = { group = "de.jensklingenberg.ktorfit", name = "ktorfit-lib", version.ref = "ktorfit" }
 leakcanary = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakCanary" }
-material-legacy = { module = "com.google.android.material:material", version.ref = "materialLegacy" }
 metro-android = { group = "dev.zacsweers.metro", name = "metrox-android", version.ref = "metro" }
 metro-viewmodel = { group = "dev.zacsweers.metro", name = "metrox-viewmodel-compose", version.ref = "metro" }
 profileinstaller = { module = "androidx.profileinstaller:profileinstaller", version.ref = "profileinstallerVersion" }

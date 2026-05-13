@@ -95,7 +95,6 @@ dependencies {
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.collections)
     implementation(libs.androidx.core)
-    implementation(libs.material.legacy)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.lifecycle.viewmodel)
     implementation(libs.androidx.lifecycle.compose)
