@@ -73,11 +73,11 @@ class MarkdownTest {
         composeTestRule.setContent {
             MarkdownDocument(
                 input = """
-Block of text
-
-    Block of code
-
-"""
+                Block of text
+                
+                    Block of code
+                
+                """
             )
         }
 
