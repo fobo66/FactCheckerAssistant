@@ -7,6 +7,7 @@ import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.v2.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
+import kotlinx.coroutines.test.runTest
 import org.junit.Rule
 import org.junit.Test
 
@@ -53,7 +54,7 @@ class MarkdownTest {
     }
 
     @Test
-    fun markdownImage() {
+    fun markdownImage() = runTest {
         composeTestRule.setContent {
             MarkdownDocument(
                 input = """
@@ -62,10 +63,10 @@ class MarkdownTest {
             )
         }
 
-        composeTestRule.runOnIdle {
-            composeTestRule.onNode(hasContentDescription("Test image", substring = true))
-                .assertIsDisplayed()
-        }
+        composeTestRule.awaitIdle()
+
+        composeTestRule.onNode(hasContentDescription("Test image", substring = true))
+            .assertIsDisplayed()
     }
 
     @Test

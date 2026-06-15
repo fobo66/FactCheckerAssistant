@@ -21,6 +21,8 @@ fun MarkdownImage(imageDestination: String, imageTitle: String?, modifier: Modif
                     .crossfade(true)
                     .build(),
             placeholder = painterResource(R.drawable.broken_image),
+            fallback = painterResource(R.drawable.broken_image),
+            error = painterResource(R.drawable.broken_image),
             contentDescription = imageTitle
         )
     }
