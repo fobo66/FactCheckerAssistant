@@ -207,18 +207,18 @@ fun ClaimItem(
         onClick = onItemClick
     ) {
         ListItem(
-            headlineContent = {
-                Text(
-                    style = MaterialTheme.typography.titleMedium,
-                    text = claimant ?: stringResource(id = R.string.claim_unknown_claimant)
-                )
-            },
             supportingContent = {
                 Text(
                     text = claimDate
                 )
             }
-        )
+        ) {
+            Text(
+                style = MaterialTheme.typography.titleMedium,
+                text = claimant ?: stringResource(id = R.string.claim_unknown_claimant)
+            )
+        }
+
         Text(
             text = claimTitle.orEmpty(),
             style = MaterialTheme.typography.bodyLarge,

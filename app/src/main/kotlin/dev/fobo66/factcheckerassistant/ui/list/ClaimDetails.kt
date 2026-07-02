@@ -37,7 +37,6 @@ import dev.fobo66.factcheckerassistant.api.models.ClaimReview
 import dev.fobo66.factcheckerassistant.api.models.Publisher
 import dev.fobo66.factcheckerassistant.ui.theme.ThemeWrapper
 import kotlin.time.Clock
-import kotlin.time.ExperimentalTime
 import kotlinx.collections.immutable.toImmutableList
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -110,17 +109,16 @@ fun ClaimReviewItem(claimReview: ClaimReview, modifier: Modifier = Modifier) {
                     }
                 }
             },
-            headlineContent = {
-                Text(
-                    text = claimReview.title.orEmpty()
-                )
-            },
             supportingContent = {
                 Text(
                     text = claimReview.publisher.name.orEmpty()
                 )
             }
-        )
+        ) {
+            Text(
+                text = claimReview.title.orEmpty()
+            )
+        }
         Text(
             text = stringResource(
                 id = R.string.claim_rating,
