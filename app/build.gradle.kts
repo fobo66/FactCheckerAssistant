@@ -91,24 +91,24 @@ tasks.withType<Detekt> {
 }
 
 dependencies {
-    implementation(fileTree("dir" to "libs", "include" to listOf("*.jar")))
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.collections)
     implementation(libs.androidx.core)
+    implementation(libs.androidx.concurrent.futures)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.lifecycle.viewmodel)
     implementation(libs.androidx.lifecycle.compose)
-    implementation(libs.androidx.paging.compose)
     implementation(libs.androidx.splashscreen)
     implementation(libs.androidx.tracing)
 
-    implementation(platform(libs.compose.bom))
+    platform(libs.compose.bom)
+        .also(::implementation)
+        .also(::androidTestImplementation)
     implementation(libs.compose.ui)
     implementation(libs.compose.material)
     implementation(libs.compose.ui.preview)
     implementation(libs.profileinstaller)
     androidTestImplementation(libs.compose.ui.testing)
-    androidTestImplementation(platform(libs.compose.bom))
     baselineProfile(project(":baselineprofile"))
     debugImplementation(libs.compose.ui.testing.manifest)
     debugImplementation(libs.compose.ui.tooling)
@@ -138,7 +138,6 @@ dependencies {
     testImplementation(libs.androidx.paging.common)
     androidTestImplementation(libs.androidx.navigation.test)
     androidTestImplementation(libs.androidx.test.junit)
-    androidTestImplementation(libs.espresso.core)
     androidTestImplementation(libs.kaspresso)
     androidTestImplementation(libs.kaspresso.compose)
 }

@@ -41,7 +41,6 @@ tasks.withType<Detekt> {
 
 dependencies {
     implementation(libs.androidx.test.junit)
-    implementation(libs.espresso.core)
     implementation(libs.androidx.test.uiautomator)
     implementation(libs.androidx.benchmark.macro)
     detektPlugins(libs.detekt.rules.compose)
