@@ -12,26 +12,22 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
-import androidx.compose.material3.DockedSearchBar
+import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.material3.ElevatedCard
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.SearchBar
 import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.Text
+import androidx.compose.material3.rememberSearchBarState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -51,17 +47,13 @@ import kotlinx.coroutines.flow.MutableStateFlow
 
 @Composable
 fun ClaimsSearch(
-    query: String,
     claims: LazyPagingItems<Claim>,
-    onQueryChange: (String) -> Unit,
     onSearch: (String) -> Unit,
     onSearchResultClick: (Claim?) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(modifier = modifier) {
         ClaimsSearchBar(
-            query = query,
-            onQueryChange = onQueryChange,
             onSearch = onSearch,
             modifier = Modifier.align(Alignment.CenterHorizontally)
         )
@@ -137,33 +129,20 @@ private fun LazyListScope.claimsListFooter(items: LazyPagingItems<Claim>) {
 }
 
 @Composable
-@OptIn(ExperimentalMaterial3Api::class)
 private fun ClaimsSearchBar(
-    query: String,
-    onQueryChange: (String) -> Unit,
     onSearch: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val focusManager = LocalFocusManager.current
-    var isActive by rememberSaveable {
-        mutableStateOf(false)
-    }
-    DockedSearchBar(
+    val queryState = rememberTextFieldState()
+    val searchBarState = rememberSearchBarState()
+    SearchBar(
+        state = searchBarState,
         inputField = {
             SearchBarDefaults.InputField(
-                query = query,
-                onQueryChange = onQueryChange,
+                textFieldState = queryState,
+                searchBarState = searchBarState,
                 onSearch = {
-                    onSearch(it)
-                    focusManager.clearFocus()
-                    isActive = false
-                },
-                expanded = isActive,
-                onExpandedChange = {
-                    isActive = it
-                    if (!isActive) {
-                        focusManager.clearFocus()
-                    }
+                    onSearch(queryState.text.toString())
                 },
                 placeholder = {
                     Text(text = stringResource(id = R.string.search_placeholder))
@@ -176,20 +155,8 @@ private fun ClaimsSearchBar(
                 }
             )
         },
-        expanded = isActive,
-        onExpandedChange = {
-            isActive = it
-            if (!isActive) {
-                focusManager.clearFocus()
-            }
-        },
         modifier = modifier
-    ) {
-        Text(
-            text = stringResource(id = R.string.search_suggestion),
-            modifier = Modifier.padding(horizontal = 16.dp)
-        )
-    }
+    )
 }
 
 @Composable
@@ -253,10 +220,8 @@ private fun ClaimSearchPreview() {
     val claims = MutableStateFlow(pagingData).collectAsLazyPagingItems()
 
     ClaimsSearch(
-        query = "test",
         claims = claims,
         onSearch = {},
-        onSearchResultClick = {},
-        onQueryChange = {}
+        onSearchResultClick = {}
     )
 }

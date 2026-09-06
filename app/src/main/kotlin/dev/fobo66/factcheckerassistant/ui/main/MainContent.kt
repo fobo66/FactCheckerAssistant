@@ -46,7 +46,6 @@ fun MainActivityContent(
     Scaffold(
         bottomBar = {
             val navBackStackEntry by navController.currentBackStackEntryAsState()
-            val currentRoute = navBackStackEntry?.destination?.route
             val bottomBarItems = remember {
                 persistentListOf(
                     Screen.Search,
@@ -54,7 +53,7 @@ fun MainActivityContent(
                 )
             }
             BottomNavBar(
-                currentRoute = currentRoute,
+                currentRoute = navBackStackEntry?.destination?.route,
                 bottomBarItems = bottomBarItems,
                 onItemClick = {
                     navController.navigateToScreen(it)
@@ -72,8 +71,6 @@ fun MainActivityContent(
                 val claims = mainViewModel.claims.collectAsLazyPagingItems()
 
                 ClaimsSearch(
-                    query = query,
-                    onQueryChange = onQueryChange,
                     onSearch = {
                         mainViewModel.search(it)
                     },

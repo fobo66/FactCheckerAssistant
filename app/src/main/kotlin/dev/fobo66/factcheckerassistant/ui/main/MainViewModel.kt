@@ -3,6 +3,7 @@ package dev.fobo66.factcheckerassistant.ui.main
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import dev.fobo66.factcheckerassistant.api.models.Claim
 import dev.fobo66.factcheckerassistant.data.FactCheckRepository
 import dev.zacsweers.metro.AppScope
@@ -40,6 +41,7 @@ class MainViewModel(private val factCheckRepository: FactCheckRepository) : View
         .flatMapLatest { query ->
             factCheckRepository.search(query, DEFAULT_PAGE_SIZE).flow
         }
+        .cachedIn(viewModelScope)
         .stateIn(
             viewModelScope,
             SharingStarted.WhileSubscribed(STATE_FLOW_TIMEOUT),
