@@ -49,7 +49,6 @@ import dev.fobo66.factcheckerassistant.ui.theme.ThemeWrapper
 import kotlin.time.ExperimentalTime
 import kotlinx.coroutines.flow.MutableStateFlow
 
-@OptIn(ExperimentalTime::class)
 @Composable
 fun ClaimsSearch(
     query: String,

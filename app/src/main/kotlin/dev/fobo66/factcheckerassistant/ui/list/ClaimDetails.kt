@@ -39,7 +39,6 @@ import dev.fobo66.factcheckerassistant.ui.theme.ThemeWrapper
 import kotlin.time.Clock
 import kotlinx.collections.immutable.toImmutableList
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun ClaimDetails(claim: Claim?, modifier: Modifier = Modifier) {
     Crossfade(
