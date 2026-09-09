@@ -129,10 +129,7 @@ private fun LazyListScope.claimsListFooter(items: LazyPagingItems<Claim>) {
 }
 
 @Composable
-private fun ClaimsSearchBar(
-    onSearch: (String) -> Unit,
-    modifier: Modifier = Modifier
-) {
+private fun ClaimsSearchBar(onSearch: (String) -> Unit, modifier: Modifier = Modifier) {
     val queryState = rememberTextFieldState()
     val searchBarState = rememberSearchBarState()
     SearchBar(
