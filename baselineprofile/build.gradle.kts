@@ -12,18 +12,26 @@ plugins {
 
 android {
     namespace = "dev.fobo66.baselineprofile"
-    compileSdk = 37
+    compileSdk {
+        version = release(VersionCodes.CINNAMON_BUN) {
+            minorApiLevel = 1
+        }
+    }
+
+    defaultConfig {
+        minSdk {
+            version = release(VersionCodes.R)
+        }
+        targetSdk {
+            version = release(VersionCodes.CINNAMON_BUN)
+        }
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
-    }
-
-    defaultConfig {
-        minSdk = VersionCodes.R
-        targetSdk = 37
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     targetProjectPath = ":app"

@@ -10,10 +10,16 @@ plugins {
 }
 
 android {
-    compileSdk = 37
+    compileSdk {
+        version = release(VersionCodes.CINNAMON_BUN) {
+            minorApiLevel = 1
+        }
+    }
 
     defaultConfig {
-        minSdk = VersionCodes.R
+        minSdk {
+            version = release(VersionCodes.R)
+        }
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")

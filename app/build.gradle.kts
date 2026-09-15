@@ -1,6 +1,5 @@
 import com.android.sdklib.AndroidVersion.VersionCodes
 import dev.detekt.gradle.Detekt
-import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -18,7 +17,11 @@ plugins {
 }
 
 android {
-    compileSdk = 37
+    compileSdk {
+        version = release(VersionCodes.CINNAMON_BUN) {
+            minorApiLevel = 1
+        }
+    }
 
     signingConfigs {
         register("releaseSignConfig") {
@@ -36,8 +39,12 @@ android {
 
     defaultConfig {
         applicationId = "dev.fobo66.factchecker.assistant"
-        minSdk = VersionCodes.R
-        targetSdk = 37
+        minSdk {
+            version = release(VersionCodes.R)
+        }
+        targetSdk {
+            version = release(VersionCodes.CINNAMON_BUN)
+        }
         versionCode = 2
         versionName = "1.0.1"
 
