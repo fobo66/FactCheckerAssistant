@@ -127,9 +127,12 @@ dependencies {
     implementation(project(":composemd"))
 
     implementation(libs.ktorfit)
-    implementation(libs.ktor.cio)
     implementation(libs.ktor.content)
+    implementation(libs.ktor.engine)
     implementation(libs.ktor.json)
+    implementation(libs.okhttp)
+    implementation(libs.okhttp.brotli)
+    implementation(libs.okhttp.zstd)
     implementation(libs.kotlinx.serialization)
     implementation(libs.kotlinx.datetime)
 
