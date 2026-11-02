@@ -1,6 +1,7 @@
 package dev.fobo66.factcheckerassistant.ui.guide
 
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
@@ -18,6 +19,7 @@ fun FactCheckGuide(modifier: Modifier = Modifier) {
         R.raw.guide,
         modifier = modifier
             .padding(horizontal = 16.dp, vertical = 8.dp)
+            .statusBarsPadding()
             .verticalScroll(rememberScrollState())
     )
 }

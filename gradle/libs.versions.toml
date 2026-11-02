@@ -57,6 +57,7 @@ coil-network = { group = "io.coil-kt.coil3", name = "coil-network-ktor3", versio
 commonmark = { module = "org.commonmark:commonmark", version.ref = "commonmark" }
 compose-bom = { module = "androidx.compose:compose-bom-alpha", version.ref = "composeBom" }
 compose-material = { group = "androidx.compose.material3", name = "material3" }
+compose-material-adaptive-navigation-suite = { group = "androidx.compose.material3", name = "material3-adaptive-navigation-suite" }
 compose-ui = { group = "androidx.compose.ui", name = "ui" }
 compose-ui-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 compose-ui-testing = { group = "androidx.compose.ui", name = "ui-test-junit4" }

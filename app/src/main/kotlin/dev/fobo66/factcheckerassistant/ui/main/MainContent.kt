@@ -1,16 +1,13 @@
 package dev.fobo66.factcheckerassistant.ui.main
 
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material3.Icon
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteItem
+import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -30,7 +27,6 @@ import dev.fobo66.factcheckerassistant.util.ROUTE_SEARCH
 import dev.fobo66.factcheckerassistant.util.ROUTE_SEARCH_DETAILS
 import dev.fobo66.factcheckerassistant.util.Screen
 import dev.zacsweers.metrox.viewmodel.metroViewModel
-import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
 
 @Composable
@@ -40,29 +36,37 @@ fun MainActivityContent(
 ) {
     val navController = rememberNavController()
 
-    Scaffold(
-        bottomBar = {
-            val navBackStackEntry by navController.currentBackStackEntryAsState()
-            val bottomBarItems = remember {
-                persistentListOf(
-                    Screen.Search,
-                    Screen.Guide
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val bottomBarItems = remember {
+        persistentListOf(
+            Screen.Search,
+            Screen.Guide
+        )
+    }
+
+    NavigationSuiteScaffold(
+        navigationItems = {
+            bottomBarItems.forEach { screen ->
+                NavigationSuiteItem(
+                    icon = {
+                        Icon(
+                            painterResource(screen.icon),
+                            contentDescription = null
+                        )
+                    },
+                    label = { Text(stringResource(screen.resourceId)) },
+                    selected = screen.route == navBackStackEntry?.destination?.route,
+                    onClick = {
+                        navController.navigateToScreen(screen)
+                    }
                 )
             }
-            BottomNavBar(
-                currentRoute = navBackStackEntry?.destination?.route,
-                bottomBarItems = bottomBarItems,
-                onItemClick = {
-                    navController.navigateToScreen(it)
-                }
-            )
         },
         modifier = modifier
-    ) { innerPadding ->
+    ) {
         NavHost(
             navController,
-            startDestination = ROUTE_SEARCH,
-            modifier = Modifier.padding(innerPadding)
+            startDestination = ROUTE_SEARCH
         ) {
             composable(ROUTE_SEARCH) {
                 val claims = mainViewModel.claims.collectAsLazyPagingItems()
@@ -96,33 +100,5 @@ private fun NavController.navigateToScreen(screen: Screen) {
         }
         launchSingleTop = true
         restoreState = true
-    }
-}
-
-@Composable
-fun BottomNavBar(
-    currentRoute: String?,
-    bottomBarItems: ImmutableList<Screen>,
-    onItemClick: (Screen) -> Unit,
-    modifier: Modifier = Modifier
-) {
-    NavigationBar(
-        modifier = modifier
-    ) {
-        bottomBarItems.forEach { screen ->
-            NavigationBarItem(
-                icon = {
-                    Icon(
-                        painterResource(screen.icon),
-                        contentDescription = null
-                    )
-                },
-                label = { Text(stringResource(screen.resourceId)) },
-                selected = screen.route == currentRoute,
-                onClick = {
-                    onItemClick(screen)
-                }
-            )
-        }
     }
 }

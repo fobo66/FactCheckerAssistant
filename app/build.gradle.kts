@@ -113,6 +113,7 @@ dependencies {
         .also(::androidTestImplementation)
     implementation(libs.compose.ui)
     implementation(libs.compose.material)
+    implementation(libs.compose.material.adaptive.navigation.suite)
     implementation(libs.compose.ui.preview)
     implementation(libs.profileinstaller)
     androidTestImplementation(libs.compose.ui.testing)
