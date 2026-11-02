@@ -39,9 +39,6 @@ fun MainActivityContent(
     mainViewModel: MainViewModel = metroViewModel()
 ) {
     val navController = rememberNavController()
-    val (query, onQueryChange) = rememberSaveable {
-        mutableStateOf("")
-    }
 
     Scaffold(
         bottomBar = {

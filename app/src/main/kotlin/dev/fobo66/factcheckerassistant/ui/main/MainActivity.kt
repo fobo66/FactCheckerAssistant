@@ -4,9 +4,9 @@ import android.app.Activity
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.core.view.WindowCompat
 import dev.fobo66.factcheckerassistant.ui.theme.FactCheckerAssistantTheme
 import dev.zacsweers.metro.AppScope
 import dev.zacsweers.metro.ContributesIntoMap
@@ -24,7 +24,7 @@ class MainActivity(private val metroViewModelFactory: MetroViewModelFactory) : C
         installSplashScreen()
         super.onCreate(savedInstanceState)
 
-        enableEdgeToEdge()
+        WindowCompat.enableEdgeToEdge(window)
 
         setContent {
             FactCheckerAssistantTheme {
