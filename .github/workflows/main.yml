@@ -56,13 +56,13 @@ jobs:
           path: |
             ~/.android/avd/*
             ~/.android/adb*
-          key: avd-37
+          key: avd-35
       - name: create AVD and generate snapshot for caching
         if: steps.avd-cache.outputs.cache-hit != 'true'
         uses: reactivecircus/android-emulator-runner@v2.38.0
         with:
-          api-level: 37.2
-          target: google_apis_playstore_ps16k
+          api-level: 35
+          target: google_apis
           arch: x86_64
           force-avd-creation: false
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-metrics
@@ -73,8 +73,8 @@ jobs:
         with:
           script: ./gradlew connectedDebugAndroidTest
           arch: x86_64
-          target: google_apis_playstore_ps16k
+          target: google_apis
           force-avd-creation: false
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-metrics
           disable-animations: true
-          api-level: 37.2
+          api-level: 35
