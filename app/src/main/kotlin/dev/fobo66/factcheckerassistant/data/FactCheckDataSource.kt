@@ -27,7 +27,7 @@ class FactCheckDataSource(
         )
         Timber.d("Loading claims finished")
         nextPageToken = result.nextPageToken
-        LoadResult.Page(result.claims ?: listOf(), null, nextPageToken)
+        LoadResult.Page(result.claims.orEmpty(), null, nextPageToken)
     } catch (e: ResponseException) {
         Timber.e(e, "Error occurred during loading claims for query %s", query)
         LoadResult.Error(e)

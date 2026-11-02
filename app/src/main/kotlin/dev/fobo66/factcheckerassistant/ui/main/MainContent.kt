@@ -72,12 +72,12 @@ fun MainActivityContent(
                 val claims = mainViewModel.claims.collectAsLazyPagingItems()
 
                 ClaimsSearch(
-                    onSearch = {
-                        mainViewModel.search(it)
+                    onSearch = { query ->
+                        mainViewModel.search(query)
                     },
                     claims = claims,
-                    onSearchResultClick = {
-                        mainViewModel.selectClaim(it)
+                    onSearchResultClick = { claim ->
+                        mainViewModel.selectClaim(claim)
                         navController.navigate(ROUTE_SEARCH_DETAILS)
                     }
                 )

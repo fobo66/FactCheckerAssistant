@@ -48,6 +48,7 @@ tasks.withType<Detekt> {
 }
 
 dependencies {
+    implementation(libs.androidx.test.runner)
     implementation(libs.androidx.test.junit)
     implementation(libs.androidx.test.uiautomator)
     implementation(libs.androidx.benchmark.macro)

@@ -204,7 +204,6 @@ private fun ClaimItemPreview() {
     )
 }
 
-@OptIn(ExperimentalTime::class)
 @Preview
 @PreviewWrapper(wrapper = ThemeWrapper::class)
 @Composable
