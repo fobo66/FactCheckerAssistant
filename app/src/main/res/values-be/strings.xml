@@ -11,11 +11,12 @@
     <string name="claims_empty_result">Няма заяў</string>
     <string name="claim_reviews_empty">Няма аглядаў</string>
     <string name="app_name">Дапаможнік з праверкай фактаў</string>
-    <string name="fact_check_guide_title">Як правераць заявы ў інтэрнэце?</string>
+    <string name="fact_check_guide_title">Як правяраць заявы ў інтэрнэце?</string>
     <string name="main_fragment_title">Пошук</string>
     <string name="search_hint">Шукаць заявы</string>
     <string name="search_icon_description">Пошук</string>
     <string name="search_placeholder">Шукаць</string>
     <string name="guide_fragment_title">Даведкі</string>
     <string name="claims_indicator">Шукайце па заявах, каб убачыць агляды на іх</string>
+    <string name="select_claim">Выберыце заяву</string>
 </resources>

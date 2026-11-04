@@ -1,8 +1,12 @@
 package dev.fobo66.factcheckerassistant.ui.main
 
-import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
+import androidx.compose.material3.adaptive.ExperimentalMaterial3AdaptiveApi
+import androidx.compose.material3.adaptive.navigation3.ListDetailSceneStrategy
+import androidx.compose.material3.adaptive.navigation3.rememberListDetailSceneStrategy
 import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteItem
 import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffold
 import androidx.compose.runtime.Composable
@@ -12,37 +16,37 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.navigation.NavController
-import androidx.navigation.NavGraph.Companion.findStartDestination
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.currentBackStackEntryAsState
-import androidx.navigation.compose.rememberNavController
+import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
+import androidx.navigation3.runtime.entryProvider
+import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
+import androidx.navigation3.ui.NavDisplay
 import androidx.paging.compose.collectAsLazyPagingItems
+import dev.fobo66.factcheckerassistant.R
+import dev.fobo66.factcheckerassistant.nav.BottomNavItem
+import dev.fobo66.factcheckerassistant.nav.Screen
+import dev.fobo66.factcheckerassistant.nav.rememberBackStack
 import dev.fobo66.factcheckerassistant.ui.guide.FactCheckGuide
 import dev.fobo66.factcheckerassistant.ui.list.ClaimDetails
 import dev.fobo66.factcheckerassistant.ui.list.ClaimsSearch
-import dev.fobo66.factcheckerassistant.util.ROUTE_GUIDE
-import dev.fobo66.factcheckerassistant.util.ROUTE_SEARCH
-import dev.fobo66.factcheckerassistant.util.ROUTE_SEARCH_DETAILS
-import dev.fobo66.factcheckerassistant.util.Screen
 import dev.zacsweers.metrox.viewmodel.metroViewModel
 import kotlinx.collections.immutable.persistentListOf
 
+@OptIn(ExperimentalMaterial3AdaptiveApi::class)
 @Composable
 fun MainActivityContent(
     modifier: Modifier = Modifier,
     mainViewModel: MainViewModel = metroViewModel()
 ) {
-    val navController = rememberNavController()
+    val backStack = rememberBackStack(Screen.Search)
 
-    val navBackStackEntry by navController.currentBackStackEntryAsState()
     val bottomBarItems = remember {
         persistentListOf(
-            Screen.Search,
-            Screen.Guide
+            BottomNavItem.Search,
+            BottomNavItem.Guide
         )
     }
+
+    val listDetailStrategy = rememberListDetailSceneStrategy<Screen>()
 
     NavigationSuiteScaffold(
         navigationItems = {
@@ -55,50 +59,57 @@ fun MainActivityContent(
                         )
                     },
                     label = { Text(stringResource(screen.resourceId)) },
-                    selected = screen.route == navBackStackEntry?.destination?.route,
+                    selected = screen.route == backStack.lastOrNull(),
                     onClick = {
-                        navController.navigateToScreen(screen)
+                        backStack.add(screen.route)
                     }
                 )
             }
         },
         modifier = modifier
     ) {
-        NavHost(
-            navController,
-            startDestination = ROUTE_SEARCH
-        ) {
-            composable(ROUTE_SEARCH) {
-                val claims = mainViewModel.claims.collectAsLazyPagingItems()
-
-                ClaimsSearch(
-                    onSearch = { query ->
-                        mainViewModel.search(query)
-                    },
-                    claims = claims,
-                    onSearchResultClick = { claim ->
-                        mainViewModel.selectClaim(claim)
-                        navController.navigate(ROUTE_SEARCH_DETAILS)
+        NavDisplay(
+            backStack = backStack,
+            entryDecorators = listOf(
+                rememberSaveableStateHolderNavEntryDecorator(),
+                rememberViewModelStoreNavEntryDecorator()
+            ),
+            sceneStrategies = listOf(listDetailStrategy),
+            entryProvider = entryProvider {
+                entry<Screen.Search>(
+                    metadata = ListDetailSceneStrategy.listPane {
+                        Box(modifier = Modifier.fillMaxSize()) {
+                            Text(stringResource(R.string.select_claim))
+                        }
                     }
-                )
-            }
-            composable(ROUTE_SEARCH_DETAILS) {
-                val claim by mainViewModel.selectedClaim.collectAsStateWithLifecycle()
-                ClaimDetails(claim)
-            }
-            composable(ROUTE_GUIDE) {
-                FactCheckGuide()
-            }
-        }
-    }
-}
+                ) {
+                    val claims = mainViewModel.claims.collectAsLazyPagingItems()
 
-private fun NavController.navigateToScreen(screen: Screen) {
-    navigate(screen.route) {
-        popUpTo(graph.findStartDestination().id) {
-            saveState = true
-        }
-        launchSingleTop = true
-        restoreState = true
+                    ClaimsSearch(
+                        onSearch = { query ->
+                            mainViewModel.search(query)
+                        },
+                        claims = claims,
+                        onSearchResultClick = { claim ->
+                            mainViewModel.selectClaim(claim)
+                            backStack.add(
+                                Screen.SearchResult
+                            )
+                        }
+                    )
+                }
+                entry<Screen.SearchResult>(
+                    metadata = ListDetailSceneStrategy.detailPane()
+                ) {
+                    val claim by mainViewModel.selectedClaim.collectAsStateWithLifecycle()
+                    ClaimDetails(claim)
+                }
+                entry<Screen.Guide>(
+                    metadata = ListDetailSceneStrategy.detailPane()
+                ) {
+                    FactCheckGuide()
+                }
+            }
+        )
     }
 }
