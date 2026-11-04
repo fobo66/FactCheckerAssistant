@@ -4,8 +4,6 @@ import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -18,6 +16,7 @@ import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -27,7 +26,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLocale
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewWrapper
 import androidx.compose.ui.unit.dp
@@ -47,38 +45,36 @@ fun ClaimDetails(claim: Claim?, modifier: Modifier = Modifier) {
         modifier = modifier
     ) {
         if (it.isNullOrEmpty()) {
-            Text(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(8.dp),
-                textAlign = TextAlign.Center,
-                text = stringResource(id = R.string.claim_reviews_empty)
+            ClaimDetailsPlaceholder(
+                message = stringResource(R.string.claim_reviews_empty),
+                modifier = Modifier.fillMaxSize()
             )
         } else {
             LazyColumn(
-                contentPadding = PaddingValues(vertical = 8.dp, horizontal = 16.dp)
+                verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 stickyHeader {
-                    Column(
-                        verticalArrangement = Arrangement.spacedBy(8.dp),
-                        modifier = Modifier
-                            .padding(vertical = 16.dp)
-                            .statusBarsPadding()
-                    ) {
-                        Text(
-                            text = claim?.text.orEmpty(),
-                            style = MaterialTheme.typography.titleLarge
-                        )
-                        Text(
-                            text = stringResource(R.string.claim_reviews_title),
-                            style = MaterialTheme.typography.titleMedium
-                        )
-                    }
+                    TopAppBar(
+                        title = {
+                            Text(
+                                text = claim?.text.orEmpty(),
+                                style = MaterialTheme.typography.titleLarge
+                            )
+                        },
+                        subtitle = {
+                            Text(
+                                text = stringResource(R.string.claim_reviews_title),
+                                style = MaterialTheme.typography.titleMedium
+                            )
+                        },
+                        modifier = Modifier.statusBarsPadding()
+                    )
                 }
-                items(it) { review ->
+                items(it, key = { item -> item.url }) { review ->
                     ClaimReviewItem(
                         review,
                         modifier = Modifier.animateItem()
+                            .padding(horizontal = 16.dp)
                     )
                 }
             }
@@ -141,9 +137,12 @@ fun ClaimReviewItem(claimReview: ClaimReview, modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun ClaimDetailsPlaceholder(modifier: Modifier = Modifier) {
+fun ClaimDetailsPlaceholder(
+    modifier: Modifier = Modifier,
+    message: String = stringResource(R.string.select_claim)
+) {
     Box(modifier = modifier) {
-        Text(stringResource(R.string.select_claim), modifier = Modifier.align(Alignment.Center))
+        Text(message, modifier = Modifier.align(Alignment.Center))
     }
 }
 
@@ -178,7 +177,7 @@ private fun ClaimDetailsPreview() {
                 listOf(
                     ClaimReview(
                         Publisher("test", "test.com"),
-                        "url",
+                        "url1",
                         "test",
                         "test",
                         "test",
@@ -186,7 +185,7 @@ private fun ClaimDetailsPreview() {
                     ),
                     ClaimReview(
                         Publisher("test", "test.com"),
-                        "url",
+                        "url2",
                         "test",
                         "test",
                         "test",
