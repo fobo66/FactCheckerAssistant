@@ -7,27 +7,25 @@ import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.v2.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.v2.runComposeUiTest
 import kotlinx.coroutines.test.runTest
 import org.junit.Rule
 import org.junit.Test
 
 class MarkdownTest {
 
-    @get:Rule
-    val composeTestRule = createComposeRule()
-
     @Test
-    fun markdownDocument() {
-        composeTestRule.setContent {
+    fun markdownDocument() = runComposeUiTest {
+        setContent {
             MarkdownDocument(input = "Hello World!")
         }
 
-        composeTestRule.onNodeWithText("Hello World!").assertIsDisplayed()
+        onNodeWithText("Hello World!").assertIsDisplayed()
     }
 
     @Test
-    fun markdownOrderedList() {
-        composeTestRule.setContent {
+    fun markdownOrderedList() = runComposeUiTest {
+        setContent {
             MarkdownDocument(
                 input = """
                 1. First item
@@ -36,12 +34,12 @@ class MarkdownTest {
             )
         }
 
-        composeTestRule.onNode(hasText("First item", substring = true)).assertIsDisplayed()
+        onNode(hasText("First item", substring = true)).assertIsDisplayed()
     }
 
     @Test
-    fun markdownBulletList() {
-        composeTestRule.setContent {
+    fun markdownBulletList() = runComposeUiTest {
+        setContent {
             MarkdownDocument(
                 input = """
                 * First item
@@ -50,12 +48,12 @@ class MarkdownTest {
             )
         }
 
-        composeTestRule.onNode(hasText("First item", substring = true)).assertIsDisplayed()
+        onNode(hasText("First item", substring = true)).assertIsDisplayed()
     }
 
     @Test
-    fun markdownImage() = runTest {
-        composeTestRule.setContent {
+    fun markdownImage() = runComposeUiTest {
+        setContent {
             MarkdownDocument(
                 input = """
                     ![Test image](https://picsum.photos/200 "Test image")
@@ -63,15 +61,15 @@ class MarkdownTest {
             )
         }
 
-        composeTestRule.awaitIdle()
+        awaitIdle()
 
-        composeTestRule.onNode(hasContentDescription("Test image", substring = true))
+        onNode(hasContentDescription("Test image", substring = true))
             .assertIsDisplayed()
     }
 
     @Test
-    fun markdownIndentedCodeBlock() {
-        composeTestRule.setContent {
+    fun markdownIndentedCodeBlock() = runComposeUiTest {
+        setContent {
             MarkdownDocument(
                 input = """
                 Block of text
@@ -82,12 +80,12 @@ class MarkdownTest {
             )
         }
 
-        composeTestRule.onNode(hasTestTag("Indented code block")).assertIsDisplayed()
+        onNode(hasTestTag("Indented code block")).assertIsDisplayed()
     }
 
     @Test
-    fun markdownFencedCodeBlock() {
-        composeTestRule.setContent {
+    fun markdownFencedCodeBlock() = runComposeUiTest {
+        setContent {
             MarkdownDocument(
                 input = """
                     Block of text
@@ -99,12 +97,12 @@ class MarkdownTest {
             )
         }
 
-        composeTestRule.onNode(hasTestTag("Fenced code block")).assertIsDisplayed()
+        onNode(hasTestTag("Fenced code block")).assertIsDisplayed()
     }
 
     @Test
-    fun markdownParagraph() {
-        composeTestRule.setContent {
+    fun markdownParagraph() = runComposeUiTest {
+        setContent {
             MarkdownDocument(
                 input = """
                 First block of text
@@ -114,30 +112,30 @@ class MarkdownTest {
             )
         }
 
-        composeTestRule.onNodeWithText("First block of text").assertIsDisplayed()
+        onNodeWithText("First block of text").assertIsDisplayed()
     }
 
     @Test
-    fun markdownHeading() {
-        composeTestRule.setContent {
+    fun markdownHeading() = runComposeUiTest {
+        setContent {
             MarkdownDocument(input = "# Hello World!")
         }
 
-        composeTestRule.onNodeWithText("Hello World!").assertIsDisplayed()
+        onNodeWithText("Hello World!").assertIsDisplayed()
     }
 
     @Test
-    fun markdownText() {
-        composeTestRule.setContent {
+    fun markdownText() = runComposeUiTest {
+        setContent {
             MarkdownDocument(input = "Hello World!")
         }
 
-        composeTestRule.onNodeWithText("Hello World!").assertIsDisplayed()
+        onNodeWithText("Hello World!").assertIsDisplayed()
     }
 
     @Test
-    fun markdownThematicBreak() {
-        composeTestRule.setContent {
+    fun markdownThematicBreak() = runComposeUiTest {
+        setContent {
             Column {
                 MarkdownDocument(
                     input = """
@@ -151,12 +149,12 @@ class MarkdownTest {
             }
         }
 
-        composeTestRule.onNode(hasTestTag("Thematic break")).assertIsDisplayed()
+        onNode(hasTestTag("Thematic break")).assertIsDisplayed()
     }
 
     @Test
-    fun markdownBlockQuote() {
-        composeTestRule.setContent {
+    fun markdownBlockQuote() = runComposeUiTest {
+        setContent {
             MarkdownDocument(
                 input = """
                 > Quoted text
@@ -164,6 +162,6 @@ class MarkdownTest {
             )
         }
 
-        composeTestRule.onNodeWithText("Quoted text").assertIsDisplayed()
+        onNodeWithText("Quoted text").assertIsDisplayed()
     }
 }
