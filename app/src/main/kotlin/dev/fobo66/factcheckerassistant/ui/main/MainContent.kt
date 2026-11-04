@@ -1,6 +1,5 @@
 package dev.fobo66.factcheckerassistant.ui.main
 
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -11,25 +10,24 @@ import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteItem
 import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
+import androidx.navigation3.runtime.EntryProviderScope
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
 import androidx.paging.compose.collectAsLazyPagingItems
-import dev.fobo66.factcheckerassistant.R
-import dev.fobo66.factcheckerassistant.nav.BottomNavItem
 import dev.fobo66.factcheckerassistant.nav.Screen
 import dev.fobo66.factcheckerassistant.nav.rememberBackStack
+import dev.fobo66.factcheckerassistant.nav.rememberNavSuiteItems
 import dev.fobo66.factcheckerassistant.ui.guide.FactCheckGuide
 import dev.fobo66.factcheckerassistant.ui.list.ClaimDetails
+import dev.fobo66.factcheckerassistant.ui.list.ClaimDetailsPlaceholder
 import dev.fobo66.factcheckerassistant.ui.list.ClaimsSearch
 import dev.zacsweers.metrox.viewmodel.metroViewModel
-import kotlinx.collections.immutable.persistentListOf
 
 @OptIn(ExperimentalMaterial3AdaptiveApi::class)
 @Composable
@@ -38,19 +36,11 @@ fun MainActivityContent(
     mainViewModel: MainViewModel = metroViewModel()
 ) {
     val backStack = rememberBackStack(Screen.Search)
-
-    val bottomBarItems = remember {
-        persistentListOf(
-            BottomNavItem.Search,
-            BottomNavItem.Guide
-        )
-    }
-
-    val listDetailStrategy = rememberListDetailSceneStrategy<Screen>()
+    val navSuiteItems = rememberNavSuiteItems()
 
     NavigationSuiteScaffold(
         navigationItems = {
-            bottomBarItems.forEach { screen ->
+            navSuiteItems.forEach { screen ->
                 NavigationSuiteItem(
                     icon = {
                         Icon(
@@ -60,9 +50,7 @@ fun MainActivityContent(
                     },
                     label = { Text(stringResource(screen.resourceId)) },
                     selected = screen.route == backStack.lastOrNull(),
-                    onClick = {
-                        backStack.add(screen.route)
-                    }
+                    onClick = { backStack.add(screen.route) }
                 )
             }
         },
@@ -74,13 +62,11 @@ fun MainActivityContent(
                 rememberSaveableStateHolderNavEntryDecorator(),
                 rememberViewModelStoreNavEntryDecorator()
             ),
-            sceneStrategies = listOf(listDetailStrategy),
+            sceneStrategies = listOf(rememberListDetailSceneStrategy()),
             entryProvider = entryProvider {
                 entry<Screen.Search>(
                     metadata = ListDetailSceneStrategy.listPane {
-                        Box(modifier = Modifier.fillMaxSize()) {
-                            Text(stringResource(R.string.select_claim))
-                        }
+                        ClaimDetailsPlaceholder(modifier = Modifier.fillMaxSize())
                     }
                 ) {
                     val claims = mainViewModel.claims.collectAsLazyPagingItems()
@@ -104,12 +90,17 @@ fun MainActivityContent(
                     val claim by mainViewModel.selectedClaim.collectAsStateWithLifecycle()
                     ClaimDetails(claim)
                 }
-                entry<Screen.Guide>(
-                    metadata = ListDetailSceneStrategy.detailPane()
-                ) {
-                    FactCheckGuide()
-                }
+                guideEntry()
             }
         )
+    }
+}
+
+@OptIn(ExperimentalMaterial3AdaptiveApi::class)
+private fun EntryProviderScope<Screen>.guideEntry() {
+    entry<Screen.Guide>(
+        metadata = ListDetailSceneStrategy.detailPane()
+    ) {
+        FactCheckGuide()
     }
 }

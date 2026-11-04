@@ -140,6 +140,13 @@ fun ClaimReviewItem(claimReview: ClaimReview, modifier: Modifier = Modifier) {
     }
 }
 
+@Composable
+fun ClaimDetailsPlaceholder(modifier: Modifier = Modifier) {
+    Box(modifier = modifier) {
+        Text(stringResource(R.string.select_claim), modifier = Modifier.align(Alignment.Center))
+    }
+}
+
 @Preview(showBackground = true)
 @PreviewWrapper(wrapper = ThemeWrapper::class)
 @Composable
@@ -191,4 +198,11 @@ private fun ClaimDetailsPreview() {
     }
 
     ClaimDetails(claim)
+}
+
+@Preview(showBackground = true)
+@PreviewWrapper(wrapper = ThemeWrapper::class)
+@Composable
+private fun ClaimDetailsPlaceholderPreview() {
+    ClaimDetailsPlaceholder()
 }
