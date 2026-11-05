@@ -12,7 +12,7 @@ plugins {
 android {
     compileSdk {
         version = release(VersionCodes.CINNAMON_BUN) {
-            minorApiLevel = 1
+            minorApiLevel = 2
         }
     }
 

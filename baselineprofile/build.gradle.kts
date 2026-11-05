@@ -14,7 +14,7 @@ android {
     namespace = "dev.fobo66.baselineprofile"
     compileSdk {
         version = release(VersionCodes.CINNAMON_BUN) {
-            minorApiLevel = 1
+            minorApiLevel = 2
         }
     }
 
