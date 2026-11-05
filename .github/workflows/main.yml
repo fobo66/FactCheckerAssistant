@@ -28,7 +28,7 @@ jobs:
           cache-encryption-key: ${{ secrets.GRADLE_ENCRYPTION_KEY }}
           validate-wrappers: true
       - name: Check
-        run: ./gradlew detektMain lintKotlin test
+        run: ./gradlew --no-daemon detektMain lintKotlin test
   ui-tests:
     runs-on: ubuntu-latest
 
@@ -71,7 +71,7 @@ jobs:
       - name: Run tests
         uses: reactivecircus/android-emulator-runner@v2.38.0
         with:
-          script: ./gradlew connectedDebugAndroidTest
+          script: ./gradlew --no-daemon connectedDebugAndroidTest
           arch: x86_64
           target: google_apis
           force-avd-creation: false
