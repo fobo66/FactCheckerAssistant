@@ -15,6 +15,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.ExpandedFullScreenSearchBar
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
@@ -41,9 +42,11 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemContentType
 import androidx.paging.compose.itemKey
 import dev.fobo66.factcheckerassistant.R
+import dev.fobo66.factcheckerassistant.R.drawable.ic_search
+import dev.fobo66.factcheckerassistant.R.string.search_icon_description
+import dev.fobo66.factcheckerassistant.R.string.search_placeholder
 import dev.fobo66.factcheckerassistant.api.models.Claim
 import dev.fobo66.factcheckerassistant.ui.theme.ThemeWrapper
-import kotlin.time.ExperimentalTime
 import kotlinx.coroutines.flow.MutableStateFlow
 
 @Composable
@@ -54,52 +57,91 @@ fun ClaimsSearch(
     modifier: Modifier = Modifier
 ) {
     Column(modifier = modifier) {
-        ClaimsSearchBar(
-            onSearch = onSearch,
-            modifier = Modifier.align(Alignment.CenterHorizontally)
-                .statusBarsPadding()
-        )
-        Crossfade(claims, label = "searchItems", modifier = Modifier.weight(1f)) {
-            if (it.itemCount == 0) {
-                Box(modifier = Modifier.fillMaxSize()) {
-                    Text(
-                        modifier = Modifier.align(Alignment.Center),
-                        text = stringResource(id = R.string.claims_empty_result)
+        val queryState = rememberTextFieldState()
+        val searchBarState = rememberSearchBarState()
+        val inputField = @Composable {
+            SearchBarDefaults.InputField(
+                textFieldState = queryState,
+                searchBarState = searchBarState,
+                onSearch = onSearch,
+                placeholder = {
+                    Text(text = stringResource(id = search_placeholder))
+                },
+                leadingIcon = {
+                    Icon(
+                        painterResource(ic_search),
+                        contentDescription = stringResource(id = search_icon_description)
                     )
                 }
-            } else {
-                LazyColumn(
-                    contentPadding = PaddingValues(16.dp),
-                    verticalArrangement = Arrangement.spacedBy(16.dp)
+            )
+        }
 
-                ) {
-                    items(
-                        count = it.itemCount,
-                        key = it.itemKey(),
-                        contentType = it.itemContentType()
-                    ) { index ->
-                        val claim = it[index]
-                        val context = LocalContext.current
+        SearchBar(
+            state = searchBarState,
+            inputField = inputField,
+            modifier = Modifier
+                .fillMaxWidth()
+                .align(Alignment.CenterHorizontally)
+                .statusBarsPadding()
+                .padding(16.dp)
+        )
+        ExpandedFullScreenSearchBar(
+            state = searchBarState,
+            inputField = inputField
+        ) {
+            ClaimSearchResults(claims, onSearchResultClick)
+        }
+        ClaimSearchResults(claims, onSearchResultClick, modifier = Modifier.weight(1f))
+    }
+}
 
-                        val claimDate = remember {
-                            DateUtils.getRelativeTimeSpanString(
-                                context,
-                                claim?.claimDate?.toEpochMilliseconds()
-                                    ?: System.currentTimeMillis()
-                            ).toString()
-                        }
-                        ClaimItem(
-                            claimant = claim?.claimant,
-                            claimDate = claimDate,
-                            claimTitle = claim?.text,
-                            onItemClick = {
-                                onSearchResultClick(claim)
-                            }
-                        )
+@Composable
+fun ClaimSearchResults(
+    claims: LazyPagingItems<Claim>,
+    onSearchResultClick: (Claim?) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Crossfade(claims, label = "searchItems", modifier = modifier) {
+        if (it.itemCount == 0) {
+            Box(modifier = Modifier.fillMaxSize()) {
+                Text(
+                    modifier = Modifier.align(Alignment.Center),
+                    text = stringResource(id = R.string.claims_empty_result)
+                )
+            }
+        } else {
+            LazyColumn(
+                contentPadding = PaddingValues(16.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+
+            ) {
+                items(
+                    count = it.itemCount,
+                    key = it.itemKey(),
+                    contentType = it.itemContentType()
+                ) { index ->
+                    val claim = it[index]
+                    val context = LocalContext.current
+
+                    val claimDate = remember {
+                        DateUtils.getRelativeTimeSpanString(
+                            context,
+                            claim?.claimDate?.toEpochMilliseconds()
+                                ?: System.currentTimeMillis()
+                        ).toString()
                     }
-
-                    claimsListFooter(it)
+                    ClaimItem(
+                        claimant = claim?.claimant,
+                        claimDate = claimDate,
+                        claimTitle = claim?.text,
+                        onItemClick = {
+                            onSearchResultClick(claim)
+                        },
+                        modifier = Modifier.animateItem()
+                    )
                 }
+
+                claimsListFooter(it)
             }
         }
     }
@@ -131,34 +173,6 @@ private fun LazyListScope.claimsListFooter(items: LazyPagingItems<Claim>) {
 }
 
 @Composable
-private fun ClaimsSearchBar(onSearch: (String) -> Unit, modifier: Modifier = Modifier) {
-    val queryState = rememberTextFieldState()
-    val searchBarState = rememberSearchBarState()
-    SearchBar(
-        state = searchBarState,
-        inputField = {
-            SearchBarDefaults.InputField(
-                textFieldState = queryState,
-                searchBarState = searchBarState,
-                onSearch = {
-                    onSearch(queryState.text.toString())
-                },
-                placeholder = {
-                    Text(text = stringResource(id = R.string.search_placeholder))
-                },
-                leadingIcon = {
-                    Icon(
-                        painterResource(R.drawable.ic_search),
-                        contentDescription = stringResource(id = R.string.search_icon_description)
-                    )
-                }
-            )
-        },
-        modifier = modifier
-    )
-}
-
-@Composable
 fun ClaimItem(
     claimDate: String,
     onItemClick: () -> Unit,
@@ -173,9 +187,7 @@ fun ClaimItem(
     ) {
         ListItem(
             supportingContent = {
-                Text(
-                    text = claimDate
-                )
+                Text(text = claimDate)
             }
         ) {
             Text(
