@@ -99,7 +99,7 @@ fun MainActivityContent(
 @OptIn(ExperimentalMaterial3AdaptiveApi::class)
 private fun EntryProviderScope<Screen>.guideEntry() {
     entry<Screen.Guide>(
-        metadata = ListDetailSceneStrategy.detailPane()
+        metadata = ListDetailSceneStrategy.extraPane()
     ) {
         FactCheckGuide()
     }
