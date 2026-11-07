@@ -3,6 +3,7 @@ package dev.fobo66.factcheckerassistant.ui.guide
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -15,13 +16,15 @@ import dev.fobo66.factcheckerassistant.ui.theme.ThemeWrapper
 
 @Composable
 fun FactCheckGuide(modifier: Modifier = Modifier) {
-    MarkdownDocument(
-        R.raw.guide,
-        modifier = modifier
-            .padding(horizontal = 16.dp, vertical = 8.dp)
-            .statusBarsPadding()
-            .verticalScroll(rememberScrollState())
-    )
+    SelectionContainer(modifier = modifier) {
+        MarkdownDocument(
+            R.raw.guide,
+            modifier = Modifier
+                .padding(horizontal = 16.dp, vertical = 8.dp)
+                .statusBarsPadding()
+                .verticalScroll(rememberScrollState())
+        )
+    }
 }
 
 @Preview
