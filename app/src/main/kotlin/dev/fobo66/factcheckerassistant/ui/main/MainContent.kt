@@ -1,5 +1,6 @@
 package dev.fobo66.factcheckerassistant.ui.main
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -9,11 +10,9 @@ import androidx.compose.material3.adaptive.navigation3.rememberListDetailSceneSt
 import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteItem
 import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
 import androidx.navigation3.runtime.EntryProviderScope
 import androidx.navigation3.runtime.entryProvider
@@ -77,21 +76,28 @@ fun MainActivityContent(
                         },
                         claims = claims,
                         onSearchResultClick = { claim ->
-                            mainViewModel.selectClaim(claim)
                             backStack.add(
-                                Screen.SearchResult
+                                Screen.SearchResult(claim)
                             )
                         }
                     )
                 }
-                entry<Screen.SearchResult>(
-                    metadata = ListDetailSceneStrategy.detailPane()
-                ) {
-                    val claim by mainViewModel.selectedClaim.collectAsStateWithLifecycle()
-                    ClaimDetails(claim)
-                }
+                claimDetailsEntry(onBack = { backStack.removeLastOrNull() })
                 guideEntry()
             }
+        )
+    }
+}
+
+@OptIn(ExperimentalMaterial3AdaptiveApi::class)
+private fun EntryProviderScope<Screen>.claimDetailsEntry(onBack: () -> Unit) {
+    entry<Screen.SearchResult>(
+        metadata = ListDetailSceneStrategy.detailPane()
+    ) {
+        BackHandler(enabled = it.claim != null, onBack = onBack)
+        ClaimDetails(
+            claim = it.claim,
+            onBack = onBack
         )
     }
 }

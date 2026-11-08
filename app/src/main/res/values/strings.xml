@@ -18,4 +18,5 @@
     <string name="claim_unknown_claimant">Unknown claimant</string>
     <string name="claim_details_more">Learn more</string>
     <string name="select_claim">Select claim</string>
+    <string name="claim_details_description_back">Back to search</string>
 </resources>

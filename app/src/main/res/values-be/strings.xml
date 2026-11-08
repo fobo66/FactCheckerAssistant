@@ -19,4 +19,5 @@
     <string name="guide_fragment_title">Даведкі</string>
     <string name="claims_indicator">Шукайце па заявах, каб убачыць агляды на іх</string>
     <string name="select_claim">Выберыце заяву</string>
+    <string name="claim_details_description_back">Вярнуцца да пошуку</string>
 </resources>

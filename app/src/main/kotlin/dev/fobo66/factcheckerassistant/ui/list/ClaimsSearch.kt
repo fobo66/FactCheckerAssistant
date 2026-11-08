@@ -3,10 +3,8 @@ package dev.fobo66.factcheckerassistant.ui.list
 import android.text.format.DateUtils
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
@@ -89,7 +87,11 @@ fun ClaimsSearch(
             state = searchBarState,
             inputField = inputField
         ) {
-            ClaimSearchResults(claims, onSearchResultClick)
+            ClaimSearchResults(
+                claims = claims,
+                onSearchResultClick = onSearchResultClick,
+                emptyListPlaceholder = stringResource(R.string.search_suggestion)
+            )
         }
         ClaimSearchResults(claims, onSearchResultClick, modifier = Modifier.weight(1f))
     }
@@ -99,16 +101,15 @@ fun ClaimsSearch(
 fun ClaimSearchResults(
     claims: LazyPagingItems<Claim>,
     onSearchResultClick: (Claim?) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    emptyListPlaceholder: String = stringResource(id = R.string.claims_empty_result)
 ) {
     Crossfade(claims, label = "searchItems", modifier = modifier) {
         if (it.itemCount == 0) {
-            Box(modifier = Modifier.fillMaxSize()) {
-                Text(
-                    modifier = Modifier.align(Alignment.Center),
-                    text = stringResource(id = R.string.claims_empty_result)
-                )
-            }
+            ClaimDetailsPlaceholder(
+                modifier = Modifier.fillMaxWidth(),
+                text = emptyListPlaceholder
+            )
         } else {
             LazyColumn(
                 contentPadding = PaddingValues(16.dp),
