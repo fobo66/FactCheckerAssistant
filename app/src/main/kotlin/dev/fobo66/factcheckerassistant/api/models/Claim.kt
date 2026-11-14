@@ -13,7 +13,6 @@ import kotlinx.serialization.Serializable
 @Serializable
 @Immutable
 @Parcelize
-@OptIn(ExperimentalTime::class)
 data class Claim(
     val text: String? = null,
     val claimant: String? = null,

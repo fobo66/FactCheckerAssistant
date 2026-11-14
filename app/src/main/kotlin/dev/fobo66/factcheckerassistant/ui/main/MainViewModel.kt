@@ -32,7 +32,6 @@ private const val SEARCH_DEBOUNCE = 300
 class MainViewModel(factCheckRepository: FactCheckRepository) : ViewModel() {
 
     private val query = MutableStateFlow("")
-    private val _selectedClaim: MutableStateFlow<Claim?> = MutableStateFlow(null)
 
     @OptIn(FlowPreview::class, ExperimentalCoroutinesApi::class)
     val claims = query
@@ -48,14 +47,7 @@ class MainViewModel(factCheckRepository: FactCheckRepository) : ViewModel() {
             initialValue = PagingData.empty()
         )
 
-    val selectedClaim = _selectedClaim.asStateFlow()
-        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(STATE_FLOW_TIMEOUT), null)
-
     fun search(query: String) {
         this.query.update { query }
-    }
-
-    fun selectClaim(claim: Claim?) {
-        _selectedClaim.update { claim }
     }
 }
