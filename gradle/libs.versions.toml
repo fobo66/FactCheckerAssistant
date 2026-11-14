@@ -35,7 +35,7 @@ okhttp = "5.5.1"
 profileinstallerVersion = "1.4.1"
 timber = "5.0.1"
 truth = "1.4.5"
-runner = "1.8.0-alpha03"
+runner = "1.8.0-alpha04"
 
 [libraries]
 androidx-activity = { module = "androidx.activity:activity-compose", version.ref = "androidxActivity" }
