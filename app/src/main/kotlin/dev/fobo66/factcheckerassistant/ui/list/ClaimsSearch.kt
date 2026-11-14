@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.text.input.rememberTextFieldState
+import androidx.compose.material3.CircularWavyProgressIndicator
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExpandedFullScreenSearchBar
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
@@ -97,6 +98,7 @@ fun ClaimsSearch(
     }
 }
 
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun ClaimSearchResults(
     claims: LazyPagingItems<Claim>,
@@ -105,44 +107,64 @@ fun ClaimSearchResults(
     emptyListPlaceholder: String = stringResource(id = R.string.claims_empty_result)
 ) {
     Crossfade(claims, label = "searchItems", modifier = modifier) {
-        if (it.itemCount == 0) {
-            ClaimDetailsPlaceholder(
-                modifier = Modifier.fillMaxWidth(),
-                text = emptyListPlaceholder
-            )
-        } else {
-            LazyColumn(
-                contentPadding = PaddingValues(16.dp),
-                verticalArrangement = Arrangement.spacedBy(16.dp)
+        when (it.loadState.refresh) {
+            is LoadState.Loading -> {
+                LoadingIndicator(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .wrapContentWidth(Alignment.CenterHorizontally)
+                )
+            }
 
-            ) {
-                items(
-                    count = it.itemCount,
-                    key = it.itemKey(),
-                    contentType = it.itemContentType()
-                ) { index ->
-                    val claim = it[index]
-                    val context = LocalContext.current
+            is LoadState.Error -> {
+                ClaimDetailsPlaceholder(
+                    modifier = Modifier.fillMaxWidth(),
+                    text = stringResource(id = R.string.claims_loading_error)
+                )
+            }
 
-                    val claimDate = remember {
-                        DateUtils.getRelativeTimeSpanString(
-                            context,
-                            claim?.claimDate?.toEpochMilliseconds()
-                                ?: System.currentTimeMillis()
-                        ).toString()
+            else -> {
+                LazyColumn(
+                    contentPadding = PaddingValues(16.dp),
+                    verticalArrangement = Arrangement.spacedBy(16.dp)
+
+                ) {
+                    if (it.itemCount == 0) {
+                        stickyHeader {
+                            ClaimDetailsPlaceholder(
+                                modifier = Modifier.fillMaxWidth(),
+                                text = emptyListPlaceholder
+                            )
+                        }
                     }
-                    ClaimItem(
-                        claimant = claim?.claimant,
-                        claimDate = claimDate,
-                        claimTitle = claim?.text,
-                        onItemClick = {
-                            onSearchResultClick(claim)
-                        },
-                        modifier = Modifier.animateItem()
-                    )
-                }
+                    items(
+                        count = it.itemCount,
+                        key = it.itemKey(),
+                        contentType = it.itemContentType()
+                    ) { index ->
+                        val claim = it[index]
+                        val context = LocalContext.current
 
-                claimsListFooter(it)
+                        val claimDate = remember {
+                            DateUtils.getRelativeTimeSpanString(
+                                context,
+                                claim?.claimDate?.toEpochMilliseconds()
+                                    ?: System.currentTimeMillis()
+                            ).toString()
+                        }
+                        ClaimItem(
+                            claimant = claim?.claimant,
+                            claimDate = claimDate,
+                            claimTitle = claim?.text,
+                            onItemClick = {
+                                onSearchResultClick(claim)
+                            },
+                            modifier = Modifier.animateItem()
+                        )
+                    }
+
+                    claimsListFooter(it)
+                }
             }
         }
     }
