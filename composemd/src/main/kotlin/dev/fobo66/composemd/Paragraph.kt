@@ -19,6 +19,7 @@ import androidx.compose.ui.text.PlaceholderVerticalAlign
 import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
@@ -40,9 +41,9 @@ fun MarkdownParagraph(paragraph: Paragraph, modifier: Modifier = Modifier) {
         Box(modifier = modifier.padding(bottom = padding)) {
             val styledText =
                 buildAnnotatedString {
-                    pushStyle(MaterialTheme.typography.bodyMedium.toSpanStyle())
-                    appendMarkdownChildren(paragraph, MaterialTheme.colorScheme)
-                    pop()
+                    withStyle(MaterialTheme.typography.bodyMedium.toSpanStyle()) {
+                        appendMarkdownChildren(paragraph, MaterialTheme.colorScheme)
+                    }
                 }
             MarkdownText(styledText, MaterialTheme.typography.bodyMedium)
         }
